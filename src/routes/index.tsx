@@ -3,7 +3,7 @@ import { ContactPage } from '../pages/contact/index.tsx'
 import { HomePage } from '../pages/home/index.tsx'
 import { ShowcasePage } from '../pages/showcase/index.tsx'
 import { MainLayout } from '../layouts/MainLayout.tsx'
-import { NotFound } from './NotFound.tsx'
+import { NotFound } from '../pages/not-found/index.tsx'
 
 export const routes = createBrowserRouter([
   {
