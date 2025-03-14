@@ -1,6 +1,6 @@
 import { Outlet, Link } from 'react-router-dom'
 
-export default function MainLayout() {
+export const MainLayout = () => {
   return (
     <div className="layout">
       <nav className="nav-links">
