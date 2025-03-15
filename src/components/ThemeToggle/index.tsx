@@ -1,3 +1,4 @@
+import { Button } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 
 export const ThemeToggle = () => {
@@ -17,11 +18,11 @@ export const ThemeToggle = () => {
   }, [theme])
 
   return (
-    <button
+    <Button
       onClick={() => setTheme(prev => (prev === 'light' ? 'dark' : 'light'))}
       className="bg-primary text-primary-foreground border-primary rounded-lg border px-4 py-2"
     >
-      {theme === 'light' ? '🌙 Dark' : '🌞 Light'}
-    </button>
+      {theme === 'light' ? '🌙' : '🌞'}
+    </Button>
   )
 }

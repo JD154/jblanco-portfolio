@@ -1,3 +1,5 @@
+import { Button } from '@headlessui/react'
+
 export const LabPage = () => {
   return (
     <div className="min-h-screen p-8">
@@ -26,17 +28,19 @@ export const LabPage = () => {
       <h3 className="text-foreground mt-8 text-xl font-bold">Buttons:</h3>
 
       <div className="mt-4 flex gap-4">
-        <button className="bg-primary  text-primary-foreground cursor-pointer rounded-lg border px-4 py-2 text-sm font-bold opacity-100 hover:opacity-90">
+        <Button className="rounded bg-primary py-2 px-4 text-sm text-primary-foreground opacity-100 data-[hover]:opacity-90 ">
           Button Primary
-        </button>
+        </Button>
 
-        <button className="bg-secondary text-primary border-border cursor-pointer rounded-lg border px-4 py-2 text-sm font-bold opacity-80 hover:opacity-100">
+        <Button className="bg-secondary text-primary border-border cursor-pointer rounded-lg border px-4 py-2 text-sm  opacity-80 hover:opacity-100">
           Button Secondary
-        </button>
+        </Button>
 
-        <button className="border-transparent hover:border-border cursor-pointer rounded-lg border-1 px-4 py-2 text-sm font-bold">
+        <Button className="border-transparent hover:border-border cursor-pointer rounded-lg border-1 px-4 py-2 text-sm">
           Button Tertiary
-        </button>
+        </Button>
+
+        
       </div>
     </div>
   )
