@@ -3,5 +3,5 @@ export const ShowcasePage = () => {
     <div>
       <h2>Projects</h2>
     </div>
-  )
-}
+  );
+};

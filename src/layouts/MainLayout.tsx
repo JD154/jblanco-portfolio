@@ -1,6 +1,6 @@
-import { Outlet, Link } from 'react-router-dom'
-import { ThemeToggle } from '../components/ThemeToggle'
-import { Button } from '@headlessui/react'
+import { Outlet, Link } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { Button } from '@headlessui/react';
 
 export const MainLayout = () => {
   return (
@@ -23,5 +23,5 @@ export const MainLayout = () => {
       </nav>
       <Outlet />
     </div>
-  )
-}
+  );
+};

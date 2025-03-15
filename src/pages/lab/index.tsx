@@ -1,4 +1,4 @@
-import { Button } from '@headlessui/react'
+import { Button } from '@headlessui/react';
 
 export const LabPage = () => {
   return (
@@ -39,9 +39,7 @@ export const LabPage = () => {
         <Button className="border-transparent hover:border-border cursor-pointer rounded-lg border-1 px-4 py-2 text-sm">
           Button Tertiary
         </Button>
-
-        
       </div>
     </div>
-  )
-}
+  );
+};
