@@ -19,7 +19,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(prev => (prev === 'light' ? 'dark' : 'light'))}
-      className="px-4 py-2 rounded-lg bg-primary border border-primary"
+      className="bg-primary text-primary-foreground border-primary rounded-lg border px-4 py-2"
     >
       {theme === 'light' ? '🌙 Dark' : '🌞 Light'}
     </button>
