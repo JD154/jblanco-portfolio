@@ -1,4 +1,5 @@
 import { Outlet, Link } from 'react-router-dom'
+import { ThemeToggle } from '../components/ThemeToggle'
 
 export const MainLayout = () => {
   return (
@@ -8,6 +9,7 @@ export const MainLayout = () => {
         <Link to="/showcase">Showcase</Link>
         <Link to="/contact">Contact</Link>
       </nav>
+      <ThemeToggle />
       <Outlet />
     </div>
   )

@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    /* Light Theme */
+    --background: 210 33% 99%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --tertiary: 240 4.8% 95.9%;
+    --tertiary-foreground: 240 5.9% 10%;
+
+    --border: 240 5.9% 90%;
+
+    --input: 240 5.9% 90%;
+  }
+
+  [data-theme='dark'] {
+    /* Dark Theme */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --tertiary: 240 3.7% 15.9%;
+    --tertiary-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+
+    --input: 240 3.7% 15.9%;
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  * {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  /* Primary */
+  .bg-primary {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+  .border-primary {
+    border-color: hsl(var(--border));
+  }
+
+  /* Secondary */
+  .bg-secondary {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+  .text-secondary {
+    color: hsl(var(--secondary));
+  }
+  .border-secondary {
+    border-color: hsl(var(--secondary));
+  }
+
+  /* Tertiary */
+  .bg-tertiary {
+    background: hsl(var(--tertiary));
+    color: hsl(var(--tertiary-foreground));
+  }
+  .text-tertiary {
+    color: hsl(var(--tertiary));
+  }
+  .border-tertiary {
+    border-color: hsl(var(--tertiary));
+  }
+
+  .input-bg {
+    background: hsl(var(--input));
+  }
+
+  .card-bg {
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+  }
+
+  /* Gradients */
+  .gradient-primary {
+    background: linear-gradient(
+      to right,
+      rgb(var(--color-primary)),
+      rgb(var(--color-secondary))
+    );
+  }
+}
