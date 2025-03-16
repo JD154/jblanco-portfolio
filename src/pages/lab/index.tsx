@@ -1,4 +1,5 @@
 import { Button } from '@headlessui/react';
+import { BaseButton } from '../../components/BaseButton';
 
 export const LabPage = () => {
   return (
@@ -28,17 +29,11 @@ export const LabPage = () => {
       <h3 className="text-foreground mt-8 text-xl font-bold">Buttons:</h3>
 
       <div className="mt-4 flex gap-4">
-        <Button className="rounded bg-primary py-2 px-4 text-sm text-primary-foreground opacity-100 data-[hover]:opacity-90 ">
-          Button Primary
-        </Button>
+        <BaseButton>Button Primary</BaseButton>
 
-        <Button className="bg-secondary text-primary border-border cursor-pointer rounded-lg border px-4 py-2 text-sm  opacity-80 hover:opacity-100">
-          Button Secondary
-        </Button>
+        <BaseButton buttonStyle="outline">Button Secondary</BaseButton>
 
-        <Button className="border-transparent hover:border-border cursor-pointer rounded-lg border-1 px-4 py-2 text-sm">
-          Button Tertiary
-        </Button>
+        <BaseButton buttonStyle="ghost">Button Tertiary</BaseButton>
       </div>
     </div>
   );
