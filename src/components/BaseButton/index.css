@@ -1,5 +1,10 @@
-@reference "tailwindcss";
-
 .base-button__normal {
   @apply rounded bg-primary py-2 px-4 text-sm text-primary-foreground opacity-100 data-[hover]:opacity-90;
+}
+.base-button__outline {
+  @apply bg-secondary text-primary border-border cursor-pointer rounded-lg border px-4 py-2 text-sm  opacity-80 hover:opacity-100;
+}
+
+.base-button__ghost {
+  @apply border-transparent hover:border-border cursor-pointer rounded-lg px-4 py-2 text-sm;
 }
