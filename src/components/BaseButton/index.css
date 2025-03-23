@@ -1,5 +1,5 @@
 .base-button__normal {
-  @apply rounded bg-primary py-2 px-4 text-sm text-primary-foreground opacity-100 data-[hover]:opacity-90;
+  @apply rounded bg-card-foreground py-2 px-4 text-sm text-primary-foreground opacity-100 data-[hover]:opacity-90;
 }
 .base-button__outline {
   @apply bg-secondary text-primary border-border cursor-pointer rounded-lg border px-4 py-2 text-sm  opacity-80 hover:opacity-100;

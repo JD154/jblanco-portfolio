@@ -1,4 +1,3 @@
-import { Button } from '@headlessui/react';
 import { BaseButton } from '../../components/BaseButton';
 
 export const LabPage = () => {
