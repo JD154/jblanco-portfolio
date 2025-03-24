@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 export const LabPage = () => {
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-4">
       <h3 className="text-xl font-bold text-foreground">Cards:</h3>
       <div className="grid gap-4 mt-4 md:grid-cols-2">
         <Card>

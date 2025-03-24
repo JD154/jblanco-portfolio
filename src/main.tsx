@@ -7,7 +7,7 @@ import './styles/index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <RouterProvider router={routes} />
     </ThemeProvider>
   </StrictMode>,
