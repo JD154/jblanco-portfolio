@@ -1,24 +1,37 @@
 import { Outlet, Link } from 'react-router-dom';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { Button } from '@headlessui/react';
+import { Button } from '@/components/ui/button';
 
 export const MainLayout = () => {
+  const routeLinks = [
+    {
+      route: 'home',
+      link: '/',
+    },
+    {
+      route: 'lab',
+      link: '/lab',
+    },
+    {
+      route: 'showcase',
+      link: '/showcase',
+    },
+    {
+      route: 'contact',
+      link: '/contact',
+    },
+  ];
   return (
     <div className="layout">
-      <nav className="m-4 flex">
-        <Button as={Link} to="/" className="text-primary px-4 py-2">
-          Home
-        </Button>
-        <Button as={Link} to="/lab" className="text-primary px-4 py-2">
-          Lab
-        </Button>
-        <Button as={Link} to="/contact" className="text-primary px-4 py-2">
-          Contact
-        </Button>
+      <nav className="flex gap-2 m-4">
+        {routeLinks.map(({ route, link }, index) => (
+          <Button asChild key={index} variant="secondary">
+            <Link to={link} className="">
+              {route}
+            </Link>
+          </Button>
+        ))}
 
-        <Button as={Link} to="/showcase" className="text-primary px-4 py-2">
-          Showcase
-        </Button>
         <ThemeToggle />
       </nav>
       <Outlet />
