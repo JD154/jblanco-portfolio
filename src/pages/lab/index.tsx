@@ -1,23 +1,39 @@
-import { BaseButton } from '../../components/BaseButton';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const LabPage = () => {
   return (
-    <div className="min-h-screen p-8">
-      <h3 className="text-foreground text-xl font-bold">Cards:</h3>
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
-        {/* Primary Card */}
-        <div className="bg-card-foreground text-primary-foreground rounded-lg border p-6">
-          <h2 className="mb-2 text-xl font-bold">Primary</h2>
-          <p>Uses automatic contrast text</p>
-        </div>
+    <div className="min-h-screen p-4">
+      <h3 className="text-xl font-bold text-foreground">Cards:</h3>
+      <div className="grid gap-4 mt-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Card Title</CardTitle>
+            <CardDescription>Card Description</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>Card Content</p>
+          </CardContent>
+          <CardFooter>
+            <p>Card Footer</p>
+          </CardFooter>
+        </Card>
 
         {/* Secondary Card */}
-        <div className="bg-secondary text-foreground border-border rounded-lg border p-6">
-          <h2 className="mb-2 text-xl font-bold">Secondary</h2>
-          <p>Perfect for highlights</p>
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Card Title</CardTitle>
+            <CardDescription>Card Description</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>Card Content</p>
+          </CardContent>
+          <CardFooter>
+            <p>Card Footer</p>
+          </CardFooter>
+        </Card>
       </div>
-      <h3 className="text-foreground mt-8 text-xl font-bold">Links:</h3>
+      <h3 className="mt-8 text-xl font-bold text-foreground">Links:</h3>
 
       <div className="mt-4">
         <a href="#" className="text-foreground opacity-80 hover:opacity-100">
@@ -25,14 +41,16 @@ export const LabPage = () => {
         </a>
       </div>
 
-      <h3 className="text-foreground mt-8 text-xl font-bold">Buttons:</h3>
+      <h3 className="mt-8 text-xl font-bold text-foreground">Buttons:</h3>
 
-      <div className="mt-4 flex gap-4">
-        <BaseButton>Button Primary</BaseButton>
+      <div className="flex gap-4 mt-4">
+        <Button>Button Primary</Button>
 
-        <BaseButton buttonStyle="outline">Button Secondary</BaseButton>
+        <Button variant="secondary">Button Secondary</Button>
 
-        <BaseButton buttonStyle="ghost">Button Tertiary</BaseButton>
+        <Button variant="outline">Button outline</Button>
+
+        <Button variant="ghost">Button ghost</Button>
       </div>
     </div>
   );
