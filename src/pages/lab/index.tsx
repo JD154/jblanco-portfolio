@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { FC } from 'react';
 
-export const LabPage = () => {
+export const LabPage: FC = () => {
   return (
     <div className="min-h-screen p-4">
       <h3 className="text-xl font-bold text-foreground">Cards:</h3>

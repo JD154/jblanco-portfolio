@@ -3,8 +3,15 @@ import { Logo } from '../Logo';
 import { ThemeToggle } from '../ThemeToggle';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '../ui/navigation-menu';
 import { NavigationItem } from './components/NavigationItem';
+import { NavigationRoutes } from '@/typings';
+import { FC } from 'react';
 
-const pageRoutes = [
+type pageRoutesType = {
+  label: string;
+  route: NavigationRoutes;
+};
+
+const pageRoutes: pageRoutesType[] = [
   {
     label: 'home',
     route: '/',
@@ -23,7 +30,7 @@ const pageRoutes = [
   },
 ];
 
-export const NavigationBar = () => {
+export const NavigationBar: FC = () => {
   const { pathname } = useLocation();
 
   return (
