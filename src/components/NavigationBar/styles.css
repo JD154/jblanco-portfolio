@@ -1,0 +1,18 @@
+@reference "tailwindcss";
+
+.navigation-bar__wrapper {
+  @apply pt-6 mb-16 sticky top-0;
+}
+
+.navigation-bar__container {
+  @apply flex items-center justify-between w-full px-6 py-2;
+  backdrop-filter: var(--default-blur);
+  box-shadow: var(--nav-shadow);
+  background-blend-mode: luminosity;
+  background-color: var(--nav-background);
+  border-radius: var(--default-radius);
+}
+
+.navigation-bar__menu {
+  @apply flex items-center gap-4;
+}

@@ -12,9 +12,26 @@
 }
 
 main {
-  @apply mx-auto max-w-7xl;
+  @apply mx-auto max-w-xl;
 }
 
 button {
-  @apply transition-colors cursor-pointer;
+  @apply transition-colors cursor-pointer rounded-full;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0px;
+  z-index: -100;
+  background-image: url('../assets/images/header-bg.svg');
+  background-repeat: no-repeat;
+  background-position:
+    center top,
+    center bottom;
+  background-size: 1400px;
+}
+
+html {
+  scroll-behavior: smooth;
 }

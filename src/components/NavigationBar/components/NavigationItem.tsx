@@ -15,7 +15,7 @@ export const NavigationItem: FC<NavigationItemProps> = ({ label, route, isActive
       <NavigationMenuLink
         asChild
         className={navigationMenuTriggerStyle({
-          className: `font-light ${isActive ? 'bg-accent' : null}`,
+          className: `font-light rounded-4xl bg-transparent ${isActive ? 'border' : null}`,
         })}
       >
         <Link to={route}>{label}</Link>

@@ -28,6 +28,12 @@
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
+
+  /* Custom colors */
+  --nav-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.45);
+  --nav-background: rgba(255, 255, 255, 0.3);
+  --default-blur: blur(22px);
+  --default-radius: 36px;
 }
 .dark {
   --background: 240 10% 3.9%;
@@ -54,6 +60,12 @@
   --chart-3: 30 80% 55%;
   --chart-4: 280 65% 60%;
   --chart-5: 340 75% 55%;
+
+  /* Custom colors */
+  --nav-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.45);
+  --nav-background: rgba(18, 12, 27, 0.3);
+  --default-blur: blur(22px);
+  --default-radius: 36px;
 }
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

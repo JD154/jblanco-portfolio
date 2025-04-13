@@ -1,0 +1,16 @@
+#texture {
+  top: 0px;
+  left: 0px;
+  z-index: -99;
+  width: 100%;
+  height: calc(200px + 100vh);
+  opacity: 0.25;
+  pointer-events: none;
+  transform: translateY(0px);
+  filter: contrast(120%) brightness(120%);
+  position: fixed;
+}
+
+html.dark #texture {
+  filter: contrast(30%) brightness(50%);
+}

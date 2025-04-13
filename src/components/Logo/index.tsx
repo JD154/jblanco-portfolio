@@ -6,7 +6,7 @@ interface LogoProps {
 
 export const Logo: FC<LogoProps> = ({ className }) => {
   const getClasses = () => {
-    const classes = ['font-bold', 'text-xl'];
+    const classes = ['font-bold', 'text-lg', 'opacity-80'];
     className && classes.push(className);
     return classes.join(' ');
   };
