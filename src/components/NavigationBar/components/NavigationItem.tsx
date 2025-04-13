@@ -24,7 +24,7 @@ export const NavigationItem: FC<NavigationItemProps> = ({ label, route, isActive
           } as React.CSSProperties
         }
         className={navigationMenuTriggerStyle({
-          className: `hover:text-secondary ${isActive ? 'font-bold' : null}`,
+          className: `${isActive ? 'font-bold' : null}`,
         })}
       >
         <Link to={route}>{label}</Link>
