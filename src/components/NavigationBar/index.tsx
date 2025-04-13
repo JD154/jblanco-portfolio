@@ -5,7 +5,6 @@ import { NavigationMenu, NavigationMenuList } from '../ui/navigation-menu';
 import { NavigationItem } from './components/NavigationItem';
 import { NavigationRoutes } from '@/typings';
 import { FC } from 'react';
-import './styles.css';
 
 type pageRoutesType = {
   label: string;
@@ -14,32 +13,31 @@ type pageRoutesType = {
 
 const pageRoutes: pageRoutesType[] = [
   {
-    label: 'home',
+    label: 'Home',
     route: '/',
   },
   {
-    label: 'lab',
+    label: 'Lab',
     route: '/lab',
   },
   {
-    label: 'showcase',
+    label: 'Showcase',
     route: '/showcase',
   },
   {
-    label: 'contact',
+    label: 'Contact',
     route: '/contact',
   },
 ];
 
 export const NavigationBar: FC = () => {
-  const prefix = 'navigation-bar';
   const { pathname } = useLocation();
 
   return (
-    <div className={`${prefix}__wrapper`}>
-      <div className={`${prefix}__container`}>
+    <div className="pt-6 mb-16">
+      <div className="flex items-center justify-between w-full px-6 py-2 border shadow rounded-full backdrop-blur-lg bg-card">
         <Logo />
-        <NavigationMenu className={`${prefix}__menu`}>
+        <NavigationMenu className="flex items-center gap-4">
           <NavigationMenuList>
             {pageRoutes.map(({ route, label }, index) => (
               <NavigationItem key={index} label={label} route={route} isActive={pathname === route} />
