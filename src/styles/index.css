@@ -10,16 +10,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/* 
 main {
-  @apply mx-auto max-w-xl;
+  @apply mx-auto max-w-2xl;
 }
-
+ */
 button {
   @apply transition-colors cursor-pointer rounded-full;
 }
 
-body::before {
+/* body::before {
   content: '';
   position: absolute;
   inset: 0px;
@@ -30,7 +30,7 @@ body::before {
     center top,
     center bottom;
   background-size: 1400px;
-}
+} */
 
 html {
   scroll-behavior: smooth;
