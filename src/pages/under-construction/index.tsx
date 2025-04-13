@@ -15,17 +15,16 @@ export const UnderConstructionPage: FC = () => {
         >
           Great things are coming. Stay tuned!
         </h1>
-
         <p className="mt-4 text-md text-center text-muted-foreground">
           In the meantime, you can download my CV or visit my Linkedin profile
         </p>
         <div className="flex items-center justify-center gap-4 mt-3">
-          <Button asChild variant={'secondary'} className="mt-4">
+          <Button asChild variant={'secondary'} className="mt-4 rounded-full">
             <a href="[Detailed] Frontend Developer, Jesus Blanco 06.pdf" target="_blank" rel="noopener noreferrer">
               Download CV
             </a>
           </Button>
-          <Button asChild variant={'outline'} className="mt-4">
+          <Button asChild variant={'outline'} className="mt-4 rounded-full">
             <a href="https://www.linkedin.com/in/jesus-blanco-08682112a/" target="_blank" rel="noopener noreferrer">
               LinkedIn Profile
             </a>
