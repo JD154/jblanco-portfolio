@@ -38,7 +38,6 @@ export const NavigationBar: FC = () => {
   return (
     <div className={`${prefix}__wrapper`}>
       <div className={`${prefix}__container`}>
-        <div className={`${prefix}__background`} />
         <Logo />
         <NavigationMenu className={`${prefix}__menu`}>
           <NavigationMenuList>

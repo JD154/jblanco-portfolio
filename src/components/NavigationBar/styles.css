@@ -5,12 +5,8 @@
 }
 
 .navigation-bar__container {
-  @apply flex items-center justify-between w-full px-6 py-2;
-  backdrop-filter: var(--default-blur);
-  box-shadow: var(--nav-shadow);
-  background-blend-mode: luminosity;
+  @apply flex items-center justify-between w-full px-6 py-2 border shadow rounded-full backdrop-blur-lg bg-blend-luminosity;
   background-color: var(--nav-background);
-  border-radius: var(--default-radius);
 }
 
 .navigation-bar__menu {

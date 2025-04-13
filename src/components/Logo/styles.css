@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+
+.brand-logo {
+  @apply font-bold text-lg opacity-90;
+  font-family: 'Inter';
+}
