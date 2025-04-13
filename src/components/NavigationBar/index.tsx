@@ -14,19 +14,19 @@ type pageRoutesType = {
 
 const pageRoutes: pageRoutesType[] = [
   {
-    label: 'home',
+    label: 'Home',
     route: '/',
   },
   {
-    label: 'lab',
+    label: 'Lab',
     route: '/lab',
   },
   {
-    label: 'showcase',
+    label: 'Showcase',
     route: '/showcase',
   },
   {
-    label: 'contact',
+    label: 'Contact',
     route: '/contact',
   },
 ];
