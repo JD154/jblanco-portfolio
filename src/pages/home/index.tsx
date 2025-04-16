@@ -5,20 +5,14 @@ export const HomePage: FC = () => {
   return (
     <div>
       <StarsBackground />
-      <div
-        className="max-w-2xl mx-auto"
-        style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate3d(-50%,-50%,0)' }}
-      >
-        <h1
-          className="text-gray-900 dark:text-gray-100 drop-shadow-lg dark:drop-shadow-white/40 drop-shadow-black/40"
-          style={{ margin: 0, padding: 0, fontSize: '3em', fontWeight: 500, letterSpacing: '-0.05em' }}
-        >
-          Hello! I'm Jesus Blanco
+      <div className="max-w-2xl lg:max-w-4xl mx-auto absolute top-1/2 left-1/2  z-10 -translate-y-1/2 -translate-x-1/2">
+        <h1 className="text-gray-900 dark:text-gray-100 drop-shadow-lg dark:drop-shadow-white/40 drop-shadow-black/40 m-0 p-0 font-bold md:text-7xl 2xl:text-9xl">
+          Hello there!
         </h1>
         <h6>
-          <span className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed">
-            A Senior Front-end developer with over 6 years of experience, passionate about crafting elegant,
-            user-friendly, and performant web applications that deliver exceptional user experiences.
+          <span className="text-gray-700 dark:text-gray-200 text-xl 2xl:text-3xl">
+            I'm Jesus Blanco, a senior Front-end developer with over 6 years of experience, passionate about architect
+            clean, maintainable, and performant web applications that deliver exceptional user experiences.
           </span>
           <br />
         </h6>
