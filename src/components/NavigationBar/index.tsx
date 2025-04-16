@@ -6,6 +6,7 @@ import { NavigationItem } from './components/NavigationItem';
 import { NavigationRoutes } from '@/typings';
 import { FC } from 'react';
 import './styles.css';
+import { GlowingEffect } from '../ui/glowing-effect';
 
 type pageRoutesType = {
   label: string;
@@ -47,6 +48,7 @@ export const NavigationBar: FC = () => {
           </NavigationMenuList>
         </NavigationMenu>
         <ThemeToggle />
+        <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
       </div>
     </div>
   );
