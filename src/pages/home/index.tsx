@@ -5,7 +5,7 @@ export const HomePage: FC = () => {
   return (
     <div>
       <StarsBackground />
-      <div className="max-w-2xl lg:max-w-4xl mx-auto absolute top-1/2 left-1/2  z-10 -translate-y-1/2 -translate-x-1/2">
+      <div className="max-w-2xl lg:max-w-4xl mx-auto absolute top-1/2 left-1/2  z-10 -translate-y-1/2 -translate-x-1/2 flex items-center flex-col justify-center text-center">
         <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 to-neutral-400 dark:from-neutral-200 dark:to-neutral-400 text-center font-sans font-bold drop-shadow-md dark:drop-shadow-white/40 drop-shadow-black/40">
           I'm Jesus Blanco
         </h1>
