@@ -15,7 +15,7 @@ export const HomePage: FC = () => {
           and performant web applications that deliver exceptional user experiences.
         </h6>
         <GlowingButton variant="outline" size="lg" className="relative z-10 ">
-          My work
+          Continue
         </GlowingButton>
       </div>
     </div>
