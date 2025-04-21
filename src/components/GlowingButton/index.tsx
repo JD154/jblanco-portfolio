@@ -12,7 +12,7 @@ export const GlowingButton: FC<ButtonProps> = ({ children, className, ...props }
   };
   return (
     <Button {...props} className={getClasses()}>
-      <GlowingEffect spread={40} glow={true} disabled={false} proximity={14} />
+      <GlowingEffect spread={40} glow={true} disabled={false} proximity={50} />
       <span className="luminosity-text">{children}</span>
     </Button>
   );

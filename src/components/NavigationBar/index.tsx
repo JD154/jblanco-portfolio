@@ -37,7 +37,7 @@ export const NavigationBar: FC = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className={`${prefix}__wrapper`}>
+    <header className={`${prefix}__wrapper`}>
       <div className={`${prefix}__container`}>
         <Logo />
         <NavigationMenu className={`${prefix}__menu`}>
@@ -50,6 +50,6 @@ export const NavigationBar: FC = () => {
         <ThemeToggle />
         <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
       </div>
-    </div>
+    </header>
   );
 };
