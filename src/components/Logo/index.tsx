@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { FC } from 'react';
-import { useCursorHandlers } from '../CursorProvider';
 import './styles.css';
+import { useCursorHandlers } from '../CursorProvider/hooks';
 
 interface LogoProps {
   className?: string;

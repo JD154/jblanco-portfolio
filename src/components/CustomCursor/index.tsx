@@ -1,7 +1,7 @@
 import { motion, useMotionValue } from 'motion/react';
 import { useEffect } from 'react';
-import { useCursorContext } from '../CursorProvider';
 import './styles.css';
+import { useCursorContext } from '../CursorProvider/hooks';
 
 export const CustomCursor = () => {
   const context = useCursorContext();

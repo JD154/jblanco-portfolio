@@ -1,9 +1,9 @@
 import { motion, MotionProps } from 'motion/react';
 import { FC } from 'react';
-import { useCursorHandlers } from '../CursorProvider/useCursorHandlers';
 import { Button, ButtonProps } from '../ui/button';
 import { GlowingEffect } from '../ui/glowing-effect';
 import './styles.css';
+import { useCursorHandlers } from '../CursorProvider/hooks';
 
 // Allow animation props from motion/react
 export interface GlowingButtonProps

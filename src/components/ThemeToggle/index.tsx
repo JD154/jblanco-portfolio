@@ -6,7 +6,7 @@ import { DropdownMenu, DropdownMenuTrigger } from '@/components/ui/dropdown-menu
 import { motion } from 'motion/react';
 import { FC } from 'react';
 import { ThemesDropdown } from './components/ThemesDropdown';
-import { useCursorHandlers } from '../CursorProvider';
+import { useCursorHandlers } from '../CursorProvider/hooks';
 
 export const ThemeToggle: FC = () => {
   const { theme, setTheme } = useTheme();

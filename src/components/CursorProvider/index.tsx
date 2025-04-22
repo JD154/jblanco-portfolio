@@ -1,6 +1,5 @@
 // src/components/CustomCursor.jsx
-import { createContext, useState, useContext, Dispatch, SetStateAction, FC } from 'react';
-import { ReactNode } from 'react';
+import { createContext, Dispatch, FC, ReactNode, SetStateAction, useState } from 'react';
 
 interface CursorContextType {
   initialCursorVariant: string;
@@ -10,9 +9,7 @@ interface CursorContextType {
   animateCursor: (variant: SetStateAction<string>) => void;
 }
 
-const CursorContext = createContext<CursorContextType | undefined>(undefined);
-
-export const useCursorContext = () => useContext(CursorContext);
+export const CursorContext = createContext<CursorContextType | undefined>(undefined);
 
 export const CursorContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [initialCursorVariant, setInitialCursorVariant] = useState('');
@@ -35,21 +32,4 @@ export const CursorContextProvider: FC<{ children: ReactNode }> = ({ children })
       {children}
     </CursorContext.Provider>
   );
-};
-
-/**
- * Returns mouse event handlers for custom cursor animation.
- * Usage: <MotionComponent {...useCursorHandlers('buttonHover', 'cursorEnter')} />
- */
-export const useCursorHandlers = (enterVariant: string = 'buttonHover', leaveVariant: string = 'cursorEnter') => {
-  const cursorContext = useCursorContext();
-
-  const onMouseEnter = () => {
-    cursorContext?.animateCursor?.(enterVariant);
-  };
-  const onMouseLeave = () => {
-    cursorContext?.animateCursor?.(leaveVariant);
-  };
-
-  return { onMouseEnter, onMouseLeave };
 };
