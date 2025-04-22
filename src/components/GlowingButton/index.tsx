@@ -29,7 +29,7 @@ export interface GlowingButtonProps
 export const GlowingButton: FC<GlowingButtonProps> = ({
   children,
   className,
-  variant = 'default',
+  variant = 'outline',
   size = 'default',
   whileHover,
   whileTap = { scale: 0.95 },
@@ -45,7 +45,7 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
   const getClasses = () => {
     const classes = [];
     className && classes.push(className);
-    variant === 'default' && classes.push(`${prefix}__default`);
+    variant === 'outline' && classes.push(`${prefix}__outline`);
     return classes.join(' ');
   };
   return (
@@ -63,7 +63,7 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
     >
       <>
         <GlowingEffect spread={40} glow={true} disabled={false} proximity={variant === 'ghost' ? 1 : 54} />
-        <span className="luminosity-text capitalize">{children}</span>
+        <span className="luminosity-text">{children}</span>
       </>
     </MotionButton>
   );

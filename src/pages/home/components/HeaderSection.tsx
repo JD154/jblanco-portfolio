@@ -14,7 +14,7 @@ export const HeaderSection = () => {
         and maintainable web applications that deliver exceptional user experiences.
       </h6>
       <div className="flex gap-4">
-        <GlowingButton variant="default" size="lg" className="relative z-10">
+        <GlowingButton variant="outline" size="lg" className="relative z-10">
           <a href="[Detailed] Frontend Developer, Jesus Blanco 06.pdf" target="_blank" rel="noopener noreferrer">
             Download CV
           </a>
