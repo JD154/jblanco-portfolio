@@ -1,19 +1,17 @@
-import { NavigationRoutes } from '@/typings';
 import { motion } from 'motion/react';
 import { FC } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useCursorContext } from '../CursorProvider';
 import { Logo } from '../Logo';
 import { ThemeToggle } from '../ThemeToggle';
 import { GlowingEffect } from '../ui/glowing-effect';
 import './styles.css';
 
-type pageRoutesType = {
+/* type pageRoutesType = {
   label: string;
   route: NavigationRoutes;
-};
+}; */
 
-const pageRoutes: pageRoutesType[] = [
+/* const pageRoutes: pageRoutesType[] = [
   {
     label: 'Home',
     route: '/',
@@ -30,7 +28,7 @@ const pageRoutes: pageRoutesType[] = [
     label: 'Contact',
     route: '/contact',
   },
-];
+]; */
 
 export const NavigationBar: FC = () => {
   const cursorContext = useCursorContext();
@@ -43,7 +41,7 @@ export const NavigationBar: FC = () => {
   };
 
   const prefix = 'navigation-bar';
-  const { pathname } = useLocation();
+  /*   const { pathname } = useLocation(); */
 
   return (
     <header className={`${prefix}__wrapper`}>
