@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+
+.glowing-button {
+  @apply bg-blend-luminosity backdrop-blur-xs transition-all border shadow;
+  background-color: var(--nav-background) !important;
+}
+
+.luminosity-text {
+  @apply opacity-90 drop-shadow-md dark:drop-shadow-white/40 drop-shadow-black/40;
+}

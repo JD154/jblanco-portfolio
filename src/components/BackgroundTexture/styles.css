@@ -1,7 +1,7 @@
 #texture {
   top: 0px;
   left: 0px;
-  z-index: -99;
+  z-index: -1;
   width: 100%;
   height: calc(200px + 100vh);
   opacity: 0.25;
