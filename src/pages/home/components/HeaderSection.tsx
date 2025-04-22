@@ -13,11 +13,18 @@ export const HeaderSection = () => {
         A passionate senior Front-end developer with over 6 years of experience, with a strong focus on architect clean
         and maintainable web applications that deliver exceptional user experiences.
       </h6>
-      <GlowingButton variant="outline" size="lg" className="relative z-10" asChild>
-        <a href="[Detailed] Frontend Developer, Jesus Blanco 06.pdf" target="_blank" rel="noopener noreferrer">
-          Download CV
-        </a>
-      </GlowingButton>
+      <div className="flex gap-4">
+        <GlowingButton variant="default" size="lg" className="relative z-10">
+          <a href="[Detailed] Frontend Developer, Jesus Blanco 06.pdf" target="_blank" rel="noopener noreferrer">
+            Download CV
+          </a>
+        </GlowingButton>
+        <GlowingButton variant="ghost" size="lg" className="relative z-10">
+          <a href="https://www.linkedin.com/in/jesus-blanco-08682112a/" target="_blank" rel="noopener noreferrer">
+            Visit my LinkedIn
+          </a>
+        </GlowingButton>
+      </div>
     </section>
   );
 };
