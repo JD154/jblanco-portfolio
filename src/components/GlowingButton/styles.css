@@ -6,5 +6,5 @@
 }
 
 .luminosity-text {
-  @apply opacity-90 drop-shadow-md dark:drop-shadow-white/40 drop-shadow-black/40;
+  @apply opacity-90 drop-shadow-md dark:drop-shadow-white/40 drop-shadow-black/40 capitalize;
 }

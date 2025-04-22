@@ -63,7 +63,7 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
     >
       <>
         <GlowingEffect spread={40} glow={true} disabled={false} proximity={variant === 'ghost' ? 1 : 54} />
-        <span className="luminosity-text capitalize">{children}</span>
+        <span className="luminosity-text">{children}</span>
       </>
     </MotionButton>
   );
