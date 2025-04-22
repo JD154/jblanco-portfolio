@@ -1,0 +1,14 @@
+@reference "tailwindcss";
+
+.navigation-bar__wrapper {
+  @apply pt-6 mb-16 absolute w-full top-0 z-10;
+}
+
+.navigation-bar__container {
+  @apply flex items-center justify-between max-w-2xl mx-auto px-6 py-2 border shadow rounded-full backdrop-blur-xs bg-blend-luminosity;
+  background-color: var(--nav-background);
+}
+
+.navigation-bar__menu {
+  @apply flex items-center gap-4;
+}
