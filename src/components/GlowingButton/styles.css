@@ -1,6 +1,6 @@
 @reference "tailwindcss";
 
-.glowing-button__default {
+.glowing-button__outline {
   @apply bg-blend-luminosity backdrop-blur-xs transition-all border shadow;
   background-color: var(--nav-background) !important;
 }
