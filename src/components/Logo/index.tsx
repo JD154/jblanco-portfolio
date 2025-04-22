@@ -1,22 +1,13 @@
+import { motion } from 'motion/react';
 import { FC } from 'react';
 import './styles.css';
-import { motion } from 'motion/react';
-import { useCursorContext } from '../CursorProvider';
+import { useCursorHandlers } from '../CursorProvider/hooks';
 
 interface LogoProps {
   className?: string;
 }
 
 export const Logo: FC<LogoProps> = ({ className }) => {
-  const cursorContext = useCursorContext();
-
-  const mouseEnterHandler = () => {
-    cursorContext?.animateCursor?.('buttonHover');
-  };
-  const mouseLeaveHandler = () => {
-    cursorContext?.animateCursor?.('cursorEnter');
-  };
-
   const prefix = 'brand-logo';
   const getClasses = () => {
     const classes = [prefix];
@@ -31,8 +22,7 @@ export const Logo: FC<LogoProps> = ({ className }) => {
         href="https://www.linkedin.com/in/jesus-blanco-08682112a/"
         target="_blank"
         rel="noopener noreferrer"
-        onMouseEnter={mouseEnterHandler}
-        onMouseLeave={mouseLeaveHandler}
+        {...useCursorHandlers('buttonHover', 'cursorEnter')}
       >
         JB
       </motion.a>

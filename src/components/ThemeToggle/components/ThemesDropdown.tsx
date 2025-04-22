@@ -14,9 +14,8 @@ export const ThemesDropdown: FC<ThemesDropdownProps> = ({ theme, setTheme }) => 
       {themeOptions.map(({ value, label }) => (
         <DropdownMenuItem
           key={value}
-          onClick={() => setTheme(value)}
-          className={theme === value ? 'font-bold' : ''}
-          disabled={theme === value}
+          onClick={() => (theme !== value ? setTheme(value) : null)}
+          className={theme === value ? 'font-bold rounded-2xl' : 'rounded-2xl'}
         >
           {label}
         </DropdownMenuItem>

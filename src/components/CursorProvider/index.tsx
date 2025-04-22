@@ -1,6 +1,5 @@
 // src/components/CustomCursor.jsx
-import { createContext, useState, useContext, Dispatch, SetStateAction, FC } from 'react';
-import { ReactNode } from 'react';
+import { createContext, Dispatch, FC, ReactNode, SetStateAction, useState } from 'react';
 
 interface CursorContextType {
   initialCursorVariant: string;
@@ -10,9 +9,7 @@ interface CursorContextType {
   animateCursor: (variant: SetStateAction<string>) => void;
 }
 
-const CursorContext = createContext<CursorContextType | undefined>(undefined);
-
-export const useCursorContext = () => useContext(CursorContext);
+export const CursorContext = createContext<CursorContextType | undefined>(undefined);
 
 export const CursorContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [initialCursorVariant, setInitialCursorVariant] = useState('');

@@ -1,30 +1,29 @@
-import { motion, TargetAndTransition, Transition, VariantLabels } from 'motion/react';
+import { motion, MotionProps } from 'motion/react';
 import { FC } from 'react';
-import { useCursorContext } from '../CursorProvider';
 import { Button, ButtonProps } from '../ui/button';
-import './styles.css';
 import { GlowingEffect } from '../ui/glowing-effect';
+import './styles.css';
+import { useCursorHandlers } from '../CursorProvider/hooks';
 
 // Allow animation props from motion/react
 export interface GlowingButtonProps
   extends Omit<
-    ButtonProps,
-    | 'onDrag'
-    | 'onDragEnd'
-    | 'onDragStart'
-    | 'onDragOver'
-    | 'onDragEnter'
-    | 'onDragLeave'
-    | 'onDrop'
-    | 'onAnimationStart'
-    | 'onAnimationEnd'
-    | 'onAnimationIteration'
-  > {
-  whileHover?: VariantLabels | TargetAndTransition;
-  whileTap?: VariantLabels | TargetAndTransition;
-  animate?: VariantLabels | TargetAndTransition;
-  initial?: VariantLabels | TargetAndTransition;
-  transition?: Transition;
+      ButtonProps,
+      | 'onDrag'
+      | 'onDragEnd'
+      | 'onDragStart'
+      | 'onDragOver'
+      | 'onDragEnter'
+      | 'onDragLeave'
+      | 'onDrop'
+      | 'onAnimationStart'
+      | 'onAnimationEnd'
+      | 'onAnimationIteration'
+      | 'children'
+      | 'style'
+    >,
+    Omit<MotionProps, 'children'> {
+  children?: React.ReactNode;
 }
 
 export const GlowingButton: FC<GlowingButtonProps> = ({
@@ -43,15 +42,6 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
 
   const MotionButton = motion.create(Button);
 
-  const cursorContext = useCursorContext();
-
-  const mouseEnterHandler = () => {
-    cursorContext?.animateCursor?.('buttonHover');
-  };
-  const mouseLeaveHandler = () => {
-    cursorContext?.animateCursor?.('cursorEnter');
-  };
-
   const getClasses = () => {
     const classes = [];
     className && classes.push(className);
@@ -66,10 +56,9 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
       animate={animate}
       initial={initial}
       transition={transition}
-      onMouseEnter={mouseEnterHandler}
-      onMouseLeave={mouseLeaveHandler}
       variant={variant}
       size={size}
+      {...useCursorHandlers('buttonHover', 'cursorEnter')}
       {...props}
     >
       <>
