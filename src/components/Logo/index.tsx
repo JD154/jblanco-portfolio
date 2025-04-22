@@ -15,7 +15,14 @@ export const Logo: FC<LogoProps> = ({ className }) => {
 
   return (
     <div className="flex items-center">
-      <span className={getClasses()}>JB</span>
+      <a
+        className={getClasses()}
+        href="https://www.linkedin.com/in/jesus-blanco-08682112a/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        JB
+      </a>
     </div>
   );
 };

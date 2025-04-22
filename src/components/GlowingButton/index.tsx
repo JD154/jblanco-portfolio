@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ButtonProps, buttonVariants } from '../ui/button';
 import { GlowingEffect } from '../ui/glowing-effect';
-import { motion } from 'motion/react';
+import { motion, TargetAndTransition, Transition, VariantLabels } from 'motion/react';
 import { cn } from '@/lib/utils';
 import './styles.css';
 import { useCursorContext } from '../CursorProvider';
@@ -21,11 +21,11 @@ export interface GlowingButtonProps
     | 'onAnimationEnd'
     | 'onAnimationIteration'
   > {
-  whileHover?: any;
-  whileTap?: any;
-  animate?: any;
-  initial?: any;
-  transition?: any;
+  whileHover?: VariantLabels | TargetAndTransition;
+  whileTap?: VariantLabels | TargetAndTransition;
+  animate?: VariantLabels | TargetAndTransition;
+  initial?: VariantLabels | TargetAndTransition;
+  transition?: Transition;
 }
 
 export const GlowingButton: FC<GlowingButtonProps> = ({
