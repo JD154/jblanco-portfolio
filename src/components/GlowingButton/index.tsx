@@ -1,10 +1,9 @@
-import { FC } from 'react';
-import { ButtonProps, buttonVariants } from '../ui/button';
-import { GlowingEffect } from '../ui/glowing-effect';
 import { motion, TargetAndTransition, Transition, VariantLabels } from 'motion/react';
-import { cn } from '@/lib/utils';
-import './styles.css';
+import { FC } from 'react';
 import { useCursorContext } from '../CursorProvider';
+import { Button, ButtonProps } from '../ui/button';
+import './styles.css';
+import { GlowingEffect } from '../ui/glowing-effect';
 
 // Allow animation props from motion/react
 export interface GlowingButtonProps
@@ -40,6 +39,10 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
   transition,
   ...props
 }) => {
+  const prefix = 'glowing-button';
+
+  const MotionButton = motion.create(Button);
+
   const cursorContext = useCursorContext();
 
   const mouseEnterHandler = () => {
@@ -50,12 +53,13 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
   };
 
   const getClasses = () => {
-    const prefix = 'glowing-button';
-    const classes = [prefix, buttonVariants({ variant, size }), className];
-    return cn(classes);
+    const classes = [];
+    className && classes.push(className);
+    variant === 'default' && classes.push(`${prefix}__default`);
+    return classes.join(' ');
   };
   return (
-    <motion.button
+    <MotionButton
       className={getClasses()}
       whileHover={whileHover}
       whileTap={whileTap}
@@ -64,10 +68,14 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
       transition={transition}
       onMouseEnter={mouseEnterHandler}
       onMouseLeave={mouseLeaveHandler}
+      variant={variant}
+      size={size}
       {...props}
     >
-      <GlowingEffect spread={40} glow={true} disabled={false} proximity={50} />
-      <span className="luminosity-text">{children}</span>
-    </motion.button>
+      <>
+        <GlowingEffect spread={40} glow={true} disabled={false} proximity={variant === 'ghost' ? 1 : 54} />
+        <span className="luminosity-text capitalize">{children}</span>
+      </>
+    </MotionButton>
   );
 };
