@@ -7,6 +7,8 @@ import { NavigationRoutes } from '@/typings';
 import { FC } from 'react';
 import './styles.css';
 import { GlowingEffect } from '../ui/glowing-effect';
+import { motion } from 'motion/react';
+import { useCursorContext } from '../CursorProvider';
 
 type pageRoutesType = {
   label: string;
@@ -33,23 +35,32 @@ const pageRoutes: pageRoutesType[] = [
 ];
 
 export const NavigationBar: FC = () => {
+  const cursorContext = useCursorContext();
+
+  const mouseEnterHandler = () => {
+    cursorContext?.animateCursor?.('buttonHover');
+  };
+  const mouseLeaveHandler = () => {
+    cursorContext?.animateCursor?.('cursorEnter');
+  };
+
   const prefix = 'navigation-bar';
   const { pathname } = useLocation();
 
   return (
     <header className={`${prefix}__wrapper`}>
-      <div className={`${prefix}__container`}>
+      <motion.div className={`${prefix}__container`} onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
         <Logo />
-        <NavigationMenu className={`${prefix}__menu`}>
+        {/* <NavigationMenu className={`${prefix}__menu`}>
           <NavigationMenuList>
             {pageRoutes.map(({ route, label }, index) => (
               <NavigationItem key={index} label={label} route={route} isActive={pathname === route} />
             ))}
           </NavigationMenuList>
-        </NavigationMenu>
+        </NavigationMenu> */}
         <ThemeToggle />
         <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
-      </div>
+      </motion.div>
     </header>
   );
 };

@@ -8,7 +8,7 @@ export const HomePage: FC = () => {
     <div>
       <StarsBackground />
       <HeaderSection />
-      <ProjectsSection />
+      {/* <ProjectsSection /> */}
     </div>
   );
 };

@@ -20,6 +20,10 @@ button {
   @apply transition-colors rounded-full cursor-none;
 }
 
+a {
+  @apply cursor-none;
+}
+
 body::before {
   content: '';
   position: absolute;
