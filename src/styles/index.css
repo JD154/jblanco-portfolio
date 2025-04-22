@@ -24,7 +24,7 @@ a {
   @apply cursor-none;
 }
 
-/* body::before {
+body::before {
   content: '';
   position: absolute;
   inset: 0px;
@@ -35,7 +35,7 @@ a {
     center top,
     center bottom;
   background-size: 1400px;
-} */
+}
 
 html {
   scroll-behavior: smooth;
