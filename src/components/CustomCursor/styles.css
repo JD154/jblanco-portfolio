@@ -3,4 +3,5 @@
   pointer-events: none;
   width: 18px;
   height: 18px;
+  z-index: 20;
 }
