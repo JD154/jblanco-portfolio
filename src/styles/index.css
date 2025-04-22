@@ -12,10 +12,6 @@
   cursor: none;
 }
 
-/* main {
-  @apply mx-auto max-w-2xl;
-} */
-
 button {
   @apply transition-colors rounded-full cursor-none;
 }
