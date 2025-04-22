@@ -1,6 +1,6 @@
 import { motion, MotionProps } from 'motion/react';
 import { FC } from 'react';
-import { useCursorContext } from '../CursorProvider';
+import { useCursorHandlers } from '../CursorProvider/useCursorHandlers';
 import { Button, ButtonProps } from '../ui/button';
 import { GlowingEffect } from '../ui/glowing-effect';
 import './styles.css';
@@ -42,15 +42,6 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
 
   const MotionButton = motion.create(Button);
 
-  const cursorContext = useCursorContext();
-
-  const mouseEnterHandler = () => {
-    cursorContext?.animateCursor?.('buttonHover');
-  };
-  const mouseLeaveHandler = () => {
-    cursorContext?.animateCursor?.('cursorEnter');
-  };
-
   const getClasses = () => {
     const classes = [];
     className && classes.push(className);
@@ -65,10 +56,9 @@ export const GlowingButton: FC<GlowingButtonProps> = ({
       animate={animate}
       initial={initial}
       transition={transition}
-      onMouseEnter={mouseEnterHandler}
-      onMouseLeave={mouseLeaveHandler}
       variant={variant}
       size={size}
+      {...useCursorHandlers('buttonHover', 'cursorEnter')}
       {...props}
     >
       <>
