@@ -22,6 +22,7 @@ export const Logo: FC<LogoProps> = ({ className }) => {
         href="https://www.linkedin.com/in/jesus-blanco-08682112a/"
         target="_blank"
         rel="noopener noreferrer"
+        whileTap={{ scale: 0.9 }}
         {...useCursorHandlers('buttonHover', 'cursorEnter')}
       >
         JB
