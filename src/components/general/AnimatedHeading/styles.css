@@ -1,14 +1,15 @@
-.text-container {
+.animated-heading {
   perspective: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 200px;
+  /*   height: 200px;
+ */
   overflow: hidden;
 }
 
-.char {
+.animated-heading__char {
   position: relative;
   color: transparent;
   font-size: 8vw;
@@ -18,7 +19,7 @@
   transform-style: preserve-3d;
 }
 
-.char::before {
+.animated-heading__char::before {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -33,7 +34,7 @@
   transform-origin: center;
 }
 
-.space {
+.animated-heading__space {
   font-family: 'Arial', sans-serif;
   color: transparent;
   user-select: none;
@@ -41,7 +42,7 @@
   position: relative;
 }
 
-.space::after {
+.animated-heading__space::after {
   content: ' ';
   display: inline-block;
   width: 0.05em;

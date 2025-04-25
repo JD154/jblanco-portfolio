@@ -6,13 +6,22 @@ interface AnimatedHeadingProps {
   text: string;
   fontSize?: string;
   sensitivity?: number;
+  className?: string;
 }
 
 export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   text = '3D TEXT',
   fontSize = '8vw',
   sensitivity = 0.02,
+  className,
 }) => {
+  const prefix = 'animated-heading';
+
+  const getClasses = () => {
+    const classes = [prefix];
+    className && classes.push(className);
+    return classes.join(' ');
+  };
   const containerRef = useRef<HTMLDivElement>(null);
   const rotateX = useSpring(0, { stiffness: 150, damping: 30 });
   const rotateY = useSpring(0, { stiffness: 150, damping: 30 });
@@ -51,18 +60,18 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   }, [rotateX, rotateY, scale, sensitivity]);
 
   return (
-    <div className="text-container" ref={containerRef}>
+    <div className={getClasses()} ref={containerRef}>
       {text.split('').map((char, index) => {
         if (char === ' ') {
           return (
-            <span key={index} className="space" style={{ fontSize }}>
+            <span key={index} className={`${prefix}__space`} style={{ fontSize }}>
               {char}
             </span>
           );
         }
         return (
           <motion.span
-            className="char"
+            className={`${prefix}__char`}
             data-text={char}
             key={index}
             style={{
