@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { Logo } from '../Logo';
-import { ThemeToggle } from '../ThemeToggle';
-import { GlowingEffect } from '../ui/glowing-effect';
+
 import './styles.css';
+import { ThemeToggle } from '@/components/general/ThemeToggle';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 /* type pageRoutesType = {
   label: string;

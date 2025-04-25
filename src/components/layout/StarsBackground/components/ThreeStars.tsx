@@ -1,4 +1,4 @@
-import { useTheme } from '@/components/ThemeProvider';
+import { useTheme } from '@/components/other/ThemeProvider';
 import { Points, PointMaterial } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { FC, useRef, useState } from 'react';

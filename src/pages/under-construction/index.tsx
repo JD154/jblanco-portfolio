@@ -1,4 +1,4 @@
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { ThemeToggle } from '@/components/general/ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { FC } from 'react';
 

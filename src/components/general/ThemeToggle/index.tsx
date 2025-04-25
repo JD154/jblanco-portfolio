@@ -1,12 +1,12 @@
 import { Moon, Sun } from 'lucide-react';
 
-import { useTheme } from '@/components/ThemeProvider';
+import { useTheme } from '@/components/other/ThemeProvider';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { motion } from 'motion/react';
 import { FC } from 'react';
 import { ThemesDropdown } from './components/ThemesDropdown';
-import { useCursorHandlers } from '../CursorProvider/hooks';
+import { useCursorHandlers } from '@/components/other/CursorProvider/hooks';
 
 export const ThemeToggle: FC = () => {
   const { theme, setTheme } = useTheme();

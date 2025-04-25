@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { FC } from 'react';
 import './styles.css';
-import { useCursorHandlers } from '../CursorProvider/hooks';
+import { useCursorHandlers } from '@/components/other/CursorProvider/hooks';
 
 interface LogoProps {
   className?: string;
@@ -25,7 +25,7 @@ export const Logo: FC<LogoProps> = ({ className }) => {
         whileTap={{ scale: 0.9 }}
         {...useCursorHandlers('buttonHover', 'cursorEnter')}
       >
-        JB
+        Jesus Blanco
       </motion.a>
     </div>
   );
