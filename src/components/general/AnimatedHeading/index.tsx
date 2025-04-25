@@ -2,13 +2,17 @@ import { motion, useSpring } from 'motion/react';
 import { FC, useEffect, useRef } from 'react';
 import './styles.css'; // Plain CSS file
 
-interface Text3DProps {
+interface AnimatedHeadingProps {
   text: string;
   fontSize?: string;
   sensitivity?: number;
 }
 
-export const Text3D: FC<Text3DProps> = ({ text = '3D TEXT', fontSize = '8vw', sensitivity = 0.02 }) => {
+export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
+  text = '3D TEXT',
+  fontSize = '8vw',
+  sensitivity = 0.02,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rotateX = useSpring(0, { stiffness: 150, damping: 30 });
   const rotateY = useSpring(0, { stiffness: 150, damping: 30 });
