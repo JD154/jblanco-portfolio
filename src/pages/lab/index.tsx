@@ -1,3 +1,4 @@
+import { AnimatedHeading } from '@/components/general/AnimatedHeading';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { FC } from 'react';
@@ -53,6 +54,8 @@ export const LabPage: FC = () => {
 
         <Button variant="ghost">Button ghost</Button>
       </div>
+
+      <AnimatedHeading text="3D Text" />
     </div>
   );
 };

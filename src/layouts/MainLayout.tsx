@@ -1,5 +1,5 @@
-import { BackgroundTexture } from '@/components/BackgroundTexture';
-import { NavigationBar } from '@/components/NavigationBar';
+import { BackgroundTexture } from '@/components/layout/BackgroundTexture';
+import { NavigationBar } from '@/components/navigation/NavigationBar';
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 

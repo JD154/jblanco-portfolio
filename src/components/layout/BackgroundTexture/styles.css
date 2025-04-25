@@ -3,7 +3,7 @@
   left: 0px;
   z-index: -1;
   width: 100%;
-  height: calc(200px + 100vh);
+  height: 100%;
   opacity: 0.25;
   pointer-events: none;
   transform: translateY(0px);

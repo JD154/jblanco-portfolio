@@ -2,10 +2,10 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { routes } from './routes/index.tsx';
-import { ThemeProvider } from './components/ThemeProvider/index.tsx';
+import { ThemeProvider } from './components/other/ThemeProvider/index.tsx';
 import './styles/index.css';
-import { CursorContextProvider } from './components/CursorProvider/index.tsx';
-import { CustomCursor } from './components/CustomCursor/index.tsx';
+import { CursorContextProvider } from './components/other/CursorProvider/index.tsx';
+import { CustomCursor } from './components/general/CustomCursor/index.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

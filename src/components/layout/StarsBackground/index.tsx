@@ -8,6 +8,7 @@ export const StarsBackground: FC = () => {
       style={{
         width: '100%',
         height: '100vh',
+        zIndex: -1,
       }}
     >
       <Canvas camera={{ position: [0, 0, 1] }}>

@@ -1,4 +1,4 @@
-import { BackgroundTexture } from '@/components/BackgroundTexture';
+import { BackgroundTexture } from '@/components/layout/BackgroundTexture';
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 
