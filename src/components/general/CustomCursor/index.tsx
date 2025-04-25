@@ -59,12 +59,12 @@ export const CustomCursor = () => {
       };
       const mouseEnterHandler = () => animateCursor('cursorEnter');
       const mouseLeaveHandler = () => animateCursor('cursorLeave');
-      const mouseDownHandler = () => {
+      /*       const mouseDownHandler = () => {
         // Prevent mouse click animation if a touch event was recently used
         if (Date.now() - lastTouchTime.current < 500) return;
         animateCursor('cursorClick');
         setTimeout(() => animateCursor('cursorEnter'), 120);
-      };
+      }; */
       // Touch support: show a ripple at the touch position
       const touchStartHandler = (e: TouchEvent) => {
         lastTouchTime.current = Date.now();
@@ -80,14 +80,12 @@ export const CustomCursor = () => {
       window.addEventListener('mousemove', mouseMoveHandler);
       root.addEventListener('mouseenter', mouseEnterHandler);
       root.addEventListener('mouseleave', mouseLeaveHandler);
-      window.addEventListener('mousedown', mouseDownHandler);
       window.addEventListener('touchstart', touchStartHandler);
 
       return () => {
         window.removeEventListener('mousemove', mouseMoveHandler);
         root.removeEventListener('mouseenter', mouseEnterHandler);
         root.removeEventListener('mouseleave', mouseLeaveHandler);
-        window.removeEventListener('mousedown', mouseDownHandler);
         window.removeEventListener('touchstart', touchStartHandler);
       };
     }

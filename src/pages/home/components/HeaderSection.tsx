@@ -22,7 +22,7 @@ export const HeaderSection = () => {
       <AnimatedParagraph
         lines={paragraphLines}
         visibleLines={visibleLines}
-        className="dark:text-neutral-300 mt-4 mb-8 text-lg text-center relative z-10"
+        className="dark:text-neutral-300 mb-8 text-lg text-center relative z-10"
       />
 
       <div className={`flex gap-4 transition-opacity duration-700 ${showButtons ? 'opacity-100' : 'opacity-0'}`}>
