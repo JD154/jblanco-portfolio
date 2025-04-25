@@ -1,7 +1,6 @@
 import { motion, useSpring } from 'motion/react';
 import { FC, useEffect, useRef } from 'react';
 import './styles.css'; // Plain CSS file
-import { useTheme } from '@/components/other/ThemeProvider';
 
 interface AnimatedHeadingProps {
   text: string;
