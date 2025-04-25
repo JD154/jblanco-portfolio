@@ -10,29 +10,14 @@
 }
 
 .animated-heading__char {
+  color: var(--color-foreground);
+  text-shadow: var(--heading-text-shadow);
   position: relative;
-  color: transparent;
   font-size: 8vw;
   font-family: 'Arial', sans-serif;
   cursor: pointer;
   user-select: none;
   transform-style: preserve-3d;
-}
-
-.animated-heading--light .animated-heading__char {
-  color: #333;
-  text-shadow:
-    0 0 10px rgba(0, 0, 0, 0.15),
-    0 0 20px rgba(0, 0, 0, 0.1),
-    0 0 40px rgba(0, 0, 0, 0.05);
-}
-
-.animated-heading--dark .animated-heading__char::before {
-  color: #fff;
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.3),
-    0 0 40px rgba(255, 255, 255, 0.2);
 }
 
 .animated-heading__char::before {
