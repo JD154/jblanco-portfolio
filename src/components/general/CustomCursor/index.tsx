@@ -1,8 +1,8 @@
-import { color, motion, useMotionValue } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
-import './styles.css';
-import { useCursorContext } from '../../other/CursorProvider/hooks';
 import { useTheme } from '@/components/other/ThemeProvider';
+import { motion, useMotionValue } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { useCursorContext } from '../../other/CursorProvider/hooks';
+import './styles.css';
 
 export const CustomCursor = () => {
   const { theme } = useTheme();
