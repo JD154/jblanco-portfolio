@@ -17,12 +17,10 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   className,
 }) => {
   const prefix = 'animated-heading';
-  const { theme } = useTheme();
 
   const getClasses = () => {
     const classes = [prefix];
     className && classes.push(className);
-    classes.push(`${prefix}--${theme}`);
     return classes.join(' ');
   };
   const containerRef = useRef<HTMLDivElement>(null);

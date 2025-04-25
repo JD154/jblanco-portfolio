@@ -10,10 +10,9 @@
 }
 
 .animated-heading__char {
-  color: var(--foreground);
+  color: var(--color-foreground);
   text-shadow: var(--heading-text-shadow);
   position: relative;
-  color: transparent;
   font-size: 8vw;
   font-family: 'Arial', sans-serif;
   cursor: pointer;
