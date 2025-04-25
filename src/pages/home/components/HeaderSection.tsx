@@ -28,7 +28,7 @@ export const HeaderSection = () => {
       id="header-section"
       className="w-full px-4 lg:px-0 lg:max-w-4xl mx-auto absolute top-1/2 left-1/2  z-10 -translate-y-1/2 -translate-x-1/2 flex items-center flex-col justify-center text-center"
     >
-      <AnimatedHeading text="I'm JB" />
+      <AnimatedHeading text="I'm JB" sensitivity={0.03} />
       <h6 className="dark:text-neutral-300 mt-4 mb-8 text-lg text-center relative z-10">
         {paragraphLines.map((line, idx) => (
           <motion.div
