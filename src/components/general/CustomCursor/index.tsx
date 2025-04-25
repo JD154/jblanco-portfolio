@@ -1,9 +1,11 @@
-import { motion, useMotionValue } from 'motion/react';
+import { color, motion, useMotionValue } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import './styles.css';
 import { useCursorContext } from '../../other/CursorProvider/hooks';
+import { useTheme } from '@/components/other/ThemeProvider';
 
 export const CustomCursor = () => {
+  const { theme } = useTheme();
   const context = useCursorContext();
   if (!context) {
     throw new Error('CursorContext must be used within a CursorContextProvider');
@@ -14,11 +16,12 @@ export const CustomCursor = () => {
   const [ripples, setRipples] = useState<{ x: number; y: number; key: number }[]>([]);
   const rippleKey = useRef(0);
   const lastTouchTime = useRef(0);
+  const colorVariant = theme === 'dark' ? '#ffffff' : '#333333';
 
   const variants = {
     cursorEnter: {
-      border: '1px solid #ffffff',
-      boxShadow: '0 0 1px 0px #ffffff inset, 0 0 1px 0px #ffffff',
+      border: `1px solid ${colorVariant}`,
+      boxShadow: `0 0 1px 0px ${colorVariant} inset, 0 0 1px 0px ${colorVariant}`,
       scale: 2,
       borderRadius: '50%',
       backgroundColor: 'transparent',
@@ -36,12 +39,12 @@ export const CustomCursor = () => {
     },
     buttonHover: {
       scale: 1,
-      backgroundColor: '#ffffff',
+      backgroundColor: `${colorVariant}`,
       borderRadius: '50%',
     },
     cursorClick: {
       scale: 0.7,
-      backgroundColor: '#ffffff',
+      backgroundColor: `${colorVariant}`,
       borderRadius: '50%',
       transition: {
         duration: 0.1,
