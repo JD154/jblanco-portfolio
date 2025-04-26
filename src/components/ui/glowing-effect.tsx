@@ -25,7 +25,7 @@ const GlowingEffect = memo(
     variant = 'default',
     glow = false,
     className,
-    movementDuration = 1,
+    movementDuration = 1.2,
     borderWidth = 1,
     disabled = true,
   }: GlowingEffectProps) => {
