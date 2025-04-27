@@ -11,7 +11,7 @@ interface AnimatedHeadingProps {
 
 export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   text = '3D TEXT',
-  fontSize = '8vw',
+  fontSize = '8rem',
   sensitivity = 0.02,
   className,
 }) => {

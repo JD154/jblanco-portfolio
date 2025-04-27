@@ -241,3 +241,14 @@
     transform: translateY(-50%);
   }
 }
+
+@keyframes ripple-fade {
+  0% {
+    opacity: 1;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}

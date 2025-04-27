@@ -9,7 +9,7 @@ import { CustomCursor } from './components/general/CustomCursor/index.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <CursorContextProvider>
         <CustomCursor />
         <RouterProvider router={routes} />

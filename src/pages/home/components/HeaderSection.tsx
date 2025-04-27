@@ -5,9 +5,9 @@ import { useSequentialReveal } from '@/hooks/useSequentialReveal';
 
 export const HeaderSection = () => {
   const paragraphLines = [
-    'A passionate senior Front-end developer with over 6 years of experience,',
-    'with a strong focus on architect clean and maintainable web applications',
-    'that deliver exceptional user experiences.',
+    'Senior Front-End Developer with 6+ Years of Experience',
+    'Crafting clean and functional user interfaces with a ',
+    'strong focus on mantainability and scalability.',
   ];
 
   const [visibleLines, showButtons] = useSequentialReveal(paragraphLines.length, 400, 500);
