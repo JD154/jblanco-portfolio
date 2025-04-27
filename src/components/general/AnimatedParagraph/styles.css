@@ -1,0 +1,7 @@
+.animated-paragraph {
+  text-transform: capitalize;
+}
+
+.animated-paragraph > div:first-child {
+  font-weight: 700;
+}

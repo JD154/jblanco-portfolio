@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import './styles.css';
 
 interface AnimatedParagraphProps {
   lines: string[];
@@ -7,8 +8,9 @@ interface AnimatedParagraphProps {
 }
 
 export const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ lines, visibleLines, className }) => {
+  const prefix = 'animated-paragraph';
   const getClasses = () => {
-    const classes = [];
+    const classes = [prefix];
     className && classes.push(className);
     return classes.join(' ');
   };
