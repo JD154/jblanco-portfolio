@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Portfolio Website",
+    "description": "A modern, interactive portfolio built with React, Three.js, and Framer Motion. Showcases my work, skills, and contact information.",
+    "image": "/src/assets/images/portfolio-preview.png",
+    "url": "https://your-portfolio-demo.com"
+  },
+  {
+    "title": "E-commerce Store",
+    "description": "A full-featured e-commerce platform with product browsing, cart, and checkout. Built using Next.js and Stripe.",
+    "image": "/src/assets/images/ecommerce-preview.png",
+    "url": "https://your-ecommerce-demo.com"
+  },
+  {
+    "title": "3D Product Viewer",
+    "description": "A 3D product viewer using Three.js, allowing users to interact with and explore products in real time.",
+    "image": "/src/assets/images/3dviewer-preview.png",
+    "url": "https://your-3dviewer-demo.com"
+  }
+]
