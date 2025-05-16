@@ -1,78 +1,66 @@
-import { StickyScroll } from '@/components/ui/sticky-scroll-reveal';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { FC } from 'react';
+import projects from './projects.json';
+import './projects-section.css';
+import { motion } from 'framer-motion';
+import * as THREE from 'three';
 
-const content = [
-  {
-    title: 'Collaborative Editing',
-    description:
-      'Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.',
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Collaborative Editing
-      </div>
-    ),
-  },
-  {
-    title: 'Real time changes',
-    description:
-      'See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.',
-    content: (
-      <div className="flex h-full w-full items-center justify-center text-white">
-        <img
-          src="/linear.webp"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: 'Version control',
-    description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
-        Version control
-      </div>
-    ),
-  },
-  {
-    title: 'Running out of content',
-    description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Running out of content
-      </div>
-    ),
-  },
-];
-
-export const ProjectsSection = () => {
+// ProjectCard component with motion and subtle 3D hover effect
+const ProjectCard: FC<{
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+}> = ({ title, description, image, url }) => {
   return (
-    <section
-      id="projects-section"
-      className="max-w-2xl lg:max-w-4xl mx-auto relative z-10 flex items-center flex-col justify-center text-center"
+    <motion.a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative bg-gradient-to-br from-[#1a1a2e] to-[#23234d] rounded-xl overflow-hidden shadow-lg border border-[#23234d] transition-transform"
+      whileHover={{ scale: 1.015, boxShadow: '0 4px 32px 0 #7f5fff33' }}
+      whileTap={{ scale: 0.99 }}
+      style={{ display: 'block', textDecoration: 'none' }}
     >
-      {/* <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-neutral-200 dark:to-neutral-400 text-center font-sans font-bold drop-shadow-md dark:drop-shadow-white/40 drop-shadow-black/40">
-        My Projects
-      </h1>
-      <h6 className="dark:text-neutral-400 max-w-lg mt-4 mb-8 text-md text-center relative z-10">
-        Here are some of my projects that I have worked on. You can find more on my GitHub.
-      </h6> */}
+      <div className="relative w-full h-48 overflow-hidden">
+        <motion.img
+          src={image}
+          alt={title}
+          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-102"
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.02 }}
+        />
+        {/* Subtle star overlay */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent" />
+      </div>
+      <div className="p-5">
+        <h3 className="text-xl font-bold text-white mb-2 drop-shadow-glow">{title}</h3>
+        <p className="text-sm text-gray-300 mb-2">{description}</p>
+        <span className="inline-block mt-2 text-indigo-300 group-hover:text-indigo-400 transition-colors">
+          View Demo →
+        </span>
+      </div>
+      {/* Glow effect on hover */}
+      <motion.div
+        className="absolute inset-0 rounded-xl pointer-events-none"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 0.12 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        style={{ background: 'radial-gradient(circle at 80% 20%, #7f5fff 0%, transparent 70%)' }}
+      />
+    </motion.a>
+  );
+};
 
-      <Tabs defaultValue="account" className="items-center w-[400px]">
-        <TabsList>
-          <TabsTrigger value="account">Projects</TabsTrigger>
-          <TabsTrigger value="password">Work History</TabsTrigger>
-        </TabsList>
-        <TabsContent value="account">
-          <StickyScroll content={content} />
-        </TabsContent>
-        <TabsContent value="password">Change your password here.</TabsContent>
-      </Tabs>
+// ProjectsSection component
+export const ProjectsSection: FC = () => {
+  return (
+    <section className="py-20 px-4 max-w-6xl mx-auto relative z-10">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-10 text-center drop-shadow-glow">Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <ProjectCard key={project.title} {...project} />
+        ))}
+      </div>
     </section>
   );
 };
