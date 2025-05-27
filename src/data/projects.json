@@ -29,7 +29,7 @@
   },
   {
     "title": "Covid News Dashboard",
-    "description": "Interactive data visualization dashboard tracking COVID-19 statistics with real-time updates and regional breakdowns. Pulling data from multiple APIs and visualizing it using amCharts 4.",
+    "description": "Interactive data visualization dashboard for tracking COVID-19 statistics with real-time updates and regional breakdowns. Pulling data from multiple APIs and visualizing it using amCharts 4.",
     "image": "/projects/covid-news-dashboard.png",
     "url": "",
     "techStack": ["Vue.js", "Nuxt.js", "amCharts 4", "Tailwind CSS", "Axios"]
