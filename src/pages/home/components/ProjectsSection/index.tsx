@@ -3,7 +3,6 @@ import projects from '@/data/projects.json';
 import { useAnimation, useInView } from 'motion/react';
 import { useRef, useEffect } from 'react';
 import { ProjectCard } from './components/ProjectCard';
-import './styles.css';
 import { AnimatedHeading } from '@/components/general/AnimatedHeading';
 
 // ProjectsSection component
