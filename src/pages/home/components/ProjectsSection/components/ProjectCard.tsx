@@ -39,7 +39,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       variants={variants}
       transition={{ duration: 0.1, delay, ease: 'easeIn' }}
     >
-      <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
+      <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} variant="white" />
       <div className="relative w-full h-48 overflow-hidden rounded-tr-2xl rounded-tl-2xl md:rounded-tr-3xl md:rounded-tl-3xl z-0">
         <motion.img
           src={image}
