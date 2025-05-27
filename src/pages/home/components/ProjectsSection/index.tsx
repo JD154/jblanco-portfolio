@@ -8,7 +8,7 @@ import { ProjectCard } from './components/ProjectCard';
 export const ProjectsSection: FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   // Trigger when 80% of the section is visible
-  const isInView = useInView(ref, { once: true, amount: 0.8 });
+  const isInView = useInView(ref, { once: true, amount: 0.4 });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -16,6 +16,8 @@ export const ProjectsSection: FC = () => {
       controls.start('visible');
     }
   }, [isInView, controls]);
+
+  console.log('ProjectsSection rendered', isInView);
 
   return (
     <section className="py-20 px-4 max-w-6xl mx-auto relative z-10" ref={ref}>
@@ -28,7 +30,17 @@ export const ProjectsSection: FC = () => {
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project, idx) => (
-          <ProjectCard key={project.title} {...project} />
+          <ProjectCard
+            key={project.title}
+            delay={isInView ? 0.15 * idx : 0}
+            animate={controls}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0, y: 32 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            {...project}
+          />
         ))}
       </ul>
     </section>
