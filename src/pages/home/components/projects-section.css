@@ -1,6 +1,0 @@
-@reference "tailwindcss";
-
-/* Custom glow for space theme */
-.drop-shadow-glow {
-  filter: drop-shadow(0 0 8px #7f5fff) drop-shadow(0 0 2px #fff);
-}

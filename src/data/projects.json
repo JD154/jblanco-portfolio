@@ -16,5 +16,17 @@
     "description": "A 3D product viewer using Three.js, allowing users to interact with and explore products in real time.",
     "image": "/src/assets/images/3dviewer-preview.png",
     "url": "https://your-3dviewer-demo.com"
+  },
+  {
+    "title": "Interactive Resume",
+    "description": "An interactive resume built with React and Framer Motion, showcasing my skills, experience, and education in a visually appealing way.",
+    "image": "/src/assets/images/resume-preview.png",
+    "url": "https://your-interactive-resume-demo.com"
+  },
+  {
+    "title": "Blog Platform",
+    "description": "A blogging platform built with Next.js and Markdown, allowing users to create, read, and comment on posts.",
+    "image": "/src/assets/images/blog-platform-preview.png",
+    "url": "https://your-blog-platform-demo.com"
   }
 ]
