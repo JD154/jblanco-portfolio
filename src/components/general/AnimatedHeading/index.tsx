@@ -1,5 +1,6 @@
 import { motion, useSpring } from 'motion/react';
 import { FC, useEffect, useRef } from 'react';
+import { useIsInViewport } from './useIsInViewport';
 import './styles.css'; // Plain CSS file
 
 interface AnimatedHeadingProps {
@@ -27,7 +28,15 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   const rotateY = useSpring(0, { stiffness: 150, damping: 30 });
   const scale = useSpring(1, { stiffness: 150, damping: 20 });
 
+  const isInViewport = useIsInViewport(containerRef);
+
   useEffect(() => {
+    if (!isInViewport) {
+      rotateX.set(0);
+      rotateY.set(0);
+      scale.set(1);
+      return;
+    }
     const handleMouseMove = (e: { clientX: number; clientY: number }) => {
       const container = containerRef.current;
       if (!container) return;
@@ -57,7 +66,7 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
       window.removeEventListener('mousemove', handleMouseMove);
       containerRef.current?.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [rotateX, rotateY, scale, sensitivity]);
+  }, [rotateX, rotateY, scale, sensitivity, isInViewport]);
 
   return (
     <div className={getClasses()} ref={containerRef}>
