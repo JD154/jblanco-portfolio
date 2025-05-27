@@ -1,0 +1,51 @@
+[
+  {
+    "title": "I.R Management Platform",
+    "description": "I was responsible for creating reusable UI that aligns with the company's design system across multiple sub-apps, implementing complex data visualizations, and ensuring the platform's usability without compromising UI/UX cleanliness.",
+    "image": "/src/assets/images/projects/ir-management.png",
+    "url": "https://ir.jblanco.dev/",
+    "techStack": ["React", "Typescript", "Next.js", "amCharts 5"]
+  },
+  {
+    "title": "inUI Library",
+    "description": "Co-authored a comprehensive UI library for internal use, with the main goal of enhancing development efficiency and maintaining a cohesive user experience across applications.",
+    "image": "/src/assets/images/projects/in-ui-library.jpg",
+    "url": "https://inui.jblanco.dev/",
+    "techStack": ["React", "TypeScript", "Tailwind CSS", "Reakit", "RadixUI", "Storybook"]
+  },
+  {
+    "title": "Investor Onboarding Portal",
+    "description": "Co-developed a investor registration and document management platform with KYC verification and compliance features to streamline the onboarding process for new investors that usually requires a lot of paperwork.",
+    "image": "/src/assets/images/projects/investor-onboarding-portal.png",
+    "url": "https://onboarding.jblanco.dev/",
+    "techStack": ["Vue.js", "Next.js", "Tailwind CSS"]
+  },
+  {
+    "title": "Credit Healing UI Library",
+    "description": "As part of the development team, contributed to a collection of reusable UI components and design system elements for building personalized applications for internal and client-facing projects, focusing on ease of use and creative look.",
+    "image": "/src/assets/images/projects/ch-ui-library.jpg",
+    "url": "https://chui.jblanco.dev/",
+    "techStack": ["React", "TypeScript", "Storybook", "Sass"]
+  },
+  {
+    "title": "Covid News Dashboard",
+    "description": "Interactive data visualization dashboard tracking COVID-19 statistics with real-time updates and regional breakdowns. Pulling data from multiple APIs and visualizing it using amCharts 4.",
+    "image": "/src/assets/images/projects/covid-news-dashboard.png",
+    "url": "",
+    "techStack": ["Vue.js", "Nuxt.js", "amCharts 4", "Tailwind CSS", "Axios"]
+  },
+  {
+    "title": "Social News Dashboard",
+    "description": "Social media news aggregator that continuously updates and visualizes the defined trending topics using auto-scroll feature, providing up-to-date insights into social media trends and discussions without user interaction.",
+    "image": "/src/assets/images/projects/social-news-dashboard.png",
+    "url": "",
+    "techStack": ["HTML 5", "CSS 3", "JavaScript", "APIs"]
+  },
+  {
+    "title": "Material Start Page",
+    "description": "My first frontend project using HTML, CSS, and JavaScript. Created all the components from scratch using Material Design principles, focusing on responsive design and user-friendly interface. This project served as a foundation for my journey into web development and has a special place in my heart.",
+    "image": "/src/assets/images/projects/material-startpage.png",
+    "url": "https://material-bookmark.jblanco.dev/",
+    "techStack": ["HTML 5", "CSS 3", "JavaScript", "Material Design"]
+  }
+]
