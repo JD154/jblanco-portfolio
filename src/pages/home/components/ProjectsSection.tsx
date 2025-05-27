@@ -1,31 +1,54 @@
 import { FC } from 'react';
 import projects from './projects.json';
 import './projects-section.css';
-import { motion } from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
 // ProjectCard component with motion and subtle 3D hover effect
-const ProjectCard: FC<{
+interface ProjectCardProps {
   title: string;
   description: string;
   image: string;
   url: string;
-}> = ({ title, description, image, url }) => {
+  delay?: number;
+  animate?: any;
+  initial?: any;
+  variants?: any;
+}
+
+const ProjectCard: FC<ProjectCardProps> = ({
+  title,
+  description,
+  image,
+  url,
+  delay = 0,
+  animate,
+  initial,
+  variants,
+}) => {
   return (
-    <motion.a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative bg-gradient-to-br from-[#1a1a2e] to-[#23234d] rounded-xl overflow-hidden shadow-lg border border-[#23234d] transition-transform"
+    <motion.div
+      onClick={() => window.open(url, '_blank')}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          window.open(url, '_blank');
+        }
+      }}
+      className="group relative bg-gradient-to-br from-[#1a1a2e] to-[#333 ] rounded-xl overflow-hidden shadow-lg border border-[#333 ] transition-transform"
       whileHover={{ scale: 1.015, boxShadow: '0 4px 32px 0 #7f5fff33' }}
       whileTap={{ scale: 0.99 }}
       style={{ display: 'block', textDecoration: 'none' }}
+      animate={animate}
+      initial={initial}
+      variants={variants}
+      transition={{ duration: 0.1, delay, ease: 'easeIn' }}
     >
       <div className="relative w-full h-48 overflow-hidden">
         <motion.img
           src={image}
           alt={title}
-          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-102"
+          className="object-cover w-full h-full transition-transform duration-500 "
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.02 }}
         />
@@ -44,21 +67,42 @@ const ProjectCard: FC<{
         className="absolute inset-0 rounded-xl pointer-events-none"
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 0.12 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
+        transition={{ duration: 0.1, ease: 'easeIn' }}
         style={{ background: 'radial-gradient(circle at 80% 20%, #7f5fff 0%, transparent 70%)' }}
       />
-    </motion.a>
+    </motion.div>
   );
 };
 
 // ProjectsSection component
 export const ProjectsSection: FC = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  // Trigger when 80% of the section is visible
+  const isInView = useInView(ref, { once: true, amount: 0.8 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+
   return (
-    <section className="py-20 px-4 max-w-6xl mx-auto relative z-10">
+    <section className="py-20 px-4 max-w-6xl mx-auto relative z-10" ref={ref}>
       <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-10 text-center drop-shadow-glow">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
+        {projects.map((project, idx) => (
+          <ProjectCard
+            key={project.title}
+            {...project}
+            delay={isInView ? 0.15 * idx : 0}
+            animate={controls}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0, y: 32 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          />
         ))}
       </div>
     </section>
