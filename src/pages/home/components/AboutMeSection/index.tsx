@@ -35,7 +35,7 @@ export const AboutMeSection: React.FC = () => {
   }, [visibleCount]);
 
   return (
-    <section className="about-me-section">
+    <section id="about-me-section" className="about-me-section">
       <div className="py-20 px-4 max-w-6xl mx-auto relative z-10" ref={sectionRef}>
         <div className="about-me-section__main">
           <div>

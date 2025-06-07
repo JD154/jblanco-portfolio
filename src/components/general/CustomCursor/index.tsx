@@ -24,52 +24,72 @@ export const CustomCursor = () => {
   const [ripples, setRipples] = useState<{ x: number; y: number; key: number }[]>([]);
   const rippleKey = useRef(0);
   const lastTouchTime = useRef(0);
+  // For performance: store latest mouse position and animation frame
+  const mousePos = useRef({ x: 0, y: 0 });
+  const rafId = useRef<number | null>(null);
 
-  // GSAP cursor movement and click effect
+  // GSAP cursor movement and click effect (optimized with requestAnimationFrame)
   useEffect(() => {
     const root = document.getElementById('root');
-    if (root && cursorRef.current) {
-      const mouseMoveHandler = (e: MouseEvent) => {
+    if (!root || !cursorRef.current) return;
+
+    let isAnimating = false;
+
+    const updateCursor = () => {
+      if (cursorRef.current) {
         gsap.to(cursorRef.current, {
-          x: e.pageX - 12,
-          y: e.pageY - 12,
+          x: mousePos.current.x - 12,
+          y: mousePos.current.y - 12,
           duration: 0.2,
           overwrite: 'auto',
         });
-      };
-      const mouseEnterHandler = () => animateCursor('cursorEnter');
-      const mouseLeaveHandler = () => animateCursor('cursorLeave');
+      }
+      isAnimating = false;
+    };
 
-      const mouseDownHandler = () => animateCursor('cursorClick');
-      const mouseUpHandler = () => animateCursor('cursorEnter');
+    const mouseMoveHandler = (e: MouseEvent) => {
+      mousePos.current.x = e.pageX;
+      mousePos.current.y = e.pageY;
+      if (!isAnimating) {
+        isAnimating = true;
+        rafId.current = requestAnimationFrame(updateCursor);
+      }
+    };
 
-      const touchStartHandler = (e: TouchEvent) => {
-        lastTouchTime.current = Date.now();
-        if (e.touches.length > 0) {
-          const touch = e.touches[0];
-          setRipples((prev) => [...prev, { x: touch.pageX - 24, y: touch.pageY - 24, key: rippleKey.current++ }]);
-          setTimeout(() => {
-            setRipples((prev) => prev.slice(1));
-          }, 400);
-        }
-      };
+    const mouseEnterHandler = () => animateCursor('cursorEnter');
+    const mouseLeaveHandler = () => animateCursor('cursorLeave');
+    const mouseDownHandler = () => animateCursor('cursorClick');
+    const mouseUpHandler = () => animateCursor('cursorEnter');
 
-      window.addEventListener('mousemove', mouseMoveHandler);
-      root.addEventListener('mouseenter', mouseEnterHandler);
-      root.addEventListener('mouseleave', mouseLeaveHandler);
-      window.addEventListener('mousedown', mouseDownHandler);
-      window.addEventListener('mouseup', mouseUpHandler);
-      window.addEventListener('touchstart', touchStartHandler);
+    const touchStartHandler = (e: TouchEvent) => {
+      lastTouchTime.current = Date.now();
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        setRipples((prev) => [...prev, { x: touch.pageX - 24, y: touch.pageY - 24, key: rippleKey.current++ }]);
+        setTimeout(() => {
+          setRipples((prev) => prev.slice(1));
+        }, 400);
+      }
+    };
 
-      return () => {
-        window.removeEventListener('mousemove', mouseMoveHandler);
-        root.removeEventListener('mouseenter', mouseEnterHandler);
-        root.removeEventListener('mouseleave', mouseLeaveHandler);
-        window.removeEventListener('mousedown', mouseDownHandler);
-        window.removeEventListener('mouseup', mouseUpHandler);
-        window.removeEventListener('touchstart', touchStartHandler);
-      };
-    }
+    window.addEventListener('mousemove', mouseMoveHandler);
+    root.addEventListener('mouseenter', mouseEnterHandler);
+    root.addEventListener('mouseleave', mouseLeaveHandler);
+    window.addEventListener('mousedown', mouseDownHandler);
+    window.addEventListener('mouseup', mouseUpHandler);
+    window.addEventListener('touchstart', touchStartHandler);
+
+    return () => {
+      window.removeEventListener('mousemove', mouseMoveHandler);
+      root.removeEventListener('mouseenter', mouseEnterHandler);
+      root.removeEventListener('mouseleave', mouseLeaveHandler);
+      window.removeEventListener('mousedown', mouseDownHandler);
+      window.removeEventListener('mouseup', mouseUpHandler);
+      window.removeEventListener('touchstart', touchStartHandler);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+    };
   }, [animateCursor]);
 
   // GSAP cursor variant animation
