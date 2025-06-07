@@ -35,13 +35,13 @@ export const HeaderSection = () => {
     <div
       ref={sectionRef}
       id="header-section"
-      className="w-full px-4 lg:px-0 lg:max-w-4xl mx-auto absolute top-1/2 left-1/2 z-20 -translate-y-1/2 -translate-x-1/2 flex items-center flex-col justify-center text-center"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 lg:px-0 lg:max-w-4xl mx-auto z-10 text-center bg-transparent"
     >
       <AnimatedHeading text="I'm JB" sensitivity={0.03} />
 
       <p
         ref={headingParagraphRef}
-        className=" dark:text-neutral-300 mb-8 text-lg text-center relative z-10 max-w-1xl mx-auto"
+        className="dark:text-neutral-300 mb-8 text-lg text-center relative z-10 max-w-1xl mx-auto"
       >
         Senior Front-End Developer with 6+ Years of Experience <br /> Crafting clean and functional user interfaces with{' '}
         <br /> a strong focus on mantainability and scalability.
