@@ -2,7 +2,7 @@ import React from 'react';
 import { MinimalQuote } from './Quote';
 import { motion } from 'motion/react';
 import { useRef, useEffect } from 'react';
-import { useIsInViewport } from '../../../../components/general/AnimatedHeading/useIsInViewport';
+import { useIsInViewport } from '../../../../components/general/AnimatedHeading/hooks/useIsInViewport';
 import './styles.css';
 
 export const aboutMeParagraphLines = [

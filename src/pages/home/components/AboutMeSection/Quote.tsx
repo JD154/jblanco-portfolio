@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useIsInViewport } from '../../../../components/general/AnimatedHeading/useIsInViewport';
+import { useIsInViewport } from '../../../../components/general/AnimatedHeading/hooks/useIsInViewport';
 
 export const MinimalQuote: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);

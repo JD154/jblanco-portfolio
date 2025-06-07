@@ -1,6 +1,6 @@
 import { motion, useSpring } from 'motion/react';
 import { FC, useEffect, useRef } from 'react';
-import { useIsInViewport } from './useIsInViewport';
+import { useIsInViewport } from './hooks/useIsInViewport';
 import './styles.css'; // Plain CSS file
 
 interface AnimatedHeadingProps {
@@ -8,6 +8,7 @@ interface AnimatedHeadingProps {
   fontSize?: string;
   sensitivity?: number;
   className?: string;
+  animation?: string;
 }
 
 export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
@@ -15,6 +16,7 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   fontSize = '8rem',
   sensitivity = 0.02,
   className,
+  animation,
 }) => {
   const prefix = 'animated-heading';
 
@@ -69,7 +71,7 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   }, [rotateX, rotateY, scale, sensitivity, isInViewport]);
 
   return (
-    <div className={getClasses()} ref={containerRef}>
+    <div className={getClasses()} ref={containerRef} data-animate={animation}>
       {text.split('').map((char, index) => {
         if (char === ' ') {
           return (
