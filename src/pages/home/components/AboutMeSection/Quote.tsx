@@ -1,45 +1,51 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { useIsInViewport } from '../../../../components/general/AnimatedHeading/hooks/useIsInViewport';
 
 export const MinimalQuote: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const blockquoteRef = useRef<HTMLQuoteElement>(null);
   const isInViewport = useIsInViewport(cardRef);
 
-  // Map cursor position to rotation angles
-  const rotateX = useTransform(y, [-window.innerHeight / 2, window.innerHeight / 2], [15, -15]);
-  const rotateY = useTransform(x, [-window.innerWidth / 2, window.innerWidth / 2], [-20, 20]);
-
-  useEffect(() => {
-    if (!isInViewport) {
-      x.set(0);
-      y.set(0);
-      return;
-    }
+  useGSAP(() => {
+    if (!isInViewport) return;
     const handleMouseMove = (e: MouseEvent) => {
-      // Get cursor position relative to viewport center
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
-      x.set(e.clientX - centerX);
-      y.set(e.clientY - centerY);
+      const x = e.clientX - centerX;
+      const y = e.clientY - centerY;
+      // Map cursor position to rotation angles
+      const rotateX = gsap.utils.mapRange(-window.innerHeight / 2, window.innerHeight / 2, 15, -15, y);
+      const rotateY = gsap.utils.mapRange(-window.innerWidth / 2, window.innerWidth / 2, -20, 20, x);
+      if (blockquoteRef.current) {
+        gsap.to(blockquoteRef.current, {
+          rotateX,
+          rotateY,
+          duration: 0.4,
+          ease: 'power2.out',
+        });
+      }
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      if (blockquoteRef.current) {
+        gsap.to(blockquoteRef.current, { rotateX: 0, rotateY: 0, duration: 0.4, ease: 'power2.out' });
+      }
     };
-  }, [x, y, isInViewport]);
+  }, [isInViewport]);
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
       style={{
         perspective: 800,
         display: 'inline-block',
       }}
     >
-      <motion.blockquote
+      <blockquote
+        ref={blockquoteRef}
         style={{
           fontStyle: 'italic',
           opacity: 0.7,
@@ -53,8 +59,6 @@ export const MinimalQuote: React.FC = () => {
           borderRadius: '16px',
           boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
           transformStyle: 'preserve-3d',
-          rotateX,
-          rotateY,
           transition: 'box-shadow 0.2s',
         }}
       >
@@ -63,7 +67,7 @@ export const MinimalQuote: React.FC = () => {
         <span style={{ fontSize: '0.85em', opacity: 0.5 }}>
           is a Lyric extract from <b>Dreary Moon</b> of <b>Big Black Delta</b>
         </span>
-      </motion.blockquote>
-    </motion.div>
+      </blockquote>
+    </div>
   );
 };
