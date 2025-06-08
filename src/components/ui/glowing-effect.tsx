@@ -1,8 +1,8 @@
 'use client';
-
-import { memo, useCallback, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { animate } from 'motion/react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { memo, useCallback, useRef } from 'react';
 
 interface GlowingEffectProps {
   blur?: number;
@@ -78,19 +78,23 @@ const GlowingEffect = memo(
           const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
           const newAngle = currentAngle + angleDiff;
 
-          animate(currentAngle, newAngle, {
-            duration: movementDuration,
-            ease: [0.16, 1, 0.3, 1],
-            onUpdate: (value) => {
-              element.style.setProperty('--start', String(value));
+          gsap.to(
+            { value: currentAngle },
+            {
+              value: newAngle,
+              duration: movementDuration,
+              ease: 'cubic.out',
+              onUpdate: function () {
+                element.style.setProperty('--start', String(this.targets()[0].value));
+              },
             },
-          });
+          );
         });
       },
       [inactiveZone, proximity, movementDuration],
     );
 
-    useEffect(() => {
+    useGSAP(() => {
       if (disabled) return;
 
       const handleScroll = () => handleMove();

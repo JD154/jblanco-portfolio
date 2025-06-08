@@ -1,0 +1,53 @@
+/* AboutMeSection 80/20 layout, minimalistic, with microinteractions */
+
+/* Improved AboutMeSection layout for better alignment and visual balance */
+.about-me-section {
+  width: 100%;
+  min-height: 340px;
+  box-sizing: border-box;
+  background-color: #161616;
+  z-index: -2;
+}
+
+.about-me-section__main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1.5rem;
+}
+
+.about-me-section__side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.about-me-section__side blockquote {
+  background: var(--color-bg-secondary, rgba(80, 80, 80, 0.7));
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-foreground, #333);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.04);
+  border-left: 3px solid var(--color-border, #e0e0e0);
+}
+
+/* AnimatedHeading tweaks for better alignment */
+.about-me-section .animated-heading {
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+/* AnimatedParagraph tweaks */
+.about-me-section .animated-paragraph {
+  font-size: 1.15rem;
+  color: var(--color-foreground, #333);
+  max-width: 600px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
