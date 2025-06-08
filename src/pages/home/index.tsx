@@ -1,7 +1,7 @@
 import { useParallaxForSections } from '@/hooks/useParallaxForSections';
 import { FC } from 'react';
 import { AboutMeSection } from './components/AboutMeSection';
-import { HeaderSection } from './components/HeaderSection';
+import HeaderSection from './components/HeaderSection';
 import { ProjectsSection } from './components/ProjectsSection';
 
 export const HomePage: FC = () => {
@@ -10,6 +10,16 @@ export const HomePage: FC = () => {
     {
       fromSelector: '#header-section',
       toSelector: '#projects-section',
+      bgSelector: '#stars-bg',
+      bgAnimation: { scale: 1.5, ease: 'power1.inOut' },
+      fromAnimation: { opacity: 0, y: -100, ease: 'power1.inOut' },
+      toAnimation: { y: 0, opacity: 1, ease: 'power1.out' },
+      timelineOptions: {},
+      scrollTriggerOptions: {},
+      pin: true,
+      start: 'top top',
+      end: 'bottom top',
+      timelinePosition: 0.7,
     },
   ]);
 

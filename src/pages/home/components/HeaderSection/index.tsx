@@ -1,14 +1,20 @@
-import { AnimatedHeading } from '@/components/general/AnimatedHeading';
 import { GlowingButton } from '@/components/general/GlowingButton';
 import { StarsBackground } from '@/components/layout/StarsBackground';
+import { AnimatedHeading } from '@/components/general/AnimatedHeading';
 import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
-import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useState } from 'react';
 
-export const HeaderSection = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+const HeaderSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingParagraphRef = useRef<HTMLParagraphElement>(null);
+  const starsBgRef = useRef<HTMLDivElement>(null);
+  // Camera Z state for smooth zoom
+  const [cameraZ, setCameraZ] = useState(1);
   useGSAP(
     () => {
       const split = SplitText.create(headingParagraphRef.current, {
@@ -31,9 +37,30 @@ export const HeaderSection = () => {
     { scope: sectionRef },
   );
 
+  // Animate cameraZ on scroll using GSAP/ScrollTrigger
+  useGSAP(() => {
+    gsap.to(
+      {},
+      {
+        scrollTrigger: {
+          trigger: '#header-section',
+          start: 'center top',
+          end: 'center top',
+          scrub: 2, // Smooth the scroll animation
+          onUpdate: (self) => {
+            setCameraZ(1 + 1.2 * self.progress);
+          },
+        },
+      },
+    );
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
     <div className="relative w-full min-h-screen h-screen" id="header-section-wrapper">
-      <StarsBackground />
+      <StarsBackground ref={starsBgRef} id="stars-bg" cameraZ={cameraZ} />
       <div
         ref={sectionRef}
         id="header-section"
@@ -65,3 +92,5 @@ export const HeaderSection = () => {
     </div>
   );
 };
+
+export default HeaderSection;
