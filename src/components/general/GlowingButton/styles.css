@@ -1,7 +1,16 @@
 @reference "tailwindcss";
 
+.glowing-button {
+  transform: scale(1);
+  transition: transform 0.3s ease-out;
+}
+
+.glowing-button:active {
+  transform: scale(0.97);
+}
+
 .glowing-button__outline {
-  @apply bg-blend-luminosity backdrop-blur-xs transition-all border shadow;
+  @apply bg-blend-luminosity backdrop-blur-xs border shadow;
   background-color: var(--nav-background) !important;
 }
 

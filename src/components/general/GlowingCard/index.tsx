@@ -1,45 +1,28 @@
 import { GlowingEffect } from '@/components/ui/glowing-effect';
-import { motion } from 'motion/react';
-
+import './styles.css';
 import { FC, PropsWithChildren } from 'react';
 
 export interface GlowingCardProps extends PropsWithChildren {
-  delay?: number;
-  animate?: any;
-  initial?: any;
-  variants?: any;
   redirectTo?: string;
   className?: string;
-  transition?: any;
 }
 
-export const GlowingCard: FC<GlowingCardProps> = ({
-  redirectTo,
-  delay = 0,
-  animate,
-  initial,
-  variants,
-  className = '',
-  transition,
-  children,
-}) => {
+export const GlowingCard: FC<GlowingCardProps> = ({ redirectTo, className = '', children }) => {
   return (
-    <motion.div
+    <div
+      tabIndex={redirectTo ? 0 : undefined}
       onClick={() => (redirectTo ? window.open(redirectTo, '_blank') : null)}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || (e.key === ' ' && redirectTo)) {
+        if ((e.key === 'Enter' || e.key === ' ') && redirectTo) {
           window.open(redirectTo, '_blank');
         }
       }}
-      className={`relative h-full rounded-2xl border md:rounded-3xl p-0 ${className}`}
-      whileTap={{ scale: redirectTo ? 0.99 : 1 }}
-      animate={animate}
-      initial={initial}
-      variants={variants}
-      transition={transition ?? { duration: 0.1, delay, ease: 'easeIn' }}
+      className={`glowing-card relative h-full rounded-2xl border md:rounded-3xl p-0 ${className}`}
+      role={redirectTo ? 'button' : undefined}
+      style={{ cursor: redirectTo ? 'pointer' : undefined }}
     >
       <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} variant="white" />
       {children}
-    </motion.div>
+    </div>
   );
 };

@@ -9,17 +9,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
 }
 
 button {
-  @apply transition-colors rounded-full cursor-none;
+  @apply transition-colors rounded-full;
 }
 
-a {
+/* a {
   @apply cursor-none;
 }
-
+ */
 body::before {
   content: '';
   position: absolute;

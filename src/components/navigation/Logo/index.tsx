@@ -1,7 +1,5 @@
-import { motion } from 'motion/react';
 import { FC } from 'react';
 import './styles.css';
-import { useCursorHandlers } from '@/components/other/CursorProvider/hooks';
 
 interface LogoProps {
   className?: string;
@@ -17,16 +15,16 @@ export const Logo: FC<LogoProps> = ({ className }) => {
 
   return (
     <div className="flex items-center">
-      <motion.a
+      <a
         className={getClasses()}
         href="https://www.linkedin.com/in/jesus-blanco-08682112a/"
         target="_blank"
         rel="noopener noreferrer"
-        whileTap={{ scale: 0.9 }}
-        {...useCursorHandlers('buttonHover', 'cursorEnter')}
+        title="LinkedIn Profile of Jesus Blanco"
+        aria-label="LinkedIn Profile of Jesus Blanco"
       >
         Jesus Blanco
-      </motion.a>
+      </a>
     </div>
   );
 };
