@@ -7,7 +7,6 @@ import SplitText from 'gsap/SplitText';
 import { useRef } from 'react';
 
 export const HeaderSection = () => {
-  const timeline = useRef<gsap.core.Timeline | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingParagraphRef = useRef<HTMLParagraphElement>(null);
   useGSAP(
