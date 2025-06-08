@@ -1,0 +1,7 @@
+/* Simple scale-down on click/tap, with smooth transition */
+.glowing-card {
+  transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glowing-card:active {
+  transform: scale(0.99);
+}

@@ -1,7 +1,7 @@
-import { motion, useSpring } from 'motion/react';
 import { FC, useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { useIsInViewport } from './hooks/useIsInViewport';
-import './styles.css'; // Plain CSS file
+import './styles.css';
 
 interface AnimatedHeadingProps {
   text: string;
@@ -26,20 +26,22 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
     return classes.join(' ');
   };
   const containerRef = useRef<HTMLDivElement>(null);
-  const rotateX = useSpring(0, { stiffness: 150, damping: 30 });
-  const rotateY = useSpring(0, { stiffness: 150, damping: 30 });
-  const scale = useSpring(1, { stiffness: 150, damping: 20 });
+  // Refs for each character
+  const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   const isInViewport = useIsInViewport(containerRef);
 
   useEffect(() => {
     if (!isInViewport) {
-      rotateX.set(0);
-      rotateY.set(0);
-      scale.set(1);
+      charRefs.current.forEach((ref) => {
+        if (ref) {
+          gsap.to(ref, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.5, ease: 'power3.out' });
+        }
+      });
       return;
     }
-    const handleMouseMove = (e: { clientX: number; clientY: number }) => {
+
+    const handleMouseMove = (e: MouseEvent) => {
       const container = containerRef.current;
       if (!container) return;
 
@@ -50,15 +52,26 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
       const x = (e.clientX - centerX) * sensitivity;
       const y = (e.clientY - centerY) * -sensitivity;
 
-      rotateX.set(y);
-      rotateY.set(x);
-      scale.set(1.1);
+      charRefs.current.forEach((ref) => {
+        if (ref) {
+          gsap.to(ref, {
+            rotateX: y,
+            rotateY: x,
+            scale: 1.1,
+            transformPerspective: 1000,
+            duration: 0.5,
+            ease: 'power3.out',
+          });
+        }
+      });
     };
 
     const handleMouseLeave = () => {
-      rotateX.set(0);
-      rotateY.set(0);
-      scale.set(1);
+      charRefs.current.forEach((ref) => {
+        if (ref) {
+          gsap.to(ref, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.5, ease: 'power3.out' });
+        }
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -68,7 +81,7 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
       window.removeEventListener('mousemove', handleMouseMove);
       containerRef.current?.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [rotateX, rotateY, scale, sensitivity, isInViewport]);
+  }, [sensitivity, isInViewport]);
 
   return (
     <div className={getClasses()} ref={containerRef} data-animate={animation}>
@@ -81,19 +94,22 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
           );
         }
         return (
-          <motion.span
+          <span
             className={`${prefix}__char`}
             data-text={char}
             key={index}
+            ref={(el) => {
+              charRefs.current[index] = el;
+            }}
             style={{
-              rotateX,
-              rotateY,
-              transformPerspective: 1000,
+              display: 'inline-block',
               fontSize,
+              // transformPerspective is not a valid style property in React, so we use perspective on the parent or via GSAP
+              willChange: 'transform',
             }}
           >
             {char}
-          </motion.span>
+          </span>
         );
       })}
     </div>
