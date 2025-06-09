@@ -11,8 +11,8 @@ interface ProjectCardProps {
 
 export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, url, techStack }) => {
   return (
-    <GlowingCard redirectTo={url} className="group ">
-      <div className="relative w-full h-48 overflow-hidden rounded-tr-2xl rounded-tl-2xl md:rounded-tr-3xl md:rounded-tl-3xl z-0">
+    <GlowingCard redirectTo={url} className="group bg-blur-background">
+      <div className="relative w-full h-48 overflow-hidden rounded-tr-2xl rounded-tl-2xl md:rounded-tr-3xl md:rounded-tl-3xl z-0 ">
         <img
           src={image}
           alt={title}
