@@ -2,7 +2,7 @@ import { useTheme } from '@/components/other/ThemeProvider';
 import { Points, PointMaterial } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { FC, useRef, useState, memo } from 'react';
-import { useStarsZoom } from './useStarsZoom';
+import { useStarsZoom } from '../hooks/useStarsZoom';
 import * as random from 'maath/random';
 import * as THREE from 'three';
 

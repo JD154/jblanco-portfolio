@@ -1,4 +1,4 @@
-import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
 import './styles.css';
 import { FC, PropsWithChildren } from 'react';
 

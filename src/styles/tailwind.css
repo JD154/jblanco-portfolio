@@ -70,11 +70,8 @@
   --sidebar-ring: 240 6% 7%;
 
   /* Custom colors */
-  --nav-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.45);
-  --nav-background: rgba(255, 255, 255, 0.3);
-  --default-blur: blur(22px);
-  --default-radius: 36px;
   --heading-text-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05);
+  --secondary-background: rgba(233, 233, 233, 0.3);
 }
 .dark {
   --background: 240 10% 3.9%;
@@ -144,12 +141,9 @@
   --sidebar-ring: 240 5% 76%;
 
   /* Custom colors */
-  --nav-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.45);
-  --nav-background: rgba(18, 12, 27, 0.3);
-  --default-blur: blur(22px);
-  --default-radius: 36px;
   --heading-text-shadow:
     0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.2);
+  --secondary-background: rgba(22, 22, 22, 0.3);
 }
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -157,6 +151,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --color-background: hsl(var(--background));
+  --color-secondary-background: var(--secondary-background);
   --color-foreground: hsl(var(--foreground));
   --color-card: hsla(var(--card), 0.9);
   --color-card-foreground: hsl(var(--card-foreground));
@@ -195,12 +190,6 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-
-  /* Custom utility for nav background using the CSS variable */
-  .bg-blur-background {
-    background-color: var(--nav-background);
-    backdrop-filter: var(--default-blur);
   }
 }
 
