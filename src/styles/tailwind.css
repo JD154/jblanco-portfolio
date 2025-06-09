@@ -71,7 +71,7 @@
 
   /* Custom colors */
   --nav-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.45);
-  --nav-background: rgba(255, 255, 255, 0.3);
+  --nav-background: #161616;
   --default-blur: blur(22px);
   --default-radius: 36px;
   --heading-text-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05);
@@ -145,7 +145,7 @@
 
   /* Custom colors */
   --nav-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.45);
-  --nav-background: rgba(18, 12, 27, 0.3);
+  --nav-background: #161616;
   --default-blur: blur(22px);
   --default-radius: 36px;
   --heading-text-shadow:
