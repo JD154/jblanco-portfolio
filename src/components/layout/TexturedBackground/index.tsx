@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import './styles.css';
 
-export const BackgroundTexture: FC = () => {
+export const TexturedBackground: FC = () => {
   const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   useEffect(() => {
