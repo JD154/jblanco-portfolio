@@ -1,5 +1,6 @@
 @import './fonts.css';
 @import './tailwind.css';
+@import './custom-utilities.css';
 
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;

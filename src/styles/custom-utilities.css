@@ -1,0 +1,5 @@
+@layer utilities {
+  .bg-secondary-background {
+    background: var(--color-secondary-background);
+  }
+}

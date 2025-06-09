@@ -1,11 +1,7 @@
-/* AboutMeSection 80/20 layout, minimalistic, with microinteractions */
-
-/* Improved AboutMeSection layout for better alignment and visual balance */
 .about-me-section {
   width: 100%;
   min-height: 340px;
   box-sizing: border-box;
-  background-color: #161616;
   z-index: -2;
 }
 
@@ -36,7 +32,6 @@
   border-left: 3px solid var(--color-border, #e0e0e0);
 }
 
-/* AnimatedHeading tweaks for better alignment */
 .about-me-section .animated-heading {
   justify-content: flex-start;
   align-items: flex-end;
