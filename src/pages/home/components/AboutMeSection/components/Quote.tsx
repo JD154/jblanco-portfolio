@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useIsInViewport } from '../../../../components/general/AnimatedHeading/hooks/useIsInViewport';
+import { useIsInViewport } from '../../../../../components/general/AnimatedHeading/hooks/useIsInViewport';
 
 export const MinimalQuote: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);

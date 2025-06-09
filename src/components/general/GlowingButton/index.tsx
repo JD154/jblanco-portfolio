@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ButtonProps } from '@/components/ui/button';
-import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { GlowingEffect } from '@/components/general/GlowingEffect/glowing-effect';
 import './styles.css';
 
 // Allow animation props from motion/react

@@ -1,49 +1,13 @@
 import { FC } from 'react';
 import { Logo } from '../Logo';
-
-import './styles.css';
 import { ThemeToggle } from '@/components/general/ThemeToggle';
-import { GlowingEffect } from '@/components/ui/glowing-effect';
-
-/* type pageRoutesType = {
-  label: string;
-  route: NavigationRoutes;
-}; */
-
-/* const pageRoutes: pageRoutesType[] = [
-  {
-    label: 'Home',
-    route: '/',
-  },
-  {
-    label: 'Lab',
-    route: '/lab',
-  },
-  {
-    label: 'Showcase',
-    route: '/showcase',
-  },
-  {
-    label: 'Contact',
-    route: '/contact',
-  },
-]; */
+import { GlowingEffect } from '@/components/general/GlowingEffect/glowing-effect';
 
 export const NavigationBar: FC = () => {
-  const prefix = 'navigation-bar';
-  /*   const { pathname } = useLocation(); */
-
   return (
-    <header className={`${prefix}__wrapper`}>
-      <div className={`${prefix}__container`}>
+    <header className="px-4 lg:px-0 pt-6 mb-16 absolute w-full top-0 z-20">
+      <div className="flex items-center justify-between max-w-2xl mx-auto px-6 py-2 border shadow rounded-full backdrop-blur-xs bg-blend-luminosity bg-secondary-background">
         <Logo />
-        {/* <NavigationMenu className={`${prefix}__menu`}>
-          <NavigationMenuList>
-            {pageRoutes.map(({ route, label }, index) => (
-              <NavigationItem key={index} label={label} route={route} isActive={pathname === route} />
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu> */}
         <ThemeToggle />
         <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} />
       </div>

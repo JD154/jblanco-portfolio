@@ -11,7 +11,7 @@
 
 .glowing-button__outline {
   @apply bg-blend-luminosity backdrop-blur-xs border shadow;
-  background-color: var(--nav-background) !important;
+  background-color: var(--secondary-background) !important;
 }
 
 .luminosity-text {
