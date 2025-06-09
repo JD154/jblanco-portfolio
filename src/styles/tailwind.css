@@ -196,6 +196,12 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom utility for nav background using the CSS variable */
+  .bg-blur-background {
+    background-color: var(--nav-background);
+    backdrop-filter: var(--default-blur);
+  }
 }
 
 @theme inline {
