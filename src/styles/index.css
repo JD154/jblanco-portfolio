@@ -20,12 +20,27 @@ button {
   @apply cursor-none;
 }
  */
-body::before {
+
+/* Header background for dark and light themes */
+html.dark body::before {
   content: '';
   position: absolute;
   inset: 0px;
   z-index: -100;
-  background-image: url('../assets/images/header-bg.png');
+  background-image: url('../assets/images/header-bg-dark.png');
+  background-repeat: no-repeat;
+  background-position:
+    center top,
+    center bottom;
+  background-size: 1400px;
+}
+
+html:not(.dark) body::before {
+  content: '';
+  position: absolute;
+  inset: 0px;
+  z-index: -100;
+  background-image: url('../assets/images/header-bg-light.png');
   background-repeat: no-repeat;
   background-position:
     center top,
