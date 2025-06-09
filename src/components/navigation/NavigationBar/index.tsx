@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Logo } from '../Logo';
-import { ThemeToggle } from '@/components/general/ThemeToggle';
-import { GlowingEffect } from '@/components/general/GlowingEffect/glowing-effect';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
+import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
 
 export const NavigationBar: FC = () => {
   return (

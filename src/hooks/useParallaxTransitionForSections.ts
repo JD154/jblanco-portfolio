@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export interface ParallaxSectionConfig {
+export interface ParallaxTransitionSectionConfig {
   fromSelector: string;
   toSelector: string;
   fromAnimation?: gsap.TweenVars;
@@ -23,7 +23,7 @@ export interface ParallaxSectionConfig {
  * Reusable hook for parallax/transition effects between any two sections.
  * @param configs Array of section transition configs
  */
-export function useParallaxForSections(configs: ParallaxSectionConfig[]) {
+export function useParallaxTransitionForSections(configs: ParallaxTransitionSectionConfig[]) {
   useEffect(() => {
     const timelines: gsap.core.Timeline[] = [];
     configs.forEach((config) => {
