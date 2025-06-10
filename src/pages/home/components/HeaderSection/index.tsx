@@ -60,7 +60,7 @@ const HeaderSection = () => {
 
   return (
     <div className="relative w-full min-h-screen h-screen" id="header-section-wrapper">
-      <StarsBackground ref={starsBgRef} id="stars-bg" cameraZ={cameraZ} />
+      <StarsBackground />
       <div
         ref={sectionRef}
         id="header-section"
