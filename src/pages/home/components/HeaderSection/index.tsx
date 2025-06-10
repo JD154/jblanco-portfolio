@@ -35,24 +35,6 @@ const HeaderSection = () => {
     { scope: sectionRef },
   );
 
-  // Animate cameraZ on scroll using GSAP/ScrollTrigger
-  useGSAP(() => {
-    gsap.to(
-      {},
-      {
-        scrollTrigger: {
-          trigger: '#header-section',
-          start: 'center top',
-          end: 'center top',
-          scrub: 2, // Smooth the scroll animation
-        },
-      },
-    );
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
   return (
     <div className="relative w-full min-h-screen h-screen" id="header-section-wrapper">
       <StarsBackground />
