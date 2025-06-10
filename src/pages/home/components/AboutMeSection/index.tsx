@@ -22,10 +22,10 @@ export const AboutMeSection: React.FC = () => {
   }, [isInViewport]);
 
   return (
-    <section ref={sectionRef} id="about-me-section" className=" relative">
-      <div className="h-[1000px] container mx-auto px-4 py-16">
+    <section ref={sectionRef} id="about-me-section">
+      <div className="h-[3000px] relative container mx-auto px-4 py-16">
         <h2
-          className="fixed top-1/2 bottom-1/2 text-5xl mb-6 font-bold"
+          className="absolute top-1/2 bottom-1/2 text-5xl mb-6 font-bold"
           ref={headingRef}
           style={{ opacity: 0, transform: 'translateY(32px)' }}
         >
