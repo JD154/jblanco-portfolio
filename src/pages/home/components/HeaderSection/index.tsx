@@ -1,5 +1,5 @@
 import { GlowingButton } from '@/components/general/GlowingButton';
-import { StarsBackground } from '@/components/layout/StarsBackground';
+
 import { AnimatedHeading } from '@/components/general/AnimatedHeading';
 import { useGSAP } from '@gsap/react';
 import SplitText from 'gsap/SplitText';
@@ -15,6 +15,8 @@ const HeaderSection = () => {
 
   useGSAP(
     () => {
+      const tl = gsap.timeline();
+
       const split = SplitText.create(headingParagraphRef.current, {
         type: 'lines',
         linesClass: 'lines',
@@ -22,40 +24,19 @@ const HeaderSection = () => {
         charsClass: 'chars',
       });
 
-      gsap.from(split.lines, {
-        duration: 1,
+      tl.from(split.lines, {
+        duration: 1.3,
         y: 100,
         opacity: 0,
         ease: 'power2.out',
-        stagger: 0.1,
-      });
-
-      gsap.fromTo('#download-btn', { opacity: 0 }, { opacity: 1, duration: 3, ease: 'power2.out' });
+        stagger: 0.07,
+      }).fromTo('#header-actions', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'power2.out' });
     },
     { scope: sectionRef },
   );
 
-  // Animate cameraZ on scroll using GSAP/ScrollTrigger
-  useGSAP(() => {
-    gsap.to(
-      {},
-      {
-        scrollTrigger: {
-          trigger: '#header-section',
-          start: 'center top',
-          end: 'center top',
-          scrub: 2, // Smooth the scroll animation
-        },
-      },
-    );
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
   return (
     <div className="relative w-full min-h-screen h-screen" id="header-section-wrapper">
-      <StarsBackground />
       <div
         ref={sectionRef}
         id="header-section"
@@ -71,8 +52,8 @@ const HeaderSection = () => {
           with <br /> a strong focus on mantainability and scalability.
         </p>
 
-        <div className="flex gap-4 transition-opacity duration-700">
-          <GlowingButton id="download-btn" variant="outline" size="lg">
+        <div id="header-actions" className="flex gap-4 transition-opacity duration-700">
+          <GlowingButton variant="outline" size="lg">
             <a href="[Detailed] Frontend Developer, Jesus Blanco 06.pdf" target="_blank" rel="noopener noreferrer">
               Download CV
             </a>
