@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { useIsInViewport } from './hooks/useIsInViewport';
+import { useIsInViewport } from '../../../hooks/useIsInViewport';
 import './styles.css';
 
 interface AnimatedHeadingProps {
