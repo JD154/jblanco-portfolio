@@ -3,7 +3,7 @@ import { MinimalQuote } from './components/Quote';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
-import { useIsInViewport } from '../../../../components/general/AnimatedHeading/hooks/useIsInViewport';
+import { useIsInViewport } from '../../../../hooks/useIsInViewport';
 import './styles.css';
 
 export const aboutMeParagraphLines = [
