@@ -9,8 +9,7 @@ import * as THREE from 'three';
 const ThreeStarsComponent: FC = () => {
   const ref = useRef<THREE.Group>(null);
   const { theme } = useTheme();
-  // Store original and clustered positions
-  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 2.5 }) as Float32Array);
+  const [sphere] = useState(() => random.inSphere(new Float32Array(3500), { radius: 2.5 }) as Float32Array);
   const positionsRef = useRef<Float32Array>(sphere.slice());
   const [opacity, setOpacity] = useState(1);
   const pointsRef = useRef<any>(null);
