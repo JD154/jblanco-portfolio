@@ -5,7 +5,6 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { FC } from 'react';
 import { ProjectCard } from './components/ProjectCard';
-import { StarsBackground } from '@/components/layout/StarsBackground';
 
 // ProjectsSection component
 export const ProjectsSection: FC = () => {
@@ -34,9 +33,6 @@ export const ProjectsSection: FC = () => {
 
   return (
     <section id="projects-section" className="py-20 px-4 max-w-6xl mx-auto relative z-10" ref={sectionRef}>
-      <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
-        <StarsBackground />
-      </div>
       <div className="mb-12 text-center relative z-10">
         <AnimatedHeading text="Projects" fontSize="4rem" sensitivity={0.02} className="p-3" />
         <p className="dark:text-neutral-300 text-md relative z-10 max-w-[750px] mx-auto">

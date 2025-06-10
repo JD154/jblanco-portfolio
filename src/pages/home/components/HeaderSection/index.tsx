@@ -1,5 +1,5 @@
 import { GlowingButton } from '@/components/general/GlowingButton';
-import { StarsBackground } from '@/components/layout/StarsBackground';
+
 import { AnimatedHeading } from '@/components/general/AnimatedHeading';
 import { useGSAP } from '@gsap/react';
 import SplitText from 'gsap/SplitText';
@@ -37,7 +37,6 @@ const HeaderSection = () => {
 
   return (
     <div className="relative w-full min-h-screen h-screen" id="header-section-wrapper">
-      <StarsBackground />
       <div
         ref={sectionRef}
         id="header-section"
