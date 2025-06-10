@@ -20,12 +20,12 @@ export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, u
         />
       </div>
       <div className="p-5 h-full flex flex-col">
-        <h3 className="text-xl font-bold  mb-2">{title}</h3>
-        <p className="text-sm  mb-4">{description}</p>
+        <h3 className="text-2xl font-bold mb-2">{title}</h3>
+        <p className="text-sm text-neutral-400  mb-4">{description}</p>
         {techStack && (
           <div className="flex flex-wrap gap-2 mb-3">
             {techStack.map((tech, index) => (
-              <span key={index} className="text-xs border px-2 py-1 rounded-full">
+              <span key={index} className="text-xs border px-2 text-neutral-400 py-1 rounded-full">
                 {tech}
               </span>
             ))}

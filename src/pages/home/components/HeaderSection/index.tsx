@@ -5,16 +5,14 @@ import { useGSAP } from '@gsap/react';
 import SplitText from 'gsap/SplitText';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HeaderSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingParagraphRef = useRef<HTMLParagraphElement>(null);
-  const starsBgRef = useRef<HTMLDivElement>(null);
-  // Camera Z state for smooth zoom
-  const [cameraZ, setCameraZ] = useState(1);
+
   useGSAP(
     () => {
       const split = SplitText.create(headingParagraphRef.current, {
@@ -47,9 +45,6 @@ const HeaderSection = () => {
           start: 'center top',
           end: 'center top',
           scrub: 2, // Smooth the scroll animation
-          onUpdate: (self) => {
-            setCameraZ(1 + 1.2 * self.progress);
-          },
         },
       },
     );
@@ -60,7 +55,7 @@ const HeaderSection = () => {
 
   return (
     <div className="relative w-full min-h-screen h-screen" id="header-section-wrapper">
-      <StarsBackground ref={starsBgRef} id="stars-bg" cameraZ={cameraZ} />
+      <StarsBackground />
       <div
         ref={sectionRef}
         id="header-section"

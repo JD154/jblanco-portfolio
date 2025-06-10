@@ -1,5 +1,7 @@
 // Add a NotFound component
-import { Button } from '@/components/ui/button';
+import { AnimatedHeading } from '@/components/general/AnimatedHeading';
+import { GlowingButton } from '@/components/general/GlowingButton';
+import { StarsBackground } from '@/components/layout/StarsBackground';
 import { FC } from 'react';
 import { useRouteError } from 'react-router-dom';
 
@@ -8,17 +10,20 @@ export const NotFound: FC = () => {
   console.error(error);
   return (
     <div className="flex items-center justify-center h-fit min-h-screen">
+      <StarsBackground />
       <div>
-        <h1 className="text-4xl font-bold text-center text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-          Oops! Page not found.
-        </h1>
-        <p className="mt-4 text-lg text-center text-secondary">The page you are looking for does not exist.</p>
-        <div className="flex items-center justify-center gap-4">
-          <Button asChild variant={'secondary'} className="mt-4">
+        <AnimatedHeading text="Oops!" fontSize="7rem" className="p-6" />
+        <p className="text-lg text-center opacity-90">
+          The page you are looking for does not exist or has been moved.
+          <br />
+          Please check the URL or return to the home page.
+        </p>
+        <div className="flex items-center justify-center mt-8">
+          <GlowingButton id="download-btn" variant="outline" size="lg">
             <a href="/" target="_blank" rel="noopener noreferrer">
               Go to Home
             </a>
-          </Button>
+          </GlowingButton>
         </div>
       </div>
     </div>
