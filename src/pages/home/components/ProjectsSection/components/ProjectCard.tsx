@@ -1,5 +1,6 @@
 import { GlowingCard } from '@/components/general/GlowingCard';
 import { FC } from 'react';
+import './ProjectCard.css';
 
 interface ProjectCardProps {
   title: string;
@@ -11,37 +12,66 @@ interface ProjectCardProps {
 
 export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, url, techStack }) => {
   return (
-    <GlowingCard redirectTo={url} className="group bg-secondary-background bg-blend-luminosity backdrop-blur-xs">
-      <div className="relative w-full h-48 overflow-hidden rounded-tr-2xl rounded-tl-2xl md:rounded-tr-3xl md:rounded-tl-3xl z-0 ">
-        <img
-          src={image}
-          alt={title}
-          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-        />
+    <GlowingCard redirectTo={url} className="project-card group">
+      {/* Image Section */}
+      <div className="project-card__image-container">
+        <img src={image} alt={title} className="project-card__image" />
+        <div className="project-card__image-overlay">
+          {url && (
+            <div className="project-card__demo-badge">
+              <span className="project-card__demo-icon">🚀</span>
+              <span>Live Demo</span>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="p-5 h-full flex flex-col">
-        <h3 className="text-2xl font-bold mb-2">{title}</h3>
-        <p className="text-sm text-neutral-400  mb-4">{description}</p>
-        {techStack && (
-          <div className="flex flex-wrap gap-2 mb-3">
-            {techStack.map((tech, index) => (
-              <span key={index} className="text-xs border px-2 text-neutral-400 py-1 rounded-full">
-                {tech}
-              </span>
-            ))}
+
+      {/* Content Section */}
+      <div className="project-card__content">
+        <div className="project-card__header">
+          <h3 className="project-card__title">{title}</h3>
+          {url && (
+            <div className="project-card__link-indicator">
+              <span className="project-card__arrow">→</span>
+            </div>
+          )}
+        </div>
+
+        <p className="project-card__description">{description}</p>
+
+        {/* Tech Stack */}
+        {techStack && techStack.length > 0 && (
+          <div className="project-card__tech-stack">
+            <div className="project-card__tech-label">
+              <span>Built with</span>
+            </div>
+            <div className="project-card__tech-list">
+              {techStack.slice(0, 4).map((tech, index) => (
+                <span key={index} className="project-card__tech-tag">
+                  {tech}
+                </span>
+              ))}
+              {techStack.length > 4 && (
+                <span className="project-card__tech-tag project-card__tech-tag--more">+{techStack.length - 4}</span>
+              )}
+            </div>
           </div>
         )}
-        {url && (
-          <span className="inline-block mt-2 select-none">
-            View Demo{' '}
-            <span
-              className="inline-block group-hover:translate-x-1.5 transition-transform duration-300"
-              style={{ display: 'inline-block' }}
-            >
-              →
-            </span>
-          </span>
-        )}
+
+        {/* Footer */}
+        <div className="project-card__footer">
+          {url ? (
+            <div className="project-card__cta">
+              <span className="project-card__cta-text">Explore Project</span>
+              <span className="project-card__cta-arrow">→</span>
+            </div>
+          ) : (
+            <div className="project-card__status">
+              <span className="project-card__status-dot"></span>
+              <span className="project-card__status-text">In Development</span>
+            </div>
+          )}
+        </div>
       </div>
     </GlowingCard>
   );

@@ -26,6 +26,7 @@ export const CustomCursor = () => {
   const lastTouchTime = useRef(0);
   // For performance: store latest mouse position and animation frame
   const mousePos = useRef({ x: 0, y: 0 });
+  const clientPos = useRef({ x: 0, y: 0 }); // Store client coordinates for scroll handling
   const rafId = useRef<number | null>(null);
 
   // GSAP cursor movement and click effect (optimized with requestAnimationFrame)
@@ -48,11 +49,27 @@ export const CustomCursor = () => {
     };
 
     const mouseMoveHandler = (e: MouseEvent) => {
+      // Store both page coordinates and client coordinates
       mousePos.current.x = e.pageX;
       mousePos.current.y = e.pageY;
+      clientPos.current.x = e.clientX;
+      clientPos.current.y = e.clientY;
       if (!isAnimating) {
         isAnimating = true;
         rafId.current = requestAnimationFrame(updateCursor);
+      }
+    };
+
+    const scrollHandler = () => {
+      // Update cursor position based on client coordinates + scroll offset
+      // This ensures the cursor moves with the page when scrolling
+      if (clientPos.current.x !== 0 || clientPos.current.y !== 0) {
+        mousePos.current.x = clientPos.current.x + window.scrollX;
+        mousePos.current.y = clientPos.current.y + window.scrollY;
+        if (!isAnimating) {
+          isAnimating = true;
+          rafId.current = requestAnimationFrame(updateCursor);
+        }
       }
     };
 
@@ -73,6 +90,7 @@ export const CustomCursor = () => {
     };
 
     window.addEventListener('mousemove', mouseMoveHandler);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
     root.addEventListener('mouseenter', mouseEnterHandler);
     root.addEventListener('mouseleave', mouseLeaveHandler);
     window.addEventListener('mousedown', mouseDownHandler);
@@ -81,6 +99,7 @@ export const CustomCursor = () => {
 
     return () => {
       window.removeEventListener('mousemove', mouseMoveHandler);
+      window.removeEventListener('scroll', scrollHandler);
       root.removeEventListener('mouseenter', mouseEnterHandler);
       root.removeEventListener('mouseleave', mouseLeaveHandler);
       window.removeEventListener('mousedown', mouseDownHandler);
