@@ -81,10 +81,7 @@ export const MinimalQuote: React.FC = () => {
             fontSize: '1.25rem',
             fontWeight: 600,
             marginBottom: '1rem',
-            background: 'linear-gradient(135deg, var(--color-foreground) 0%, rgba(99, 102, 241, 0.8) 100%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: 'var(--color-foreground)',
           }}
         >
           An Evolution, the only way

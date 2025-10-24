@@ -66,9 +66,13 @@ export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, u
               <span className="project-card__cta-arrow">→</span>
             </div>
           ) : (
-            <div className="project-card__status">
+            <div
+              className="project-card__status"
+              title="Legacy project — live demo unavailable"
+              aria-label="Legacy project — live demo unavailable"
+            >
               <span className="project-card__status-dot"></span>
-              <span className="project-card__status-text">In Development</span>
+              <span className="project-card__status-text">Demo Unavailable</span>
             </div>
           )}
         </div>

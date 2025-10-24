@@ -4,15 +4,16 @@ import { useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { FC } from 'react';
-import { ProjectCard } from './components/ProjectCard';
 import { useIsInViewport } from '@/hooks/useIsInViewport';
 import './styles.css';
+import { ProjectCard } from './components/ProjectCard';
+import { GlowingButton } from '@/components/general/GlowingButton';
 
-// ProjectsSection component
 export const ProjectsSection: FC = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const decorativeRef = useRef<HTMLDivElement>(null);
   const isInViewport = useIsInViewport(sectionRef);
@@ -108,15 +109,13 @@ export const ProjectsSection: FC = () => {
       <div className="py-24 px-6 max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="projects-section__header" ref={headerRef}>
-          <div className="projects-section__badge">
-            <span>Portfolio</span>
-          </div>
-          <AnimatedHeading
-            text="Featured Projects"
-            fontSize="4rem"
-            sensitivity={0.02}
-            className="projects-section__title"
-          />
+          <h2
+            className="about-me-section__title"
+            ref={headingRef}
+            style={{ opacity: 0, transform: 'translateY(50px) scale(0.9)' }}
+          >
+            Featured Projects
+          </h2>
           <p className="projects-section__description">
             A showcase of my technical expertise and creative problem-solving through diverse projects, ranging from
             enterprise applications to innovative UI libraries.
@@ -125,30 +124,34 @@ export const ProjectsSection: FC = () => {
 
         {/* Filter Section */}
         <div className="projects-section__filters">
-          <button
+          <GlowingButton
+            size={'lg'}
             onClick={() => setFilter('all')}
             className={`projects-section__filter-btn ${filter === 'all' ? 'projects-section__filter-btn--active' : ''}`}
           >
             All Projects
-          </button>
-          <button
+          </GlowingButton>
+          <GlowingButton
+            size={'lg'}
             onClick={() => setFilter('react')}
             className={`projects-section__filter-btn ${filter === 'react' ? 'projects-section__filter-btn--active' : ''}`}
           >
             React
-          </button>
-          <button
+          </GlowingButton>
+          <GlowingButton
+            size={'lg'}
             onClick={() => setFilter('vue')}
             className={`projects-section__filter-btn ${filter === 'vue' ? 'projects-section__filter-btn--active' : ''}`}
           >
             Vue.js
-          </button>
-          <button
+          </GlowingButton>
+          <GlowingButton
+            size={'lg'}
             onClick={() => setFilter('typescript')}
             className={`projects-section__filter-btn ${filter === 'typescript' ? 'projects-section__filter-btn--active' : ''}`}
           >
             TypeScript
-          </button>
+          </GlowingButton>
         </div>
 
         {/* Projects Grid */}

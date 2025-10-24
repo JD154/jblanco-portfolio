@@ -19,29 +19,11 @@ export const AboutMeSection: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const contentRef = useRef<HTMLDivElement>(null);
-  const decorativeRef = useRef<HTMLDivElement>(null);
   const isInViewport = useIsInViewport(sectionRef);
 
   useGSAP(() => {
     if (!isInViewport) return;
 
-    // Animate decorative elements first
-    if (decorativeRef.current) {
-      gsap.fromTo(
-        decorativeRef.current.children,
-        { opacity: 0, scale: 0.8, rotation: -10 },
-        {
-          opacity: 0.1,
-          scale: 1,
-          rotation: 0,
-          duration: 1.2,
-          ease: 'power2.out',
-          stagger: 0.2,
-        },
-      );
-    }
-
-    // Animate heading with enhanced effect
     if (headingRef.current) {
       gsap.fromTo(
         headingRef.current,
@@ -57,7 +39,6 @@ export const AboutMeSection: React.FC = () => {
       );
     }
 
-    // Animate content container
     if (contentRef.current) {
       gsap.fromTo(
         contentRef.current,
@@ -72,7 +53,6 @@ export const AboutMeSection: React.FC = () => {
       );
     }
 
-    // Animate paragraph lines with stagger
     lineRefs.current.forEach((el, idx) => {
       if (el) {
         gsap.fromTo(
@@ -93,21 +73,12 @@ export const AboutMeSection: React.FC = () => {
 
   return (
     <section id="about-me-section" className="about-me-section">
-      {/* Decorative background elements */}
-      <div className="about-me-section__decorative" ref={decorativeRef}>
-        <div className="about-me-section__decorative-circle about-me-section__decorative-circle--1"></div>
-        <div className="about-me-section__decorative-circle about-me-section__decorative-circle--2"></div>
-        <div className="about-me-section__decorative-circle about-me-section__decorative-circle--3"></div>
-      </div>
-
       <div className="py-24 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
         <div className="about-me-section__container">
           {/* Main content area */}
           <div className="about-me-section__content" ref={contentRef}>
             <div className="about-me-section__header">
-              <div className="about-me-section__badge">
-                <span>About Me</span>
-              </div>
+              <div className="about-me-section__badge"></div>
               <h2
                 className="about-me-section__title"
                 ref={headingRef}

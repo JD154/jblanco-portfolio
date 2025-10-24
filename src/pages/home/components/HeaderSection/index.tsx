@@ -133,26 +133,10 @@ const HeaderSection = () => {
             Crafting clean and functional user interfaces with <br />a strong focus on maintainability and scalability.
           </p>
 
-          {/* Quick Stats */}
-          <div className="header-section__stats" ref={statsRef}>
-            <div className="header-section__stat-item">
-              <span className="header-section__stat-number">7</span>
-              <span className="header-section__stat-label">Years Experience</span>
-            </div>
-            <div className="header-section__stat-item">
-              <span className="header-section__stat-number">50+</span>
-              <span className="header-section__stat-label">Projects Completed</span>
-            </div>
-            <div className="header-section__stat-item">
-              <span className="header-section__stat-number">15+</span>
-              <span className="header-section__stat-label">Technologies</span>
-            </div>
-          </div>
-
           {/* Action Buttons */}
           <div id="header-actions" className="header-section__actions">
             <GlowingButton variant="outline" size="lg" className="header-section__primary-btn">
-              <a href="[Detailed] Frontend Developer, Jesus Blanco 06.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="Senior Frontend Developer, Jesus Blanco.pdf" target="_blank" rel="noopener noreferrer">
                 <span className="header-section__btn-icon">📄</span>
                 Download CV
               </a>
@@ -164,32 +148,6 @@ const HeaderSection = () => {
               </a>
             </GlowingButton>
           </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="header-section__social" ref={socialRef}>
-          <a
-            href="https://github.com/JD154"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="header-section__social-link"
-          >
-            <span className="header-section__social-icon">⚡</span>
-            <span>GitHub</span>
-          </a>
-          <a href="mailto:jesusblanco.dev@gmail.com" className="header-section__social-link">
-            <span className="header-section__social-icon">✉️</span>
-            <span>Email</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/jesus-blanco-08682112a/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="header-section__social-link"
-          >
-            <span className="header-section__social-icon">🔗</span>
-            <span>LinkedIn</span>
-          </a>
         </div>
       </div>
     </div>
