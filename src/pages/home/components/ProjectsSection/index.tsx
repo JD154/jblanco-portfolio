@@ -1,4 +1,3 @@
-import { AnimatedHeading } from '@/components/general/AnimatedHeading';
 import projects from '@/data/projects.json';
 import { useRef, useState } from 'react';
 import { gsap } from 'gsap';
@@ -81,14 +80,14 @@ export const ProjectsSection: FC = () => {
 
     // Animate project cards
     const ctx = gsap.context(() => {
-      gsap.set(cardsRef.current, { opacity: 0, y: 50, rotationX: 15 });
+      gsap.set(cardsRef.current, { opacity: 0, y: 24, scale: 0.95 });
       gsap.to(cardsRef.current, {
         opacity: 1,
         y: 0,
-        rotationX: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power2.out',
+        scale: 1,
+        stagger: 0.08,
+        duration: 1.2,
+        ease: 'power3.out',
         delay: 0.8,
       });
     }, sectionRef);
