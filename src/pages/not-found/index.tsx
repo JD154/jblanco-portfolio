@@ -20,7 +20,7 @@ export const NotFound: FC = () => {
         </p>
         <div className="flex items-center justify-center mt-8">
           <GlowingButton id="download-btn" variant="outline" size="lg">
-            <a href="/" target="_blank" rel="noopener noreferrer">
+            <a href="/" rel="noopener noreferrer">
               Go to Home
             </a>
           </GlowingButton>

@@ -4,18 +4,7 @@ import { FC } from 'react';
 
 export const StarsBackground: FC = () => {
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100dvh', // Use 100dvh for mobile, fallback to 100vh if unsupported
-        minHeight: '100vh',
-        zIndex: 0,
-        pointerEvents: 'none',
-      }}
-    >
+    <div className="fixed z-0 top-0 left-0 w-full h-screen overflow-hidden pointer-events-none min-h-screen">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <ThreeStars />
       </Canvas>

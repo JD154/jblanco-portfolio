@@ -5,9 +5,10 @@ import { FC, PropsWithChildren } from 'react';
 export interface GlowingCardProps extends PropsWithChildren {
   redirectTo?: string;
   className?: string;
+  disableEffect?: boolean;
 }
 
-export const GlowingCard: FC<GlowingCardProps> = ({ redirectTo, className = '', children }) => {
+export const GlowingCard: FC<GlowingCardProps> = ({ redirectTo, className = '', disableEffect = false, children }) => {
   return (
     <div
       tabIndex={redirectTo ? 0 : undefined}
@@ -21,7 +22,14 @@ export const GlowingCard: FC<GlowingCardProps> = ({ redirectTo, className = '', 
       role={redirectTo ? 'button' : undefined}
       style={{ cursor: redirectTo ? 'pointer' : undefined }}
     >
-      <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} variant="white" />
+      <GlowingEffect
+        spread={40}
+        glow={true}
+        disabled={disableEffect}
+        proximity={64}
+        inactiveZone={0.01}
+        variant="white"
+      />
       {children}
     </div>
   );

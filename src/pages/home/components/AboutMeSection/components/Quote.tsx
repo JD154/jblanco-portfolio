@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useIsInViewport } from '../../../../../components/general/AnimatedHeading/hooks/useIsInViewport';
+import { useIsInViewport } from '../../../../../hooks/useIsInViewport';
 
 export const MinimalQuote: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -40,33 +40,78 @@ export const MinimalQuote: React.FC = () => {
     <div
       ref={cardRef}
       style={{
-        perspective: 800,
+        perspective: 1000,
         display: 'inline-block',
+        width: '100%',
       }}
     >
       <blockquote
         ref={blockquoteRef}
         style={{
           fontStyle: 'italic',
-          opacity: 0.7,
-          fontSize: '1rem',
+          fontSize: '1.125rem',
           textAlign: 'center',
-          borderLeft: '2px solid var(--color-border)',
-          paddingLeft: '1rem',
           margin: 0,
-          lineHeight: 1.5,
-          background: 'rgba(255, 255, 255, 0.3)',
-          borderRadius: '16px',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+          padding: '2rem',
+          lineHeight: 1.6,
+          color: 'var(--color-foreground)',
+          background: 'transparent',
+          border: 'none',
           transformStyle: 'preserve-3d',
-          transition: 'box-shadow 0.2s',
+          transition: 'all 0.3s ease',
+          position: 'relative',
         }}
       >
-        "An Evolution, the only way"
-        <br />
-        <span style={{ fontSize: '0.85em', opacity: 0.5 }}>
-          is a Lyric extract from <b>Dreary Moon</b> of <b>Big Black Delta</b>
-        </span>
+        <div
+          style={{
+            fontSize: '3rem',
+            opacity: 0.1,
+            position: 'absolute',
+            top: '0.5rem',
+            left: '1rem',
+            fontFamily: 'serif',
+            lineHeight: 1,
+          }}
+        >
+          "
+        </div>
+
+        <div
+          style={{
+            fontSize: '1.25rem',
+            fontWeight: 600,
+            marginBottom: '1rem',
+            color: 'var(--color-foreground)',
+          }}
+        >
+          An Evolution, the only way
+        </div>
+
+        <div
+          style={{
+            fontSize: '0.875rem',
+            opacity: 0.6,
+            fontStyle: 'normal',
+            color: 'var(--color-muted-foreground)',
+          }}
+        >
+          Lyric extract from <strong>Dreary Moon</strong> by <strong>Big Black Delta</strong>
+        </div>
+
+        <div
+          style={{
+            fontSize: '3rem',
+            opacity: 0.1,
+            position: 'absolute',
+            bottom: '0.5rem',
+            right: '1rem',
+            fontFamily: 'serif',
+            lineHeight: 1,
+            transform: 'rotate(180deg)',
+          }}
+        >
+          "
+        </div>
       </blockquote>
     </div>
   );

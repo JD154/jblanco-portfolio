@@ -16,14 +16,27 @@ const ThreeStarsComponent: FC = () => {
       ref.current.rotation.y -= delta / 55;
     }
   });
-  // Zoom effect on scroll
-  useStarsZoom(ref, {
-    min: 1,
-    max: 2.2,
-    triggerId: 'header-section-wrapper',
-    start: 'top top',
-    end: '+=400', // Adjust for desired zoom range
-  });
+
+  // Zoom effects on scroll for different sections
+  useStarsZoom(ref, [
+    // Header section zoom-in
+    {
+      triggerId: 'header-section-wrapper',
+      start: 'top top',
+      end: '+=400',
+      min: 1,
+      max: 2.2,
+    },
+    // About Me section zoom-out to create clustered sphere effect
+    {
+      triggerId: 'about-me-section',
+      start: 'top bottom', // Start when top of section reaches bottom of viewport
+      end: 'bottom center', // End when bottom of section reaches center of viewport
+      min: 0.5, // Minimum zoom level
+      max: 2.2, // Start zooming from current scale (could be up to 2.2)
+    },
+  ]);
+
   return (
     <group ref={ref} rotation={[0, 0, Math.PI / 4]}>
       <Points positions={sphere} stride={3} frustumCulled={false}>
