@@ -49,5 +49,5 @@ export function useStarsZoom(ref: React.RefObject<any>, triggers: ZoomTriggerCon
         tween.kill();
       });
     };
-  }, [ref, ...triggers.map((t) => t.triggerId + t.start + t.end + t.min + t.max)]);
+  }, [ref, triggers]);
 }
