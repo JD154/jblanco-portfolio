@@ -22,7 +22,7 @@ export function useStarsZoom(ref: React.RefObject<any>, triggers: ZoomTriggerCon
     const obj = ref.current;
     const tweens: gsap.core.Tween[] = [];
 
-    triggers.forEach(({ triggerId, start = 'top top', end = 'bottom top', min = 1, max = 2.2 }) => {
+    triggers.forEach(({ triggerId, start = 'top top', end = 'bottom top', max = 2.2 }) => {
       const trigger = document.getElementById(triggerId);
       if (!trigger) return;
 
