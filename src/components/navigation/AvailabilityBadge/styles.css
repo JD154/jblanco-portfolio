@@ -1,0 +1,128 @@
+/* Availability badge — sits centered in the navbar.
+   No outline/pill: bare inline layout with a hover text-swap behavior. */
+.nav-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', inherit;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.nav-badge:hover {
+  color: var(--color-foreground);
+}
+
+.nav-badge:focus-visible {
+  outline: none;
+  color: var(--color-foreground);
+}
+
+/* Text swap on hover — default sets the width, hover overlays it (no shift) */
+.nav-badge__label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-badge__label-default {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-badge__label-hover {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-badge__arrow {
+  font-size: 0.95em;
+  transition: transform 0.3s ease;
+}
+
+.nav-badge:hover .nav-badge__arrow {
+  transform: translateX(3px);
+}
+
+.nav-badge:hover .nav-badge__label-default {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.nav-badge:hover .nav-badge__label-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Live dot with an emanating "ping" ring */
+.nav-badge__dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  border-radius: 50%;
+  animation: nav-badge-pulse 2s infinite;
+}
+
+.nav-badge__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #34d399;
+  animation: nav-badge-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.nav-badge:hover .nav-badge__dot::after {
+  animation-duration: 1.2s;
+}
+
+/* Hide the availability badge on very narrow screens (keeps navbar clean) */
+@media (max-width: 480px) {
+  .nav-badge {
+    display: none;
+  }
+}
+
+@keyframes nav-badge-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes nav-badge-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}

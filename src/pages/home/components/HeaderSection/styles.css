@@ -110,49 +110,6 @@
   text-align: center;
 }
 
-/* Status Badge */
-.header-section__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-foreground);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  transition: all 0.3s ease;
-}
-
-.header-section__badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
-
-.header-section__status-dot {
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(135deg, #10b981, #34d399);
-  border-radius: 50%;
-  animation: pulse-green 2s infinite;
-}
-
-@keyframes pulse-green {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.2);
-  }
-}
-
 /* Main Content */
 .header-section__content {
   display: flex;
@@ -249,44 +206,11 @@
   margin-top: 1.5rem;
 }
 
-.header-section__primary-btn.header-section__primary-btn,
-.header-section__secondary-btn.header-section__secondary-btn {
-  height: auto;
-  padding: 0.6rem 1.25rem;
-  border-radius: 2rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  border: 1px solid var(--color-border);
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-}
-
+/* Buttons are plain GlowingButtons (primary / outline). Only reset the link. */
 .header-section__primary-btn a,
 .header-section__secondary-btn a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0;
-}
-
-/* Primary = filled white pill (like the active filter) */
-.header-section__primary-btn.header-section__primary-btn {
-  color: var(--color-background) !important;
-  border-color: transparent !important;
-  background: var(--pc-accent) !important;
-  box-shadow: 0 8px 24px var(--pc-accent-soft);
-}
-
-.header-section__primary-btn:hover {
-  transform: translateY(-2px);
-}
-
-/* Secondary = outline pill (like an inactive filter) */
-.header-section__secondary-btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--pc-accent-strong);
+  color: inherit;
+  text-decoration: none;
 }
 
 @keyframes bounce {
@@ -372,12 +296,6 @@
 }
 
 @media (max-width: 480px) {
-  .header-section__badge {
-    padding: 0.625rem 1.25rem;
-    font-size: 0.8125rem;
-    margin-bottom: 1.5rem;
-  }
-
   .header-section__description {
     font-size: 1rem;
     line-height: 1.6;
@@ -407,11 +325,6 @@
 }
 
 /* Dark mode enhancements */
-.dark .header-section__badge {
-  border-color: var(--pc-accent-strong);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.06);
-}
-
 .dark .header-section__stat-item:hover {
   border-color: var(--pc-accent-strong);
   box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
@@ -427,7 +340,6 @@
 }
 
 /* Animation improvements */
-.header-section__badge,
 .header-section__stat-item,
 .header-section__social-link {
   will-change: transform;

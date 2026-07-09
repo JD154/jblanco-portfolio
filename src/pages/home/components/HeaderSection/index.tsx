@@ -55,8 +55,6 @@ const HeaderSection = () => {
         );
       }
 
-      // Animate main heading (handled by AnimatedHeading component)
-
       // Animate description
       const split = SplitText.create(headingParagraphRef.current, {
         type: 'lines',
@@ -144,7 +142,7 @@ const HeaderSection = () => {
 
           {/* Action Buttons */}
           <div id="header-actions" className="header-section__actions">
-            <GlowingButton variant="outline" className="header-section__primary-btn">
+            <GlowingButton variant="default" className="header-section__primary-btn">
               <a href="Senior Frontend Developer, Jesus Blanco.pdf" target="_blank" rel="noopener noreferrer">
                 Download CV
               </a>

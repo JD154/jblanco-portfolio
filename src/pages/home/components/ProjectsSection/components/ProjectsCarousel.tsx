@@ -1,6 +1,7 @@
 import { FC, PointerEvent as ReactPointerEvent, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { GlowingButton } from '@/components/general/GlowingButton';
 import './ProjectsCarousel.css';
 
 export interface CarouselProject {
@@ -15,12 +16,13 @@ interface ProjectsCarouselProps {
   projects: CarouselProject[];
 }
 
-const RAIL_SIZE = 4;
 const SWIPE_THRESHOLD = 50;
 
 export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects }) => {
   const total = projects.length;
   const [activeIndex, setActiveIndex] = useState(0);
+  // Which rail edges are "capped" — used to drop the fade mask at the extremes.
+  const [railEdges, setRailEdges] = useState({ atStart: true, atEnd: true });
 
   const rootRef = useRef<HTMLDivElement | null>(null);
   const leftRef = useRef<HTMLDivElement | null>(null);
@@ -29,8 +31,10 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects }) => {
 
   const active = projects[activeIndex] ?? projects[0];
 
-  // On every slide change: fade/slide the copy, zoom-focus the featured
-  // thumbnail (blur -> sharp, scale down to settle), and stagger the rail.
+  // On every slide change: fade/slide the copy and zoom-focus the featured
+  // thumbnail (blur -> sharp, scale down to settle). The rail stays put — the
+  // active card is highlighted in place and scrolled into view, so nothing
+  // vanishes on selection.
   useGSAP(
     () => {
       if (leftRef.current) {
@@ -47,19 +51,46 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects }) => {
           { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.75, ease: 'power3.out' },
         );
       }
-      if (railRef.current) {
-        gsap.fromTo(
-          railRef.current.children,
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.06 },
-        );
+      // Keep the highlighted card centered within the rail — scroll ONLY the
+      // rail horizontally (never scrollIntoView, which would move the page).
+      const rail = railRef.current;
+      const activeCard = rail?.querySelector<HTMLElement>('.pc__card--active');
+      if (rail && activeCard) {
+        const railRect = rail.getBoundingClientRect();
+        const cardRect = activeCard.getBoundingClientRect();
+        const delta = cardRect.left - railRect.left - (rail.clientWidth - activeCard.clientWidth) / 2;
+        rail.scrollTo({ left: rail.scrollLeft + delta, behavior: 'smooth' });
       }
     },
     { dependencies: [activeIndex], scope: rootRef },
   );
 
+  // Intro stagger for the rail — runs once on mount, not on every selection.
+  useGSAP(
+    () => {
+      if (railRef.current) {
+        gsap.fromTo(
+          railRef.current.children,
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.06, clearProps: 'opacity,transform' },
+        );
+      }
+      updateRailEdges();
+    },
+    { scope: rootRef },
+  );
+
   const go = (dir: number) => setActiveIndex((i) => (i + dir + total) % total);
   const jumpTo = (index: number) => setActiveIndex(((index % total) + total) % total);
+
+  // Track scroll position so the edge fade only shows where there's overflow.
+  const updateRailEdges = () => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const atStart = rail.scrollLeft <= 1;
+    const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1;
+    setRailEdges((prev) => (prev.atStart === atStart && prev.atEnd === atEnd ? prev : { atStart, atEnd }));
+  };
 
   // Pointer drag / swipe support.
   const drag = useRef({ startX: 0, dragging: false, moved: false });
@@ -85,13 +116,6 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects }) => {
   const counter = String(activeIndex + 1).padStart(2, '0');
   const totalLabel = String(total).padStart(2, '0');
 
-  // Upcoming projects shown in the right rail (wraps around).
-  const railCount = Math.min(RAIL_SIZE, Math.max(0, total - 1));
-  const upcoming = Array.from({ length: railCount }, (_, i) => {
-    const index = (activeIndex + 1 + i) % total;
-    return { index, project: projects[index] };
-  });
-
   return (
     <div
       className="pc"
@@ -104,28 +128,26 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects }) => {
       <div className="pc__content">
         {/* Left copy */}
         <div className="pc__left" ref={leftRef} key={activeIndex}>
-          <span className="pc__eyebrow" data-animate>
-            <span className="pc__eyebrow-dot" />
-            {eyebrow}
-          </span>
           <h3 className="pc__title" data-animate>
             {active.title}
           </h3>
           <p className="pc__description" data-animate>
             {active.description}
           </p>
+          <span className="pc__eyebrow" data-animate>
+            {eyebrow}
+          </span>
 
           <div className="pc__cta-row" data-animate>
             {active.url ? (
-              <a className="pc__cta" href={active.url} target="_blank" rel="noreferrer">
-                <span className="pc__cta-label">View Project</span>
-                <span className="pc__cta-arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
+              <GlowingButton variant="default" className="pc__cta">
+                <a href={active.url} target="_blank" rel="noreferrer">
+                  View Project →
+                </a>
+              </GlowingButton>
             ) : (
-              <div className="pc__cta pc__cta--disabled" aria-disabled="true">
-                <span className="pc__cta-label">Demo Unavailable</span>
+              <div className="pc__cta--disabled" aria-disabled="true">
+                Demo Unavailable
               </div>
             )}
           </div>
@@ -150,17 +172,24 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects }) => {
             <span className="pc__featured-glow" aria-hidden="true" />
           </div>
 
-          {upcoming.length > 0 && (
-            <div className="pc__rail" ref={railRef}>
-              {upcoming.map(({ index, project }) => (
+          {total > 1 && (
+            <div
+              className={`pc__rail ${railEdges.atStart ? 'pc__rail--at-start' : ''} ${
+                railEdges.atEnd ? 'pc__rail--at-end' : ''
+              }`}
+              ref={railRef}
+              onScroll={updateRailEdges}
+            >
+              {projects.map((project, index) => (
                 <button
                   key={project.title}
                   type="button"
-                  className="pc__card"
+                  className={`pc__card ${index === activeIndex ? 'pc__card--active' : ''}`}
                   onClick={() => {
                     if (!drag.current.moved) jumpTo(index);
                   }}
                   aria-label={`View ${project.title}`}
+                  aria-current={index === activeIndex}
                 >
                   <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
                   <span className="pc__card-scrim" aria-hidden="true" />

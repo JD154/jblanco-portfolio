@@ -118,11 +118,9 @@ export const ProjectsSection: FC = () => {
             {FILTERS.map(({ key, label }) => (
               <GlowingButton
                 key={key}
-                variant="outline"
+                variant={filter === key ? 'default' : 'outline'}
                 onClick={() => setFilter(key)}
-                className={`projects-section__filter-btn ${
-                  filter === key ? 'projects-section__filter-btn--active' : ''
-                }`}
+                className="projects-section__filter-btn"
               >
                 {label}
               </GlowingButton>
