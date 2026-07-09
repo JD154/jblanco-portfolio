@@ -1,6 +1,9 @@
 .projects-section {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
   background: linear-gradient(
@@ -178,4 +181,10 @@
 /* Dark mode enhancements */
 .dark .projects-section__decorative-shape {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+/* Scroll-driven "unfold" — the showcase deploys open as it enters view */
+.projects-section__carousel-wrap {
+  transform-style: preserve-3d;
+  perspective: 1400px;
 }
