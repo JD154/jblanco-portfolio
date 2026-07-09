@@ -33,20 +33,13 @@
 .pc__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
-}
-
-.pc__eyebrow-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--pc-accent);
-  box-shadow: 0 0 12px var(--pc-accent-soft);
+  opacity: 0.6;
 }
 
 .pc__title {
@@ -73,56 +66,25 @@
   margin-top: 0.5rem;
 }
 
-.pc__cta {
+/* View Project — plain GlowingButton (primary). Only reset the inner link. */
+.pc__cta a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Disabled (no demo) — plain non-interactive pill, no glow */
+.pc__cta--disabled {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   padding: 0.75rem 1.6rem;
   border-radius: 2rem;
-  text-decoration: none;
-  color: var(--color-background);
-  background: var(--pc-accent);
-  border: 1px solid transparent;
-  box-shadow: 0 8px 24px var(--pc-accent-soft);
-  cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.pc__cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px var(--pc-accent-strong);
-}
-
-.pc__cta-label {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.pc__cta-arrow {
-  font-size: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.pc__cta:hover .pc__cta-arrow {
-  transform: translateX(3px);
-}
-
-.pc__cta--disabled {
   cursor: default;
   color: var(--color-muted-foreground);
   background: var(--color-card);
-  border-color: var(--color-border);
+  border: 1px solid var(--color-border);
   box-shadow: none;
   opacity: 0.75;
-}
-
-.pc__cta--disabled:hover {
-  transform: none;
-  box-shadow: none;
 }
 
 /* ---------- Right stage ---------- */
@@ -182,13 +144,40 @@
   background: radial-gradient(120% 80% at 50% 120%, color-mix(in srgb, var(--color-foreground) 12%, transparent), transparent 60%);
 }
 
-/* Upcoming filmstrip */
+/* Filmstrip of all projects */
 .pc__rail {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
-  padding-bottom: 0.25rem;
+  padding: 0.5rem 0 0.25rem;
   scrollbar-width: none;
+  /* Soft fade on both edges to hint there's more to scroll. The two edge
+     stops collapse to 0 when that side is capped (see modifiers below). */
+  --pc-rail-fade-start: 2.5rem;
+  --pc-rail-fade-end: 2.5rem;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--pc-rail-fade-start),
+    #000 calc(100% - var(--pc-rail-fade-end)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--pc-rail-fade-start),
+    #000 calc(100% - var(--pc-rail-fade-end)),
+    transparent 100%
+  );
+}
+
+/* Drop the fade on whichever edge is fully scrolled (no more to reveal) */
+.pc__rail--at-start {
+  --pc-rail-fade-start: 0px;
+}
+
+.pc__rail--at-end {
+  --pc-rail-fade-end: 0px;
 }
 
 .pc__rail::-webkit-scrollbar {
@@ -209,7 +198,8 @@
   transition:
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.4s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease,
+    opacity 0.3s ease;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
@@ -219,6 +209,30 @@
   box-shadow: 0 20px 42px rgba(0, 0, 0, 0.32);
   border-color: var(--pc-accent-strong);
   outline: none;
+}
+
+/* Active card — the one currently featured. Stays in place, clearly marked. */
+.pc__card--active {
+  border-color: var(--pc-accent);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.3),
+    0 0 0 2px var(--pc-accent),
+    0 0 22px var(--pc-accent-soft);
+}
+
+.pc__card--active .pc__card-img {
+  transform: scale(1.04);
+}
+
+/* Dim the non-active cards slightly so the selection reads at a glance */
+.pc__card:not(.pc__card--active) {
+  opacity: 0.72;
+}
+
+.pc__card--active,
+.pc__card:hover,
+.pc__card:focus-visible {
+  opacity: 1;
 }
 
 .pc__card-img {

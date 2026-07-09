@@ -13,20 +13,7 @@ const HeaderSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingParagraphRef = useRef<HTMLParagraphElement>(null);
   const decorativeRef = useRef<HTMLDivElement>(null);
-<<<<<<< Updated upstream
-  const eyebrowRef = useRef<HTMLSpanElement>(null);
-=======
-<<<<<<< Updated upstream
-  const badgeRef = useRef<HTMLDivElement>(null);
-=======
-  const badgeRef = useRef<HTMLButtonElement>(null);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
   const statsRef = useRef<HTMLDivElement>(null);
-
-  const scrollToContact = () => {
-    document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
-  };
   const socialRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -49,22 +36,6 @@ const HeaderSection = () => {
         );
       }
 
-<<<<<<< Updated upstream
-      // Animate eyebrow kicker
-      if (eyebrowRef.current) {
-        tl.fromTo(
-          eyebrowRef.current,
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-=======
-<<<<<<< Updated upstream
-      // Animate badge
-      if (badgeRef.current) {
-        tl.fromTo(
-          badgeRef.current,
-          { opacity: 0, y: -30, scale: 0.8 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power2.out' },
-=======
       // Power-on the main heading — glow ignites with a neon flicker, letters stagger in
       const titleChars = sectionRef.current?.querySelectorAll<HTMLElement>(
         '.header-section__main-title .animated-heading__char',
@@ -81,18 +52,6 @@ const HeaderSection = () => {
             ease: 'power2.out',
           },
           0,
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-        );
-      }
-
-      // Status / "get in touch" badge
-      if (badgeRef.current) {
-        tl.fromTo(
-          badgeRef.current,
-          { opacity: 0, y: 12, scale: 0.9 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power2.out', clearProps: 'transform' },
-          0.5,
         );
       }
 
@@ -174,30 +133,7 @@ const HeaderSection = () => {
       <div ref={sectionRef} id="header-section" className="header-section__container">
         {/* Main Content */}
         <div className="header-section__content">
-          <span className="header-section__eyebrow" ref={eyebrowRef}>
-            <span className="header-section__eyebrow-dot" />
-            Senior Front-End Developer
-          </span>
-
           <AnimatedHeading text="I'm JB" sensitivity={0.03} className="header-section__main-title" />
-
-          <button
-            type="button"
-            className="header-section__badge"
-            ref={badgeRef}
-            onClick={scrollToContact}
-            aria-label="Get in touch — go to contact section"
-            style={{ opacity: 0 }}
-          >
-            <span className="header-section__status-dot" />
-            <span className="header-section__badge-label">
-              <span className="header-section__badge-label-default">Booking new projects</span>
-              <span className="header-section__badge-label-hover" aria-hidden="true">
-                Get in touch
-                <span className="header-section__badge-arrow">→</span>
-              </span>
-            </span>
-          </button>
 
           <p ref={headingParagraphRef} className="header-section__description">
             Senior Front-End Developer with 7 Years of Experience <br />
@@ -206,7 +142,7 @@ const HeaderSection = () => {
 
           {/* Action Buttons */}
           <div id="header-actions" className="header-section__actions">
-            <GlowingButton variant="outline" className="header-section__primary-btn">
+            <GlowingButton variant="default" className="header-section__primary-btn">
               <a href="Senior Frontend Developer, Jesus Blanco.pdf" target="_blank" rel="noopener noreferrer">
                 Download CV
               </a>
