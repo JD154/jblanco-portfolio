@@ -2,11 +2,14 @@ import projects from '@/data/projects.json';
 import { useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FC } from 'react';
 import { useIsInViewport } from '@/hooks/useIsInViewport';
 import './styles.css';
 import { ProjectsCarousel } from './components/ProjectsCarousel';
 import { GlowingButton } from '@/components/general/GlowingButton';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FILTERS = [
   { key: 'all', label: 'All Projects' },
@@ -18,7 +21,6 @@ const FILTERS = [
 export const ProjectsSection: FC = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const decorativeRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const isInViewport = useIsInViewport(sectionRef);
@@ -66,40 +68,33 @@ export const ProjectsSection: FC = () => {
         },
       );
     }
+  }, [isInViewport]);
 
-    // Animate stats
-    if (statsRef.current) {
-      gsap.fromTo(
-        statsRef.current.children,
-        { opacity: 0, y: 30, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          ease: 'power2.out',
-          stagger: 0.1,
-          delay: 0.6,
-        },
-      );
-    }
-
-    // Animate carousel container
-    if (carouselRef.current) {
+  // Scroll-driven "unfold" — the showcase deploys open (grows + flattens) as
+  // it scrolls through view, like opening a portfolio briefcase.
+  useGSAP(
+    () => {
+      if (!carouselRef.current || !sectionRef.current) return;
       gsap.fromTo(
         carouselRef.current,
-        { opacity: 0, y: 40, scale: 0.97 },
+        { scale: 0.78, rotateX: 14, y: 60, opacity: 0.3, transformOrigin: '50% 0%', transformPerspective: 1400 },
         {
-          opacity: 1,
-          y: 0,
           scale: 1,
-          duration: 1,
-          ease: 'power3.out',
-          delay: 0.6,
+          rotateX: 0,
+          y: 0,
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            end: 'top 30%',
+            scrub: 0.6,
+          },
         },
       );
-    }
-  }, [isInViewport]);
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section id="projects-section" className="projects-section" ref={sectionRef}>
@@ -111,7 +106,7 @@ export const ProjectsSection: FC = () => {
         <div className="projects-section__decorative-shape projects-section__decorative-shape--4"></div>
       </div>
 
-      <div className="py-24 px-6 max-w-7xl mx-auto relative z-10">
+      <div className="projects-section__inner py-24 px-6 max-w-7xl mx-auto relative z-10">
         {/* Header — slim toolbar: section label + filters */}
         <div className="projects-section__header" ref={headerRef}>
           <h2 className="projects-section__label">
@@ -136,7 +131,7 @@ export const ProjectsSection: FC = () => {
         </div>
 
         {/* Projects Carousel */}
-        <div ref={carouselRef} style={{ opacity: 0 }}>
+        <div className="projects-section__carousel-wrap" ref={carouselRef}>
           {filteredProjects.length > 0 ? (
             <ProjectsCarousel key={filter} projects={filteredProjects} />
           ) : (

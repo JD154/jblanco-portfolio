@@ -70,7 +70,7 @@ export const ContactSection: React.FC = () => {
 
   return (
     <section id="contact-section" className="contact-section">
-      <div className="py-16 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
+      <div className="pt-32 pb-40 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
         {/* Header — slim toolbar label + divider (full-width, homogeneous with other sections) */}
         <div className="contact-section__bar">
           <h2

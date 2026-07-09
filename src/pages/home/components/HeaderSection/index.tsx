@@ -13,7 +13,6 @@ const HeaderSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingParagraphRef = useRef<HTMLParagraphElement>(null);
   const decorativeRef = useRef<HTMLDivElement>(null);
-  const eyebrowRef = useRef<HTMLSpanElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
 
@@ -37,12 +36,22 @@ const HeaderSection = () => {
         );
       }
 
-      // Animate eyebrow kicker
-      if (eyebrowRef.current) {
-        tl.fromTo(
-          eyebrowRef.current,
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+      // Power-on the main heading — glow ignites with a neon flicker, letters stagger in
+      const titleChars = sectionRef.current?.querySelectorAll<HTMLElement>(
+        '.header-section__main-title .animated-heading__char',
+      );
+      if (titleChars && titleChars.length) {
+        gsap.set(titleChars, { opacity: 0, filter: 'blur(14px)' });
+        tl.to(
+          titleChars,
+          {
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 1.2,
+            stagger: 0.13,
+            ease: 'power2.out',
+          },
+          0,
         );
       }
 
@@ -126,11 +135,6 @@ const HeaderSection = () => {
       <div ref={sectionRef} id="header-section" className="header-section__container">
         {/* Main Content */}
         <div className="header-section__content">
-          <span className="header-section__eyebrow" ref={eyebrowRef}>
-            <span className="header-section__eyebrow-dot" />
-            Senior Front-End Developer
-          </span>
-
           <AnimatedHeading text="I'm JB" sensitivity={0.03} className="header-section__main-title" />
 
           <p ref={headingParagraphRef} className="header-section__description">
