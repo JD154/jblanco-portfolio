@@ -70,7 +70,23 @@ export const ContactSection: React.FC = () => {
 
   return (
     <section id="contact-section" className="contact-section">
+<<<<<<< Updated upstream
       <div className="py-16 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
+<<<<<<< Updated upstream
+=======
+        <div className="contact-section__container">
+          <div className="contact-section__header">
+            <h2
+              className="contact-section__title"
+              ref={headingRef}
+              style={{ opacity: 0, transform: 'translateY(50px) scale(0.9)' }}
+            >
+              Get In Touch
+            </h2>
+          </div>
+=======
+      <div className="pt-32 pb-40 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
+>>>>>>> Stashed changes
         {/* Header — slim toolbar label + divider (full-width, homogeneous with other sections) */}
         <div className="contact-section__bar">
           <h2
@@ -82,6 +98,10 @@ export const ContactSection: React.FC = () => {
             Get In Touch
           </h2>
         </div>
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
         <p className="contact-section__subtitle">
           Have a project in mind or just want to say hi? Reach out through any of these channels.
