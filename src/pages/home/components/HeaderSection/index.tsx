@@ -13,7 +13,7 @@ const HeaderSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingParagraphRef = useRef<HTMLParagraphElement>(null);
   const decorativeRef = useRef<HTMLDivElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
+  const eyebrowRef = useRef<HTMLSpanElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
 
@@ -37,12 +37,12 @@ const HeaderSection = () => {
         );
       }
 
-      // Animate badge
-      if (badgeRef.current) {
+      // Animate eyebrow kicker
+      if (eyebrowRef.current) {
         tl.fromTo(
-          badgeRef.current,
-          { opacity: 0, y: -30, scale: 0.8 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power2.out' },
+          eyebrowRef.current,
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
         );
       }
 
@@ -126,6 +126,11 @@ const HeaderSection = () => {
       <div ref={sectionRef} id="header-section" className="header-section__container">
         {/* Main Content */}
         <div className="header-section__content">
+          <span className="header-section__eyebrow" ref={eyebrowRef}>
+            <span className="header-section__eyebrow-dot" />
+            Senior Front-End Developer
+          </span>
+
           <AnimatedHeading text="I'm JB" sensitivity={0.03} className="header-section__main-title" />
 
           <p ref={headingParagraphRef} className="header-section__description">
@@ -135,15 +140,13 @@ const HeaderSection = () => {
 
           {/* Action Buttons */}
           <div id="header-actions" className="header-section__actions">
-            <GlowingButton variant="outline" size="lg" className="header-section__primary-btn">
+            <GlowingButton variant="outline" className="header-section__primary-btn">
               <a href="Senior Frontend Developer, Jesus Blanco.pdf" target="_blank" rel="noopener noreferrer">
-                <span className="header-section__btn-icon">📄</span>
                 Download CV
               </a>
             </GlowingButton>
-            <GlowingButton variant="ghost" size="lg" className="header-section__secondary-btn">
+            <GlowingButton variant="outline" className="header-section__secondary-btn">
               <a href="https://www.linkedin.com/in/jesus-blanco-08682112a/" target="_blank" rel="noopener noreferrer">
-                <span className="header-section__btn-icon">💼</span>
                 Visit LinkedIn
               </a>
             </GlowingButton>

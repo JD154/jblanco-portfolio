@@ -1,4 +1,7 @@
 .about-me-section {
+  --pc-accent: var(--color-foreground);
+  --pc-accent-soft: color-mix(in srgb, var(--color-foreground) 22%, transparent);
+  --pc-accent-strong: color-mix(in srgb, var(--color-foreground) 45%, transparent);
   width: 100%;
   min-height: 100vh;
   position: relative;
@@ -25,7 +28,7 @@
 .about-me-section__decorative-circle {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(45deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.08), rgba(236, 72, 153, 0.08));
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
   filter: blur(2px);
   animation: float 20s ease-in-out infinite;
 }
@@ -84,32 +87,46 @@
   gap: 2rem;
 }
 
-.about-me-section__header {
+/* Header — slim toolbar label + divider (shared visual with other sections) */
+.about-me-section__bar {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+  position: relative;
+  z-index: 10;
 }
 
-.about-me-section__badge {
+.about-me-section__label {
   display: inline-flex;
   align-items: center;
-  width: fit-content;
-  padding: 0.5rem 1.25rem;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+  gap: 0.7rem;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--color-foreground);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+}
+
+.about-me-section__label-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pc-accent);
+  box-shadow: 0 0 12px var(--pc-accent-soft);
 }
 
 .about-me-section__title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.15rem, 4vw, 3.35rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
   color: var(--color-foreground);
   text-shadow: var(--heading-text-shadow);
   margin: 0;
@@ -281,14 +298,6 @@
 }
 
 @media (max-width: 480px) {
-  .about-me-section__badge {
-    align-self: center;
-  }
-
-  .about-me-section__title {
-    text-align: center;
-  }
-
   .about-me-section__skills {
     flex-direction: column;
     align-items: center;
@@ -301,16 +310,11 @@
 }
 
 /* Dark mode enhancements */
-.dark .about-me-section__badge {
-  border-color: rgba(99, 102, 241, 0.2);
-  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
-}
-
 .dark .about-me-section__skill-item:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+  border-color: var(--pc-accent-strong);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
 }
 
 .dark .about-me-section__decorative-circle {
-  background: linear-gradient(45deg, rgba(99, 102, 241, 0.06), rgba(168, 85, 247, 0.06), rgba(236, 72, 153, 0.06));
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
 }

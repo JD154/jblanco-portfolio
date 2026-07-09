@@ -5,16 +5,22 @@ import { useGSAP } from '@gsap/react';
 import { FC } from 'react';
 import { useIsInViewport } from '@/hooks/useIsInViewport';
 import './styles.css';
-import { ProjectCard } from './components/ProjectCard';
+import { ProjectsCarousel } from './components/ProjectsCarousel';
 import { GlowingButton } from '@/components/general/GlowingButton';
+
+const FILTERS = [
+  { key: 'all', label: 'All Projects' },
+  { key: 'react', label: 'React' },
+  { key: 'vue', label: 'Vue.js' },
+  { key: 'typescript', label: 'TypeScript' },
+] as const;
 
 export const ProjectsSection: FC = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement | null>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const decorativeRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const isInViewport = useIsInViewport(sectionRef);
 
   const [filter, setFilter] = useState<string>('all');
@@ -78,21 +84,21 @@ export const ProjectsSection: FC = () => {
       );
     }
 
-    // Animate project cards
-    const ctx = gsap.context(() => {
-      gsap.set(cardsRef.current, { opacity: 0, y: 24, scale: 0.95 });
-      gsap.to(cardsRef.current, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        stagger: 0.08,
-        duration: 1.2,
-        ease: 'power3.out',
-        delay: 0.8,
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    // Animate carousel container
+    if (carouselRef.current) {
+      gsap.fromTo(
+        carouselRef.current,
+        { opacity: 0, y: 40, scale: 0.97 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          ease: 'power3.out',
+          delay: 0.6,
+        },
+      );
+    }
   }, [isInViewport]);
 
   return (
@@ -106,66 +112,36 @@ export const ProjectsSection: FC = () => {
       </div>
 
       <div className="py-24 px-6 max-w-7xl mx-auto relative z-10">
-        {/* Header Section */}
+        {/* Header — slim toolbar: section label + filters */}
         <div className="projects-section__header" ref={headerRef}>
-          <h2
-            className="about-me-section__title"
-            ref={headingRef}
-            style={{ opacity: 0, transform: 'translateY(50px) scale(0.9)' }}
-          >
+          <h2 className="projects-section__label">
+            <span className="projects-section__eyebrow-dot" />
             Featured Projects
           </h2>
-          <p className="projects-section__description">
-            A showcase of my technical expertise and creative problem-solving through diverse projects, ranging from
-            enterprise applications to innovative UI libraries.
-          </p>
+
+          <div className="projects-section__filters">
+            {FILTERS.map(({ key, label }) => (
+              <GlowingButton
+                key={key}
+                variant="outline"
+                onClick={() => setFilter(key)}
+                className={`projects-section__filter-btn ${
+                  filter === key ? 'projects-section__filter-btn--active' : ''
+                }`}
+              >
+                {label}
+              </GlowingButton>
+            ))}
+          </div>
         </div>
 
-        {/* Filter Section */}
-        <div className="projects-section__filters">
-          <GlowingButton
-            size={'lg'}
-            onClick={() => setFilter('all')}
-            className={`projects-section__filter-btn ${filter === 'all' ? 'projects-section__filter-btn--active' : ''}`}
-          >
-            All Projects
-          </GlowingButton>
-          <GlowingButton
-            size={'lg'}
-            onClick={() => setFilter('react')}
-            className={`projects-section__filter-btn ${filter === 'react' ? 'projects-section__filter-btn--active' : ''}`}
-          >
-            React
-          </GlowingButton>
-          <GlowingButton
-            size={'lg'}
-            onClick={() => setFilter('vue')}
-            className={`projects-section__filter-btn ${filter === 'vue' ? 'projects-section__filter-btn--active' : ''}`}
-          >
-            Vue.js
-          </GlowingButton>
-          <GlowingButton
-            size={'lg'}
-            onClick={() => setFilter('typescript')}
-            className={`projects-section__filter-btn ${filter === 'typescript' ? 'projects-section__filter-btn--active' : ''}`}
-          >
-            TypeScript
-          </GlowingButton>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="projects-section__grid">
-          {filteredProjects.map((project, idx) => (
-            <div
-              key={project.title}
-              ref={(el: HTMLDivElement | null) => {
-                cardsRef.current[idx] = el;
-              }}
-              className="projects-section__card-wrapper"
-            >
-              <ProjectCard {...project} />
-            </div>
-          ))}
+        {/* Projects Carousel */}
+        <div ref={carouselRef} style={{ opacity: 0 }}>
+          {filteredProjects.length > 0 ? (
+            <ProjectsCarousel key={filter} projects={filteredProjects} />
+          ) : (
+            <p className="projects-section__empty">No projects match this filter yet.</p>
+          )}
         </div>
       </div>
     </section>
