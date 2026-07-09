@@ -10,7 +10,7 @@ export const HomePage: FC = () => {
   useParallaxTransitionForSections([
     {
       fromSelector: '#header-section',
-      toSelector: '#projects-section',
+      toSelector: '#about-me-section',
       bgSelector: '#stars-bg',
       bgAnimation: { scale: 1.5, ease: 'power1.inOut' },
       fromAnimation: { opacity: 0, y: -100, ease: 'power1.inOut' },
@@ -27,8 +27,8 @@ export const HomePage: FC = () => {
   return (
     <>
       <HeaderSection />
-      <ProjectsSection />
       <AboutMeSection />
+      <ProjectsSection />
       <ContactSection />
     </>
   );

@@ -13,7 +13,6 @@ const HeaderSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingParagraphRef = useRef<HTMLParagraphElement>(null);
   const decorativeRef = useRef<HTMLDivElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
 
@@ -37,16 +36,24 @@ const HeaderSection = () => {
         );
       }
 
-      // Animate badge
-      if (badgeRef.current) {
-        tl.fromTo(
-          badgeRef.current,
-          { opacity: 0, y: -30, scale: 0.8 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power2.out' },
+      // Power-on the main heading — glow ignites with a neon flicker, letters stagger in
+      const titleChars = sectionRef.current?.querySelectorAll<HTMLElement>(
+        '.header-section__main-title .animated-heading__char',
+      );
+      if (titleChars && titleChars.length) {
+        gsap.set(titleChars, { opacity: 0, filter: 'blur(14px)' });
+        tl.to(
+          titleChars,
+          {
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 1.2,
+            stagger: 0.13,
+            ease: 'power2.out',
+          },
+          0,
         );
       }
-
-      // Animate main heading (handled by AnimatedHeading component)
 
       // Animate description
       const split = SplitText.create(headingParagraphRef.current, {
@@ -135,15 +142,13 @@ const HeaderSection = () => {
 
           {/* Action Buttons */}
           <div id="header-actions" className="header-section__actions">
-            <GlowingButton variant="outline" size="lg" className="header-section__primary-btn">
+            <GlowingButton variant="default" className="header-section__primary-btn">
               <a href="Senior Frontend Developer, Jesus Blanco.pdf" target="_blank" rel="noopener noreferrer">
-                <span className="header-section__btn-icon">📄</span>
                 Download CV
               </a>
             </GlowingButton>
-            <GlowingButton variant="ghost" size="lg" className="header-section__secondary-btn">
+            <GlowingButton variant="outline" className="header-section__secondary-btn">
               <a href="https://www.linkedin.com/in/jesus-blanco-08682112a/" target="_blank" rel="noopener noreferrer">
-                <span className="header-section__btn-icon">💼</span>
                 Visit LinkedIn
               </a>
             </GlowingButton>

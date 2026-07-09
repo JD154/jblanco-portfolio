@@ -74,19 +74,24 @@ export const AboutMeSection: React.FC = () => {
   return (
     <section id="about-me-section" className="about-me-section">
       <div className="py-24 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
+        {/* Header — slim toolbar label + divider */}
+        <div className="about-me-section__bar">
+          <span className="about-me-section__label">
+            <span className="about-me-section__label-dot" />
+            About Me
+          </span>
+        </div>
+
         <div className="about-me-section__container">
           {/* Main content area */}
           <div className="about-me-section__content" ref={contentRef}>
-            <div className="about-me-section__header">
-              <div className="about-me-section__badge"></div>
-              <h2
-                className="about-me-section__title"
-                ref={headingRef}
-                style={{ opacity: 0, transform: 'translateY(50px) scale(0.9)' }}
-              >
-                {aboutMeHeading}
-              </h2>
-            </div>
+            <h2
+              className="about-me-section__title"
+              ref={headingRef}
+              style={{ opacity: 0, transform: 'translateY(50px) scale(0.9)' }}
+            >
+              {aboutMeHeading}
+            </h2>
 
             <div className="about-me-section__text-content">
               {aboutMeParagraphLines.map((line, idx) => (
