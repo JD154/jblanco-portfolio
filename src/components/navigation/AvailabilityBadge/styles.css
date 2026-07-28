@@ -23,7 +23,8 @@
 }
 
 .nav-badge:focus-visible {
-  outline: none;
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
   color: var(--color-foreground);
 }
 

@@ -1,6 +1,8 @@
-import { FC, useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { createElement, useEffect, useRef } from 'react';
+import type { FC } from 'react';
+import { gsap } from 'gsap';
 import { useIsInViewport } from '../../../hooks/useIsInViewport';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import './styles.css';
 
 interface AnimatedHeadingProps {
@@ -9,6 +11,7 @@ interface AnimatedHeadingProps {
   sensitivity?: number;
   className?: string;
   animation?: string;
+  as?: 'div' | 'h1' | 'h2' | 'h3';
 }
 
 export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
@@ -17,29 +20,24 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
   sensitivity = 0.02,
   className,
   animation,
+  as: Heading = 'div',
 }) => {
   const prefix = 'animated-heading';
 
   const getClasses = () => {
     const classes = [prefix];
-    className && classes.push(className);
+    if (className) classes.push(className);
     return classes.join(' ');
   };
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   // Refs for each character
   const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   const isInViewport = useIsInViewport(containerRef);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (!isInViewport) {
-      charRefs.current.forEach((ref) => {
-        if (ref) {
-          gsap.to(ref, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.5, ease: 'power3.out' });
-        }
-      });
-      return;
-    }
+    if (prefersReducedMotion || !isInViewport) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const container = containerRef.current;
@@ -74,17 +72,21 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
       });
     };
 
+    const container = containerRef.current;
+
     window.addEventListener('mousemove', handleMouseMove);
-    containerRef.current?.addEventListener('mouseleave', handleMouseLeave);
+    container?.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      containerRef.current?.removeEventListener('mouseleave', handleMouseLeave);
+      container?.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [sensitivity, isInViewport]);
+  }, [sensitivity, isInViewport, prefersReducedMotion]);
 
-  return (
-    <div className={getClasses()} ref={containerRef} data-animate={animation}>
+  return createElement(
+    Heading,
+    { className: getClasses(), ref: containerRef, 'data-animate': animation },
+    <>
       {text.split('').map((char, index) => {
         if (char === ' ') {
           return (
@@ -112,6 +114,6 @@ export const AnimatedHeading: FC<AnimatedHeadingProps> = ({
           </span>
         );
       })}
-    </div>
+    </>,
   );
 };

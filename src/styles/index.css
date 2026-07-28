@@ -1,4 +1,5 @@
 @import './fonts.css';
+@import 'tw-animate-css';
 @import './tailwind.css';
 @import './custom-utilities.css';
 
@@ -55,4 +56,60 @@ html {
 
 body {
   overflow-x: hidden;
+}
+
+.stars-background-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--color-foreground) 32%, transparent) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 75% 65%, color-mix(in srgb, var(--color-foreground) 24%, transparent) 0 1px, transparent 1.5px);
+  background-size: 113px 151px, 179px 197px;
+  opacity: 0.45;
+  transition: opacity 400ms ease-out;
+}
+
+.webgl-stars-background {
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+}
+
+.webgl-stars-ready .stars-background-fallback {
+  opacity: 0;
+}
+
+.webgl-stars-ready .webgl-stars-background {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .header-section,
+  .header-section *,
+  .header-section *::before,
+  .header-section *::after,
+  .about-me-section,
+  .about-me-section *,
+  .about-me-section *::before,
+  .about-me-section *::after,
+  .projects-section,
+  .projects-section *,
+  .projects-section *::before,
+  .projects-section *::after,
+  .contact-section,
+  .contact-section *,
+  .contact-section *::before,
+  .contact-section *::after,
+  .nav-badge,
+  .nav-badge *,
+  .nav-badge *::before,
+  .nav-badge *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

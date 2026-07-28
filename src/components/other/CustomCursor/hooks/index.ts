@@ -1,4 +1,4 @@
-import { AvailableThemes } from '@/typings';
+import type { AvailableThemes } from '@/typings';
 
 export const useGetCursorVariants = (theme: AvailableThemes) => {
   const colorVariant = theme === 'dark' ? '#ffffff' : '#333333';

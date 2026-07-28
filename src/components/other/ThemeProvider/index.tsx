@@ -1,23 +1,13 @@
-import { AvailableThemes } from '@/typings';
-import { createContext, FC, useContext, useEffect, useState } from 'react';
+import type { AvailableThemes } from '@/typings';
+import { useEffect, useState } from 'react';
+import type { FC, ReactNode } from 'react';
+import { THEME_CHANGE_EVENT, ThemeProviderContext } from './context';
 
 type ThemeProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   defaultTheme?: AvailableThemes;
   storageKey?: string;
 };
-
-type ThemeProviderState = {
-  theme: AvailableThemes;
-  setTheme: (theme: AvailableThemes) => void;
-};
-
-const initialState: ThemeProviderState = {
-  theme: 'dark',
-  setTheme: () => null,
-};
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
   children,
@@ -25,9 +15,26 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   storageKey = 'vite-ui-theme',
   ...props
 }) => {
-  const [theme, setTheme] = useState<AvailableThemes>(
-    () => (localStorage.getItem(storageKey) as AvailableThemes) || defaultTheme,
+  const [theme, setThemeState] = useState<AvailableThemes>(
+    () =>
+      typeof window === 'undefined'
+        ? defaultTheme
+        : (window.localStorage.getItem(storageKey) as AvailableThemes) || defaultTheme,
   );
+
+  useEffect(() => {
+    const handleThemeChange = (event: WindowEventMap[typeof THEME_CHANGE_EVENT]) => {
+      const { detail } = event;
+
+      if ((detail === 'light' || detail === 'dark') && detail !== theme) {
+        setThemeState(detail);
+      }
+    };
+
+    window.addEventListener(THEME_CHANGE_EVENT, handleThemeChange);
+
+    return () => window.removeEventListener(THEME_CHANGE_EVENT, handleThemeChange);
+  }, [theme]);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -40,8 +47,9 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   const value = {
     theme,
     setTheme: (theme: AvailableThemes) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+      window.localStorage.setItem(storageKey, theme);
+      setThemeState(theme);
+      window.dispatchEvent(new CustomEvent<AvailableThemes>(THEME_CHANGE_EVENT, { detail: theme }));
     },
   };
 
@@ -50,12 +58,4 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
       {children}
     </ThemeProviderContext.Provider>
   );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeProviderContext);
-
-  if (context === undefined) throw new Error('useTheme must be used within a ThemeProvider');
-
-  return context;
 };

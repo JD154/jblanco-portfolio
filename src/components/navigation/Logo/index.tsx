@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import './styles.css';
 
 interface LogoProps {
@@ -9,7 +9,7 @@ export const Logo: FC<LogoProps> = ({ className }) => {
   const prefix = 'brand-logo';
   const getClasses = () => {
     const classes = [prefix];
-    className && classes.push(className);
+    if (className) classes.push(className);
     return classes.join(' ');
   };
 
