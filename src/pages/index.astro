@@ -1,0 +1,27 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { AboutMeSection } from '@/components/sections/AboutMeSection';
+import { ContactSectionIsland } from '@/components/islands/ContactSectionIsland';
+import { CustomCursorIsland } from '@/components/islands/CustomCursorIsland';
+import { HeaderSectionIsland } from '@/components/islands/HeaderSectionIsland';
+import { NavigationBarIsland } from '@/components/islands/NavigationBarIsland';
+import { ParallaxController } from '@/components/islands/ParallaxController';
+import { ProjectsSectionIsland } from '@/components/islands/ProjectsSectionIsland';
+import { StarsBackgroundIsland } from '@/components/islands/StarsBackgroundIsland';
+import { getLocalizedProjects } from '@/i18n/projects';
+import { ui } from '@/i18n/ui';
+
+const lang = 'en';
+const t = ui[lang];
+---
+
+<BaseLayout {lang} {t}>
+  <StarsBackgroundIsland client:media="(min-width: 768px)" />
+  <NavigationBarIsland client:load {lang} t={t.nav} alternateUrl="/es/" />
+  <HeaderSectionIsland client:load t={t.header} />
+  <AboutMeSection client:load t={t.about} />
+  <ProjectsSectionIsland client:load projects={getLocalizedProjects(lang)} t={t.projects} />
+  <ContactSectionIsland client:load t={t.contact} />
+  <ParallaxController client:load />
+  <CustomCursorIsland client:load />
+</BaseLayout>

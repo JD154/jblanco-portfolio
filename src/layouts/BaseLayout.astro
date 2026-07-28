@@ -1,0 +1,63 @@
+---
+import '@/styles/index.css';
+import type { Lang, Ui } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+  t: Ui;
+}
+
+const { lang, t } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogLocale = lang === 'en' ? 'en_US' : 'es_ES';
+const alternateOgLocale = lang === 'en' ? 'es_ES' : 'en_US';
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Jesus Blanco',
+  url: 'https://jblanco.dev',
+  jobTitle: t.seo.jobTitle,
+  sameAs: ['https://github.com/JD154', 'https://www.linkedin.com/in/jesus-blanco-08682112a/'],
+};
+---
+
+<!doctype html>
+<html lang={lang} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href="https://jblanco.dev/" />
+    <link rel="alternate" hreflang="es" href="https://jblanco.dev/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://jblanco.dev/" />
+    <title>{t.seo.title}</title>
+    <meta name="description" content={t.seo.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jesus Blanco" />
+    <meta property="og:title" content={t.seo.title} />
+    <meta property="og:description" content={t.seo.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={alternateOgLocale} />
+    <meta property="og:image" content="https://jblanco.dev/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.seo.title} />
+    <meta name="twitter:description" content={t.seo.description} />
+    <meta name="twitter:image" content="https://jblanco.dev/og-image.jpg" />
+    <script is:inline>
+      const theme = localStorage.getItem('vite-ui-theme');
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme === 'light' ? 'light' : 'dark');
+    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <div id="root">
+      <main class="relative min-h-screen min-w-screen overflow-hidden">
+        <div class="stars-background-fallback" aria-hidden="true"></div>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import type { Object3D } from 'three';
 gsap.registerPlugin(ScrollTrigger);
 
 interface ZoomTriggerConfig {
@@ -16,8 +18,11 @@ interface ZoomTriggerConfig {
  * @param ref - React ref to the Three.js object
  * @param triggers - Array of trigger configurations
  */
-export function useStarsZoom(ref: React.RefObject<any>, triggers: ZoomTriggerConfig[]) {
+export function useStarsZoom(ref: React.RefObject<Object3D | null>, triggers: ZoomTriggerConfig[]) {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   useEffect(() => {
+    if (prefersReducedMotion) return;
     if (!ref.current) return;
     const obj = ref.current;
     const tweens: gsap.core.Tween[] = [];
@@ -49,5 +54,5 @@ export function useStarsZoom(ref: React.RefObject<any>, triggers: ZoomTriggerCon
         tween.kill();
       });
     };
-  }, [ref, triggers]);
+  }, [prefersReducedMotion, ref, triggers]);
 }

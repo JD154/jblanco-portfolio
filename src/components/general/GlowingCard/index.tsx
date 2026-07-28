@@ -1,6 +1,6 @@
 import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
 import './styles.css';
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 export interface GlowingCardProps extends PropsWithChildren {
   redirectTo?: string;
