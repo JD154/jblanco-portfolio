@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CursorContext } from '../index';
+import { CursorContext } from '../context';
 
 /**
  * Custom hook to access the CursorContext.

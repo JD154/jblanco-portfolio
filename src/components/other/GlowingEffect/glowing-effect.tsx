@@ -1,8 +1,9 @@
 'use client';
 import { cn } from '@/lib/utils';
 import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { memo, useCallback, useRef } from 'react';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { useGradient } from './hooks/useGradient';
 
 interface GlowingEffectProps {
@@ -31,12 +32,14 @@ const GlowingEffect = memo(
     disabled = true,
   }: GlowingEffectProps) => {
     const gradient = useGradient(variant);
+    const prefersReducedMotion = usePrefersReducedMotion();
     const containerRef = useRef<HTMLDivElement>(null);
     const lastPosition = useRef({ x: 0, y: 0 });
     const animationFrameRef = useRef<number>(0);
 
     const handleMove = useCallback(
       (e?: MouseEvent | { x: number; y: number }) => {
+        if (prefersReducedMotion) return;
         if (!containerRef.current) return;
 
         if (animationFrameRef.current) {
@@ -75,7 +78,7 @@ const GlowingEffect = memo(
           if (!isActive) return;
 
           const currentAngle = parseFloat(element.style.getPropertyValue('--start')) || 0;
-          let targetAngle = (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) / Math.PI + 90;
+          const targetAngle = (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) / Math.PI + 90;
 
           const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
           const newAngle = currentAngle + angleDiff;
@@ -93,11 +96,11 @@ const GlowingEffect = memo(
           );
         });
       },
-      [inactiveZone, proximity, movementDuration],
+      [inactiveZone, proximity, movementDuration, prefersReducedMotion],
     );
 
     useGSAP(() => {
-      if (disabled) return;
+      if (disabled || prefersReducedMotion) return;
 
       const handleScroll = () => handleMove();
       const handlePointerMove = (e: PointerEvent) => handleMove(e);
@@ -114,7 +117,7 @@ const GlowingEffect = memo(
         window.removeEventListener('scroll', handleScroll);
         document.body.removeEventListener('pointermove', handlePointerMove);
       };
-    }, [handleMove, disabled]);
+    }, [handleMove, disabled, prefersReducedMotion]);
 
     return (
       <>

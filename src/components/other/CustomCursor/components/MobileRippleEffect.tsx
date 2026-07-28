@@ -1,5 +1,5 @@
-import { useTheme } from '@/components/other/ThemeProvider';
-import { FC } from 'react';
+import { useTheme } from '@/components/other/ThemeProvider/context';
+import type { FC } from 'react';
 
 interface MobileRippleEffectProps {
   ripples: { x: number; y: number; key: number }[];

@@ -1,9 +1,10 @@
-import { useTheme } from '@/components/other/ThemeProvider';
-import gsap from 'gsap';
+import { useTheme } from '@/components/other/ThemeProvider/context';
+import { gsap } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useCursorContext } from '../../other/CursorProvider/hooks';
 import './styles.css';
 import { useGetCursorVariants } from './hooks';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 import { MobileRippleEffect } from './components/MobileRippleEffect';
 
@@ -16,9 +17,18 @@ export const CustomCursor = () => {
 
   const { animateCursorVariant, animateCursor } = context;
   const { theme } = useTheme();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const variants = useGetCursorVariants(theme);
   type CursorVariantKey = keyof typeof variants;
+  type CursorVariant = {
+    backgroundColor: string;
+    border: string | number;
+    borderRadius: string;
+    boxShadow: string;
+    scale: number;
+    transition: { duration: number };
+  };
 
   const cursorRef = useRef<HTMLDivElement>(null);
   const [ripples, setRipples] = useState<{ x: number; y: number; key: number }[]>([]);
@@ -31,6 +41,8 @@ export const CustomCursor = () => {
 
   // GSAP cursor movement and click effect (optimized with requestAnimationFrame)
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const root = document.getElementById('root');
     if (!root || !cursorRef.current) return;
 
@@ -109,20 +121,20 @@ export const CustomCursor = () => {
         cancelAnimationFrame(rafId.current);
       }
     };
-  }, [animateCursor]);
+  }, [animateCursor, prefersReducedMotion]);
 
   // GSAP cursor variant animation
   useEffect(() => {
+    if (prefersReducedMotion) return;
     if (!cursorRef.current) return;
     const key = animateCursorVariant as CursorVariantKey;
-    const variant = variants[key] || {};
-    // Defensive extraction for variant properties
-    const scale = (variant as any).scale ?? 1;
-    const border = (variant as any).border ?? 'none';
-    const boxShadow = (variant as any).boxShadow ?? 'none';
-    const borderRadius = (variant as any).borderRadius ?? '50%';
-    const backgroundColor = (variant as any).backgroundColor ?? 'transparent';
-    const duration = (variant as any).transition?.duration ?? 0.2;
+    const variant = (variants[key] ?? {}) as Partial<CursorVariant>;
+    const scale = variant.scale ?? 1;
+    const border = variant.border ?? 'none';
+    const boxShadow = variant.boxShadow ?? 'none';
+    const borderRadius = variant.borderRadius ?? '50%';
+    const backgroundColor = variant.backgroundColor ?? 'transparent';
+    const duration = variant.transition?.duration ?? 0.2;
     gsap.to(cursorRef.current, {
       scale,
       border,
@@ -132,12 +144,12 @@ export const CustomCursor = () => {
       duration,
       overwrite: 'auto',
     });
-  }, [animateCursorVariant, variants]);
+  }, [animateCursorVariant, prefersReducedMotion, variants]);
 
   return (
     <>
       <div ref={cursorRef} className="cursor" style={{ transformOrigin: 'center' }} />
-      <MobileRippleEffect ripples={ripples} />
+      {!prefersReducedMotion && <MobileRippleEffect ripples={ripples} />}
     </>
   );
 };

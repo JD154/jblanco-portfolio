@@ -1,4 +1,4 @@
-import { useTheme } from '@/components/other/ThemeProvider';
+import { useTheme } from '@/components/other/ThemeProvider/context';
 import { useMemo } from 'react';
 import { DARK_GRADIENT, DEFAULT_GRADIENT, LIGHT_GRADIENT } from '../utils';
 

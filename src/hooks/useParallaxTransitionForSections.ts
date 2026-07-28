@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +25,11 @@ export interface ParallaxTransitionSectionConfig {
  * @param configs Array of section transition configs
  */
 export function useParallaxTransitionForSections(configs: ParallaxTransitionSectionConfig[]) {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const timelines: gsap.core.Timeline[] = [];
     configs.forEach((config) => {
       const {
@@ -74,9 +79,9 @@ export function useParallaxTransitionForSections(configs: ParallaxTransitionSect
     });
     return () => {
       timelines.forEach((tl) => {
-        tl.scrollTrigger && tl.scrollTrigger.kill();
+        tl.scrollTrigger?.kill();
         tl.kill();
       });
     };
-  }, [JSON.stringify(configs)]);
+  }, [configs, prefersReducedMotion]);
 }

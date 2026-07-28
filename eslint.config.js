@@ -4,12 +4,13 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import prettier from 'eslint-config-prettier';
-import pluginPrettier from 'eslint-plugin-prettier';
+import astro from 'eslint-plugin-astro';
 
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules'] },
+  { ignores: ['.astro', 'dist', 'node_modules'] },
+  ...astro.configs.recommended,
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettier.configs.recommended],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettier],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
@@ -18,12 +19,16 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      prettier: pluginPrettier,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'prettier/prettier': 'error',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
+  },
+  {
+    files: ['**/*.test.{ts,tsx}'],
+    rules: {
+      'react-hooks/rules-of-hooks': 'off',
     },
   },
 );

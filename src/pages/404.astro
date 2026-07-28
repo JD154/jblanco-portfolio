@@ -1,0 +1,12 @@
+---
+import { NotFoundIsland } from '@/components/islands/NotFoundIsland';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { ui } from '@/i18n/ui';
+
+const lang = 'en';
+const t = ui[lang];
+---
+
+<BaseLayout {lang} {t}>
+  <NotFoundIsland client:load homeUrl="/" t={t.notFound} />
+</BaseLayout>
