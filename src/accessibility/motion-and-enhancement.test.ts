@@ -71,29 +71,41 @@ test('guards the quote tilt effect with the shared preference', async () => {
   expect(quote).toContain('if (prefersReducedMotion || !isInViewport) return');
 });
 
-test('does not rewind server-rendered header content during hydration', async () => {
-  const header = await readSource('../components/sections/HeaderSection/index.tsx');
+test('keeps the Hero static and hydrates only its visual effects', async () => {
+  const [englishPage, spanishPage, header] = await Promise.all([
+    readSource('../pages/index.astro'),
+    readSource('../pages/es/index.astro'),
+    readSource('../components/sections/HeaderSection/index.astro'),
+  ]);
 
-  expect(header).not.toContain("gsap.set(titleChars, { opacity: 0");
-  expect(header).not.toContain("'#header-actions',");
-  expect(header).not.toContain('SplitText.create');
+  for (const page of [englishPage, spanishPage]) {
+    expect(page).toContain('<HeaderSection t={t.header} />');
+    expect(page).not.toContain('HeaderSectionIsland');
+  }
+
+  expect(header).toMatch(/<AnimatedHeading\s+client:load/);
+  expect(header).toMatch(/<GlowingEffectIsland\s+client:load/);
+  expect(header).not.toContain("import { GlowingEffect }");
+  expect(header).toContain('<a');
 });
 
 test('crossfades the static stars only after WebGL is ready', async () => {
-  const [stars, styles] = await Promise.all([
+  const [stars, threeStars, styles] = await Promise.all([
     readSource('../components/layout/StarsBackground/index.tsx'),
+    readSource('../components/layout/StarsBackground/components/ThreeStars.tsx'),
     readSource('../styles/index.css'),
   ]);
 
-  expect(stars).toContain('onCreated={handleCreated}');
-  expect(stars).toContain("classList.add('webgl-stars-ready')");
+  expect(stars).not.toContain('onCreated={handleCreated}');
+  expect(threeStars).toContain("classList.add('webgl-stars-ready')");
+  expect(threeStars).toContain('requestAnimationFrame');
   expect(styles).toContain('.webgl-stars-ready .stars-background-fallback');
   expect(styles).toContain('opacity: 0;');
 });
 
 test('does not include CSS background blobs in any section', async () => {
   const sources = await Promise.all([
-    readSource('../components/sections/HeaderSection/index.tsx'),
+    readSource('../components/sections/HeaderSection/index.astro'),
     readSource('../components/sections/HeaderSection/styles.css'),
     readSource('../components/sections/AboutMeSection/styles.css'),
     readSource('../components/sections/ProjectsSection/index.tsx'),

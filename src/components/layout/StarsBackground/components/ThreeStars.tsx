@@ -1,7 +1,7 @@
 import { useTheme } from '@/components/other/ThemeProvider/context';
 import { Points, PointMaterial } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { useRef, useState, memo } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import type { FC } from 'react';
 import { useStarsZoom } from '../hooks/useStarsZoom';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
@@ -12,8 +12,24 @@ const ThreeStarsComponent: FC = () => {
   const ref = useRef<THREE.Group>(null);
   const { theme } = useTheme();
   const prefersReducedMotion = usePrefersReducedMotion();
+  const hasRenderedFrame = useRef(false);
+  const readyFrame = useRef<number | null>(null);
   const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 2.5 }) as Float32Array);
+
+  useEffect(() => {
+    return () => {
+      if (readyFrame.current !== null) cancelAnimationFrame(readyFrame.current);
+    };
+  }, []);
+
   useFrame((_state, delta) => {
+    if (!hasRenderedFrame.current) {
+      hasRenderedFrame.current = true;
+      readyFrame.current = requestAnimationFrame(() => {
+        document.documentElement.classList.add('webgl-stars-ready');
+      });
+    }
+
     if (prefersReducedMotion) return;
     if (ref.current && ref.current.rotation) {
       ref.current.rotation.x -= delta / 90;

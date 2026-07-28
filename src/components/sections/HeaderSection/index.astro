@@ -1,0 +1,63 @@
+---
+import { AnimatedHeading } from '@/components/general/AnimatedHeading';
+import { GlowingEffectIsland } from '@/components/islands/GlowingEffectIsland';
+import type { Ui } from '@/i18n/ui';
+import '@/components/general/GlowingButton/styles.css';
+import './styles.css';
+
+interface Props {
+  t: Ui['header'];
+}
+
+const { t } = Astro.props;
+
+const buttonBase =
+  'inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring';
+---
+
+<div class="header-section" id="header-section-wrapper">
+  <div id="header-section" class="header-section__container">
+    <div class="header-section__content">
+      <AnimatedHeading
+        client:load
+        as="h1"
+        text={t.title}
+        sensitivity={0.03}
+        className="header-section__main-title"
+      />
+
+      <p class="header-section__description">
+        {t.descriptionParts[0]} <br />
+        {t.descriptionParts[1]} <br />
+        {t.descriptionParts[2]}
+      </p>
+
+      <div id="header-actions" class="header-section__actions">
+        <a
+          class:list={[
+            buttonBase,
+            'glowing-button relative z-10 bg-primary text-primary-foreground hover:bg-primary/90 header-section__primary-btn',
+          ]}
+          href="/Senior%20Frontend%20Developer%2C%20Jesus%20Blanco.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GlowingEffectIsland client:load spread={40} glow={true} disabled={false} proximity={54} />
+          <span class="luminosity-text">{t.ctaCv}</span>
+        </a>
+        <a
+          class:list={[
+            buttonBase,
+            'glowing-button glowing-button__outline relative z-10 border border-input bg-background hover:bg-accent hover:text-accent-foreground header-section__secondary-btn',
+          ]}
+          href="https://www.linkedin.com/in/jesus-blanco-08682112a/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GlowingEffectIsland client:load spread={40} glow={true} disabled={false} proximity={54} />
+          <span class="luminosity-text">{t.ctaLinkedin}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

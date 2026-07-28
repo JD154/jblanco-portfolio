@@ -2,21 +2,16 @@ import { expect, test } from 'bun:test';
 import { renderToString } from 'react-dom/server';
 import { ThemeProvider } from '@/components/other/ThemeProvider';
 import { ui } from '@/i18n/ui';
-import HeaderSection from './HeaderSection';
 import { AboutMeSection } from './AboutMeSection';
 import { ContactSection } from './ContactSection';
 import { ProjectsCarousel } from './ProjectsSection/components/ProjectsCarousel';
 
-test('renders the header title and CV link as semantic, safe markup', () => {
-  const html = renderToString(
-    <ThemeProvider>
-      <HeaderSection t={ui.en.header} />
-    </ThemeProvider>,
-  );
+test('keeps the header structure static in Astro', async () => {
+  const source = await Bun.file(new URL('./HeaderSection/index.astro', import.meta.url)).text();
 
-  expect(html).toContain('<h1');
-  expect(html).toContain('href="/Senior%20Frontend%20Developer%2C%20Jesus%20Blanco.pdf"');
-  expect(html).not.toMatch(/<button[^>]*>[\s\S]*?<a /);
+  expect(source).toContain('as="h1"');
+  expect(source).toContain('href="/Senior%20Frontend%20Developer%2C%20Jesus%20Blanco.pdf"');
+  expect(source).not.toContain('<GlowingButton');
 });
 
 test('keeps About and Contact copy visible in server-rendered HTML', () => {
