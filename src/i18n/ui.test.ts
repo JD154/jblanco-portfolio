@@ -78,9 +78,9 @@ test('uses the approved Task 3 SEO, quote, and project CTA copy', () => {
   const en = useTranslations('en');
   const es = useTranslations('es');
 
-  expect(en.seo.title).toBe('Jesus Blanco — Senior Front-End Developer');
-  expect(en.seo.description).toBe('Portfolio of Jesus Blanco, Senior Front-End Developer.');
-  expect(es.seo.title).toBe('Jesus Blanco — Desarrollador Front-End Senior');
+  expect(en.seo.title).toBe('Jesus Blanco — Senior Frontend Consultant');
+  expect(en.seo.description).toBe('Portfolio of Jesus Blanco, Senior Frontend Consultant.');
+  expect(es.seo.title).toBe('Jesus Blanco — Consultor Frontend Senior');
   expect(es.about.heading).toBe('Una evolución, el único camino');
   expect(en.projects.viewProject).toBe('View Project →');
   expect(en.projects.demoUnavailable).toBe('Demo Unavailable');

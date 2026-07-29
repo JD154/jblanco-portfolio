@@ -12,9 +12,9 @@ export type Lang = keyof typeof languages;
 export const ui = {
   en: {
     seo: {
-      title: 'Jesus Blanco — Senior Front-End Developer',
-      description: 'Portfolio of Jesus Blanco, Senior Front-End Developer.',
-      jobTitle: 'Senior Front-End Developer',
+      title: 'Jesus Blanco — Senior Frontend Consultant',
+      description: 'Portfolio of Jesus Blanco, Senior Frontend Consultant.',
+      jobTitle: 'Senior Frontend Consultant',
     },
     nav: {
       badge: {
@@ -33,9 +33,9 @@ export const ui = {
     },
     header: {
       availability: 'Booking new projects',
-      role: 'Senior Front-End Developer',
+      role: 'Senior Frontend Consultant',
       tagline:
-        'Crafting clean, functional interfaces with a strong focus on maintainability and scalability. 7 years of experience.',
+        'An 8-year track record in the strategic architecture of complex web applications — from modernizing critical legacy platforms to structuring data-intensive interfaces, so technical execution becomes a perfect extension of the product vision.',
       capabilities: ['Design Systems', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: "I'm JB",
       ctaCv: 'Download CV',
@@ -110,9 +110,9 @@ export const ui = {
   },
   es: {
     seo: {
-      title: 'Jesus Blanco — Desarrollador Front-End Senior',
-      description: 'Portfolio de Jesus Blanco, desarrollador front-end senior.',
-      jobTitle: 'Desarrollador front-end senior',
+      title: 'Jesus Blanco — Consultor Frontend Senior',
+      description: 'Portfolio de Jesus Blanco, consultor frontend senior.',
+      jobTitle: 'Consultor frontend senior',
     },
     nav: {
       badge: {
@@ -131,9 +131,9 @@ export const ui = {
     },
     header: {
       availability: 'Disponible para nuevos proyectos',
-      role: 'Desarrollador Front-End Senior',
+      role: 'Consultor Frontend Senior',
       tagline:
-        'Creando interfaces limpias y funcionales con un fuerte enfoque en la mantenibilidad y la escalabilidad. 7 años de experiencia.',
+        'Ocho años de trayectoria en la arquitectura estratégica de aplicaciones web complejas — desde modernizar plataformas legacy críticas hasta estructurar interfaces intensivas en datos, para que la ejecución técnica sea una extensión perfecta de la visión de producto.',
       capabilities: ['Sistemas de diseño', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: 'Soy JB',
       ctaCv: 'Descargar CV',

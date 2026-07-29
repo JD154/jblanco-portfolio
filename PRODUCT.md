@@ -23,7 +23,7 @@ Success means a qualified visitor can assess fit through the CV and project evid
 
 ## Positioning
 
-Jesus Blanco is a senior front-end developer who combines broad product-facing frontend execution with particular strength in clean, maintainable, and scalable interfaces, reusable UI systems, and complex data visualization.
+Jesus Blanco is a senior frontend consultant who combines broad product-facing frontend execution with particular strength in clean, maintainable, and scalable interfaces, reusable UI systems, and complex data visualization.
 
 His work spans application interfaces, design systems and component libraries, investor workflows, and data-rich dashboards across React, Vue, TypeScript, and related web technologies.
 
@@ -43,14 +43,14 @@ The portfolio is a public, bilingual English and Spanish website. Visitors can:
 - English is served at `/`; Spanish is served at `/es/`.
 - UI copy and project data must remain structurally aligned across both languages.
 - The site builds to static assets and deploys through Cloudflare Workers with Wrangler.
-- The current professional claim is Senior Front-End Developer with 7 years of experience.
+- The current professional claim is Senior Frontend Consultant with 8 years of experience.
 - Jesus is currently booking new projects.
 - Some featured projects have no public demo and must be presented as unavailable rather than given fabricated links.
 
 ## Brand Commitments
 
 - The public name is Jesus Blanco, also represented by the initials JB.
-- The professional title is Senior Front-End Developer / Desarrollador front-end senior.
+- The professional title is Senior Frontend Consultant / Consultor Frontend Senior.
 - English and Spanish are first-class languages.
 - The voice is direct, professional, curious, self-taught, and grounded in continuous learning.
 - "An Evolution, The Only Way" / "Una evolución, el único camino" is an established expression of the personal philosophy.
