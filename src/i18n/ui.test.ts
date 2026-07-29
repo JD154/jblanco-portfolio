@@ -21,16 +21,23 @@ test('provides complete English and Spanish UI translations', () => {
       t.nav.theme.dark,
       t.nav.theme.toggleAria,
       t.nav.language.aria,
-      t.header.title,
-      ...t.header.descriptionParts,
+      t.header.availability,
+      t.header.role,
+      t.header.tagline,
+      t.header.signature,
+      ...t.header.capabilities,
       t.header.ctaCv,
       t.header.ctaLinkedin,
       t.about.label,
       t.about.heading,
-      ...t.about.paragraphs,
-      t.about.quote.title,
-      t.about.quote.attributionPre,
-      t.about.quote.attributionMid,
+      t.about.attribution,
+      ...t.about.intro,
+      t.about.belief,
+      t.about.telemetry.value,
+      t.about.telemetry.unit,
+      t.about.telemetry.since,
+      t.about.areasLabel,
+      ...t.about.areas.flatMap((area) => [area.title, area.body]),
       t.projects.label,
       t.projects.filterAll,
       t.projects.empty,
@@ -51,13 +58,14 @@ test('provides complete English and Spanish UI translations', () => {
       expect(value.length).toBeGreaterThan(0);
     }
 
-    expect(t.header.descriptionParts).toHaveLength(3);
-    expect(t.about.paragraphs).toHaveLength(2);
+    expect(t.header.capabilities).toHaveLength(5);
+    expect(t.about.intro).toHaveLength(2);
+    expect(t.about.areas).toHaveLength(4);
   }
 
   const es = useTranslations('es');
   expect(languageNames.es).toBe('Español');
-  expect(es.header.title).toBe('Soy JB');
+  expect(es.header.signature).toBe('Soy JB');
   expect(es.about.label).toBe('Sobre mí');
   expect(es.projects.label).toBe('Proyectos destacados');
   expect(es.contact.label).toBe('Contacto');
@@ -73,7 +81,7 @@ test('uses the approved Task 3 SEO, quote, and project CTA copy', () => {
   expect(en.seo.title).toBe('Jesus Blanco — Senior Front-End Developer');
   expect(en.seo.description).toBe('Portfolio of Jesus Blanco, Senior Front-End Developer.');
   expect(es.seo.title).toBe('Jesus Blanco — Desarrollador Front-End Senior');
-  expect(es.about.quote.title).toBe('Una evolución, el único camino');
+  expect(es.about.heading).toBe('Una evolución, el único camino');
   expect(en.projects.viewProject).toBe('View Project →');
   expect(en.projects.demoUnavailable).toBe('Demo Unavailable');
   expect(es.projects.viewProject).toBe('Ver proyecto →');

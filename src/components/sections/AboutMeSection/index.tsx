@@ -1,5 +1,5 @@
 import React from 'react';
-import { MinimalQuote } from './components/Quote';
+import type { CSSProperties } from 'react';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 import './styles.css';
 import type { Ui } from '@/i18n/ui';
@@ -14,41 +14,79 @@ export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ t }) => {
   return (
     <section id="about-me-section" className="about-me-section">
       <div className="py-24 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
-        {/* Header — slim toolbar label + divider */}
+        {/* Header — slim toolbar label + divider (shared with other sections) */}
         <div className="about-me-section__bar">
-          <span className="about-me-section__label" data-reveal>
+          <span className="about-me-section__label" data-reveal="unfold">
             <span className="about-me-section__label-dot" />
             {t.label}
           </span>
         </div>
 
-        <div className="about-me-section__container">
-          {/* Main content area */}
-          <div className="about-me-section__content">
-            <h2 className="about-me-section__title" data-reveal style={{ '--reveal-i': 1 } as React.CSSProperties}>
+        {/* Lede — the human story (left) + a quiet career readout (right) */}
+        <div className="about-me-section__lede">
+          <div className="about-me-section__story">
+            <h2 className="about-me-section__title" data-reveal="unfold" style={{ '--reveal-i': 1 } as CSSProperties}>
               {t.heading}
             </h2>
+            <p
+              className="about-me-section__attribution"
+              data-reveal="unfold"
+              style={{ '--reveal-i': 2 } as CSSProperties}
+            >
+              {t.attribution}
+            </p>
 
-            <div className="about-me-section__text-content">
-              {t.paragraphs.map((line, idx) => (
-                <p
-                  key={idx}
-                  className="about-me-section__paragraph"
-                  data-reveal
-                  style={{ '--reveal-i': idx + 2 } as React.CSSProperties}
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
+            {t.intro.map((paragraph, idx) => (
+              <p
+                key={idx}
+                className="about-me-section__paragraph"
+                data-reveal="unfold"
+                style={{ '--reveal-i': idx + 3 } as CSSProperties}
+              >
+                {paragraph}
+              </p>
+            ))}
+
+            <p
+              className="about-me-section__belief"
+              data-reveal="unfold"
+              style={{ '--reveal-i': t.intro.length + 3 } as CSSProperties}
+            >
+              {t.belief}
+            </p>
           </div>
 
-          {/* Enhanced quote section */}
-          <aside className="about-me-section__quote-container">
-            <div className="about-me-section__quote-wrapper" data-reveal style={{ '--reveal-i': 2 } as React.CSSProperties}>
-              <MinimalQuote t={t.quote} />
-            </div>
+          <aside
+            className="about-me-section__telemetry"
+            data-reveal="unfold"
+            style={{ '--reveal-i': 2 } as CSSProperties}
+            aria-label={`${t.telemetry.value} ${t.telemetry.unit}`}
+          >
+            <span className="about-me-section__telemetry-value">{t.telemetry.value}</span>
+            <span className="about-me-section__telemetry-unit">{t.telemetry.unit}</span>
+            <span className="about-me-section__telemetry-since">{t.telemetry.since}</span>
           </aside>
+        </div>
+
+        {/* Key consulting areas — instrument grid, the "what I do now" */}
+        <div className="about-me-section__areas">
+          <div className="about-me-section__areas-bar">
+            <span className="about-me-section__areas-label">{t.areasLabel}</span>
+          </div>
+          <ul className="about-me-section__areas-grid">
+            {t.areas.map((area, idx) => (
+              <li
+                key={area.title}
+                className="about-me-section__area"
+                data-reveal="unfold"
+                style={{ '--reveal-i': idx + 1 } as CSSProperties}
+              >
+                <span className="about-me-section__area-index">{String(idx + 1).padStart(2, '0')}</span>
+                <h3 className="about-me-section__area-title">{area.title}</h3>
+                <p className="about-me-section__area-body">{area.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

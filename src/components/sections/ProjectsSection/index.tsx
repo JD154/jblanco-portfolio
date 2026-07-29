@@ -71,12 +71,12 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
       <div className="projects-section__inner py-24 px-6 max-w-7xl mx-auto relative z-10">
         {/* Header — slim toolbar: section label + filters */}
         <div className="projects-section__header" ref={headerRef}>
-          <h2 className="projects-section__label" data-reveal>
+          <h2 className="projects-section__label" data-reveal="focus">
             <span className="projects-section__eyebrow-dot" />
             {t.label}
           </h2>
 
-          <div className="projects-section__filters" data-reveal style={{ '--reveal-i': 1 } as CSSProperties}>
+          <div className="projects-section__filters" data-reveal="focus" style={{ '--reveal-i': 1 } as CSSProperties}>
             {filters.map(({ key, label }) => (
               <GlowingButton
                 key={key}

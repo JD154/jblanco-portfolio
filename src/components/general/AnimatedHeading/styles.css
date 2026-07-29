@@ -11,7 +11,9 @@
 
 .animated-heading__char {
   color: var(--color-foreground);
-  text-shadow: var(--heading-text-shadow);
+  /* No luminous glow on the signature — at signature scale the tightly packed
+     glyphs' glows merge into a grey block. The bespoke 3D per-char interaction
+     and the heavy Clash Display form carry it; the glow stays the pitch's job. */
   position: relative;
   font-size: 8vw;
   font-family: var(--font-display);

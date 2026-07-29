@@ -29,7 +29,11 @@ test('guards automatic motion with the shared reduced-motion preference', async 
   ]);
 
   for (const source of sources) {
-    expect(source).toContain('usePrefersReducedMotion');
+    // Motion is guarded either directly via usePrefersReducedMotion, or through
+    // useRevealOnScroll, which reads the same preference and never arms an
+    // entrance (content stays visible) when reduced motion is requested.
+    const guardsMotion = source.includes('usePrefersReducedMotion') || source.includes('useRevealOnScroll');
+    expect(guardsMotion).toBe(true);
   }
 });
 
@@ -62,13 +66,6 @@ test('guards pointer-driven glow and cursor effects with the shared preference',
   expect(glowingEffect).toContain('if (disabled || prefersReducedMotion) return');
   expect(customCursor).toContain('if (prefersReducedMotion) return');
   expect(customCursor).toContain('{!prefersReducedMotion && <MobileRippleEffect ripples={ripples} />}');
-});
-
-test('guards the quote tilt effect with the shared preference', async () => {
-  const quote = await readSource('../components/sections/AboutMeSection/components/Quote.tsx');
-
-  expect(quote).toContain('usePrefersReducedMotion');
-  expect(quote).toContain('if (prefersReducedMotion || !isInViewport) return');
 });
 
 test('keeps the Hero static and hydrates only its visual effects', async () => {

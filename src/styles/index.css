@@ -142,17 +142,40 @@ body {
    settles at the visible end state even when rAF is throttled. */
 .reveal-armed [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
-  will-change: opacity, transform;
+  transform: var(--reveal-from, translateY(28px));
+  filter: var(--reveal-blur, none);
+  will-change: opacity, transform, filter;
 }
 
 .reveal-armed.reveal-in [data-reveal] {
   opacity: 1;
   transform: none;
+  filter: none;
   transition:
     opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: calc(var(--reveal-i, 0) * 0.08s);
+}
+
+/* Per-section motion verbs — each surface owns one distinct entrance instead of
+   the same vertical fade everywhere (DESIGN.md: motion that unfolds / focuses /
+   settles / reveals). Contact keeps the default "reveal" (vertical rise). */
+[data-reveal='unfold'] {
+  /* About — content unfolds along the section's left axis. */
+  --reveal-from: translateX(-32px);
+}
+
+[data-reveal='focus'] {
+  /* Projects header — resolves into focus (scale up + sharpen), echoing the
+     carousel's blur-to-sharp deploy. */
+  --reveal-from: scale(0.94);
+  --reveal-blur: blur(8px);
+}
+
+[data-reveal='settle'] {
+  /* Settle down into place from slightly enlarged. */
+  --reveal-from: scale(1.04);
 }
 
 @media (prefers-reduced-motion: reduce) {
