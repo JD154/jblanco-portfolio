@@ -51,10 +51,24 @@
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--color-muted-foreground);
-  max-width: 34rem;
-  margin: 0 0 1.25rem;
+  max-width: 32rem;
+  margin: 0;
   position: relative;
   z-index: 10;
+}
+
+.contact-section__layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.6fr);
+  align-items: start;
+  gap: clamp(3rem, 7vw, 7rem);
+}
+
+.contact-section__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
 /* Availability signal — the single functional green in the system, restated at
@@ -63,7 +77,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  margin: 0 0 2.5rem;
+  margin: 0;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -78,8 +92,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #10b981, #34d399);
-  box-shadow: 0 0 12px color-mix(in srgb, #34d399 55%, transparent);
+  background: linear-gradient(135deg, var(--availability-deep), var(--availability-bright));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--availability-bright) 55%, transparent);
   animation: contact-availability-pulse 2s infinite;
 }
 
@@ -88,7 +102,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: #34d399;
+  background: var(--availability-bright);
   animation: contact-availability-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
   pointer-events: none;
 }
@@ -122,11 +136,12 @@
   }
 }
 
-/* Content — full-width responsive grid of channels */
+/* Content — one decisive CTA, with the profile links held as secondary routes. */
 .contact-section__content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  min-width: 0;
   width: 100%;
   position: relative;
   z-index: 10;
@@ -136,23 +151,40 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  min-width: 0;
   padding: 1.5rem;
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: 1rem;
   text-decoration: none;
   color: var(--color-foreground);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   overflow: visible;
 }
 
 .contact-section__item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.13);
   border-color: var(--pc-accent-strong);
+}
+
+.contact-section__item:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 4px;
+}
+
+.contact-section__item--primary {
+  grid-column: 1 / -1;
+  min-height: 10.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--color-primary);
+  border-color: transparent;
+  color: var(--color-primary-foreground);
 }
 
 .contact-section__item-icon {
@@ -165,12 +197,25 @@
   border-radius: 0.75rem;
   flex-shrink: 0;
   color: var(--color-foreground);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .contact-section__item:hover .contact-section__item-icon {
   transform: translateY(-1px);
   background: var(--color-accent);
+}
+
+.contact-section__item--primary .contact-section__item-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: color-mix(in srgb, var(--color-primary-foreground) 12%, transparent);
+  color: var(--color-primary-foreground);
+}
+
+.contact-section__item--primary:hover .contact-section__item-icon {
+  background: color-mix(in srgb, var(--color-primary-foreground) 18%, transparent);
 }
 
 .contact-section__item-content {
@@ -189,19 +234,39 @@
   color: var(--color-muted-foreground);
 }
 
+.contact-section__item--primary .contact-section__item-label {
+  color: color-mix(in srgb, var(--color-primary-foreground) 68%, transparent);
+}
+
 .contact-section__item-display {
   font-size: 1.0625rem;
   color: var(--color-foreground);
   font-family: var(--font-mono);
-  word-break: break-word;
   overflow-wrap: anywhere;
+}
+
+.contact-section__item:not(.contact-section__item--primary) .contact-section__item-display {
+  overflow: hidden;
+  font-size: 0.9375rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-section__item--primary .contact-section__item-display {
+  color: var(--color-primary-foreground);
+  font-family: var(--font-sans);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
 }
 
 .contact-section__item-arrow {
   display: flex;
   align-items: center;
   color: var(--color-muted-foreground);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   flex-shrink: 0;
 }
 
@@ -210,7 +275,31 @@
   color: var(--color-foreground);
 }
 
+.contact-section__item--primary .contact-section__item-arrow {
+  width: 2.75rem;
+  height: 2.75rem;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-primary-foreground) 12%, transparent);
+  color: var(--color-primary-foreground);
+}
+
+.contact-section__item--primary:hover .contact-section__item-arrow {
+  color: var(--color-primary-foreground);
+}
+
 /* Responsive design */
+@media (max-width: 900px) {
+  .contact-section__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .contact-section__intro {
+    max-width: 38rem;
+  }
+}
+
 @media (max-width: 768px) {
   .contact-section__item {
     padding: 1.25rem;
@@ -223,6 +312,30 @@
 }
 
 @media (max-width: 480px) {
+  .contact-section__content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-section__item--primary {
+    grid-column: auto;
+    min-height: 9rem;
+  }
+
+  .contact-section__item--primary .contact-section__item-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .contact-section__item--primary .contact-section__item-display {
+    font-size: 1.125rem;
+    line-height: 1.25;
+  }
+
+  .contact-section__item--primary .contact-section__item-arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
   .contact-section__item {
     padding: 1rem;
     gap: 0.75rem;
@@ -232,8 +345,8 @@
     min-width: 0;
   }
 
-  .contact-section__item-display {
-    word-break: break-all;
+  .contact-section__item--primary .contact-section__item-display {
+    overflow-wrap: anywhere;
   }
 }
 

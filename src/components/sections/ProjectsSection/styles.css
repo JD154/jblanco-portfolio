@@ -22,6 +22,11 @@
   --pc-accent-strong: color-mix(in srgb, var(--color-foreground) 45%, transparent);
 }
 
+.projects-section__inner {
+  width: 100%;
+  min-width: 0;
+}
+
 .projects-section__header {
   display: flex;
   align-items: center;
@@ -63,6 +68,10 @@
   flex-wrap: wrap;
 }
 
+.projects-section__filter-btn {
+  min-height: 2.75rem;
+}
+
 .projects-section__empty {
   text-align: center;
   padding: 4rem 1rem;
@@ -91,6 +100,8 @@
 
 /* Scroll-driven "unfold" — the showcase deploys open as it enters view */
 .projects-section__carousel-wrap {
+  width: 100%;
+  min-width: 0;
   transform-style: preserve-3d;
   perspective: 1400px;
 }

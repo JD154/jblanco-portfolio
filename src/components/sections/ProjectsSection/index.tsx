@@ -76,13 +76,20 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
             {t.label}
           </h2>
 
-          <div className="projects-section__filters" data-reveal="focus" style={{ '--reveal-i': 1 } as CSSProperties}>
+          <div
+            className="projects-section__filters"
+            data-reveal="focus"
+            style={{ '--reveal-i': 1 } as CSSProperties}
+            role="group"
+            aria-label={t.label}
+          >
             {filters.map(({ key, label }) => (
               <GlowingButton
                 key={key}
                 variant={filter === key ? 'default' : 'outline'}
                 onClick={() => setFilter(key)}
                 className="projects-section__filter-btn"
+                aria-pressed={filter === key}
               >
                 {label}
               </GlowingButton>
@@ -93,7 +100,7 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
         {/* Projects Carousel */}
         <div className="projects-section__carousel-wrap" ref={carouselRef}>
           {filteredProjects.length > 0 ? (
-              <ProjectsCarousel key={filter} projects={filteredProjects} t={t} />
+            <ProjectsCarousel key={filter} projects={filteredProjects} t={t} />
           ) : (
             <p className="projects-section__empty">{t.empty}</p>
           )}

@@ -56,24 +56,34 @@ const ArrowIcon = () => (
 export const ContactSection: React.FC<ContactSectionProps> = ({ t }) => {
   const sectionRef = useRevealOnScroll<HTMLDivElement>();
 
-  const contactItems: { label: string; url: string; display: string; icon: ReactNode }[] = [
-    {
-      label: t.items.github,
-      url: 'https://github.com/JD154',
-      display: 'github.com/JD154',
-      icon: <GithubIcon />,
-    },
+  const contactItems: {
+    label: string;
+    url: string;
+    display: string;
+    icon: ReactNode;
+    primary?: boolean;
+    external?: boolean;
+  }[] = [
     {
       label: t.items.email,
       url: 'mailto:contact@jblanco.dev',
       display: 'contact@jblanco.dev',
       icon: <MailIcon />,
+      primary: true,
+    },
+    {
+      label: t.items.github,
+      url: 'https://github.com/JD154',
+      display: 'github.com/JD154',
+      icon: <GithubIcon />,
+      external: true,
     },
     {
       label: t.items.linkedin,
       url: 'https://www.linkedin.com/in/jesus-blanco-08682112a/',
       display: 'linkedin.com/in/jesus-blanco-08682112a',
       icon: <LinkedinIcon />,
+      external: true,
     },
   ];
 
@@ -88,27 +98,31 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ t }) => {
           </h2>
         </div>
 
-        <p className="contact-section__subtitle" data-reveal>
-          {t.subtitle}
-        </p>
+        <div className="contact-section__layout">
+          <div className="contact-section__intro">
+            <p className="contact-section__subtitle" data-reveal>
+              {t.subtitle}
+            </p>
 
-        {/* Reinstated availability signal — the one green in the system, at the
-            moment the visitor decides. */}
-        <p className="contact-section__availability" data-reveal>
-          <span className="contact-section__availability-dot" aria-hidden="true" />
-          {t.availability}
-        </p>
+            {/* Reinstated availability signal — the one green in the system, at the
+                moment the visitor decides. */}
+            <p className="contact-section__availability" data-reveal>
+              <span className="contact-section__availability-dot" aria-hidden="true" />
+              {t.availability}
+            </p>
+          </div>
 
-        <div className="contact-section__content">
+          <div className="contact-section__content">
             {contactItems.map((item, idx) => (
               <a
                 key={item.label}
                 href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
+                aria-label={`${item.label}: ${item.display}`}
                 data-reveal
                 style={{ '--reveal-i': idx + 1 } as React.CSSProperties}
-                className="contact-section__item"
+                className={`contact-section__item${item.primary ? ' contact-section__item--primary' : ''}`}
               >
                 <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} borderWidth={1.5} />
                 <div className="contact-section__item-icon">{item.icon}</div>
@@ -121,6 +135,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ t }) => {
                 </div>
               </a>
             ))}
+          </div>
         </div>
       </div>
     </section>
