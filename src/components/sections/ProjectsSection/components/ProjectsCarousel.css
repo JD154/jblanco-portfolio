@@ -39,7 +39,6 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
-  opacity: 0.6;
 }
 
 .pc__title {
@@ -209,7 +208,11 @@
   transform: translateY(-6px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   border-color: var(--pc-accent-strong);
-  outline: none;
+}
+
+.pc__card:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
 }
 
 /* Active card — the one currently featured. Stays in place, clearly marked. */
@@ -272,8 +275,47 @@
 /* ---------- Status readout ---------- */
 .pc__controls {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+/* Directional controls — circular arrows per the Project Observatory spec */
+.pc__nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pc__arrow {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-card);
+  color: var(--color-foreground);
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.pc__arrow:hover {
+  border-color: var(--pc-accent-strong);
+  transform: scale(1.05);
+}
+
+.pc__arrow:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
+}
+
+.pc__arrow:active {
+  transform: scale(0.97);
 }
 
 .pc__counter {

@@ -38,6 +38,18 @@
         "value": "#000",
         "createdAt": "2026-07-29T16:34:49.910Z",
         "reason": "Alpha-mask stops in the rail fade mask-image; functional, not a palette color"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "3.25rem",
+        "createdAt": "2026-07-29T17:43:46.570Z",
+        "reason": "Oversized numeric project counter (documented Project Observatory instrument); display-tier, not drift"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.25rem",
+        "createdAt": "2026-07-29T17:43:46.614Z",
+        "reason": "Mobile project title, headline-tier responsive size; display-tier, not drift"
       }
     ]
   }

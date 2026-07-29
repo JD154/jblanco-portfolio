@@ -105,7 +105,7 @@ test('renders localized navigation labels and controls', async () => {
   const theme = container.querySelector('[aria-label="Cambiar tema"]');
   const rightSlot = language?.parentElement;
 
-  expect(badge?.textContent).toContain('Disponible para nuevos proyectos');
+  expect(badge?.tagName).toBe('BUTTON');
   expect(badge?.textContent).toContain('Ponte en contacto');
   expect(language?.textContent).toContain('es');
   expect(theme).not.toBeNull();

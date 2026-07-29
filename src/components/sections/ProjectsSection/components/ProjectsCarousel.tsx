@@ -206,12 +206,44 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
         </div>
       </div>
 
-      {/* Status readout — the rail is the single navigation; this reports position */}
+      {/* Status readout + directional controls (the rail also navigates) */}
       {total > 1 && (
         <div className="pc__controls">
           <div className="pc__counter" aria-live="polite">
             <span className="pc__counter-current">{counter}</span>
             <span className="pc__counter-total">/ {totalLabel}</span>
+          </div>
+          <div className="pc__nav">
+            <button type="button" className="pc__arrow" onClick={() => go(-1)} aria-label={t.previousAria}>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button type="button" className="pc__arrow" onClick={() => go(1)} aria-label={t.nextAria}>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
           </div>
         </div>
       )}

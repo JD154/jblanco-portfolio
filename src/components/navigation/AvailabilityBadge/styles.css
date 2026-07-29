@@ -1,5 +1,5 @@
-/* Availability badge — sits centered in the navbar.
-   No outline/pill: bare inline layout with a hover text-swap behavior. */
+/* Availability / contact CTA — sits centered in the navbar. Bare inline layout
+   (no pill), a live green dot for availability, and a chevron affordance. */
 .nav-badge {
   display: inline-flex;
   align-items: center;
@@ -28,34 +28,6 @@
   color: var(--color-foreground);
 }
 
-/* Text swap on hover — default sets the width, hover overlays it (no shift) */
-.nav-badge__label {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.nav-badge__label-default {
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
-.nav-badge__label-hover {
-  position: absolute;
-  inset: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
 .nav-badge__arrow {
   font-size: 0.95em;
   transition: transform 0.3s ease;
@@ -63,16 +35,6 @@
 
 .nav-badge:hover .nav-badge__arrow {
   transform: translateX(3px);
-}
-
-.nav-badge:hover .nav-badge__label-default {
-  opacity: 0;
-  transform: translateY(-6px);
-}
-
-.nav-badge:hover .nav-badge__label-hover {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Live dot with an emanating "ping" ring */
@@ -99,19 +61,18 @@
   animation-duration: 1.2s;
 }
 
-/* On narrow screens the tracked label is too wide, but the badge is the only
-   route to contact — so keep the live dot as a comfortable 44px tap target
-   (its purpose is announced via aria-label) instead of hiding it entirely. */
+/* On narrow screens the label collapses, but the dot + chevron stay as a
+   comfortable 44px tap target so the contact route reads as tappable. */
 @media (max-width: 480px) {
   .nav-badge {
-    gap: 0;
+    gap: 0.35rem;
     min-width: 44px;
     min-height: 44px;
     justify-content: center;
     margin: 0 auto;
   }
 
-  .nav-badge__label {
+  .nav-badge__text {
     display: none;
   }
 
