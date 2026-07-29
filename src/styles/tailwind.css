@@ -70,6 +70,9 @@
   --sidebar-ring: 240 6% 7%;
 
   /* Custom colors */
+  --availability-deep: #10b981;
+  --availability-bright: #34d399;
+
   /* Luminous heading glow — em-relative radii so it reads identically at every
      heading size (the 2.75rem signature and the 4.5rem pitch glow the same,
      instead of the fixed-px glow merging into a block at small sizes). */
