@@ -1,14 +1,12 @@
-import { DEFAULT_GRADIENT } from '../utils';
-
 export type GradientVariant = 'default' | 'white';
 
 /**
- * The theme-contrasting 'white' halo is driven by the CSS variable
- * `--glow-gradient`, defined per theme in global CSS. Returning a `var()`
- * reference instead of reading the theme in JS keeps the inline style identical
- * on the server and the client, which avoids a hydration mismatch on every glow
- * when the stored theme differs from the SSR default.
+ * The glow halo is driven by the `--glow-gradient` CSS variable (defined per
+ * theme in src/styles/index.css), so the inline style is identical on the
+ * server and the client — no hydration mismatch from reading the theme in JS.
+ * The `variant` is kept for API compatibility (GlowingEffect still uses it for
+ * border styling) but no longer selects a JS gradient.
  */
-export function useGradient(variant: GradientVariant = 'default') {
-  return variant === 'white' ? 'var(--glow-gradient)' : DEFAULT_GRADIENT;
+export function useGradient(_variant: GradientVariant = 'white') {
+  return 'var(--glow-gradient)';
 }

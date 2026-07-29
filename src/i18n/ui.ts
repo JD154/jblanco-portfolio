@@ -34,8 +34,7 @@ export const ui = {
     header: {
       availability: 'Booking new projects',
       role: 'Senior Frontend Consultant',
-      tagline:
-        'An 8-year track record in the strategic architecture of complex web applications — from modernizing critical legacy platforms to structuring data-intensive interfaces, so technical execution becomes a perfect extension of the product vision.',
+      tagline: '8 years engineering complex web applications where architectural rigor meets high-fidelity UI.',
       capabilities: ['Design Systems', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: "I'm JB",
       ctaCv: 'Download CV',
@@ -132,8 +131,7 @@ export const ui = {
     header: {
       availability: 'Disponible para nuevos proyectos',
       role: 'Consultor Frontend Senior',
-      tagline:
-        'Ocho años de trayectoria en la arquitectura estratégica de aplicaciones web complejas — desde modernizar plataformas legacy críticas hasta estructurar interfaces intensivas en datos, para que la ejecución técnica sea una extensión perfecta de la visión de producto.',
+      tagline: '8 años de arquitectura en aplicaciones web complejas, donde el rigor estructural se une a una UI de alta fidelidad.',
       capabilities: ['Sistemas de diseño', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: 'Soy JB',
       ctaCv: 'Descargar CV',

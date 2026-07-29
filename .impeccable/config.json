@@ -50,6 +50,54 @@
         "value": "2.25rem",
         "createdAt": "2026-07-29T17:43:46.614Z",
         "reason": "Mobile project title, headline-tier responsive size; display-tier, not drift"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.75rem",
+        "createdAt": "2026-07-29T17:57:10.506Z",
+        "reason": "Hero signature display clamp endpoint; display-tier"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.75rem",
+        "createdAt": "2026-07-29T17:57:10.544Z",
+        "reason": "Hero signature display clamp endpoint; display-tier"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.4rem",
+        "createdAt": "2026-07-29T17:57:10.581Z",
+        "reason": "Hero pitch display clamp endpoint; display-tier"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "4.5rem",
+        "createdAt": "2026-07-29T17:57:10.618Z",
+        "reason": "Hero pitch display clamp endpoint; display-tier"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.5rem",
+        "createdAt": "2026-07-29T17:57:10.657Z",
+        "reason": "About career-telemetry readout min; display-tier instrument"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255,255,255,0.25)",
+        "createdAt": "2026-07-29T17:57:10.694Z",
+        "reason": "Theme-aware mobile touch ripple feedback; functional, not a palette color"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0,0,0,0.25)",
+        "createdAt": "2026-07-29T17:57:10.739Z",
+        "reason": "Theme-aware mobile touch ripple feedback; functional, not a palette color"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "8rem",
+        "createdAt": "2026-07-29T17:57:45.505Z",
+        "reason": "AnimatedHeading display default (overridden by hero); display-tier token"
       }
     ]
   }

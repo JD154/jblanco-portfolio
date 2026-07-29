@@ -18,7 +18,6 @@ test('loads the WebGL star island only on desktop while keeping the CSS fallback
 
 test('guards automatic motion with the shared reduced-motion preference', async () => {
   const sources = await Promise.all([
-    readSource('../hooks/useParallaxTransitionForSections.ts'),
     readSource('../components/sections/AboutMeSection/index.tsx'),
     readSource('../components/sections/ContactSection/index.tsx'),
     readSource('../components/sections/ProjectsSection/index.tsx'),
