@@ -66,8 +66,9 @@
 }
 
 .about-me-section__title {
-  font-size: clamp(2.15rem, 4vw, 3.35rem);
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.7vw, 3.5rem);
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -84,7 +85,7 @@
 }
 
 .about-me-section__paragraph {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.8;
   color: var(--color-muted-foreground);
   margin: 0;
@@ -102,40 +103,6 @@
   background: var(--color-muted-foreground);
   border-radius: 50%;
   opacity: 0.5;
-}
-
-/* Skills section */
-.about-me-section__skills {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-
-.about-me-section__skill-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.25rem;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  font-weight: 500;
-  color: var(--color-foreground);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.about-me-section__skill-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  border-color: var(--color-border);
-}
-
-.about-me-section__skill-icon {
-  font-size: 1.25rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 /* Quote container */
@@ -218,7 +185,7 @@
   }
 
   .about-me-section__paragraph {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     padding-left: 1rem;
   }
 

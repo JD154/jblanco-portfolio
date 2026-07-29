@@ -18,19 +18,29 @@ const buttonBase =
 <div class="header-section" id="header-section-wrapper">
   <div id="header-section" class="header-section__container">
     <div class="header-section__content">
-      <AnimatedHeading
-        client:load
-        as="h1"
-        text={t.title}
-        sensitivity={0.03}
-        className="header-section__main-title"
-      />
-
-      <p class="header-section__description">
-        {t.descriptionParts[0]} <br />
-        {t.descriptionParts[1]} <br />
-        {t.descriptionParts[2]}
+      <p class="header-section__availability">
+        <span class="header-section__availability-dot"></span>
+        {t.availability}
       </p>
+
+      <div class="header-section__signature" aria-hidden="true">
+        <AnimatedHeading
+          client:load
+          as="div"
+          text={t.signature}
+          fontSize="clamp(1.75rem, 5vw, 2.75rem)"
+          sensitivity={0.03}
+          className="header-section__signature-mark"
+        />
+      </div>
+
+      <h1 class="header-section__pitch">{t.role}</h1>
+
+      <p class="header-section__tagline">{t.tagline}</p>
+
+      <ul class="header-section__capabilities">
+        {t.capabilities.map((cap) => <li class="header-section__capability">{cap}</li>)}
+      </ul>
 
       <div id="header-actions" class="header-section__actions">
         <a

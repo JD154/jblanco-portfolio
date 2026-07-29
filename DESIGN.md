@@ -16,33 +16,38 @@ colors:
   availability-bright: "#34d399"
 typography:
   display:
-    fontFamily: "Arial, sans-serif"
-    fontSize: "8rem"
-    fontWeight: 400
+    fontFamily: "Clash Display, General Sans, sans-serif"
+    fontSize: "8vw"
+    fontWeight: 600
     lineHeight: 1
   headline:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Clash Display, General Sans, sans-serif"
     fontSize: "clamp(2rem, 3.7vw, 3.5rem)"
-    fontWeight: 800
+    fontWeight: 700
     lineHeight: 1.03
     letterSpacing: "-0.02em"
   title:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "General Sans, system-ui, sans-serif"
     fontSize: "1.15rem"
     fontWeight: 700
     lineHeight: 1.5
     letterSpacing: "0.14em"
   body:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "General Sans, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.65
   label:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "General Sans, system-ui, sans-serif"
     fontSize: "0.6875rem"
     fontWeight: 600
     lineHeight: 1.5
     letterSpacing: "0.12em"
+  mono:
+    fontFamily: "JetBrains Mono Variable, JetBrains Mono, monospace"
+    fontSize: "1.0625rem"
+    fontWeight: 500
+    lineHeight: 1.5
 rounded:
   control: "0.5rem"
   icon: "0.75rem"
@@ -142,19 +147,20 @@ The palette moves between Deep Void and Polar Light, using Orbital Mist and fine
 
 ## Typography
 
-**Display Font:** Arial (with sans-serif fallback)  
-**Body Font:** Inter (with system-ui and sans-serif fallbacks)  
-**Label/Mono Font:** Inter for interface labels; Monaco, Menlo, and Ubuntu Mono for contact addresses.
+**Display / Headline Font:** Clash Display (self-hosted; General Sans and sans-serif fallbacks). Its architectural, almost engineered caps carry every oversized moment.  
+**Body / Interface Font:** General Sans (self-hosted; system-ui and sans-serif fallbacks).  
+**Technical / Mono Font:** JetBrains Mono for contact addresses and the project counter — the instrument-panel voice that signals "authored by an engineer" and reinforces the section-toolbar motif.
 
-**Character:** Oversized display lettering provides an immediate, almost object-like focal point. Inter carries the rest of the experience with dense uppercase headlines, widely tracked labels, and highly readable body copy.
+**Character:** Clash Display gives the display and headline moments a precise, object-like presence; General Sans carries the rest with widely tracked labels and highly readable body copy; JetBrains Mono anchors the technical readouts. This pairing replaces the earlier Inter/Arial system to give the interface a distinct, non-default identity while staying minimal.
 
 ### Hierarchy
 
-- **Display** (400, 8rem, 1): Reserved for the interactive hero identity; characters respond as individual spatial objects.
-- **Headline** (800, clamp(2rem, 3.7vw, 3.5rem), 1.03): Uppercase project and section statements with tight tracking and a theme-aware luminous text shadow.
-- **Title** (700, 1.15rem, 1.5): Uppercase section toolbar labels with wide tracking and a small glowing dot.
-- **Body** (400, 1.0625rem, 1.65): Project descriptions and supporting copy, typically constrained to about 34rem.
-- **Label** (600, 0.6875rem, 0.12em, uppercase): Availability, metadata, and compact interface language.
+- **Display** (Clash Display, ~600, 8vw, 1): Reserved for the interactive hero signature ("I'm JB"); characters respond as individual spatial objects.
+- **Headline** (Clash Display, 700, clamp(2rem, 3.7vw, 3.5rem), 1.03): Uppercase pitch, project, and section statements with tight tracking and a theme-aware luminous text shadow.
+- **Title** (General Sans, 700, 1.15rem, 1.5): Uppercase section toolbar labels with wide tracking and a small glowing dot.
+- **Body** (General Sans, 400, 1.0625rem, 1.65): Project descriptions and supporting copy, typically constrained to about 34rem.
+- **Label** (General Sans, 600, 0.6875rem, 0.12em, uppercase): Availability, metadata, and compact interface language.
+- **Mono** (JetBrains Mono, 500, 1.0625rem, 1.5): Contact addresses and the oversized project counter.
 
 ### Named Rules
 

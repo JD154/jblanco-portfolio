@@ -58,7 +58,7 @@ export const MinimalQuote: React.FC<MinimalQuoteProps> = ({ t }) => {
         ref={blockquoteRef}
         style={{
           fontStyle: 'italic',
-          fontSize: '1.125rem',
+          fontSize: '1.0625rem',
           textAlign: 'center',
           margin: 0,
           padding: '2rem',
@@ -78,7 +78,7 @@ export const MinimalQuote: React.FC<MinimalQuoteProps> = ({ t }) => {
             position: 'absolute',
             top: '0.5rem',
             left: '1rem',
-            fontFamily: 'serif',
+            fontFamily: 'var(--font-display)',
             lineHeight: 1,
           }}
         >
@@ -87,7 +87,7 @@ export const MinimalQuote: React.FC<MinimalQuoteProps> = ({ t }) => {
 
         <div
           style={{
-            fontSize: '1.25rem',
+            fontSize: '1.15rem',
             fontWeight: 600,
             marginBottom: '1rem',
             color: 'var(--color-foreground)',
@@ -98,7 +98,7 @@ export const MinimalQuote: React.FC<MinimalQuoteProps> = ({ t }) => {
 
         <div
           style={{
-            fontSize: '0.875rem',
+            fontSize: '0.6875rem',
             opacity: 0.6,
             fontStyle: 'normal',
             color: 'var(--color-muted-foreground)',
@@ -114,7 +114,7 @@ export const MinimalQuote: React.FC<MinimalQuoteProps> = ({ t }) => {
             position: 'absolute',
             bottom: '0.5rem',
             right: '1rem',
-            fontFamily: 'serif',
+            fontFamily: 'var(--font-display)',
             lineHeight: 1,
             transform: 'rotate(180deg)',
           }}

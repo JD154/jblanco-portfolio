@@ -2,8 +2,8 @@ import { useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import type { FC } from 'react';
-import { useIsInViewport } from '@/hooks/useIsInViewport';
+import type { CSSProperties, FC } from 'react';
+import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import './styles.css';
 import { ProjectsCarousel } from './components/ProjectsCarousel';
@@ -20,9 +20,8 @@ interface ProjectsSectionProps {
 
 export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRevealOnScroll<HTMLDivElement>();
   const carouselRef = useRef<HTMLDivElement>(null);
-  const isInViewport = useIsInViewport(sectionRef);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const [filter, setFilter] = useState<string>('all');
@@ -39,26 +38,6 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
       : projects.filter((project) =>
           project.techStack?.some((tech) => tech.toLowerCase().includes(filter.toLowerCase())),
         );
-
-  useGSAP(() => {
-    if (!isInViewport || prefersReducedMotion) return;
-
-    // Animate header
-    if (headerRef.current) {
-      gsap.fromTo(
-        headerRef.current.children,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          stagger: 0.2,
-          delay: 0.3,
-        },
-      );
-    }
-  }, [isInViewport, prefersReducedMotion]);
 
   // Scroll-driven "unfold" — the showcase deploys open (grows + flattens) as
   // it scrolls through view, like opening a portfolio briefcase.
@@ -92,12 +71,12 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
       <div className="projects-section__inner py-24 px-6 max-w-7xl mx-auto relative z-10">
         {/* Header — slim toolbar: section label + filters */}
         <div className="projects-section__header" ref={headerRef}>
-          <h2 className="projects-section__label">
+          <h2 className="projects-section__label" data-reveal>
             <span className="projects-section__eyebrow-dot" />
             {t.label}
           </h2>
 
-          <div className="projects-section__filters">
+          <div className="projects-section__filters" data-reveal style={{ '--reveal-i': 1 } as CSSProperties}>
             {filters.map(({ key, label }) => (
               <GlowingButton
                 key={key}

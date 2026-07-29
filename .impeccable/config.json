@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.08)",
+        "createdAt": "2026-07-29T16:29:29.799Z",
+        "reason": "Ambient Panel shadow token (DESIGN.md Elevation / sidecar shadows); detector color rule doesn't cross-check the shadows array"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.12)",
+        "createdAt": "2026-07-29T16:29:29.838Z",
+        "reason": "Interactive Lift shadow token (DESIGN.md Elevation / sidecar shadows); detector color rule doesn't cross-check the shadows array"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.28)",
+        "createdAt": "2026-07-29T16:34:49.805Z",
+        "reason": "Showcase Depth shadow token (DESIGN.md Elevation) on the featured artifact"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.85)",
+        "createdAt": "2026-07-29T16:34:49.841Z",
+        "reason": "Thumbnail scrim overlay for title legibility over project screenshots; not a palette color"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff",
+        "createdAt": "2026-07-29T16:34:49.875Z",
+        "reason": "Card title text over photographic screenshots; fixed white for contrast on imagery, not a theme color"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "createdAt": "2026-07-29T16:34:49.910Z",
+        "reason": "Alpha-mask stops in the rail fade mask-image; functional, not a palette color"
+      }
+    ]
+  }
+}

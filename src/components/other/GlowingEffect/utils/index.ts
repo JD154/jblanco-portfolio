@@ -1,12 +1,6 @@
-export const LIGHT_GRADIENT = [
-  'radial-gradient(circle, #111 0%, rgba(17,17,17,0.9) 20%, rgba(17,17,17,0.6) 40%, rgba(17,17,17,0.25) 70%, rgba(17,17,17,0.15) 100%)',
-  'conic-gradient(from 0deg at 50% 50%, rgba(17,17,17,0.18) 0deg, rgba(17,17,17,0.08) 90deg, rgba(17,17,17,0.18) 180deg, rgba(17,17,17,0.08) 270deg, rgba(17,17,17,0.18) 360deg)',
-].join(', ');
-
-export const DARK_GRADIENT = [
-  'radial-gradient(circle, #fff 0%, rgba(255,255,255,0.85) 20%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.15) 70%, rgba(255,255,255,0) 100%)',
-  'conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.15) 0deg, rgba(255,255,255,0.05) 90deg, rgba(255,255,255,0.15) 180deg, rgba(255,255,255,0.05) 270deg, rgba(255,255,255,0.15) 360deg)',
-].join(', ');
+// The theme-contrasting 'white' halo now lives in the `--glow-gradient` CSS
+// variable (see src/styles/index.css) so it resolves per theme without a JS
+// theme read that would break hydration.
 
 export const DEFAULT_GRADIENT = [
   'radial-gradient(circle, #a1c4fd 10%, #a1c4fd00 20%)',

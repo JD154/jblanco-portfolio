@@ -4,13 +4,64 @@
 @import './custom-utilities.css';
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Type system — Clash Display (oversized display/headline moments),
+     General Sans (body + UI), JetBrains Mono (technical accents: addresses,
+     counter). See src/styles/fonts.css for the @font-face sources. */
+  --font-sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Clash Display', 'General Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  font-family: var(--font-sans);
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* GlowingEffect halo — theme-driven via CSS so the inline `--gradient` stays
+   identical on server and client (avoids a hydration mismatch from reading the
+   theme in JS). Light theme = the default; dark theme overrides on `.dark`,
+   matching the `html:not(.dark)` convention used elsewhere. */
+:root {
+  --glow-gradient:
+    radial-gradient(
+      circle,
+      #111 0%,
+      rgba(17, 17, 17, 0.9) 20%,
+      rgba(17, 17, 17, 0.6) 40%,
+      rgba(17, 17, 17, 0.25) 70%,
+      rgba(17, 17, 17, 0.15) 100%
+    ),
+    conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(17, 17, 17, 0.18) 0deg,
+      rgba(17, 17, 17, 0.08) 90deg,
+      rgba(17, 17, 17, 0.18) 180deg,
+      rgba(17, 17, 17, 0.08) 270deg,
+      rgba(17, 17, 17, 0.18) 360deg
+    );
+}
+
+.dark {
+  --glow-gradient:
+    radial-gradient(
+      circle,
+      #fff 0%,
+      rgba(255, 255, 255, 0.85) 20%,
+      rgba(255, 255, 255, 0.5) 40%,
+      rgba(255, 255, 255, 0.15) 70%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(255, 255, 255, 0.15) 0deg,
+      rgba(255, 255, 255, 0.05) 90deg,
+      rgba(255, 255, 255, 0.15) 180deg,
+      rgba(255, 255, 255, 0.05) 270deg,
+      rgba(255, 255, 255, 0.15) 360deg
+    );
 }
 
 button {
@@ -82,6 +133,26 @@ body {
 
 .webgl-stars-ready .webgl-stars-background {
   opacity: 1;
+}
+
+/* Scroll reveal — content is visible by default (works with no JS, on a
+   hydration error, and under reduced-motion). The useRevealOnScroll hook arms a
+   section below the fold before paint, then adds .reveal-in on scroll. The
+   entrance runs as a CSS transition, so it is compositor-driven and always
+   settles at the visible end state even when rAF is throttled. */
+.reveal-armed [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: opacity, transform;
+}
+
+.reveal-armed.reveal-in [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--reveal-i, 0) * 0.08s);
 }
 
 @media (prefers-reduced-motion: reduce) {

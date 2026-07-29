@@ -14,7 +14,7 @@
   text-shadow: var(--heading-text-shadow);
   position: relative;
   font-size: 8vw;
-  font-family: 'Arial', sans-serif;
+  font-family: var(--font-display);
   cursor: pointer;
   user-select: none;
   transform-style: preserve-3d;
@@ -32,7 +32,7 @@
 }
 
 .animated-heading__space {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   color: transparent;
   user-select: none;
   display: inline-block;
@@ -42,5 +42,5 @@
 .animated-heading__space::after {
   content: ' ';
   display: inline-block;
-  width: 0.05em;
+  width: 0.26em;
 }

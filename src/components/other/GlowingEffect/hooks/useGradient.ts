@@ -1,22 +1,14 @@
-import { useTheme } from '@/components/other/ThemeProvider/context';
-import { useMemo } from 'react';
-import { DARK_GRADIENT, DEFAULT_GRADIENT, LIGHT_GRADIENT } from '../utils';
+import { DEFAULT_GRADIENT } from '../utils';
 
 export type GradientVariant = 'default' | 'white';
 
+/**
+ * The theme-contrasting 'white' halo is driven by the CSS variable
+ * `--glow-gradient`, defined per theme in global CSS. Returning a `var()`
+ * reference instead of reading the theme in JS keeps the inline style identical
+ * on the server and the client, which avoids a hydration mismatch on every glow
+ * when the stored theme differs from the SSR default.
+ */
 export function useGradient(variant: GradientVariant = 'default') {
-  const { theme } = useTheme();
-
-  const gradients = useMemo(() => {
-    return {
-      light: LIGHT_GRADIENT,
-      dark: DARK_GRADIENT,
-      default: DEFAULT_GRADIENT,
-    };
-  }, []);
-
-  if (variant === 'white') {
-    return theme === 'dark' ? gradients.dark : gradients.light;
-  }
-  return gradients.default;
+  return variant === 'white' ? 'var(--glow-gradient)' : DEFAULT_GRADIENT;
 }

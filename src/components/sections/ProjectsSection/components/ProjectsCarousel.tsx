@@ -46,14 +46,14 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
         gsap.fromTo(
           leftRef.current.querySelectorAll('[data-animate]'),
           { opacity: 0, y: 28 },
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08, clearProps: 'opacity,transform' },
         );
       }
       if (!prefersReducedMotion && featuredImgRef.current) {
         gsap.fromTo(
           featuredImgRef.current,
           { opacity: 0, scale: 1.18, filter: 'blur(12px)' },
-          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.75, ease: 'power3.out' },
+          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.75, ease: 'power3.out', clearProps: 'opacity,transform,filter' },
         );
       }
       // Keep the highlighted card centered within the rail — scroll ONLY the
@@ -206,26 +206,15 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
         </div>
       </div>
 
-      {/* Controls */}
-      <div className="pc__controls">
-        <div className="pc__arrows">
-          <button type="button" className="pc__arrow" onClick={() => go(-1)} aria-label={t.previousAria}>
-            ←
-          </button>
-          <button type="button" className="pc__arrow" onClick={() => go(1)} aria-label={t.nextAria}>
-            →
-          </button>
+      {/* Status readout — the rail is the single navigation; this reports position */}
+      {total > 1 && (
+        <div className="pc__controls">
+          <div className="pc__counter" aria-live="polite">
+            <span className="pc__counter-current">{counter}</span>
+            <span className="pc__counter-total">/ {totalLabel}</span>
+          </div>
         </div>
-
-        <div className="pc__progress" role="presentation">
-          <span className="pc__progress-fill" style={{ width: `${((activeIndex + 1) / total) * 100}%` }} />
-        </div>
-
-        <div className="pc__counter" aria-live="polite">
-          <span className="pc__counter-current">{counter}</span>
-          <span className="pc__counter-total">/ {totalLabel}</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

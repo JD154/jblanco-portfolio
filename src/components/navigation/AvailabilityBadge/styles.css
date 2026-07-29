@@ -7,7 +7,7 @@
   padding: 0;
   background: transparent;
   border: none;
-  font-family: 'Inter', inherit;
+  font-family: var(--font-sans);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -99,10 +99,25 @@
   animation-duration: 1.2s;
 }
 
-/* Hide the availability badge on very narrow screens (keeps navbar clean) */
+/* On narrow screens the tracked label is too wide, but the badge is the only
+   route to contact — so keep the live dot as a comfortable 44px tap target
+   (its purpose is announced via aria-label) instead of hiding it entirely. */
 @media (max-width: 480px) {
   .nav-badge {
+    gap: 0;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .nav-badge__label {
     display: none;
+  }
+
+  .nav-badge__dot {
+    width: 8px;
+    height: 8px;
   }
 }
 

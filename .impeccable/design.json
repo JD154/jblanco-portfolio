@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-28T16:39:11Z",
+  "generatedAt": "2026-07-29T16:11:50Z",
   "title": "Design System: Jesus Blanco Portfolio",
   "extensions": {
     "colorMeta": {
@@ -78,11 +78,12 @@
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Spatial Display", "purpose": "Interactive hero identity only." },
-      "headline": { "displayName": "Observatory Headline", "purpose": "Project names and major section statements." },
-      "title": { "displayName": "Section Instrument", "purpose": "Tracked uppercase section toolbars." },
-      "body": { "displayName": "Explanatory Body", "purpose": "Project descriptions and supporting narrative." },
-      "label": { "displayName": "Technical Label", "purpose": "Availability, metadata, filters, and compact controls." }
+      "display": { "displayName": "Spatial Display", "purpose": "Clash Display for the interactive hero signature only; characters act as spatial objects." },
+      "headline": { "displayName": "Observatory Headline", "purpose": "Clash Display for the pitch, project names, and major section statements." },
+      "title": { "displayName": "Section Instrument", "purpose": "General Sans, tracked uppercase, for section toolbars." },
+      "body": { "displayName": "Explanatory Body", "purpose": "General Sans for project descriptions and supporting narrative." },
+      "label": { "displayName": "Technical Label", "purpose": "General Sans for availability, metadata, filters, and compact controls." },
+      "mono": { "displayName": "Instrument Mono", "purpose": "JetBrains Mono for contact addresses and the oversized project counter." }
     },
     "shadows": [
       { "name": "ambient-panel", "value": "0 4px 20px rgba(0, 0, 0, 0.08)", "purpose": "Low resting separation for compact translucent cards." },
@@ -111,7 +112,7 @@
       "refersTo": "button-primary",
       "description": "Theme-inverting primary action with a restrained press response.",
       "html": "<button class=\"ds-btn-primary\">VIEW PROJECT <span aria-hidden=\"true\">→</span></button>",
-      "css": ".ds-btn-primary { display:inline-flex; height:2.25rem; align-items:center; justify-content:center; gap:.5rem; padding:.5rem 1rem; border:0; border-radius:var(--radius, .5rem); background:hsl(var(--primary)); color:hsl(var(--primary-foreground)); font:600 .875rem/1 Inter,system-ui,sans-serif; box-shadow:0 1px 3px rgba(0,0,0,.12); transition:background-color .3s ease,transform .3s ease-out; cursor:pointer; } .ds-btn-primary:hover { background:color-mix(in srgb,hsl(var(--primary)) 90%,transparent); } .ds-btn-primary:focus-visible { outline:1px solid hsl(var(--ring)); outline-offset:2px; } .ds-btn-primary:active { transform:scale(.97); }"
+      "css": ".ds-btn-primary { display:inline-flex; height:2.25rem; align-items:center; justify-content:center; gap:.5rem; padding:.5rem 1rem; border:0; border-radius:var(--radius, .5rem); background:hsl(var(--primary)); color:hsl(var(--primary-foreground)); font:600 .875rem/1 var(--font-sans); box-shadow:0 1px 3px rgba(0,0,0,.12); transition:background-color .3s ease,transform .3s ease-out; cursor:pointer; } .ds-btn-primary:hover { background:color-mix(in srgb,hsl(var(--primary)) 90%,transparent); } .ds-btn-primary:focus-visible { outline:1px solid hsl(var(--ring)); outline-offset:2px; } .ds-btn-primary:active { transform:scale(.97); }"
     },
     {
       "name": "Outline Button",
@@ -119,7 +120,7 @@
       "refersTo": "button-outline",
       "description": "Translucent secondary action with a fine boundary and backdrop blur.",
       "html": "<button class=\"ds-btn-outline\">VISIT LINKEDIN</button>",
-      "css": ".ds-btn-outline { display:inline-flex; height:2.25rem; align-items:center; justify-content:center; padding:.5rem 1rem; border:1px solid hsl(var(--input)); border-radius:var(--radius, .5rem); background:var(--secondary-background); color:hsl(var(--foreground)); font:600 .875rem/1 Inter,system-ui,sans-serif; backdrop-filter:blur(4px); box-shadow:0 1px 3px rgba(0,0,0,.1); transition:background-color .3s ease,transform .3s ease-out; cursor:pointer; } .ds-btn-outline:hover { background:hsl(var(--accent)); color:hsl(var(--accent-foreground)); } .ds-btn-outline:focus-visible { outline:1px solid hsl(var(--ring)); outline-offset:2px; } .ds-btn-outline:active { transform:scale(.97); }"
+      "css": ".ds-btn-outline { display:inline-flex; height:2.25rem; align-items:center; justify-content:center; padding:.5rem 1rem; border:1px solid hsl(var(--input)); border-radius:var(--radius, .5rem); background:var(--secondary-background); color:hsl(var(--foreground)); font:600 .875rem/1 var(--font-sans); backdrop-filter:blur(4px); box-shadow:0 1px 3px rgba(0,0,0,.1); transition:background-color .3s ease,transform .3s ease-out; cursor:pointer; } .ds-btn-outline:hover { background:hsl(var(--accent)); color:hsl(var(--accent-foreground)); } .ds-btn-outline:focus-visible { outline:1px solid hsl(var(--ring)); outline-offset:2px; } .ds-btn-outline:active { transform:scale(.97); }"
     },
     {
       "name": "Navigation Capsule",
@@ -127,21 +128,21 @@
       "refersTo": "nav-capsule",
       "description": "Centered three-zone navigation shell for identity, availability, and utilities.",
       "html": "<nav class=\"ds-nav\"><strong class=\"ds-nav-brand\">JB</strong><span class=\"ds-nav-status\"><i></i> BOOKING NEW PROJECTS</span><span class=\"ds-nav-tools\"><button>EN</button><button aria-label=\"Toggle theme\">◐</button></span></nav>",
-      "css": ".ds-nav { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; width:min(38rem,calc(100% - 2rem)); padding:.5rem 1.5rem; border:1px solid hsl(var(--border)); border-radius:9999px; background:var(--secondary-background); color:hsl(var(--foreground)); box-shadow:0 1px 3px rgba(0,0,0,.12); backdrop-filter:blur(4px); font-family:Inter,system-ui,sans-serif; } .ds-nav-brand { justify-self:start; font-size:.875rem; } .ds-nav-status { display:flex; align-items:center; gap:.5rem; font-size:.6875rem; font-weight:600; letter-spacing:.12em; color:hsl(var(--muted-foreground)); } .ds-nav-status i { width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#10b981,#34d399); box-shadow:0 0 10px color-mix(in srgb,#34d399 45%,transparent); } .ds-nav-tools { justify-self:end; display:flex; gap:.25rem; } .ds-nav-tools button { border:0; border-radius:9999px; padding:.4rem; background:transparent; color:inherit; cursor:pointer; } .ds-nav-tools button:hover { background:hsl(var(--accent)); } .ds-nav-tools button:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; }"
+      "css": ".ds-nav { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; width:min(38rem,calc(100% - 2rem)); padding:.5rem 1.5rem; border:1px solid hsl(var(--border)); border-radius:9999px; background:var(--secondary-background); color:hsl(var(--foreground)); box-shadow:0 1px 3px rgba(0,0,0,.12); backdrop-filter:blur(4px); font-family:var(--font-sans); } .ds-nav-brand { justify-self:start; font-size:.875rem; } .ds-nav-status { display:flex; align-items:center; gap:.5rem; font-size:.6875rem; font-weight:600; letter-spacing:.12em; color:hsl(var(--muted-foreground)); } .ds-nav-status i { width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#10b981,#34d399); box-shadow:0 0 10px color-mix(in srgb,#34d399 45%,transparent); } .ds-nav-tools { justify-self:end; display:flex; gap:.25rem; } .ds-nav-tools button { border:0; border-radius:9999px; padding:.4rem; background:transparent; color:inherit; cursor:pointer; } .ds-nav-tools button:hover { background:hsl(var(--accent)); } .ds-nav-tools button:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; }"
     },
     {
       "name": "Availability Badge",
       "kind": "custom",
       "description": "Bare technical status label with the system's only chromatic signal.",
       "html": "<button class=\"ds-availability\"><span class=\"ds-availability-dot\"></span><span>BOOKING NEW PROJECTS</span></button>",
-      "css": ".ds-availability { display:inline-flex; align-items:center; gap:.5rem; padding:0; border:0; background:transparent; color:hsl(var(--muted-foreground)); font:600 .6875rem/1.5 Inter,system-ui,sans-serif; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:color .3s ease; } .ds-availability:hover { color:hsl(var(--foreground)); } .ds-availability:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; } .ds-availability-dot { position:relative; width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#10b981,#34d399); box-shadow:0 0 10px color-mix(in srgb,#34d399 40%,transparent); }"
+      "css": ".ds-availability { display:inline-flex; align-items:center; gap:.5rem; padding:0; border:0; background:transparent; color:hsl(var(--muted-foreground)); font:600 .6875rem/1.5 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:color .3s ease; } .ds-availability:hover { color:hsl(var(--foreground)); } .ds-availability:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; } .ds-availability-dot { position:relative; width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#10b981,#34d399); box-shadow:0 0 10px color-mix(in srgb,#34d399 40%,transparent); }"
     },
     {
       "name": "Project Thumbnail",
       "kind": "card",
       "description": "Filmstrip card that dims at rest and gains an orbit ring when selected.",
       "html": "<button class=\"ds-project-card\" aria-current=\"true\"><span class=\"ds-project-art\"></span><strong>IR MANAGEMENT</strong></button>",
-      "css": ".ds-project-card { position:relative; width:210px; height:128px; overflow:hidden; padding:0; border:1px solid hsl(var(--foreground)); border-radius:1rem; background:var(--secondary-background); color:#fff; box-shadow:0 16px 36px rgba(0,0,0,.3),0 0 0 2px hsl(var(--foreground)),0 0 22px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); cursor:pointer; transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease; } .ds-project-art { position:absolute; inset:0; background:radial-gradient(circle at 70% 25%,color-mix(in srgb,hsl(var(--foreground)) 18%,transparent),transparent 25%),linear-gradient(135deg,hsl(var(--secondary)),hsl(var(--background))); } .ds-project-card::after { content:''; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.85)); } .ds-project-card strong { position:absolute; z-index:1; inset:auto .75rem .65rem; text-align:left; font:700 .8125rem/1.2 Inter,system-ui,sans-serif; letter-spacing:.02em; } .ds-project-card:hover { transform:translateY(-6px); box-shadow:0 20px 42px rgba(0,0,0,.32),0 0 0 2px hsl(var(--foreground)); } .ds-project-card:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
+      "css": ".ds-project-card { position:relative; width:210px; height:128px; overflow:hidden; padding:0; border:1px solid hsl(var(--foreground)); border-radius:1rem; background:var(--secondary-background); color:#fff; box-shadow:0 16px 36px rgba(0,0,0,.3),0 0 0 2px hsl(var(--foreground)),0 0 22px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); cursor:pointer; transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease; } .ds-project-art { position:absolute; inset:0; background:radial-gradient(circle at 70% 25%,color-mix(in srgb,hsl(var(--foreground)) 18%,transparent),transparent 25%),linear-gradient(135deg,hsl(var(--secondary)),hsl(var(--background))); } .ds-project-card::after { content:''; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.85)); } .ds-project-card strong { position:absolute; z-index:1; inset:auto .75rem .65rem; text-align:left; font:700 .8125rem/1.2 var(--font-sans); letter-spacing:.02em; } .ds-project-card:hover { transform:translateY(-6px); box-shadow:0 20px 42px rgba(0,0,0,.32),0 0 0 2px hsl(var(--foreground)); } .ds-project-card:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
     },
     {
       "name": "Contact Channel Card",
@@ -149,21 +150,21 @@
       "refersTo": "glass-card",
       "description": "Responsive glass card for direct contact channels.",
       "html": "<a class=\"ds-contact-card\" href=\"#\"><span class=\"ds-contact-icon\">@</span><span><strong>EMAIL</strong><small>contact@jblanco.dev</small></span><b aria-hidden=\"true\">→</b></a>",
-      "css": ".ds-contact-card { display:flex; align-items:center; gap:1rem; padding:1.5rem; border:1px solid hsl(var(--border)); border-radius:1rem; background:hsla(var(--card),.9); color:hsl(var(--foreground)); text-decoration:none; backdrop-filter:blur(20px); box-shadow:0 8px 32px rgba(0,0,0,.1); transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s cubic-bezier(.4,0,.2,1),border-color .3s ease; font-family:Inter,system-ui,sans-serif; } .ds-contact-icon { display:grid; place-items:center; width:3rem; height:3rem; flex:0 0 auto; border-radius:.75rem; background:hsl(var(--secondary)); font-weight:700; } .ds-contact-card span:nth-child(2) { display:flex; min-width:0; flex:1; flex-direction:column; gap:.25rem; } .ds-contact-card strong { font-size:1rem; } .ds-contact-card small { color:hsl(var(--muted-foreground)); font:400 .875rem/1.4 Monaco,Menlo,monospace; overflow-wrap:anywhere; } .ds-contact-card b { color:hsl(var(--muted-foreground)); transition:transform .3s ease,color .3s ease; } .ds-contact-card:hover { transform:translateY(-4px); border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); box-shadow:0 20px 50px rgba(0,0,0,.15); } .ds-contact-card:hover b { transform:translateX(4px); color:hsl(var(--foreground)); } .ds-contact-card:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
+      "css": ".ds-contact-card { display:flex; align-items:center; gap:1rem; padding:1.5rem; border:1px solid hsl(var(--border)); border-radius:1rem; background:hsla(var(--card),.9); color:hsl(var(--foreground)); text-decoration:none; backdrop-filter:blur(20px); box-shadow:0 8px 32px rgba(0,0,0,.1); transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s cubic-bezier(.4,0,.2,1),border-color .3s ease; font-family:var(--font-sans); } .ds-contact-icon { display:grid; place-items:center; width:3rem; height:3rem; flex:0 0 auto; border-radius:.75rem; background:hsl(var(--secondary)); font-weight:700; } .ds-contact-card span:nth-child(2) { display:flex; min-width:0; flex:1; flex-direction:column; gap:.25rem; } .ds-contact-card strong { font:600 .6875rem/1.5 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; color:hsl(var(--muted-foreground)); } .ds-contact-card small { color:hsl(var(--foreground)); font:500 1.0625rem/1.4 var(--font-mono); overflow-wrap:anywhere; } .ds-contact-card b { color:hsl(var(--muted-foreground)); transition:transform .3s ease,color .3s ease; } .ds-contact-card:hover { transform:translateY(-4px); border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); box-shadow:0 20px 50px rgba(0,0,0,.15); } .ds-contact-card:hover b { transform:translateX(4px); color:hsl(var(--foreground)); } .ds-contact-card:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
     },
     {
       "name": "Carousel Arrow",
       "kind": "button",
       "description": "Circular directional control for moving through observed work.",
       "html": "<button class=\"ds-carousel-arrow\" aria-label=\"Next project\">→</button>",
-      "css": ".ds-carousel-arrow { display:grid; place-items:center; width:2.75rem; height:2.75rem; padding:0; border:1px solid hsl(var(--border)); border-radius:50%; background:hsla(var(--card),.9); color:hsl(var(--foreground)); font:400 1.1rem/1 Inter,system-ui,sans-serif; cursor:pointer; transition:background .3s ease,border-color .3s ease,transform .3s ease; } .ds-carousel-arrow:hover { border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); transform:scale(1.05); } .ds-carousel-arrow:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-carousel-arrow:active { transform:scale(.97); }"
+      "css": ".ds-carousel-arrow { display:grid; place-items:center; width:2.75rem; height:2.75rem; padding:0; border:1px solid hsl(var(--border)); border-radius:50%; background:hsla(var(--card),.9); color:hsl(var(--foreground)); font:400 1.1rem/1 var(--font-sans); cursor:pointer; transition:background .3s ease,border-color .3s ease,transform .3s ease; } .ds-carousel-arrow:hover { border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); transform:scale(1.05); } .ds-carousel-arrow:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-carousel-arrow:active { transform:scale(.97); }"
     },
     {
       "name": "Section Toolbar",
       "kind": "custom",
       "description": "Instrument-panel section marker with a luminous dot and quiet divider.",
       "html": "<div class=\"ds-section-toolbar\"><h2><i></i> FEATURED PROJECTS</h2></div>",
-      "css": ".ds-section-toolbar { display:flex; align-items:center; padding-bottom:1.5rem; border-bottom:1px solid hsl(var(--border)); color:hsl(var(--foreground)); } .ds-section-toolbar h2 { display:inline-flex; align-items:center; gap:.7rem; margin:0; font:700 1.15rem/1.5 Inter,system-ui,sans-serif; letter-spacing:.14em; text-transform:uppercase; } .ds-section-toolbar i { width:7px; height:7px; border-radius:50%; background:hsl(var(--foreground)); box-shadow:0 0 12px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); }"
+      "css": ".ds-section-toolbar { display:flex; align-items:center; padding-bottom:1.5rem; border-bottom:1px solid hsl(var(--border)); color:hsl(var(--foreground)); } .ds-section-toolbar h2 { display:inline-flex; align-items:center; gap:.7rem; margin:0; font:700 1.15rem/1.5 var(--font-sans); letter-spacing:.14em; text-transform:uppercase; } .ds-section-toolbar i { width:7px; height:7px; border-radius:50%; background:hsl(var(--foreground)); box-shadow:0 0 12px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); }"
     }
   ],
   "narrative": {

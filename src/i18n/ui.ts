@@ -32,12 +32,12 @@ export const ui = {
       },
     },
     header: {
-      title: "I'm JB",
-      descriptionParts: [
-        'Senior Front-End Developer with 7 Years of Experience',
-        'Crafting clean and functional user interfaces with',
-        'a strong focus on maintainability and scalability.',
-      ],
+      availability: 'Booking new projects',
+      role: 'Senior Front-End Developer',
+      tagline:
+        'Crafting clean, functional interfaces with a strong focus on maintainability and scalability. 7 years of experience.',
+      capabilities: ['Design Systems', 'Data-viz', 'React', 'Vue', 'TypeScript'],
+      signature: "I'm JB",
       ctaCv: 'Download CV',
       ctaLinkedin: 'Visit LinkedIn',
     },
@@ -73,6 +73,7 @@ export const ui = {
     contact: {
       label: 'Get In Touch',
       subtitle: 'Have a project in mind or just want to say hi? Reach out through any of these channels.',
+      availability: 'Booking new projects',
       items: {
         github: 'GitHub',
         email: 'Email',
@@ -108,12 +109,12 @@ export const ui = {
       },
     },
     header: {
-      title: 'Soy JB',
-      descriptionParts: [
-        'Desarrollador front-end senior con 7 años de experiencia',
-        'Creando interfaces de usuario limpias y funcionales con',
-        'un fuerte enfoque en la mantenibilidad y la escalabilidad.',
-      ],
+      availability: 'Disponible para nuevos proyectos',
+      role: 'Desarrollador Front-End Senior',
+      tagline:
+        'Creando interfaces limpias y funcionales con un fuerte enfoque en la mantenibilidad y la escalabilidad. 7 años de experiencia.',
+      capabilities: ['Sistemas de diseño', 'Data-viz', 'React', 'Vue', 'TypeScript'],
+      signature: 'Soy JB',
       ctaCv: 'Descargar CV',
       ctaLinkedin: 'Visitar LinkedIn',
     },
@@ -149,6 +150,7 @@ export const ui = {
     contact: {
       label: 'Contacto',
       subtitle: '¿Tienes un proyecto en mente o simplemente quieres saludar? Contacta conmigo por cualquiera de estos canales.',
+      availability: 'Disponible para nuevos proyectos',
       items: {
         github: 'GitHub',
         email: 'Correo electrónico',
