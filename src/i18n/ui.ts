@@ -38,7 +38,7 @@ export const ui = {
       capabilities: ['Design Systems', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: "I'm JB",
       ctaCv: 'Download CV',
-      ctaLinkedin: 'Visit LinkedIn',
+      ctaWork: 'View selected work',
     },
     about: {
       label: 'About Me',
@@ -89,6 +89,11 @@ export const ui = {
       previousAria: 'Previous project',
       nextAria: 'Next project',
       featuredFallback: 'Featured Project',
+      fields: {
+        role: 'Role',
+        challenge: 'Challenge',
+        decision: 'Key decision',
+      },
     },
     contact: {
       label: 'Get In Touch',
@@ -135,7 +140,7 @@ export const ui = {
       capabilities: ['Sistemas de diseño', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: 'Soy JB',
       ctaCv: 'Descargar CV',
-      ctaLinkedin: 'Visitar LinkedIn',
+      ctaWork: 'Ver proyectos seleccionados',
     },
     about: {
       label: 'Sobre mí',
@@ -186,6 +191,11 @@ export const ui = {
       previousAria: 'Proyecto anterior',
       nextAria: 'Proyecto siguiente',
       featuredFallback: 'Proyecto destacado',
+      fields: {
+        role: 'Rol',
+        challenge: 'Reto',
+        decision: 'Decisión clave',
+      },
     },
     contact: {
       label: 'Contacto',

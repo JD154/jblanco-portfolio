@@ -39,8 +39,11 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
           project.techStack?.some((tech) => tech.toLowerCase().includes(filter.toLowerCase())),
         );
 
-  // Scroll-driven "unfold" — the showcase deploys open (grows + flattens) as
-  // it scrolls through view, like opening a portfolio briefcase.
+  // "Unfold" — the showcase deploys open (grows + flattens) as it enters view,
+  // like opening a portfolio briefcase. Plays once on enter rather than scrubbing
+  // to scroll position: a scrubbed entrance fights the global CSS smooth-scroll
+  // during in-page jumps (e.g. the hero's "View selected work" anchor), landing
+  // on a half-unfolded frame. A one-shot timeline always settles fully.
   useGSAP(
     () => {
       if (prefersReducedMotion) return;
@@ -53,12 +56,12 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
           rotateX: 0,
           y: 0,
           opacity: 1,
-          ease: 'none',
+          duration: 1.1,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
-            end: 'top 30%',
-            scrub: 0.6,
+            start: 'top 75%',
+            once: true,
           },
         },
       );

@@ -2,6 +2,8 @@
   {
     "title": "I.R Management Platform",
     "description": "Fui responsable de crear una interfaz reutilizable alineada con el sistema de diseño de la empresa en varias subaplicaciones, implementar visualizaciones de datos complejas y asegurar la usabilidad de la plataforma sin comprometer la limpieza de la experiencia de usuario.",
+    "role": "Responsable de la UI reutilizable y de la visualización de datos compleja",
+    "challenge": "Mantener la UI consistente entre varias subaplicaciones sin comprometer la limpieza de la UX",
     "image": "/projects/ir-management.png",
     "url": "https://ir.jblanco.dev/",
     "techStack": ["React", "Typescript", "Next.js", "amCharts 5"]
@@ -9,6 +11,8 @@
   {
     "title": "inUI Library",
     "description": "Colaboré en la creación de una biblioteca de interfaz completa para uso interno, con el objetivo principal de mejorar la eficiencia de desarrollo y mantener una experiencia de usuario coherente entre aplicaciones.",
+    "role": "Coautor de la biblioteca de UI compartida",
+    "challenge": "Mejorar la eficiencia de desarrollo manteniendo una experiencia de usuario coherente entre aplicaciones",
     "image": "/projects/in-ui-library.jpg",
     "url": "https://inui.jblanco.dev/",
     "techStack": ["React", "TypeScript", "Tailwind CSS", "Reakit", "RadixUI", "Storybook"]
@@ -16,6 +20,8 @@
   {
     "title": "Investor Onboarding Portal",
     "description": "Colaboré en el desarrollo de una plataforma de registro de inversores y gestión de documentos con verificación KYC y funciones de cumplimiento, para simplificar la incorporación de nuevos inversores que suele requerir mucho papeleo.",
+    "role": "Codesarrollador de la plataforma de registro y gestión documental",
+    "challenge": "Simplificar una incorporación de inversores con mucho papeleo, con verificación KYC y cumplimiento",
     "image": "/projects/investor-onboarding-portal.png",
     "url": "https://onboarding.jblanco.dev/",
     "techStack": ["Vue.js", "Next.js", "Tailwind CSS"]
@@ -23,6 +29,8 @@
   {
     "title": "Credit Healing UI Library",
     "description": "Contribuí a una colección de componentes de interfaz reutilizables y elementos de sistema de diseño para crear aplicaciones personalizadas para proyectos internos y de cara al cliente, centrada en la facilidad de uso y una apariencia creativa.",
+    "role": "Colaborador en la colección de componentes y elementos del sistema de diseño",
+    "challenge": "Componentes reutilizables para apps internas y de cliente, fáciles de usar y con carácter propio",
     "image": "/projects/ch-ui-library.jpg",
     "url": "https://chui.jblanco.dev/",
     "techStack": ["React", "TypeScript", "Storybook", "Sass"]
@@ -30,6 +38,8 @@
   {
     "title": "Covid News Dashboard",
     "description": "Panel interactivo de visualización de datos para seguir estadísticas de COVID-19 con actualizaciones en tiempo real y desgloses regionales. Obtiene datos de varias API y los visualiza con amCharts 4.",
+    "challenge": "Convertir varias fuentes de datos en desgloses regionales de COVID-19 en tiempo real",
+    "decision": "Agregar varias API y representarlas con amCharts 4",
     "image": "/projects/covid-news-dashboard.png",
     "url": "",
     "techStack": ["Vue.js", "Nuxt.js", "amCharts 4", "Tailwind CSS", "Axios"]
@@ -37,6 +47,8 @@
   {
     "title": "Social News Dashboard",
     "description": "Agregador de noticias de redes sociales que actualiza y visualiza continuamente los temas de tendencia definidos mediante desplazamiento automático, ofreciendo información actualizada sobre tendencias y conversaciones sin intervención del usuario.",
+    "challenge": "Mostrar tendencias sociales actualizadas sin intervención del usuario",
+    "decision": "Actualizar en continuo y hacer auto-scroll de los temas de tendencia definidos",
     "image": "/projects/social-news-dashboard.png",
     "url": "",
     "techStack": ["HTML 5", "CSS 3", "JavaScript", "APIs"]
@@ -44,6 +56,9 @@
   {
     "title": "Material Start Page",
     "description": "Mi primer proyecto de frontend con HTML, CSS y JavaScript. Creé todos los componentes desde cero siguiendo principios de Material Design, con atención al diseño adaptable y una interfaz fácil de usar. Este proyecto sentó las bases de mi camino en el desarrollo web y ocupa un lugar especial para mí.",
+    "role": "Autor único — mi primer proyecto de frontend",
+    "challenge": "Construir cada componente desde cero con principios de Material Design, adaptable en todo momento",
+    "decision": "Componentes construidos a mano, sin framework de UI",
     "image": "/projects/material-startpage.png",
     "url": "https://material-bookmark.jblanco.dev/",
     "techStack": ["HTML 5", "CSS 3", "JavaScript", "Material Design"]

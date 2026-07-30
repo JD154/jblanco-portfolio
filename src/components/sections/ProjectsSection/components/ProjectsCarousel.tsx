@@ -13,6 +13,9 @@ export interface CarouselProject {
   image: string;
   techStack?: string[];
   url?: string;
+  role?: string;
+  challenge?: string;
+  decision?: string;
 }
 
 interface ProjectsCarouselProps {
@@ -118,6 +121,12 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
   if (!active) return null;
 
   const eyebrow = active.techStack?.slice(0, 4).join(' · ') ?? t.featuredFallback;
+  // Verifiable evidence fields — only render what the project actually documents.
+  const facts = [
+    { key: 'role', label: t.fields.role, value: active.role },
+    { key: 'challenge', label: t.fields.challenge, value: active.challenge },
+    { key: 'decision', label: t.fields.decision, value: active.decision },
+  ].filter((fact): fact is { key: string; label: string; value: string } => Boolean(fact.value));
   const counter = String(activeIndex + 1).padStart(2, '0');
   const totalLabel = String(total).padStart(2, '0');
 
@@ -139,6 +148,18 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
           <p className="pc__description" data-animate>
             {active.description}
           </p>
+
+          {facts.length > 0 && (
+            <dl className="pc__facts" data-animate>
+              {facts.map(({ key, label, value }) => (
+                <div className="pc__fact" key={key}>
+                  <dt className="pc__fact-label">{label}</dt>
+                  <dd className="pc__fact-value">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
           <span className="pc__eyebrow" data-animate>
             {eyebrow}
           </span>

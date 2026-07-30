@@ -2,6 +2,8 @@
   {
     "title": "I.R Management Platform",
     "description": "I was responsible for creating reusable UI that aligns with the company's design system across multiple sub-apps, implementing complex data visualizations, and ensuring the platform's usability without compromising UI/UX cleanliness.",
+    "role": "Responsible for reusable UI and complex data visualization",
+    "challenge": "Keep the UI consistent across multiple sub-apps without compromising UX cleanliness",
     "image": "/projects/ir-management.png",
     "url": "https://ir.jblanco.dev/",
     "techStack": ["React", "Typescript", "Next.js", "amCharts 5"]
@@ -9,6 +11,8 @@
   {
     "title": "inUI Library",
     "description": "Co-authored a comprehensive UI library for internal use, with the main goal of enhancing development efficiency and maintaining a cohesive user experience across applications.",
+    "role": "Co-author of the shared UI library",
+    "challenge": "Enhance development efficiency while keeping the user experience cohesive across applications",
     "image": "/projects/in-ui-library.jpg",
     "url": "https://inui.jblanco.dev/",
     "techStack": ["React", "TypeScript", "Tailwind CSS", "Reakit", "RadixUI", "Storybook"]
@@ -16,6 +20,8 @@
   {
     "title": "Investor Onboarding Portal",
     "description": "Co-developed a investor registration and document management platform with KYC verification and compliance features to streamline the onboarding process for new investors that usually requires a lot of paperwork.",
+    "role": "Co-developer of the registration and document-management platform",
+    "challenge": "Streamline a paperwork-heavy investor onboarding with KYC verification and compliance",
     "image": "/projects/investor-onboarding-portal.png",
     "url": "https://onboarding.jblanco.dev/",
     "techStack": ["Vue.js", "Next.js", "Tailwind CSS"]
@@ -23,6 +29,8 @@
   {
     "title": "Credit Healing UI Library",
     "description": "Contributed to a collection of reusable UI components and design system elements for building personalized applications for internal and client-facing projects, focusing on ease of use and creative look.",
+    "role": "Contributor to the component collection and design-system elements",
+    "challenge": "Reusable components serving both internal and client-facing apps, easy to use yet distinctive",
     "image": "/projects/ch-ui-library.jpg",
     "url": "https://chui.jblanco.dev/",
     "techStack": ["React", "TypeScript", "Storybook", "Sass"]
@@ -30,6 +38,8 @@
   {
     "title": "Covid News Dashboard",
     "description": "Interactive data visualization dashboard for tracking COVID-19 statistics with real-time updates and regional breakdowns. Pulling data from multiple APIs and visualizing it using amCharts 4.",
+    "challenge": "Turn multiple data sources into real-time, regional COVID-19 breakdowns",
+    "decision": "Aggregate multiple APIs and render them with amCharts 4",
     "image": "/projects/covid-news-dashboard.png",
     "url": "",
     "techStack": ["Vue.js", "Nuxt.js", "amCharts 4", "Tailwind CSS", "Axios"]
@@ -37,6 +47,8 @@
   {
     "title": "Social News Dashboard",
     "description": "Social media news aggregator that continuously updates and visualizes the defined trending topics using auto-scroll feature, providing up-to-date insights into social media trends and discussions without user interaction.",
+    "challenge": "Surface up-to-date social trends with no user interaction required",
+    "decision": "Continuously update and auto-scroll the defined trending topics",
     "image": "/projects/social-news-dashboard.png",
     "url": "",
     "techStack": ["HTML 5", "CSS 3", "JavaScript", "APIs"]
@@ -44,6 +56,9 @@
   {
     "title": "Material Start Page",
     "description": "My first frontend project using HTML, CSS, and JavaScript. Created all the components from scratch using Material Design principles, focusing on responsive design and user-friendly interface. This project served as a foundation for my journey into web development and has a special place in my heart.",
+    "role": "Sole author — my first frontend project",
+    "challenge": "Build every component from scratch on Material Design principles, responsive throughout",
+    "decision": "Hand-built all components with no UI framework",
     "image": "/projects/material-startpage.png",
     "url": "https://material-bookmark.jblanco.dev/",
     "techStack": ["HTML 5", "CSS 3", "JavaScript", "Material Design"]

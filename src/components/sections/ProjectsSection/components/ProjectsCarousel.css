@@ -63,6 +63,40 @@
   color: var(--color-muted-foreground);
 }
 
+/* ---------- Evidence fact sheet (role · challenge · key decision) ----------
+   A slim instrument-style readout: fine left rule, tracked uppercase labels,
+   foreground values. Only documented fields render, so length varies by project. */
+.pc__facts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.pc__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+}
+
+.pc__fact-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pc__fact-value {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--color-foreground);
+}
+
 /* ---------- CTA ---------- */
 .pc__cta-row {
   margin-top: 0.5rem;
