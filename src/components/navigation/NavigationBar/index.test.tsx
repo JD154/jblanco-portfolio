@@ -101,12 +101,11 @@ test('renders localized navigation labels and controls', async () => {
 
   const language = container.querySelector('[aria-label="Seleccionar idioma"]');
   const theme = container.querySelector('[aria-label="Cambiar tema"]');
-  const contact = container.querySelector('a[href="#contact-section"]');
   const rightSlot = language?.parentElement;
 
   expect(language?.textContent).toContain('es');
   expect(theme).not.toBeNull();
-  expect(contact?.textContent).toBe('Contacto');
+  expect(container.querySelector('a[href="#contact-section"]')).toBeNull();
   expect(rightSlot?.classList.contains('flex')).toBe(true);
   expect(rightSlot?.classList.contains('items-center')).toBe(true);
   expect(rightSlot?.classList.contains('gap-1')).toBe(true);

@@ -27,38 +27,7 @@
   min-width: 0;
 }
 
-.projects-section__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  text-align: left;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: clamp(3rem, 5vw, 5rem);
-}
-
-/* Section label — the only heading in the header (no competing title) */
-.projects-section__label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-foreground);
-}
-
-.projects-section__eyebrow-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--pc-accent);
-  box-shadow: 0 0 12px var(--pc-accent-soft);
-}
+/* Header uses the shared <SectionToolbar> (src/components/general/SectionToolbar). */
 
 /* Filter Section */
 .projects-section__filters {
@@ -84,10 +53,6 @@
   .projects-section {
     min-height: auto;
     padding: 2rem 0;
-  }
-
-  .projects-section__header {
-    margin-bottom: 3rem;
   }
 
 }

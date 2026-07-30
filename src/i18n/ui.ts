@@ -17,7 +17,6 @@ export const ui = {
       jobTitle: 'Senior Frontend Consultant',
     },
     nav: {
-      contact: 'Contact',
       theme: {
         light: 'Light',
         dark: 'Dark',
@@ -117,7 +116,6 @@ export const ui = {
       jobTitle: 'Consultor frontend senior',
     },
     nav: {
-      contact: 'Contacto',
       theme: {
         light: 'Claro',
         dark: 'Oscuro',

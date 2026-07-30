@@ -1,6 +1,7 @@
 import React from 'react';
 import type { CSSProperties } from 'react';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
+import { SectionToolbar } from '@/components/general/SectionToolbar';
 import './styles.css';
 import type { Ui } from '@/i18n/ui';
 
@@ -14,13 +15,9 @@ export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ t }) => {
   return (
     <section id="about-me-section" className="about-me-section">
       <div className="py-24 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
-        {/* Header — slim toolbar label + divider (shared with other sections) */}
-        <div className="about-me-section__bar">
-          <span className="about-me-section__label" data-reveal="unfold">
-            <span className="about-me-section__label-dot" />
-            {t.label}
-          </span>
-        </div>
+        {/* Header — shared section toolbar. A span (not a heading): the section's
+            heading is the display title below. */}
+        <SectionToolbar as="span" label={t.label} reveal="unfold" spacing="md" />
 
         {/* Lede — the human story (left) + a quiet career readout (right) */}
         <div className="about-me-section__lede">

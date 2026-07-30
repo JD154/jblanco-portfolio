@@ -25,7 +25,7 @@ test('keeps About and Contact copy visible in server-rendered HTML', () => {
   expect(aboutHtml).toMatch(/<h2 class="about-me-section__title"[^>]*>/);
   expect(aboutHtml).toContain('An Evolution, The Only Way');
   expect(aboutHtml).toMatch(/<p class="about-me-section__paragraph"[^>]*>/);
-  expect(contactHtml).toMatch(/<h2 class="contact-section__label"[^>]*>/);
+  expect(contactHtml).toMatch(/<h2 class="section-toolbar__label"[^>]*>/);
   expect(contactHtml).toMatch(/<a [^>]*class="contact-section__item">/);
 });
 

@@ -14,39 +14,7 @@
   );
 }
 
-/* Header — slim toolbar label + divider (shared visual with other sections) */
-.about-me-section__bar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
-  position: relative;
-  z-index: 10;
-}
-
-.about-me-section__label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-foreground);
-}
-
-.about-me-section__label-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--pc-accent);
-  box-shadow: 0 0 12px var(--pc-accent-soft);
-}
+/* Header uses the shared <SectionToolbar> (src/components/general/SectionToolbar). */
 
 /* ---------- Lede: story (left) + career readout (right) ---------- */
 .about-me-section__lede {
@@ -97,7 +65,7 @@
   padding-left: 1.25rem;
   border-left: 1px solid var(--pc-accent-strong);
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.0625rem;
   line-height: 1.4;
   color: var(--color-foreground);
 }
@@ -148,7 +116,11 @@
   display: flex;
   align-items: center;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-border);
+  /* Fading hairline divider — consistent with the primary section toolbar */
+  background-image: linear-gradient(to right, var(--color-border), transparent 92%);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 1px;
   margin-bottom: 1.5rem;
 }
 

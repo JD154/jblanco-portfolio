@@ -2,6 +2,7 @@ import React from 'react';
 import type { ReactNode } from 'react';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
+import { SectionToolbar } from '@/components/general/SectionToolbar';
 import './styles.css';
 import type { Ui } from '@/i18n/ui';
 
@@ -90,13 +91,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ t }) => {
   return (
     <section id="contact-section" className="contact-section">
       <div className="pt-32 pb-40 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
-        {/* Header — slim toolbar label + divider (full-width, homogeneous with other sections) */}
-        <div className="contact-section__bar">
-          <h2 className="contact-section__label" data-reveal>
-            <span className="contact-section__label-dot" />
-            {t.label}
-          </h2>
-        </div>
+        {/* Header — shared section toolbar. The label is the section heading here
+            (no competing title), so it stays an <h2>. */}
+        <SectionToolbar label={t.label} spacing="sm" />
 
         <div className="contact-section__layout">
           <div className="contact-section__intro">

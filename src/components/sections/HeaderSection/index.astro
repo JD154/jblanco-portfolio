@@ -94,7 +94,7 @@ const buttonBase =
   const scrollGap = () => {
     const sec = document.getElementById('projects-section');
     if (!sec) return null;
-    const anchor = sec.querySelector('.projects-section__header') || sec;
+    const anchor = sec.querySelector('.section-toolbar') || sec;
     return anchor.getBoundingClientRect().top - LANDING_GAP;
   };
 

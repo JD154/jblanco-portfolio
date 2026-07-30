@@ -8,6 +8,7 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import './styles.css';
 import { ProjectsCarousel } from './components/ProjectsCarousel';
 import { GlowingButton } from '@/components/general/GlowingButton';
+import { SectionToolbar } from '@/components/general/SectionToolbar';
 import type { Project } from '@/i18n/projects';
 import type { Ui } from '@/i18n/ui';
 
@@ -72,13 +73,9 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
   return (
     <section id="projects-section" className="projects-section" ref={sectionRef}>
       <div className="projects-section__inner py-24 px-6 max-w-7xl mx-auto relative z-10">
-        {/* Header — slim toolbar: section label + filters */}
-        <div className="projects-section__header" ref={headerRef}>
-          <h2 className="projects-section__label" data-reveal="focus">
-            <span className="projects-section__eyebrow-dot" />
-            {t.label}
-          </h2>
-
+        {/* Header — shared section toolbar (label) with project filters on the
+            trailing edge. The reveal observer rides the toolbar root. */}
+        <SectionToolbar ref={headerRef} label={t.label} reveal="focus" spacing="lg">
           <div
             className="projects-section__filters"
             data-reveal="focus"
@@ -98,7 +95,7 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
               </GlowingButton>
             ))}
           </div>
-        </div>
+        </SectionToolbar>
 
         {/* Projects Carousel */}
         <div className="projects-section__carousel-wrap" ref={carouselRef}>

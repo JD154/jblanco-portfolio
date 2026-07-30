@@ -28,8 +28,8 @@ typography:
     letterSpacing: "-0.02em"
   title:
     fontFamily: "General Sans, system-ui, sans-serif"
-    fontSize: "1.15rem"
-    fontWeight: 700
+    fontSize: "0.875rem"
+    fontWeight: 600
     lineHeight: 1.5
     letterSpacing: "0.14em"
   body:
@@ -157,7 +157,7 @@ The palette moves between Deep Void and Polar Light, using Orbital Mist and fine
 
 - **Display** (Clash Display, ~600, 8vw, 1): Reserved for the interactive hero signature ("I'm JB"); characters respond as individual spatial objects.
 - **Headline** (Clash Display, 700, clamp(2rem, 3.7vw, 3.5rem), 1.03): Uppercase pitch, project, and section statements with tight tracking and a theme-aware luminous text shadow.
-- **Title** (General Sans, 700, 1.15rem, 1.5): Uppercase section toolbar labels with wide tracking and a small glowing dot.
+- **Title** (General Sans, 600, 0.875rem, 0.14em, uppercase): Refined section toolbar labels — compact, wide-tracked, semibold rather than heavy — paired with a small controlled-halo dot and a fading hairline divider.
 - **Body** (General Sans, 400, 1.0625rem, 1.65): Project descriptions and supporting copy, typically constrained to about 34rem.
 - **Label** (General Sans, 600, 0.6875rem, 0.12em, uppercase): Availability, metadata, and compact interface language.
 - **Mono** (JetBrains Mono, 500, 1.0625rem, 1.5): Contact addresses and the oversized project counter.
@@ -243,7 +243,7 @@ Motion follows focus: the showcase unfolds from perspective on entry, new copy s
 
 ### Section Toolbar
 
-Each major section begins with a slim uppercase label, a 7px glowing foreground dot, and a full-width one-pixel divider. This repeated instrument-panel motif creates orientation without introducing conventional navigation chrome inside the page.
+Each major section begins with a compact, wide-tracked uppercase label, a 7px foreground dot with a controlled halo, and a one-pixel hairline divider that fades to transparent toward the trailing edge. The label is semibold rather than heavy, keeping the motif quiet and refined. This repeated instrument-panel motif creates orientation without introducing conventional navigation chrome inside the page.
 
 ## Do's and Don'ts
 
