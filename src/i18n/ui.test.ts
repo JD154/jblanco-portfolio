@@ -50,6 +50,8 @@ test('provides complete English and Spanish UI translations', () => {
       t.projects.fields.role,
       t.projects.fields.challenge,
       t.projects.fields.decision,
+      t.projects.explore,
+      t.projects.viewing,
       t.contact.label,
       t.contact.subtitle,
       t.notFound.title,

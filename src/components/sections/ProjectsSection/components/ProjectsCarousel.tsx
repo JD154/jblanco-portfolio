@@ -199,75 +199,87 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
           </div>
 
           {total > 1 && (
-            <div
-              className={`pc__rail ${railEdges.atStart ? 'pc__rail--at-start' : ''} ${
-                railEdges.atEnd ? 'pc__rail--at-end' : ''
-              }`}
-              ref={railRef}
-              onScroll={updateRailEdges}
-            >
-              {projects.map((project, index) => (
-                <button
-                  key={project.title}
-                  type="button"
-                  className={`pc__card ${index === activeIndex ? 'pc__card--active' : ''}`}
-                  onClick={() => {
-                    if (!drag.current.moved) jumpTo(index);
-                  }}
-                  aria-label={`${t.viewProjectAria} ${project.title}`}
-                  aria-current={index === activeIndex}
-                >
-                  <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
-                  <span className="pc__card-scrim" aria-hidden="true" />
-                  <span className="pc__card-title">{project.title}</span>
-                </button>
-              ))}
+            <div className="pc__explore">
+              {/* Explorer toolbar — names the strip's purpose and groups the
+                  position readout + stepper, so choosing a case study reads as one
+                  action rather than four competing controls (filters live above,
+                  in the section header, and change the set). */}
+              <div className="pc__explore-head">
+                <span className="pc__explore-label">
+                  <span className="pc__explore-dot" aria-hidden="true" />
+                  {t.explore}
+                </span>
+                <div className="pc__explore-controls">
+                  <div className="pc__counter" aria-live="polite">
+                    <span className="pc__counter-current">{counter}</span>
+                    <span className="pc__counter-total">/ {totalLabel}</span>
+                  </div>
+                  <div className="pc__nav">
+                    <button type="button" className="pc__arrow" onClick={() => go(-1)} aria-label={t.previousAria}>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m15 18-6-6 6-6" />
+                      </svg>
+                    </button>
+                    <button type="button" className="pc__arrow" onClick={() => go(1)} aria-label={t.nextAria}>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`pc__rail ${railEdges.atStart ? 'pc__rail--at-start' : ''} ${
+                  railEdges.atEnd ? 'pc__rail--at-end' : ''
+                }`}
+                ref={railRef}
+                onScroll={updateRailEdges}
+                role="group"
+                aria-label={t.explore}
+              >
+                {projects.map((project, index) => (
+                  <button
+                    key={project.title}
+                    type="button"
+                    className={`pc__card ${index === activeIndex ? 'pc__card--active' : ''}`}
+                    onClick={() => {
+                      if (!drag.current.moved) jumpTo(index);
+                    }}
+                    aria-label={`${t.viewProjectAria} ${project.title}`}
+                    aria-current={index === activeIndex}
+                  >
+                    <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
+                    <span className="pc__card-scrim" aria-hidden="true" />
+                    {index === activeIndex && <span className="pc__card-flag">{t.viewing}</span>}
+                    <span className="pc__card-title">{project.title}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>
       </div>
-
-      {/* Status readout + directional controls (the rail also navigates) */}
-      {total > 1 && (
-        <div className="pc__controls">
-          <div className="pc__counter" aria-live="polite">
-            <span className="pc__counter-current">{counter}</span>
-            <span className="pc__counter-total">/ {totalLabel}</span>
-          </div>
-          <div className="pc__nav">
-            <button type="button" className="pc__arrow" onClick={() => go(-1)} aria-label={t.previousAria}>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-            </button>
-            <button type="button" className="pc__arrow" onClick={() => go(1)} aria-label={t.nextAria}>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

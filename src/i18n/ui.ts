@@ -89,6 +89,8 @@ export const ui = {
       previousAria: 'Previous project',
       nextAria: 'Next project',
       featuredFallback: 'Featured Project',
+      explore: 'Select a case study',
+      viewing: 'Viewing',
       fields: {
         role: 'Role',
         challenge: 'Challenge',
@@ -191,6 +193,8 @@ export const ui = {
       previousAria: 'Proyecto anterior',
       nextAria: 'Proyecto siguiente',
       featuredFallback: 'Proyecto destacado',
+      explore: 'Selecciona un caso de estudio',
+      viewing: 'Viendo',
       fields: {
         role: 'Rol',
         challenge: 'Reto',

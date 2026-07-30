@@ -269,9 +269,10 @@
   transform: scale(1.04);
 }
 
-/* Dim the non-active cards slightly so the selection reads at a glance */
+/* Dim the non-active cards, but not so far they read as disabled — they're all
+   selectable case studies; only the active one is the featured plate. */
 .pc__card:not(.pc__card--active) {
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
 .pc__card--active,
@@ -313,14 +314,72 @@
   pointer-events: none;
 }
 
-/* ---------- Status readout ---------- */
-.pc__controls {
+/* Marks the thumbnail whose case study is featured above — a filled primary
+   pill echoing the "selected = primary" control language elsewhere. */
+.pc__card-flag {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-foreground);
+  background: var(--color-primary);
+  pointer-events: none;
+}
+
+/* ---------- Explorer toolbar ----------
+   Names the filmstrip's purpose and groups the position readout + stepper into
+   one cluster, so exploring the cases reads as a single labeled control instead
+   of scattered arrows, counter, and an unlabeled strip. */
+.pc__explore {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Slim toolbar in the section-toolbar idiom: purpose (left) over a 1px divider,
+   position + stepper (right). */
+.pc__explore-head {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-border);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pc__explore-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pc__explore-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: var(--color-foreground);
+  box-shadow: 0 0 10px var(--pc-accent-soft);
+}
+
+.pc__explore-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 0 0 auto;
 }
 
 /* Directional controls — circular arrows per the Project Observatory spec */
@@ -370,7 +429,7 @@
 
 .pc__counter-current {
   font-family: var(--font-mono);
-  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -435,13 +494,8 @@
     border-radius: 0.75rem;
   }
 
-  .pc__controls {
-    justify-content: space-between;
+  .pc__explore-controls {
     gap: 1rem;
-  }
-
-  .pc__counter-current {
-    font-size: 2rem;
   }
 }
 
