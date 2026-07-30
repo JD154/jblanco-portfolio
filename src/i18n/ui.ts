@@ -17,11 +17,7 @@ export const ui = {
       jobTitle: 'Senior Frontend Consultant',
     },
     nav: {
-      badge: {
-        default: 'Booking new projects',
-        hover: 'Get in touch',
-        aria: 'Get in touch - go to contact section',
-      },
+      contact: 'Contact',
       theme: {
         light: 'Light',
         dark: 'Dark',
@@ -121,11 +117,7 @@ export const ui = {
       jobTitle: 'Consultor frontend senior',
     },
     nav: {
-      badge: {
-        default: 'Disponible para nuevos proyectos',
-        hover: 'Ponte en contacto',
-        aria: 'Ponte en contacto - ir a la sección de contacto',
-      },
+      contact: 'Contacto',
       theme: {
         light: 'Claro',
         dark: 'Oscuro',

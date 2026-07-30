@@ -13,18 +13,10 @@ export const Logo: FC<LogoProps> = ({ className }) => {
     return classes.join(' ');
   };
 
+  // Static brand mark — it is intentionally not a navigation control.
   return (
     <div className="flex items-center">
-      <a
-        className={getClasses()}
-        href="https://www.linkedin.com/in/jesus-blanco-08682112a/"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="LinkedIn Profile of Jesus Blanco"
-        aria-label="LinkedIn Profile of Jesus Blanco"
-      >
-        Jesus Blanco
-      </a>
+      <span className={getClasses()}>Jesus Blanco</span>
     </div>
   );
 };

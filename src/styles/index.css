@@ -198,11 +198,7 @@ body {
   .contact-section,
   .contact-section *,
   .contact-section *::before,
-  .contact-section *::after,
-  .nav-badge,
-  .nav-badge *,
-  .nav-badge *::before,
-  .nav-badge *::after {
+  .contact-section *::after {
     animation: none !important;
     transition: none !important;
   }

@@ -71,8 +71,8 @@
   gap: 1.5rem;
 }
 
-/* Availability signal — the single functional green in the system, restated at
-   the conversion moment (mirrors the nav badge's live dot). */
+/* Availability signal — the functional green, restated at the conversion
+   moment (the hero carries the earlier instance). */
 .contact-section__availability {
   display: inline-flex;
   align-items: center;
@@ -254,10 +254,10 @@
 
 .contact-section__item--primary .contact-section__item-display {
   color: var(--color-primary-foreground);
-  font-family: var(--font-sans);
-  font-size: clamp(1.35rem, 2.5vw, 2rem);
-  font-weight: 650;
-  letter-spacing: -0.025em;
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
 .contact-section__item-arrow {

@@ -10,8 +10,6 @@
   min-width: 0;
   background: transparent;
   color: var(--color-foreground);
-  user-select: none;
-  touch-action: pan-y;
 }
 
 /* ---------- Content ---------- */
@@ -135,6 +133,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  user-select: none;
+  touch-action: pan-y;
 }
 
 /* Featured thumbnail — the focal element.

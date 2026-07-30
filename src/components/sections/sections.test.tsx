@@ -33,7 +33,17 @@ test('renders the project CTA link without a nested button', () => {
   const html = renderToString(
     <ThemeProvider>
       <ProjectsCarousel
-        projects={[{ title: 'Project', description: 'Description', image: '/project.jpg', url: 'https://example.com' }]}
+        projects={[
+          {
+            title: 'Project',
+            description: 'Description',
+            role: 'Role',
+            challenge: 'Challenge',
+            decision: 'Decision',
+            image: '/project.jpg',
+            url: 'https://example.com',
+          },
+        ]}
         t={ui.en.projects}
       />
     </ThemeProvider>,

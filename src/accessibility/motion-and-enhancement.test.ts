@@ -36,7 +36,7 @@ test('guards automatic motion with the shared reduced-motion preference', async 
   }
 });
 
-test('disables section and availability badge CSS motion when requested', async () => {
+test('disables section CSS motion when requested', async () => {
   const styles = await readSource('../styles/index.css');
 
   expect(styles).toContain('@media (prefers-reduced-motion: reduce)');
@@ -45,7 +45,6 @@ test('disables section and availability badge CSS motion when requested', async 
     '.about-me-section *',
     '.projects-section *',
     '.contact-section *',
-    '.nav-badge *',
   ]) {
     expect(styles).toContain(selector);
   }
