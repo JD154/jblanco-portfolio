@@ -435,6 +435,7 @@
 }
 
 .pd__pager-thumb {
+  position: relative;
   display: block;
   width: 100%;
   height: 7rem;

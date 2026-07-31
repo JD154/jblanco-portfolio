@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 import { SectionToolbar } from '@/components/general/SectionToolbar';
 import { GlowingButton } from '@/components/general/GlowingButton';
+import { ConfidentialPlate } from '@/components/general/ConfidentialPlate';
 import './styles.css';
 import type { Lang, Ui } from '@/i18n/ui';
 import type { LocalizedProject } from '@/i18n/projects';
@@ -55,6 +56,7 @@ const RegisterRow: FC<{ project: LocalizedProject; n: number; t: Ui['projects'] 
   const ref = useRevealOnScroll<HTMLLIElement>();
   const host = hostOf(project.url ?? '');
   const live = Boolean(host);
+  const confidential = project.visibility === 'confidential';
   const stack = (project.techStack ?? []).slice(0, 4);
   const role = project.roleShort ?? project.role;
 
@@ -66,12 +68,21 @@ const RegisterRow: FC<{ project: LocalizedProject; n: number; t: Ui['projects'] 
         </span>
 
         <span className="pi-row__plate">
-          <span className="pi-row__plate-bg" style={{ backgroundImage: `url(${project.image})` }} aria-hidden="true" />
-          <img className="pi-row__plate-img" src={project.image} alt="" loading="lazy" />
+          {confidential ? (
+            <ConfidentialPlate labels={t.confidential} />
+          ) : (
+            <>
+              <span className="pi-row__plate-bg" style={{ backgroundImage: `url(${project.image})` }} aria-hidden="true" />
+              <img className="pi-row__plate-img" src={project.image} alt="" loading="lazy" />
+            </>
+          )}
         </span>
 
         <span className="pi-row__meta">
-          <span className="pi-row__title">{project.title}</span>
+          {/* A real heading so screen-reader heading navigation can traverse the
+              catalog (h1 "All Work" → h2 per project). Non-interactive, so it's
+              valid inside the row link; the link keeps its own aria-label. */}
+          <h2 className="pi-row__title">{project.title}</h2>
           <span className="pi-row__role">{role}</span>
           {stack.length > 0 && (
             <span className="pi-row__chips">
@@ -85,12 +96,18 @@ const RegisterRow: FC<{ project: LocalizedProject; n: number; t: Ui['projects'] 
         </span>
 
         <span className="pi-row__aside">
-          <span className={`pi-row__status${live ? ' pi-row__status--live' : ''}`}>
+          <span
+            className={`pi-row__status${live ? ' pi-row__status--live' : ''}${
+              confidential ? ' pi-row__status--nda' : ''
+            }`}
+          >
             {live ? (
               <>
                 <span className="pi-row__status-dot" aria-hidden="true" />
                 {host}
               </>
+            ) : confidential ? (
+              t.index.confidentialTag
             ) : (
               t.index.noDemoTag
             )}

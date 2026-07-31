@@ -69,7 +69,7 @@ test('provides complete English and Spanish UI translations', () => {
   expect(languageNames.es).toBe('Español');
   expect(es.header.signature).toBe('Soy JB');
   expect(es.about.label).toBe('Sobre mí');
-  expect(es.projects.label).toBe('Proyectos destacados');
+  expect(es.projects.label).toBe('Trabajo destacado');
   expect(es.contact.label).toBe('Contacto');
   expect(es.header.ctaCv).toBe('Descargar CV');
   expect(es.nav.theme.light).toBe('Claro');
@@ -91,8 +91,8 @@ test('uses the approved Task 3 SEO, quote, and project CTA copy', () => {
 });
 
 test('keeps localized project records structurally aligned', () => {
-  expect(projectsEn).toHaveLength(7);
-  expect(projectsEs).toHaveLength(7);
+  expect(projectsEn).toHaveLength(11);
+  expect(projectsEs).toHaveLength(11);
 
   for (const [index, projectEn] of projectsEn.entries()) {
     const projectEs = projectsEs[index];
@@ -101,6 +101,10 @@ test('keeps localized project records structurally aligned', () => {
     expect(projectEs.image).toBe(projectEn.image);
     expect(projectEs.url).toBe(projectEn.url);
     expect(projectEs.techStack).toEqual(projectEn.techStack);
+    // Visibility drives the confidential/redacted plate — it must stay aligned
+    // across languages and only ever be one of the known states.
+    expect(projectEs.visibility).toBe(projectEn.visibility);
+    expect(['public', 'confidential', 'pending']).toContain(projectEn.visibility);
     expect(projectEn.description).toBeString();
     expect(projectEn.description.length).toBeGreaterThan(0);
     expect(projectEs.description).toBeString();

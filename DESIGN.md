@@ -155,12 +155,12 @@ The palette moves between Deep Void and Polar Light, using Orbital Mist and fine
 
 ### Hierarchy
 
-- **Display** (Clash Display, ~600, 8vw, 1): Reserved for the interactive hero signature ("I'm JB"); characters respond as individual spatial objects.
+- **Display** (Clash Display, ~600, up to 8vw): The interactive signature lockup whose glyphs respond as individual 3D spatial objects. In the hero it now reads as a secondary, drop-shadowed mark (scaled to clamp(2rem, 5vw, 3.25rem)) set above the leading Headline-grammar pitch — the interaction, not the headline. It also voices the case-study title and the Career Log role.
 - **Headline** (Clash Display, 700, clamp(2rem, 3.7vw, 3.5rem), 1.03): Uppercase pitch, project, and section statements with tight tracking and a theme-aware luminous text shadow.
 - **Title** (General Sans, 600, 0.875rem, 0.14em, uppercase): Refined section toolbar labels — compact, wide-tracked, semibold rather than heavy — paired with a small controlled-halo dot and a fading hairline divider.
 - **Body** (General Sans, 400, 1.0625rem, 1.65): Project descriptions and supporting copy, typically constrained to about 34rem.
 - **Label** (General Sans, 600, 0.6875rem, 0.12em, uppercase): Availability, metadata, and compact interface language.
-- **Mono** (JetBrains Mono, 500, 1.0625rem, 1.5): Contact addresses and the oversized project counter.
+- **Mono** (JetBrains Mono, 500, 1.0625rem, 1.5): Technical readouts — contact addresses, the oversized project counter, the register catalog IDs and live hosts, and the Career Log period and metric measurements.
 
 ### Named Rules
 
@@ -187,7 +187,7 @@ The depth philosophy is **Capas orbitales**. Tonal gradients and translucent gla
 - **Ambient Panel** (`0 4px 20px rgba(0, 0, 0, 0.08)`): Low resting separation for compact translucent cards.
 - **Interactive Lift** (`0 8px 30px rgba(0, 0, 0, 0.12)`): Hover elevation paired with a 2px to 4px upward translation.
 - **Showcase Depth** (`0 30px 70px rgba(0, 0, 0, 0.28)`): Reserved for the featured project image, the dominant visual artifact.
-- **Active Orbit** (`0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)`): Focused halo around the selected project card or nearby interactive edge.
+- **Active Orbit** (`0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)`): Focused halo around the selected project card, a nearby interactive edge, or the single traveling tracer node on the Career Log rail.
 - **Luminous Type:** A layered foreground-colored text shadow used only on major headings.
 
 ### Named Rules
@@ -241,6 +241,14 @@ The signature project carousel is a 40/60 split between uppercase project narrat
 
 Motion follows focus: the showcase unfolds from perspective on entry, new copy settles upward, imagery resolves from blur and scale, and the active rail card scrolls into view. All nonessential transitions are removed when reduced motion is requested.
 
+### Experience Career Log
+
+The home page's experience section is a reverse-chronological **Career Log**: an orbital timeline where a single one-pixel rail (Orbit Line, `border-left`) threads every role and each role rests on a quiet hollow node (an 11px background-filled dot with a fine accent border). It opens on an intro row that pairs the uppercase display-voice heading (left) with a framing lede (right, ~26rem), then lists roles across an instrument gutter and a body column.
+
+Its signature is a single traveling **Active Orbit**: one filled, haloed tracer node physically occupies the rail — resting on the current role, gliding to whichever entry the pointer enters on a long zero-gravity inertial ease (`transform 1.2s cubic-bezier(0.45, 0.02, 0.18, 1)`), then settling back on pointer-leave, with a slow 5s halo pulse at rest. There is one signal for the whole rail, never a lit dot per row. The SSR / no-JS / reduced-motion fallback instead glows the current role's own node in place.
+
+The gutter carries the measurements in the mono voice — a small period and a heavier metric, right-aligned toward the rail. The body carries the uppercase display-voice role, a tracked-uppercase company line with a monochrome bordered-pill "Present" marker (kept clear of the reserved green), a body-copy summary, and the technology stack as a bordered glass instrument grid whose chips brighten their border and text on entry hover. The section enters with the **settle** verb (easing down from a slight enlargement), giving it a distinct entrance from About (unfold) and Projects (focus).
+
 ### Section Toolbar
 
 Each major section begins with a compact, wide-tracked uppercase label, a 7px foreground dot with a controlled halo, and a one-pixel hairline divider that fades to transparent toward the trailing edge. The label is semibold rather than heavy, keeping the motif quiet and refined. This repeated instrument-panel motif creates orientation without introducing conventional navigation chrome inside the page. It is a shared `SectionToolbar` component: an optional trailing slot carries filters or secondary links on the opposite edge, and the label is a heading (`h2`) when it is the section's title, or a plain span when a display headline already leads.
@@ -251,7 +259,7 @@ Each project extends into a dedicated case study at `/projects/<slug>` (bilingua
 
 ### Project Register
 
-The dedicated route `/projects` (bilingual) is the complete register of work — the "all projects" destination the home carousel and every case-study pager point to. It opens on a left-aligned masthead (Home return, Project Index kicker with a mono `N projects · N live · Since 2018` readout, a display headline over its luminous shadow, a one-line lede, and the shared stack filters), then lists every project as a scannable log row: a mono catalog ID that matches the case-study counter, a 16:10 screenshot plate over its own blurred ambient fill, the title with role and stack chips, and a status column carrying the live host behind the one green availability-family dot or a plain "No demo". Fading one-pixel hairlines divide the rows, each row resolves from blur into focus on scroll and lifts its plate on hover, and a glass contact band closes the page. Filtering narrows the log while catalog IDs stay canonical; the plate degrades quietly where a real screenshot is not yet available.
+The dedicated route `/projects` (bilingual) is the complete register of work — the "all projects" destination the home carousel and every case-study pager point to. It opens on a left-aligned masthead (Home return, Project Index kicker with a mono `N projects · N live · Since 2018` readout, a display headline over its luminous shadow, a one-line lede, and the shared stack filters), then lists every project as a scannable log row: a mono catalog ID that matches the case-study counter, a 16:10 screenshot plate over its own blurred ambient fill — or, for confidential client work, the redacted-dossier plate in its place — the title with role and stack chips, and a status column carrying the live host behind a monochrome lit signal node, a bordered "Under NDA" marker for confidential work, or a plain "No demo". Fading one-pixel hairlines divide the rows, each row resolves from blur into focus on scroll and lifts its plate on hover, and a glass contact band closes the page. Filtering narrows the log while catalog IDs stay canonical; the plate falls back to the redacted dossier for NDA work and a quiet placeholder where a real screenshot is not yet available. Green never appears here — it is reserved site-wide for availability.
 
 ## Do's and Don'ts
 

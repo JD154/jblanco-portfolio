@@ -10,6 +10,7 @@
     "decisionShort": "Buenas prácticas antes de pulir UI/UX y añadir features",
     "image": "/projects/_placeholder.svg",
     "url": "",
+    "visibility": "confidential",
     "techStack": ["Next.js", "TypeScript", "shadcn/ui", "React Query"]
   },
   {
@@ -23,6 +24,7 @@
     "decisionShort": "Arquitectura Astro con contenido editable en Cloudflare",
     "image": "/projects/_placeholder.svg",
     "url": "",
+    "visibility": "confidential",
     "techStack": ["Astro", "Tailwind CSS", "Cloudflare", "SEO"]
   },
   {
@@ -36,6 +38,7 @@
     "decisionShort": "Un front-end Next.js/GraphQL conectado a n8n y QuickBooks",
     "image": "/projects/_placeholder.svg",
     "url": "",
+    "visibility": "confidential",
     "techStack": ["Next.js", "GraphQL", "n8n", "QuickBooks"]
   },
   {
@@ -49,6 +52,7 @@
     "decisionShort": "Subpáginas modulares con permisos por alcance",
     "image": "/projects/_placeholder.svg",
     "url": "",
+    "visibility": "confidential",
     "techStack": ["Next.js", "TypeScript", "GraphQL", "DaisyUI"]
   },
   {
@@ -62,6 +66,7 @@
     "decisionShort": "Anclar la implementación al sistema de diseño",
     "image": "/projects/ir-management.png",
     "url": "https://ir.jblanco.dev/",
+    "visibility": "public",
     "techStack": ["React", "Typescript", "Next.js", "amCharts 5"]
   },
   {
@@ -75,6 +80,7 @@
     "decisionShort": "Componentes headless que redujeron el tiempo ~50–70%",
     "image": "/projects/in-ui-library.jpg",
     "url": "https://inui.jblanco.dev/",
+    "visibility": "public",
     "techStack": ["React", "TypeScript", "Tailwind CSS", "Reakit", "RadixUI", "Storybook"]
   },
   {
@@ -88,6 +94,7 @@
     "decisionShort": "Unificar registro, documentos, KYC y cumplimiento",
     "image": "/projects/investor-onboarding-portal.png",
     "url": "https://onboarding.jblanco.dev/",
+    "visibility": "public",
     "techStack": ["Vue.js", "Next.js", "Tailwind CSS"]
   },
   {
@@ -101,6 +108,7 @@
     "decisionShort": "Una librería compartida de 30 componentes en Storybook",
     "image": "/projects/ch-ui-library.jpg",
     "url": "https://chui.jblanco.dev/",
+    "visibility": "public",
     "techStack": ["Vue.js", "TypeScript", "Storybook", "Sass"]
   },
   {
@@ -114,6 +122,7 @@
     "decisionShort": "Agregar varias API y representarlas con amCharts 4",
     "image": "/projects/covid-news-dashboard.png",
     "url": "",
+    "visibility": "public",
     "techStack": ["Vue.js", "Nuxt.js", "amCharts 4", "Tailwind CSS", "Axios"]
   },
   {
@@ -127,6 +136,7 @@
     "decisionShort": "Actualizar en continuo y auto-scroll de las tendencias",
     "image": "/projects/social-news-dashboard.png",
     "url": "",
+    "visibility": "public",
     "techStack": ["HTML 5", "CSS 3", "JavaScript", "APIs"]
   },
   {
@@ -140,6 +150,7 @@
     "decisionShort": "Componentes hechos a mano sin framework de UI",
     "image": "/projects/material-startpage.png",
     "url": "https://material-bookmark.jblanco.dev/",
+    "visibility": "public",
     "techStack": ["HTML 5", "CSS 3", "JavaScript", "Material Design"]
   }
 ]
