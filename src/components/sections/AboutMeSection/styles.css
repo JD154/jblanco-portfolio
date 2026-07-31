@@ -143,6 +143,7 @@
 }
 
 .about-me-section__area {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -161,7 +162,6 @@
 .about-me-section__area:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  border-color: var(--pc-accent-strong);
 }
 
 .about-me-section__area-index {
@@ -207,9 +207,4 @@
   .about-me-section {
     min-height: auto;
   }
-}
-
-/* Dark mode — depth via border brightening, not a drop shadow */
-.dark .about-me-section__area:hover {
-  border-color: var(--pc-accent-strong);
 }

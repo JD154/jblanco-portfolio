@@ -39,6 +39,7 @@
 
 .projects-section__filter-btn {
   min-height: 2.75rem;
+  cursor: pointer;
 }
 
 .projects-section__empty {

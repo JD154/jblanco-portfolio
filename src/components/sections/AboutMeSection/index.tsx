@@ -2,6 +2,7 @@ import React from 'react';
 import type { CSSProperties } from 'react';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 import { SectionToolbar } from '@/components/general/SectionToolbar';
+import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
 import './styles.css';
 import type { Ui } from '@/i18n/ui';
 
@@ -78,6 +79,7 @@ export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ t }) => {
                 data-reveal="unfold"
                 style={{ '--reveal-i': idx + 1 } as CSSProperties}
               >
+                <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
                 <span className="about-me-section__area-index">{String(idx + 1).padStart(2, '0')}</span>
                 <h3 className="about-me-section__area-title">{area.title}</h3>
                 <p className="about-me-section__area-body">{area.body}</p>
