@@ -230,10 +230,10 @@ Components are **tactile and precise**: neutral at rest, decisively responsive u
 
 ### Navigation
 
-- **Style:** A centered, three-column capsule with translucent background, fine border, subtle shadow, and backdrop blur. JB anchors the left; availability stays centered; language and theme controls sit right.
-- **Typography:** Compact Inter labels with availability in tracked uppercase.
-- **States:** Text and borders move toward the foreground; keyboard focus receives an explicit two-pixel outline.
-- **Mobile:** The availability badge disappears below 480px while identity and essential controls remain.
+- **Style:** A floating pill capsule with translucent background, fine border, subtle shadow, and backdrop blur. The "Jesus Blanco" brand mark anchors the left; language and theme controls sit right. The mark is a static identity, not a navigation control.
+- **Typography:** General Sans throughout — the brand mark in semibold, the utility controls in compact tracked uppercase.
+- **States:** Utility controls move from Distant Type toward the foreground on hover; keyboard focus receives an explicit outline.
+- **Mobile:** The capsule keeps identity and the essential language and theme controls at every width, tightening padding rather than dropping controls.
 
 ### Project Observatory
 
@@ -243,7 +243,11 @@ Motion follows focus: the showcase unfolds from perspective on entry, new copy s
 
 ### Section Toolbar
 
-Each major section begins with a compact, wide-tracked uppercase label, a 7px foreground dot with a controlled halo, and a one-pixel hairline divider that fades to transparent toward the trailing edge. The label is semibold rather than heavy, keeping the motif quiet and refined. This repeated instrument-panel motif creates orientation without introducing conventional navigation chrome inside the page.
+Each major section begins with a compact, wide-tracked uppercase label, a 7px foreground dot with a controlled halo, and a one-pixel hairline divider that fades to transparent toward the trailing edge. The label is semibold rather than heavy, keeping the motif quiet and refined. This repeated instrument-panel motif creates orientation without introducing conventional navigation chrome inside the page. It is a shared `SectionToolbar` component: an optional trailing slot carries filters or secondary links on the opposite edge, and the label is a heading (`h2`) when it is the section's title, or a plain span when a display headline already leads.
+
+### Project Case Study
+
+Each project extends into a dedicated case study at `/projects/<slug>` (bilingual). The surface opens on an asymmetric hero: a mono case counter and display title on the left with the technology chips and a single live-site action, and the real product screenshot at showcase depth — over its own blurred ambient fill — on the right. Below, the reading is an instrument log: a two-beat challenge-then-approach narrative with mono indices, the role as a display-voice callout, the technology stack as a bordered instrument grid, and a wrap-around previous/next pager that closes the page. Only documented project facts appear — description, role, challenge, decision, stack, screenshot, and demo — and projects without a public demo state that plainly rather than inventing a link.
 
 ## Do's and Don'ts
 
@@ -253,6 +257,7 @@ Each major section begins with a compact, wide-tracked uppercase label, a 7px fo
 - **Do** let project imagery, large type, and selected states establish focal order.
 - **Do** use one-pixel neutral borders, controlled blur, and interaction-led shadows to separate planes.
 - **Do** keep motion spatial and purposeful: unfold, focus, settle, reveal, or confirm.
+- **Do** give each project a case study that leads with its real screenshot at showcase depth and presents only documented facts — never invented metrics, clients, dates, or demo links.
 - **Do** disable nonessential motion and preserve clear focus-visible states.
 
 ### Don't:

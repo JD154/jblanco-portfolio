@@ -1,10 +1,10 @@
 import { ThemeProvider } from '@/components/other/ThemeProvider';
 import { ProjectsSection } from '@/components/sections/ProjectsSection';
-import type { Project } from '@/i18n/projects';
+import type { LocalizedProject } from '@/i18n/projects';
 import type { Ui } from '@/i18n/ui';
 
 interface ProjectsSectionIslandProps {
-  projects: Project[];
+  projects: LocalizedProject[];
   t: Ui['projects'];
 }
 

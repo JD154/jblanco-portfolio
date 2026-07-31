@@ -42,6 +42,7 @@ test('renders the project CTA link without a nested button', () => {
             decision: 'Decision',
             image: '/project.jpg',
             url: 'https://example.com',
+            href: '/projects/project',
           },
         ]}
         t={ui.en.projects}
@@ -49,6 +50,8 @@ test('renders the project CTA link without a nested button', () => {
     </ThemeProvider>,
   );
 
-  expect(html).toMatch(/<a [^>]*href="https:\/\/example.com"/);
-  expect(html).not.toMatch(/<button[^>]*>[\s\S]*?<a href="https:\/\/example.com"/);
+  // Primary CTA is the case-study link, rendered as a clean <a> (GlowingButton
+  // asChild) — never an <a> nested inside a <button>.
+  expect(html).toMatch(/<a [^>]*href="\/projects\/project"/);
+  expect(html).not.toMatch(/<button[^>]*>[\s\S]*?<a href="\/projects\/project"/);
 });

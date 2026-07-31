@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-29T16:11:50Z",
+  "generatedAt": "2026-07-30T16:00:00Z",
   "title": "Design System: Jesus Blanco Portfolio",
   "extensions": {
     "colorMeta": {
@@ -8,101 +8,275 @@
         "role": "neutral",
         "displayName": "Deep Void / Polar Light",
         "canonical": "hsl(var(--background))",
-        "tonalRamp": ["oklch(15% 0.01 285)", "oklch(26% 0.01 285)", "oklch(38% 0.008 285)", "oklch(50% 0.006 285)", "oklch(62% 0.005 285)", "oklch(74% 0.004 285)", "oklch(86% 0.003 285)", "oklch(95% 0.002 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.01 285)",
+          "oklch(26% 0.01 285)",
+          "oklch(38% 0.008 285)",
+          "oklch(50% 0.006 285)",
+          "oklch(62% 0.005 285)",
+          "oklch(74% 0.004 285)",
+          "oklch(86% 0.003 285)",
+          "oklch(95% 0.002 285)"
+        ]
       },
       "foreground": {
         "role": "neutral",
         "displayName": "Polar Light / Deep Void",
         "canonical": "hsl(var(--foreground))",
-        "tonalRamp": ["oklch(15% 0.01 285)", "oklch(26% 0.01 285)", "oklch(38% 0.008 285)", "oklch(50% 0.006 285)", "oklch(62% 0.005 285)", "oklch(74% 0.004 285)", "oklch(86% 0.003 285)", "oklch(95% 0.002 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.01 285)",
+          "oklch(26% 0.01 285)",
+          "oklch(38% 0.008 285)",
+          "oklch(50% 0.006 285)",
+          "oklch(62% 0.005 285)",
+          "oklch(74% 0.004 285)",
+          "oklch(86% 0.003 285)",
+          "oklch(95% 0.002 285)"
+        ]
       },
       "primary": {
         "role": "primary",
         "displayName": "Polar Signal",
         "canonical": "hsl(var(--primary))",
-        "tonalRamp": ["oklch(15% 0.008 285)", "oklch(26% 0.008 285)", "oklch(38% 0.006 285)", "oklch(50% 0.005 285)", "oklch(62% 0.004 285)", "oklch(74% 0.003 285)", "oklch(86% 0.002 285)", "oklch(95% 0.001 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.008 285)",
+          "oklch(26% 0.008 285)",
+          "oklch(38% 0.006 285)",
+          "oklch(50% 0.005 285)",
+          "oklch(62% 0.004 285)",
+          "oklch(74% 0.003 285)",
+          "oklch(86% 0.002 285)",
+          "oklch(95% 0.001 285)"
+        ]
       },
       "primary-foreground": {
         "role": "neutral",
         "displayName": "Inverse Signal",
         "canonical": "hsl(var(--primary-foreground))",
-        "tonalRamp": ["oklch(15% 0.008 285)", "oklch(26% 0.008 285)", "oklch(38% 0.006 285)", "oklch(50% 0.005 285)", "oklch(62% 0.004 285)", "oklch(74% 0.003 285)", "oklch(86% 0.002 285)", "oklch(95% 0.001 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.008 285)",
+          "oklch(26% 0.008 285)",
+          "oklch(38% 0.006 285)",
+          "oklch(50% 0.005 285)",
+          "oklch(62% 0.004 285)",
+          "oklch(74% 0.003 285)",
+          "oklch(86% 0.002 285)",
+          "oklch(95% 0.001 285)"
+        ]
       },
       "secondary": {
         "role": "neutral",
         "displayName": "Orbital Mist",
         "canonical": "hsl(var(--secondary))",
-        "tonalRamp": ["oklch(15% 0.008 285)", "oklch(26% 0.008 285)", "oklch(38% 0.007 285)", "oklch(50% 0.006 285)", "oklch(62% 0.005 285)", "oklch(74% 0.004 285)", "oklch(86% 0.003 285)", "oklch(95% 0.002 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.008 285)",
+          "oklch(26% 0.008 285)",
+          "oklch(38% 0.007 285)",
+          "oklch(50% 0.006 285)",
+          "oklch(62% 0.005 285)",
+          "oklch(74% 0.004 285)",
+          "oklch(86% 0.003 285)",
+          "oklch(95% 0.002 285)"
+        ]
       },
       "secondary-background": {
         "role": "neutral",
         "displayName": "Translucent Orbit",
         "canonical": "var(--secondary-background)",
-        "tonalRamp": ["oklch(15% 0.006 285 / 0.3)", "oklch(26% 0.006 285 / 0.3)", "oklch(38% 0.005 285 / 0.3)", "oklch(50% 0.004 285 / 0.3)", "oklch(62% 0.003 285 / 0.3)", "oklch(74% 0.003 285 / 0.3)", "oklch(86% 0.002 285 / 0.3)", "oklch(95% 0.001 285 / 0.3)"]
+        "tonalRamp": [
+          "oklch(15% 0.006 285 / 0.3)",
+          "oklch(26% 0.006 285 / 0.3)",
+          "oklch(38% 0.005 285 / 0.3)",
+          "oklch(50% 0.004 285 / 0.3)",
+          "oklch(62% 0.003 285 / 0.3)",
+          "oklch(74% 0.003 285 / 0.3)",
+          "oklch(86% 0.002 285 / 0.3)",
+          "oklch(95% 0.001 285 / 0.3)"
+        ]
       },
       "card": {
         "role": "neutral",
         "displayName": "Observation Glass",
         "canonical": "hsla(var(--card), 0.9)",
-        "tonalRamp": ["oklch(15% 0.008 285 / 0.9)", "oklch(26% 0.008 285 / 0.9)", "oklch(38% 0.006 285 / 0.9)", "oklch(50% 0.005 285 / 0.9)", "oklch(62% 0.004 285 / 0.9)", "oklch(74% 0.003 285 / 0.9)", "oklch(86% 0.002 285 / 0.9)", "oklch(95% 0.001 285 / 0.9)"]
+        "tonalRamp": [
+          "oklch(15% 0.008 285 / 0.9)",
+          "oklch(26% 0.008 285 / 0.9)",
+          "oklch(38% 0.006 285 / 0.9)",
+          "oklch(50% 0.005 285 / 0.9)",
+          "oklch(62% 0.004 285 / 0.9)",
+          "oklch(74% 0.003 285 / 0.9)",
+          "oklch(86% 0.002 285 / 0.9)",
+          "oklch(95% 0.001 285 / 0.9)"
+        ]
       },
       "muted-foreground": {
         "role": "neutral",
         "displayName": "Distant Type",
         "canonical": "hsl(var(--muted-foreground))",
-        "tonalRamp": ["oklch(15% 0.01 285)", "oklch(26% 0.009 285)", "oklch(38% 0.008 285)", "oklch(50% 0.007 285)", "oklch(62% 0.006 285)", "oklch(74% 0.005 285)", "oklch(86% 0.004 285)", "oklch(95% 0.003 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.01 285)",
+          "oklch(26% 0.009 285)",
+          "oklch(38% 0.008 285)",
+          "oklch(50% 0.007 285)",
+          "oklch(62% 0.006 285)",
+          "oklch(74% 0.005 285)",
+          "oklch(86% 0.004 285)",
+          "oklch(95% 0.003 285)"
+        ]
       },
       "border": {
         "role": "neutral",
         "displayName": "Orbit Line",
         "canonical": "hsl(var(--border))",
-        "tonalRamp": ["oklch(15% 0.008 285)", "oklch(26% 0.008 285)", "oklch(38% 0.007 285)", "oklch(50% 0.006 285)", "oklch(62% 0.005 285)", "oklch(74% 0.004 285)", "oklch(86% 0.003 285)", "oklch(95% 0.002 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.008 285)",
+          "oklch(26% 0.008 285)",
+          "oklch(38% 0.007 285)",
+          "oklch(50% 0.006 285)",
+          "oklch(62% 0.005 285)",
+          "oklch(74% 0.004 285)",
+          "oklch(86% 0.003 285)",
+          "oklch(95% 0.002 285)"
+        ]
       },
       "ring": {
         "role": "primary",
         "displayName": "Focus Signal",
         "canonical": "hsl(var(--ring))",
-        "tonalRamp": ["oklch(15% 0.008 285)", "oklch(26% 0.008 285)", "oklch(38% 0.006 285)", "oklch(50% 0.005 285)", "oklch(62% 0.004 285)", "oklch(74% 0.003 285)", "oklch(86% 0.002 285)", "oklch(95% 0.001 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.008 285)",
+          "oklch(26% 0.008 285)",
+          "oklch(38% 0.006 285)",
+          "oklch(50% 0.005 285)",
+          "oklch(62% 0.004 285)",
+          "oklch(74% 0.003 285)",
+          "oklch(86% 0.002 285)",
+          "oklch(95% 0.001 285)"
+        ]
       },
       "availability-deep": {
         "role": "tertiary",
         "displayName": "Available Emerald",
         "canonical": "#10b981",
-        "tonalRamp": ["oklch(15% 0.06 160)", "oklch(26% 0.09 160)", "oklch(38% 0.12 160)", "oklch(50% 0.14 160)", "oklch(62% 0.15 160)", "oklch(74% 0.12 160)", "oklch(86% 0.07 160)", "oklch(95% 0.03 160)"]
+        "tonalRamp": [
+          "oklch(15% 0.06 160)",
+          "oklch(26% 0.09 160)",
+          "oklch(38% 0.12 160)",
+          "oklch(50% 0.14 160)",
+          "oklch(62% 0.15 160)",
+          "oklch(74% 0.12 160)",
+          "oklch(86% 0.07 160)",
+          "oklch(95% 0.03 160)"
+        ]
       },
       "availability-bright": {
         "role": "tertiary",
         "displayName": "Available Mint",
         "canonical": "#34d399",
-        "tonalRamp": ["oklch(15% 0.05 160)", "oklch(26% 0.08 160)", "oklch(38% 0.11 160)", "oklch(50% 0.14 160)", "oklch(62% 0.16 160)", "oklch(74% 0.13 160)", "oklch(86% 0.08 160)", "oklch(95% 0.03 160)"]
+        "tonalRamp": [
+          "oklch(15% 0.05 160)",
+          "oklch(26% 0.08 160)",
+          "oklch(38% 0.11 160)",
+          "oklch(50% 0.14 160)",
+          "oklch(62% 0.16 160)",
+          "oklch(74% 0.13 160)",
+          "oklch(86% 0.08 160)",
+          "oklch(95% 0.03 160)"
+        ]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Spatial Display", "purpose": "Clash Display for the interactive hero signature only; characters act as spatial objects." },
-      "headline": { "displayName": "Observatory Headline", "purpose": "Clash Display for the pitch, project names, and major section statements." },
-      "title": { "displayName": "Section Instrument", "purpose": "General Sans, tracked uppercase, for section toolbars." },
-      "body": { "displayName": "Explanatory Body", "purpose": "General Sans for project descriptions and supporting narrative." },
-      "label": { "displayName": "Technical Label", "purpose": "General Sans for availability, metadata, filters, and compact controls." },
-      "mono": { "displayName": "Instrument Mono", "purpose": "JetBrains Mono for contact addresses and the oversized project counter." }
+      "display": {
+        "displayName": "Spatial Display",
+        "purpose": "Clash Display for the interactive hero signature only; characters act as spatial objects."
+      },
+      "headline": {
+        "displayName": "Observatory Headline",
+        "purpose": "Clash Display for the pitch, project names, and major section statements."
+      },
+      "title": {
+        "displayName": "Section Instrument",
+        "purpose": "General Sans, tracked uppercase, for section toolbars."
+      },
+      "body": {
+        "displayName": "Explanatory Body",
+        "purpose": "General Sans for project descriptions and supporting narrative."
+      },
+      "label": {
+        "displayName": "Technical Label",
+        "purpose": "General Sans for availability, metadata, filters, and compact controls."
+      },
+      "mono": {
+        "displayName": "Instrument Mono",
+        "purpose": "JetBrains Mono for contact addresses and the oversized project counter."
+      }
     },
     "shadows": [
-      { "name": "ambient-panel", "value": "0 4px 20px rgba(0, 0, 0, 0.08)", "purpose": "Low resting separation for compact translucent cards." },
-      { "name": "interactive-lift", "value": "0 8px 30px rgba(0, 0, 0, 0.12)", "purpose": "Hover elevation paired with a small upward translation." },
-      { "name": "showcase-depth", "value": "0 30px 70px rgba(0, 0, 0, 0.28)", "purpose": "Deep separation reserved for the featured project artifact." },
-      { "name": "active-orbit", "value": "0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)", "purpose": "Foreground halo around active project selection." }
+      {
+        "name": "ambient-panel",
+        "value": "0 4px 20px rgba(0, 0, 0, 0.08)",
+        "purpose": "Low resting separation for compact translucent cards."
+      },
+      {
+        "name": "interactive-lift",
+        "value": "0 8px 30px rgba(0, 0, 0, 0.12)",
+        "purpose": "Hover elevation paired with a small upward translation."
+      },
+      {
+        "name": "showcase-depth",
+        "value": "0 30px 70px rgba(0, 0, 0, 0.28)",
+        "purpose": "Deep separation reserved for the featured project artifact."
+      },
+      {
+        "name": "active-orbit",
+        "value": "0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)",
+        "purpose": "Foreground halo around active project selection."
+      }
     ],
     "motion": [
-      { "name": "state-standard", "value": "300ms ease", "purpose": "Default color, opacity, border, and compact transform transitions." },
-      { "name": "spatial-standard", "value": "400ms cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Card lift, carousel selection, and directional motion." },
-      { "name": "focus-settle", "value": "750ms cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Blur-to-sharp and scale-to-rest transitions for featured artifacts." },
-      { "name": "ambient-fade", "value": "400ms ease-out", "purpose": "Fallback-to-WebGL starfield handoff." },
-      { "name": "reduced-motion", "value": "none", "purpose": "Disables nonessential animation and transitions under prefers-reduced-motion." }
+      {
+        "name": "state-standard",
+        "value": "300ms ease",
+        "purpose": "Default color, opacity, border, and compact transform transitions."
+      },
+      {
+        "name": "spatial-standard",
+        "value": "400ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Card lift, carousel selection, and directional motion."
+      },
+      {
+        "name": "focus-settle",
+        "value": "750ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Blur-to-sharp and scale-to-rest transitions for featured artifacts."
+      },
+      {
+        "name": "ambient-fade",
+        "value": "400ms ease-out",
+        "purpose": "Fallback-to-WebGL starfield handoff."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "Disables nonessential animation and transitions under prefers-reduced-motion."
+      }
     ],
     "breakpoints": [
-      { "name": "compact", "value": "480px" },
-      { "name": "mobile", "value": "768px" },
-      { "name": "showcase-stack", "value": "900px" },
-      { "name": "layout-stack", "value": "1024px" }
+      {
+        "name": "compact",
+        "value": "480px"
+      },
+      {
+        "name": "mobile",
+        "value": "768px"
+      },
+      {
+        "name": "showcase-stack",
+        "value": "900px"
+      },
+      {
+        "name": "layout-stack",
+        "value": "1024px"
+      }
     ]
   },
   "components": [
@@ -126,16 +300,23 @@
       "name": "Navigation Capsule",
       "kind": "nav",
       "refersTo": "nav-capsule",
-      "description": "Centered three-zone navigation shell for identity, availability, and utilities.",
-      "html": "<nav class=\"ds-nav\"><strong class=\"ds-nav-brand\">JB</strong><span class=\"ds-nav-status\"><i></i> BOOKING NEW PROJECTS</span><span class=\"ds-nav-tools\"><button>EN</button><button aria-label=\"Toggle theme\">◐</button></span></nav>",
-      "css": ".ds-nav { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; width:min(38rem,calc(100% - 2rem)); padding:.5rem 1.5rem; border:1px solid hsl(var(--border)); border-radius:9999px; background:var(--secondary-background); color:hsl(var(--foreground)); box-shadow:0 1px 3px rgba(0,0,0,.12); backdrop-filter:blur(4px); font-family:var(--font-sans); } .ds-nav-brand { justify-self:start; font-size:.875rem; } .ds-nav-status { display:flex; align-items:center; gap:.5rem; font-size:.6875rem; font-weight:600; letter-spacing:.12em; color:hsl(var(--muted-foreground)); } .ds-nav-status i { width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#10b981,#34d399); box-shadow:0 0 10px color-mix(in srgb,#34d399 45%,transparent); } .ds-nav-tools { justify-self:end; display:flex; gap:.25rem; } .ds-nav-tools button { border:0; border-radius:9999px; padding:.4rem; background:transparent; color:inherit; cursor:pointer; } .ds-nav-tools button:hover { background:hsl(var(--accent)); } .ds-nav-tools button:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; }"
+      "description": "Floating pill shell: the brand mark anchors the left; language and theme controls sit right. No availability or contact link.",
+      "html": "<nav class=\"ds-nav\"><strong class=\"ds-nav-brand\">Jesus Blanco</strong><span class=\"ds-nav-tools\"><button>EN</button><button aria-label=\"Toggle theme\">◐</button></span></nav>",
+      "css": ".ds-nav { display:flex; align-items:center; justify-content:space-between; width:min(42rem,calc(100% - 2rem)); padding:.5rem 1.5rem; border:1px solid hsl(var(--border)); border-radius:9999px; background:var(--secondary-background); color:hsl(var(--foreground)); box-shadow:0 1px 3px rgba(0,0,0,.12); backdrop-filter:blur(4px); font-family:var(--font-sans); } .ds-nav-brand { font-weight:700; font-size:1rem; } .ds-nav-tools { display:flex; align-items:center; gap:.25rem; } .ds-nav-tools button { border:0; border-radius:.5rem; padding:.5rem .75rem; background:transparent; color:hsl(var(--muted-foreground)); font:600 .6875rem/1 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:color .2s ease,background .2s ease; } .ds-nav-tools button:hover { color:hsl(var(--foreground)); } .ds-nav-tools button:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; }"
     },
     {
-      "name": "Availability Badge",
+      "name": "Availability Signal",
       "kind": "custom",
-      "description": "Bare technical status label with the system's only chromatic signal.",
-      "html": "<button class=\"ds-availability\"><span class=\"ds-availability-dot\"></span><span>BOOKING NEW PROJECTS</span></button>",
-      "css": ".ds-availability { display:inline-flex; align-items:center; gap:.5rem; padding:0; border:0; background:transparent; color:hsl(var(--muted-foreground)); font:600 .6875rem/1.5 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:color .3s ease; } .ds-availability:hover { color:hsl(var(--foreground)); } .ds-availability:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; } .ds-availability-dot { position:relative; width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#10b981,#34d399); box-shadow:0 0 10px color-mix(in srgb,#34d399 40%,transparent); }"
+      "description": "The system's only chromatic signal: an inline emerald-to-mint status reserved for current availability (hero booking state and the contact conversion moment).",
+      "html": "<p class=\"ds-availability\"><span class=\"ds-availability-dot\"></span> BOOKING NEW PROJECTS</p>",
+      "css": ".ds-availability { display:inline-flex; align-items:center; gap:.6rem; margin:0; color:hsl(var(--muted-foreground)); font:600 .6875rem/1.5 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; } .ds-availability-dot { width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#10b981,#34d399); box-shadow:0 0 10px color-mix(in srgb,#34d399 45%,transparent); }"
+    },
+    {
+      "name": "Section Toolbar",
+      "kind": "custom",
+      "description": "Shared SectionToolbar: a compact semibold tracked-uppercase label, a controlled-halo dot, and a hairline divider that fades toward the trailing edge.",
+      "html": "<div class=\"ds-section-toolbar\"><h2><i></i> FEATURED PROJECTS</h2></div>",
+      "css": ".ds-section-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem 2rem; padding-bottom:1.5rem; background-image:linear-gradient(to right,hsl(var(--border)),transparent 92%); background-repeat:no-repeat; background-position:left bottom; background-size:100% 1px; color:hsl(var(--foreground)); } .ds-section-toolbar h2 { display:inline-flex; align-items:center; gap:.7rem; margin:0; font:600 .875rem/1.5 var(--font-sans); letter-spacing:.14em; text-transform:uppercase; } .ds-section-toolbar i { width:7px; height:7px; border-radius:50%; background:hsl(var(--foreground)); box-shadow:0 0 8px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); }"
     },
     {
       "name": "Project Thumbnail",
@@ -143,6 +324,13 @@
       "description": "Filmstrip card that dims at rest and gains an orbit ring when selected.",
       "html": "<button class=\"ds-project-card\" aria-current=\"true\"><span class=\"ds-project-art\"></span><strong>IR MANAGEMENT</strong></button>",
       "css": ".ds-project-card { position:relative; width:210px; height:128px; overflow:hidden; padding:0; border:1px solid hsl(var(--foreground)); border-radius:1rem; background:var(--secondary-background); color:#fff; box-shadow:0 16px 36px rgba(0,0,0,.3),0 0 0 2px hsl(var(--foreground)),0 0 22px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); cursor:pointer; transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease; } .ds-project-art { position:absolute; inset:0; background:radial-gradient(circle at 70% 25%,color-mix(in srgb,hsl(var(--foreground)) 18%,transparent),transparent 25%),linear-gradient(135deg,hsl(var(--secondary)),hsl(var(--background))); } .ds-project-card::after { content:''; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.85)); } .ds-project-card strong { position:absolute; z-index:1; inset:auto .75rem .65rem; text-align:left; font:700 .8125rem/1.2 var(--font-sans); letter-spacing:.02em; } .ds-project-card:hover { transform:translateY(-6px); box-shadow:0 20px 42px rgba(0,0,0,.32),0 0 0 2px hsl(var(--foreground)); } .ds-project-card:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
+    },
+    {
+      "name": "Carousel Arrow",
+      "kind": "button",
+      "description": "Circular directional control for moving through observed work.",
+      "html": "<button class=\"ds-carousel-arrow\" aria-label=\"Next project\">→</button>",
+      "css": ".ds-carousel-arrow { display:grid; place-items:center; width:2.75rem; height:2.75rem; padding:0; border:1px solid hsl(var(--border)); border-radius:50%; background:hsla(var(--card),.9); color:hsl(var(--foreground)); font:400 1.1rem/1 var(--font-sans); cursor:pointer; transition:background .3s ease,border-color .3s ease,transform .3s ease; } .ds-carousel-arrow:hover { border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); transform:scale(1.05); } .ds-carousel-arrow:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-carousel-arrow:active { transform:scale(.97); }"
     },
     {
       "name": "Contact Channel Card",
@@ -153,18 +341,20 @@
       "css": ".ds-contact-card { display:flex; align-items:center; gap:1rem; padding:1.5rem; border:1px solid hsl(var(--border)); border-radius:1rem; background:hsla(var(--card),.9); color:hsl(var(--foreground)); text-decoration:none; backdrop-filter:blur(20px); box-shadow:0 8px 32px rgba(0,0,0,.1); transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s cubic-bezier(.4,0,.2,1),border-color .3s ease; font-family:var(--font-sans); } .ds-contact-icon { display:grid; place-items:center; width:3rem; height:3rem; flex:0 0 auto; border-radius:.75rem; background:hsl(var(--secondary)); font-weight:700; } .ds-contact-card span:nth-child(2) { display:flex; min-width:0; flex:1; flex-direction:column; gap:.25rem; } .ds-contact-card strong { font:600 .6875rem/1.5 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; color:hsl(var(--muted-foreground)); } .ds-contact-card small { color:hsl(var(--foreground)); font:500 1.0625rem/1.4 var(--font-mono); overflow-wrap:anywhere; } .ds-contact-card b { color:hsl(var(--muted-foreground)); transition:transform .3s ease,color .3s ease; } .ds-contact-card:hover { transform:translateY(-4px); border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); box-shadow:0 20px 50px rgba(0,0,0,.15); } .ds-contact-card:hover b { transform:translateX(4px); color:hsl(var(--foreground)); } .ds-contact-card:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
     },
     {
-      "name": "Carousel Arrow",
-      "kind": "button",
-      "description": "Circular directional control for moving through observed work.",
-      "html": "<button class=\"ds-carousel-arrow\" aria-label=\"Next project\">→</button>",
-      "css": ".ds-carousel-arrow { display:grid; place-items:center; width:2.75rem; height:2.75rem; padding:0; border:1px solid hsl(var(--border)); border-radius:50%; background:hsla(var(--card),.9); color:hsl(var(--foreground)); font:400 1.1rem/1 var(--font-sans); cursor:pointer; transition:background .3s ease,border-color .3s ease,transform .3s ease; } .ds-carousel-arrow:hover { border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); transform:scale(1.05); } .ds-carousel-arrow:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-carousel-arrow:active { transform:scale(.97); }"
+      "name": "Case Study Tech Chip",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Outline pill listing a project's technologies on the case-study hero; tracked uppercase over translucent orbit.",
+      "html": "<span class=\"ds-tech-chip\">TypeScript</span>",
+      "css": ".ds-tech-chip { display:inline-flex; align-items:center; padding:.4rem .85rem; border:1px solid hsl(var(--border)); border-radius:9999px; background:var(--secondary-background); backdrop-filter:blur(20px); color:hsl(var(--muted-foreground)); font:600 .6875rem/1 var(--font-sans); letter-spacing:.08em; text-transform:uppercase; }"
     },
     {
-      "name": "Section Toolbar",
-      "kind": "custom",
-      "description": "Instrument-panel section marker with a luminous dot and quiet divider.",
-      "html": "<div class=\"ds-section-toolbar\"><h2><i></i> FEATURED PROJECTS</h2></div>",
-      "css": ".ds-section-toolbar { display:flex; align-items:center; padding-bottom:1.5rem; border-bottom:1px solid hsl(var(--border)); color:hsl(var(--foreground)); } .ds-section-toolbar h2 { display:inline-flex; align-items:center; gap:.7rem; margin:0; font:700 1.15rem/1.5 var(--font-sans); letter-spacing:.14em; text-transform:uppercase; } .ds-section-toolbar i { width:7px; height:7px; border-radius:50%; background:hsl(var(--foreground)); box-shadow:0 0 12px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); }"
+      "name": "Case Study Pager Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Wrap-around previous/next case-study card: tracked meta label, uppercase display title, and a wide screenshot strip; lifts and brightens on hover.",
+      "html": "<a class=\"ds-pager-card\" href=\"#\"><span class=\"ds-pager-meta\">NEXT <span aria-hidden=\"true\">→</span></span><span class=\"ds-pager-title\">inUI Library</span><span class=\"ds-pager-thumb\"></span></a>",
+      "css": ".ds-pager-card { display:flex; flex-direction:column; gap:.75rem; padding:1.5rem; border:1px solid hsl(var(--border)); border-radius:1rem; background:hsla(var(--card),.9); color:hsl(var(--foreground)); text-decoration:none; backdrop-filter:blur(20px); box-shadow:0 4px 20px rgba(0,0,0,.08); transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease,border-color .3s ease; font-family:var(--font-sans); } .ds-pager-meta { display:inline-flex; align-items:center; gap:.5rem; font:600 .6875rem/1 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; color:hsl(var(--muted-foreground)); } .ds-pager-title { font:700 1.0625rem/1.2 var(--font-display); letter-spacing:.01em; text-transform:uppercase; } .ds-pager-thumb { height:7rem; margin-top:.5rem; border:1px solid hsl(var(--border)); border-radius:.75rem; background:linear-gradient(135deg,hsl(var(--secondary)),hsl(var(--background))); } .ds-pager-card:hover { transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,0,0,.12); border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); }"
     }
   ],
   "narrative": {
@@ -178,19 +368,58 @@
       "Pill controls, softly rounded panels, and circular navigation actions."
     ],
     "rules": [
-      { "name": "The Monochrome Field Rule", "body": "Build hierarchy from value, opacity, imagery, and depth before introducing hue.", "section": "colors" },
-      { "name": "The One Green Signal Rule", "body": "Green belongs to verified availability status; do not spread it across unrelated actions or decoration.", "section": "colors" },
-      { "name": "The No Neon Rainbow Rule", "body": "Halos may amplify the active foreground color, but they must not become multicolor spectacle.", "section": "colors" },
-      { "name": "The Two-Volume Rule", "body": "Use either commanding display/headline type or quiet body/label type; avoid adding intermediate decorative hierarchies.", "section": "typography" },
-      { "name": "The Uppercase Interface Rule", "body": "Uppercase belongs to headings, filters, labels, and metadata, never to long-form reading copy.", "section": "typography" },
-      { "name": "The Lift-on-Attention Rule", "body": "Resting surfaces are quietly layered; stronger shadows and translation appear only on hover, focus, selection, or featured status.", "section": "elevation" },
-      { "name": "The One Deep Plane Rule", "body": "Only the featured artifact receives showcase-level depth within a composition.", "section": "elevation" }
+      {
+        "name": "The Monochrome Field Rule",
+        "body": "Build hierarchy from value, opacity, imagery, and depth before introducing hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Green Signal Rule",
+        "body": "Green belongs to verified availability status; do not spread it across unrelated actions or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Neon Rainbow Rule",
+        "body": "Halos may amplify the active foreground color, but they must not become multicolor spectacle.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Volume Rule",
+        "body": "Use either commanding display/headline type or quiet body/label type; avoid adding intermediate decorative hierarchies.",
+        "section": "typography"
+      },
+      {
+        "name": "The Uppercase Interface Rule",
+        "body": "Uppercase belongs to headings, filters, labels, and metadata, never to long-form reading copy.",
+        "section": "typography"
+      },
+      {
+        "name": "The Artifact-First Rule",
+        "body": "In project presentations, imagery owns the larger column and copy explains it; never reduce the work to a decorative thumbnail beside dominant prose.",
+        "section": "layout"
+      },
+      {
+        "name": "The Lift-on-Attention Rule",
+        "body": "Resting surfaces are quietly layered; stronger shadows and translation appear only on hover, focus, selection, or featured status.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Deep Plane Rule",
+        "body": "Only the featured artifact receives showcase-level depth within a composition.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Nested Radius Rule",
+        "body": "Inner shapes step down from their container: 24px showcase, 16px card, 12px icon well, 8px control.",
+        "section": "shapes"
+      }
     ],
     "dos": [
       "Do preserve the reversible monochrome hierarchy across light and dark themes.",
       "Do let project imagery, large type, and selected states establish focal order.",
       "Do use one-pixel neutral borders, controlled blur, and interaction-led shadows to separate planes.",
       "Do keep motion spatial and purposeful: unfold, focus, settle, reveal, or confirm.",
+      "Do give each project a case study that leads with its real screenshot at showcase depth and presents only documented facts — never invented metrics, clients, dates, or demo links.",
       "Do disable nonessential motion and preserve clear focus-visible states."
     ],
     "donts": [
