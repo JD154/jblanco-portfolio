@@ -230,6 +230,7 @@
 }
 
 .pi-row__title {
+  margin: 0;
   font-family: var(--font-display);
   font-size: 1.0625rem;
   font-weight: 700;
@@ -297,12 +298,26 @@
   color: color-mix(in srgb, var(--color-foreground) 78%, transparent);
 }
 
+/* Confidential status reads as a deliberate marker, not an absence — a quiet
+   monochrome bordered pill (never the reserved availability green). */
+.pi-row__status--nda {
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 22%, transparent);
+  color: color-mix(in srgb, var(--color-foreground) 70%, transparent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
 .pi-row__status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--availability-bright);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--availability-deep) 65%, transparent);
+  /* A live host is a signal, not availability. It stays in the monochrome field
+     as an Active-Orbit-style lit node, so the reserved green means only one
+     thing across the site: "available to hire" (One Green Signal Rule). */
+  background: color-mix(in srgb, var(--color-foreground) 88%, transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--color-foreground) 42%, transparent);
 }
 
 .pi-row__open {

@@ -98,6 +98,87 @@
         "value": "8rem",
         "createdAt": "2026-07-29T17:57:45.505Z",
         "reason": "AnimatedHeading display default (overridden by hero); display-tier token"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.65rem",
+        "files": [
+          "src/components/sections/HeaderSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:02.142Z",
+        "reason": "Hero pitch display size, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "5.35rem",
+        "files": [
+          "src/components/sections/HeaderSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:02.181Z",
+        "reason": "Hero pitch display size, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2.55rem",
+        "files": [
+          "src/components/sections/HeaderSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:02.219Z",
+        "reason": "Hero pitch display size mobile, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "3.15rem",
+        "files": [
+          "src/components/sections/HeaderSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:02.255Z",
+        "reason": "Hero pitch display size mobile, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.2rem",
+        "files": [
+          "src/components/sections/ContactSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:12.358Z",
+        "reason": "Primary contact display, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.75rem",
+        "files": [
+          "src/components/sections/ContactSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:12.402Z",
+        "reason": "Primary contact display, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.125rem",
+        "files": [
+          "src/components/sections/ContactSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:12.439Z",
+        "reason": "Primary contact display mobile, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.15rem",
+        "files": [
+          "src/components/sections/ExperienceSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:12.486Z",
+        "reason": "Display-voice role heading, user-confirmed intentional"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.5rem",
+        "files": [
+          "src/components/sections/ExperienceSection/styles.css"
+        ],
+        "createdAt": "2026-07-31T17:44:12.527Z",
+        "reason": "Display-voice role heading, user-confirmed intentional"
       }
     ]
   }

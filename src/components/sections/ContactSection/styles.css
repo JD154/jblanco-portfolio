@@ -137,7 +137,8 @@
 
 .contact-section__item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.13);
+  /* DESIGN.md "Interactive Lift" — the documented hover elevation. */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   border-color: var(--pc-accent-strong);
 }
 
@@ -215,7 +216,7 @@
 
 .contact-section__item:not(.contact-section__item--primary) .contact-section__item-display {
   overflow: hidden;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

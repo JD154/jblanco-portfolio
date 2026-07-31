@@ -2,6 +2,7 @@ import type { CSSProperties, FC } from 'react';
 import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 import { SectionToolbar } from '@/components/general/SectionToolbar';
 import { GlowingButton } from '@/components/general/GlowingButton';
+import { ConfidentialPlate } from '@/components/general/ConfidentialPlate';
 import './styles.css';
 import type { Lang, Ui } from '@/i18n/ui';
 import type { LocalizedProject } from '@/i18n/projects';
@@ -64,6 +65,7 @@ export const ProjectDetail: FC<ProjectDetailProps> = ({ lang, t, project, prev, 
 
   const host = hostOf(project.url ?? '');
   const stack = project.techStack ?? [];
+  const confidential = project.visibility === 'confidential';
 
   return (
     <article className="pd">
@@ -118,12 +120,18 @@ export const ProjectDetail: FC<ProjectDetailProps> = ({ lang, t, project, prev, 
 
             <figure className="pd__artifact">
               <div className="pd__artifact-frame">
-                <div
-                  className="pd__artifact-bg"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                  aria-hidden="true"
-                />
-                <img className="pd__artifact-img" src={project.image} alt={project.title} />
+                {confidential ? (
+                  <ConfidentialPlate labels={t.confidential} />
+                ) : (
+                  <>
+                    <div
+                      className="pd__artifact-bg"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                      aria-hidden="true"
+                    />
+                    <img className="pd__artifact-img" src={project.image} alt={project.title} />
+                  </>
+                )}
                 <span className="pd__artifact-glow" aria-hidden="true" />
               </div>
             </figure>
@@ -204,7 +212,11 @@ export const ProjectDetail: FC<ProjectDetailProps> = ({ lang, t, project, prev, 
                 </span>
                 <span className="pd__pager-title">{prev.title}</span>
                 <span className="pd__pager-thumb" aria-hidden="true">
-                  <img src={prev.image} alt="" loading="lazy" />
+                  {prev.visibility === 'confidential' ? (
+                    <ConfidentialPlate labels={t.confidential} />
+                  ) : (
+                    <img src={prev.image} alt="" loading="lazy" />
+                  )}
                 </span>
               </a>
               <a
@@ -219,7 +231,11 @@ export const ProjectDetail: FC<ProjectDetailProps> = ({ lang, t, project, prev, 
                 </span>
                 <span className="pd__pager-title">{next.title}</span>
                 <span className="pd__pager-thumb" aria-hidden="true">
-                  <img src={next.image} alt="" loading="lazy" />
+                  {next.visibility === 'confidential' ? (
+                    <ConfidentialPlate labels={t.confidential} />
+                  ) : (
+                    <img src={next.image} alt="" loading="lazy" />
+                  )}
                 </span>
               </a>
             </div>

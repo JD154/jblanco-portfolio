@@ -70,7 +70,7 @@
 
 .experience-section__period {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--color-muted-foreground);
@@ -79,7 +79,7 @@
 
 .experience-section__metric {
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -212,7 +212,7 @@
   padding: 0.2rem 0.6rem;
   border: 1px solid var(--pc-accent-strong);
   border-radius: 9999px;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.14em;
   color: var(--color-foreground);
 }
@@ -242,7 +242,7 @@
   background: var(--color-card);
   backdrop-filter: blur(20px);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--color-muted-foreground);
@@ -282,6 +282,6 @@
   }
 
   .experience-section__metric {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
   }
 }

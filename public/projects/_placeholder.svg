@@ -1,42 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Preview coming soon">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0e1013"/>
-      <stop offset="0.5" stop-color="#15171c"/>
-      <stop offset="1" stop-color="#0b0d10"/>
-    </linearGradient>
-    <radialGradient id="halo" cx="0.5" cy="0.46" r="0.55">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.06"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-
-  <rect width="1600" height="1000" fill="url(#bg)"/>
-  <rect width="1600" height="1000" fill="url(#halo)"/>
+  <!--
+    Pending-state plate. Kept theme-neutral so it reverses cleanly: the background
+    is transparent (the frame's theme-adaptive --color-secondary-background shows
+    through, never a hardcoded dark block on a light page), and the marks follow
+    the viewer's color-scheme. Referenced via <img>, so it can't read the site's
+    theme class — prefers-color-scheme is the only signal available; the
+    transparent field keeps the base correct in both themes regardless.
+  -->
+  <style>
+    .pl-mark { stroke: #3a3f4a; }
+    .pl-fill { fill: #3a3f4a; }
+    @media (prefers-color-scheme: dark) {
+      .pl-mark { stroke: #c7ccd6; }
+      .pl-fill { fill: #c7ccd6; }
+    }
+  </style>
 
   <!-- Orbital rings -->
-  <g fill="none" stroke="#ffffff" stroke-opacity="0.07">
+  <g class="pl-mark" fill="none" stroke-opacity="0.16">
     <circle cx="800" cy="460" r="150"/>
     <circle cx="800" cy="460" r="240"/>
     <circle cx="800" cy="460" r="330"/>
   </g>
 
   <!-- Signal dot riding an orbit -->
-  <circle cx="1040" cy="460" r="7" fill="#ffffff" fill-opacity="0.85"/>
-  <circle cx="1040" cy="460" r="16" fill="none" stroke="#ffffff" stroke-opacity="0.25"/>
+  <circle class="pl-fill" cx="1040" cy="460" r="7" fill-opacity="0.72"/>
+  <circle class="pl-mark" cx="1040" cy="460" r="16" fill="none" stroke-opacity="0.34"/>
 
   <!-- Sparse stars -->
-  <g fill="#ffffff">
-    <circle cx="360" cy="230" r="2" fill-opacity="0.5"/>
-    <circle cx="1240" cy="200" r="1.6" fill-opacity="0.4"/>
-    <circle cx="520" cy="740" r="1.6" fill-opacity="0.35"/>
-    <circle cx="1180" cy="760" r="2" fill-opacity="0.45"/>
-    <circle cx="240" cy="520" r="1.4" fill-opacity="0.3"/>
-    <circle cx="1360" cy="560" r="1.4" fill-opacity="0.3"/>
+  <g class="pl-fill">
+    <circle cx="360" cy="230" r="2" fill-opacity="0.42"/>
+    <circle cx="1240" cy="200" r="1.6" fill-opacity="0.36"/>
+    <circle cx="520" cy="740" r="1.6" fill-opacity="0.32"/>
+    <circle cx="1180" cy="760" r="2" fill-opacity="0.4"/>
+    <circle cx="240" cy="520" r="1.4" fill-opacity="0.28"/>
+    <circle cx="1360" cy="560" r="1.4" fill-opacity="0.28"/>
   </g>
 
   <!-- Label -->
-  <text x="800" y="720" text-anchor="middle"
+  <text class="pl-fill" x="800" y="720" text-anchor="middle"
         font-family="'JetBrains Mono', ui-monospace, monospace"
-        font-size="26" letter-spacing="8" fill="#ffffff" fill-opacity="0.5">PREVIEW SOON</text>
+        font-size="26" letter-spacing="8" fill-opacity="0.7">PREVIEW SOON</text>
 </svg>

@@ -152,6 +152,13 @@ export const ui = {
       },
       viewCaseStudy: 'View case study →',
       viewAllWork: 'View all work',
+      // Redacted-dossier plate shown for NDA client work that can't ship a public screenshot.
+      confidential: {
+        marker: 'Confidential',
+        markerShort: 'NDA',
+        note: 'Client work · under NDA',
+        aria: 'Confidential client work — no public preview available',
+      },
       index: {
         home: 'Home',
         label: 'Project Index',
@@ -164,6 +171,7 @@ export const ui = {
         showing: 'Showing',
         of: 'of',
         noDemoTag: 'No demo',
+        confidentialTag: 'Under NDA',
         open: 'View case study',
         cta: {
           kicker: 'Get in touch',
@@ -352,6 +360,13 @@ export const ui = {
       },
       viewCaseStudy: 'Ver caso de estudio →',
       viewAllWork: 'Ver todo el trabajo',
+      // Placa de dossier redactado para trabajo de cliente bajo NDA sin captura pública.
+      confidential: {
+        marker: 'Confidencial',
+        markerShort: 'NDA',
+        note: 'Trabajo de cliente · bajo NDA',
+        aria: 'Trabajo de cliente confidencial — sin vista previa pública disponible',
+      },
       index: {
         home: 'Inicio',
         label: 'Índice de proyectos',
@@ -364,6 +379,7 @@ export const ui = {
         showing: 'Mostrando',
         of: 'de',
         noDemoTag: 'Sin demo',
+        confidentialTag: 'Bajo NDA',
         open: 'Ver caso de estudio',
         cta: {
           kicker: 'Contacto',
