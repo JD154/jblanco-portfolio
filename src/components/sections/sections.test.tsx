@@ -10,7 +10,7 @@ test('keeps the header structure static in Astro', async () => {
   const source = await Bun.file(new URL('./HeaderSection/index.astro', import.meta.url)).text();
 
   expect(source).toContain('<h1 class="header-section__pitch">');
-  expect(source).toContain('href="/Senior%20Frontend%20Developer%2C%20Jesus%20Blanco.pdf"');
+  expect(source).toContain('href="/Jesus-Blanco-Senior-Frontend-Developer.pdf"');
   expect(source).not.toContain('<GlowingButton');
 });
 

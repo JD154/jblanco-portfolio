@@ -69,6 +69,65 @@ export const ui = {
         },
       ],
     },
+    experience: {
+      label: 'Career Log',
+      heading: 'The Trajectory',
+      intro: 'Eight years of front-end, read in reverse — from public platforms to design systems and data-rich products.',
+      present: 'Present',
+      stackLabel: 'Stack',
+      roles: [
+        {
+          period: 'Mar 2025 — Present',
+          role: 'Senior Frontend Developer',
+          company: 'Freelance',
+          current: true,
+          summary:
+            'Front-end architecture and UI/UX for four clients: a remittance-operations single source of truth with scope-based permissions, a QuickBooks-integrated finance module, an audit and refactor of an AI-generated front-end, and a Figma-to-code marketing site.',
+          stack: ['Next.js', 'TypeScript', 'GraphQL', 'Astro'],
+          metric: '4 clients',
+        },
+        {
+          period: 'May 2022 — Mar 2025',
+          role: 'Senior Frontend Developer',
+          company: 'Elion Partners',
+          current: false,
+          summary:
+            'Built a headless React/TypeScript component library that cut manual development time once stabilized, powering an analytics platform used across the firm. Delivered five interconnected apps and led a front-end migration.',
+          stack: ['React', 'Next.js', 'TypeScript', 'Storybook'],
+          metric: '~50–70% faster',
+        },
+        {
+          period: 'Sep 2021 — May 2022',
+          role: 'Frontend Developer',
+          company: 'White Peak Tech',
+          current: false,
+          summary:
+            'Modernized a public crowdfunding platform for real estate and art, migrating a legacy Django/HTML system to Vue/Nuxt and reducing legacy code to email templates only.',
+          stack: ['Vue', 'Nuxt', 'GraphQL'],
+          metric: 'Django → Nuxt',
+        },
+        {
+          period: 'Aug 2020 — Sep 2021',
+          role: 'Frontend Developer',
+          company: 'Legal Credit Solutions',
+          current: false,
+          summary:
+            'Co-architected a Vue design system — inputs, layout, and data-display components with full variants — unifying UI across multiple fintech products under one brand.',
+          stack: ['Vue', 'Nuxt', 'Storybook'],
+          metric: '30 components',
+        },
+        {
+          period: 'Nov 2018 — Jun 2020',
+          role: 'Junior Frontend Developer',
+          company: 'White Peak Tech',
+          current: false,
+          summary:
+            'Delivered dashboards, data-visualization maps, and landing pages, and built interactive prototypes for real-estate and art investment products.',
+          stack: ['Vue', 'JavaScript', 'HTML5'],
+          metric: '',
+        },
+      ],
+    },
     projects: {
       label: 'Featured Projects',
       filterAll: 'All Projects',
@@ -185,6 +244,65 @@ export const ui = {
         {
           title: 'Gobernanza de sistemas de diseño',
           body: 'Librerías de componentes y estándares que permiten escalar productos de forma consistente reduciendo el coste de desarrollo futuro.',
+        },
+      ],
+    },
+    experience: {
+      label: 'Registro de carrera',
+      heading: 'La trayectoria',
+      intro: 'Ocho años de front-end, en orden inverso — de plataformas públicas a sistemas de diseño y productos con datos densos.',
+      present: 'Presente',
+      stackLabel: 'Stack',
+      roles: [
+        {
+          period: 'Mar 2025 — Presente',
+          role: 'Senior Frontend Developer',
+          company: 'Freelance',
+          current: true,
+          summary:
+            'Arquitectura de front-end y UI/UX para cuatro clientes: un single source of truth de operaciones de remesas con permisos por alcance, un módulo de finanzas integrado con QuickBooks, auditoría y refactor de un front-end generado por IA, y un sitio de marketing de Figma a código.',
+          stack: ['Next.js', 'TypeScript', 'GraphQL', 'Astro'],
+          metric: '4 clientes',
+        },
+        {
+          period: 'May 2022 — Mar 2025',
+          role: 'Senior Frontend Developer',
+          company: 'Elion Partners',
+          current: false,
+          summary:
+            'Construí una librería de componentes headless en React/TypeScript que redujo el tiempo de desarrollo manual una vez estabilizada, impulsando una plataforma de analítica usada en toda la empresa. Entregué cinco apps interconectadas y lideré una migración de front-end.',
+          stack: ['React', 'Next.js', 'TypeScript', 'Storybook'],
+          metric: '~50–70% más rápido',
+        },
+        {
+          period: 'Sep 2021 — May 2022',
+          role: 'Frontend Developer',
+          company: 'White Peak Tech',
+          current: false,
+          summary:
+            'Modernicé una plataforma pública de crowdfunding para real estate y arte, migrando un sistema legacy Django/HTML a Vue/Nuxt y reduciendo el código legacy únicamente a plantillas de correo.',
+          stack: ['Vue', 'Nuxt', 'GraphQL'],
+          metric: 'Django → Nuxt',
+        },
+        {
+          period: 'Ago 2020 — Sep 2021',
+          role: 'Frontend Developer',
+          company: 'Legal Credit Solutions',
+          current: false,
+          summary:
+            'Co-arquitecté un sistema de diseño en Vue — componentes de input, layout y visualización de datos con todas sus variantes — unificando la UI de múltiples productos fintech bajo una misma marca.',
+          stack: ['Vue', 'Nuxt', 'Storybook'],
+          metric: '30 componentes',
+        },
+        {
+          period: 'Nov 2018 — Jun 2020',
+          role: 'Junior Frontend Developer',
+          company: 'White Peak Tech',
+          current: false,
+          summary:
+            'Entregué dashboards, mapas de visualización de datos y landing pages, y construí prototipos interactivos para productos de inversión en real estate y arte.',
+          stack: ['Vue', 'JavaScript', 'HTML5'],
+          metric: '',
         },
       ],
     },

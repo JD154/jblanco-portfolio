@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { AboutMeSection } from '@/components/sections/AboutMeSection';
+import { ExperienceSection } from '@/components/sections/ExperienceSection';
 import { ContactSectionIsland } from '@/components/islands/ContactSectionIsland';
 import { CustomCursorIsland } from '@/components/islands/CustomCursorIsland';
 import HeaderSection from '@/components/sections/HeaderSection/index.astro';
@@ -20,6 +21,7 @@ const t = ui[lang];
   <HeaderSection t={t.header} />
   <AboutMeSection client:load t={t.about} />
   <ProjectsSectionIsland client:load projects={getProjectEntries(lang)} t={t.projects} />
+  <ExperienceSection client:load t={t.experience} />
   <ContactSectionIsland client:load t={t.contact} />
   <CustomCursorIsland client:load />
 </BaseLayout>
