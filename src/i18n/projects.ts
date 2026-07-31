@@ -54,6 +54,7 @@ export function getProjectEntries(lang: Lang): LocalizedProject[] {
  * register. Edit this list to change what the home page features.
  */
 const FEATURED_SLUGS = new Set<string>([
+  'personal-portfolio',
   'workflow-orchestration-audit',
   'product-marketing-site',
   'logistics-finance-module',

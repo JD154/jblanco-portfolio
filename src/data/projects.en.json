@@ -1,5 +1,19 @@
 [
   {
+    "title": "Personal Portfolio",
+    "description": "This very site — a bilingual, animated portfolio built to double as a live demonstration of the front-end craft it describes, its interactive starfield turning the \"vast universe of technology\" into something you can move through.",
+    "role": "Sole designer and developer — from the design system and content architecture to the animation and deployment.",
+    "challenge": "A portfolio has to be more than a résumé: it needs to prove the craft it claims, stay fast and accessible, and speak to visitors in both English and Spanish — while carrying a point of view rather than reading as a neutral template.",
+    "decision": "Build on Astro for a near-static, SEO-strong shell, add React islands only where interaction earns them, and layer GSAP and Three.js motion over a hand-built design system, shipped on Cloudflare. The interactive Three.js starfield behind everything isn't decoration — it makes the About section's \"vast universe of technology\" literal, dropping visitors inside a space they can zoom through, a quiet echo of the restless, self-taught curiosity and the \"never stop evolving\" ethos that run through the whole site.",
+    "roleShort": "Sole designer and developer, end to end",
+    "challengeShort": "A portfolio that proves the craft it describes",
+    "decisionShort": "Astro shell with React islands, GSAP and Three.js motion",
+    "image": "/projects/personal-portfolio.png",
+    "url": "https://jblanco.dev/",
+    "visibility": "public",
+    "techStack": ["Astro", "React", "TypeScript", "Tailwind CSS", "GSAP", "Three.js"]
+  },
+  {
     "title": "Workflow Orchestration Audit",
     "description": "An audit, refactor, and UI/UX overhaul of a workflow-orchestration front-end originally assembled with AI coding assistants.",
     "role": "Owned the front-end audit, refactor, and follow-on feature work — first assessing the existing codebase, then hardening it and building on top.",

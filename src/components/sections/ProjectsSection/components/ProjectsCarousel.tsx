@@ -211,6 +211,7 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
                   src={active.image}
                   alt={active.title}
                   draggable={false}
+                  decoding="async"
                 />
               </>
             )}
@@ -291,7 +292,14 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
                     {project.visibility === 'confidential' ? (
                       <ConfidentialPlate labels={t.confidential} className="pc__card-plate" />
                     ) : (
-                      <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
+                      <img
+                        className="pc__card-img"
+                        src={project.image}
+                        alt={project.title}
+                        draggable={false}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     )}
                     <span className="pc__card-scrim" aria-hidden="true" />
                     {index === activeIndex && <span className="pc__card-flag">{t.viewing}</span>}

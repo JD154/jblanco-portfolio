@@ -1,5 +1,19 @@
 [
   {
+    "title": "Personal Portfolio",
+    "description": "Este mismo sitio — un portafolio bilingüe y animado, construido para funcionar como una demostración en vivo del oficio de front-end que describe, con un campo de estrellas interactivo que convierte el «vasto universo de la tecnología» en algo por lo que puedes moverte.",
+    "role": "Diseñador y desarrollador único — desde el sistema de diseño y la arquitectura de contenido hasta la animación y el despliegue.",
+    "challenge": "Un portafolio tiene que ser más que un currículum: debe demostrar el oficio que declara, mantenerse rápido y accesible, y hablarle a los visitantes en inglés y español — además de tener un punto de vista propio en lugar de leerse como una plantilla neutra.",
+    "decision": "Construir sobre Astro para un shell casi estático y con buen SEO, sumar islas de React solo donde la interacción lo justifica, y superponer movimiento con GSAP y Three.js sobre un sistema de diseño hecho a mano, desplegado en Cloudflare. El campo de estrellas de Three.js que está detrás de todo no es decoración: vuelve literal el «vasto universo de la tecnología» del que habla la sección Sobre mí, dejando al visitante dentro de un espacio que puede recorrer con zoom — un eco silencioso de esa curiosidad autodidacta e inquieta y del «no dejar nunca de evolucionar» que atraviesan todo el sitio.",
+    "roleShort": "Diseñador y desarrollador único, de principio a fin",
+    "challengeShort": "Un portafolio que demuestra el oficio que describe",
+    "decisionShort": "Shell Astro con islas de React y movimiento GSAP y Three.js",
+    "image": "/projects/personal-portfolio.png",
+    "url": "https://jblanco.dev/",
+    "visibility": "public",
+    "techStack": ["Astro", "React", "TypeScript", "Tailwind CSS", "GSAP", "Three.js"]
+  },
+  {
     "title": "Workflow Orchestration Audit",
     "description": "Auditoría, refactor y renovación de UI/UX del front-end de una aplicación orquestadora de workflows, construida originalmente con asistentes de código IA.",
     "role": "Me encargué de la auditoría, el refactor y el desarrollo posterior de features en el front-end — primero evaluando el codebase existente y luego robusteciéndolo y ampliándolo.",

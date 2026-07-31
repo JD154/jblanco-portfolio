@@ -14,7 +14,16 @@ const ThreeStarsComponent: FC = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const hasRenderedFrame = useRef(false);
   const readyFrame = useRef<number | null>(null);
-  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 2.5 }) as Float32Array);
+  const [sphere] = useState(() => {
+    const positions = random.inSphere(new Float32Array(5000), { radius: 2.5 }) as Float32Array;
+    // maath's inSphere occasionally emits NaN when a sampled point lands on the
+    // origin (it normalizes by dividing by a zero-length vector). A single NaN
+    // poisons Three.js's bounding-sphere computation, so scrub any that slip in.
+    for (let i = 0; i < positions.length; i++) {
+      if (Number.isNaN(positions[i])) positions[i] = 0;
+    }
+    return positions;
+  });
 
   useEffect(() => {
     return () => {

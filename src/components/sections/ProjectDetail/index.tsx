@@ -129,7 +129,7 @@ export const ProjectDetail: FC<ProjectDetailProps> = ({ lang, t, project, prev, 
                       style={{ backgroundImage: `url(${project.image})` }}
                       aria-hidden="true"
                     />
-                    <img className="pd__artifact-img" src={project.image} alt={project.title} />
+                    <img className="pd__artifact-img" src={project.image} alt={project.title} decoding="async" />
                   </>
                 )}
                 <span className="pd__artifact-glow" aria-hidden="true" />
