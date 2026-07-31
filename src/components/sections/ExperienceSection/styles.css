@@ -1,0 +1,287 @@
+.experience-section {
+  --pc-accent: var(--color-foreground);
+  --pc-accent-soft: color-mix(in srgb, var(--color-foreground) 22%, transparent);
+  --pc-accent-strong: color-mix(in srgb, var(--color-foreground) 45%, transparent);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--color-background) 0%,
+    var(--color-secondary-background) 50%,
+    var(--color-background) 100%
+  );
+}
+
+/* Header uses the shared <SectionToolbar> (src/components/general/SectionToolbar). */
+
+/* ---------- Intro row: display title (left) + framing line (right) ---------- */
+.experience-section__intro-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.experience-section__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.7vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  text-shadow: var(--heading-text-shadow);
+}
+
+.experience-section__intro {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-muted-foreground);
+}
+
+/* ---------- Timeline: a single orbit rail threading every role ---------- */
+.experience-section__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.experience-section__entry {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Instrument gutter — the measurements, right-aligned toward the rail */
+.experience-section__readout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  padding-top: 0.15rem;
+  text-align: right;
+}
+
+.experience-section__period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-muted-foreground);
+  white-space: nowrap;
+}
+
+.experience-section__metric {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--color-foreground);
+}
+
+/* Body — carries the 1px orbit rail and the signal dot */
+.experience-section__body {
+  position: relative;
+  padding-left: clamp(1.5rem, 3vw, 2.25rem);
+  padding-bottom: clamp(2.5rem, 4vw, 3.25rem);
+  border-left: 1px solid var(--color-border);
+}
+
+.experience-section__entry:last-child .experience-section__body {
+  padding-bottom: 0;
+}
+
+.experience-section__dot {
+  position: absolute;
+  left: -6px;
+  top: 0.4rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid var(--pc-accent-strong);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* No-JS / SSR fallback: the current role's dot glows in place. Once the tracer
+   is live (interactive), every entry dot stays a quiet hollow node and the
+   single Active Orbit physically travels the rail instead (see __tracer). */
+.experience-section:not(.experience-section--interactive)
+  .experience-section__entry--current
+  .experience-section__dot {
+  background: var(--color-foreground);
+  border-color: var(--color-foreground);
+  box-shadow:
+    0 0 0 4px var(--pc-accent-soft),
+    0 0 22px var(--pc-accent-soft);
+}
+
+/* The traveling signal — one filled, haloed dot the size of a rail node. JS
+   positions it over the active entry's node (the current role at rest, the
+   hovered entry on pointer) and it slides along the rail between them. */
+.experience-section__tracer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-foreground);
+  box-shadow:
+    0 0 0 4px var(--pc-accent-soft),
+    0 0 22px var(--pc-accent-soft);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  /* No transform transition at rest, so the first placement lands directly on
+     the current node (it fades in) instead of gliding from the corner. */
+  transition: opacity 0.6s ease;
+}
+
+.experience-section--interactive .experience-section__tracer {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Zero-gravity glide — a long, inertial ease-in-out that drifts off, coasts,
+     and settles without a hard stop. Enabled only after the initial placement
+     (the --settled modifier) so the entrance never flies in. */
+  .experience-section__tracer--settled {
+    transition:
+      transform 1.2s cubic-bezier(0.45, 0.02, 0.18, 1),
+      opacity 0.6s ease;
+  }
+
+  .experience-section__tracer {
+    animation: experience-pulse 5s ease-in-out infinite;
+  }
+}
+
+@keyframes experience-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px var(--pc-accent-soft),
+      0 0 22px var(--pc-accent-soft);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px color-mix(in srgb, var(--color-foreground) 10%, transparent),
+      0 0 28px var(--pc-accent-soft);
+  }
+}
+
+.experience-section__role {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+}
+
+.experience-section__company {
+  margin: 0.35rem 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/* Present marker — monochrome status, kept clear of the reserved green */
+.experience-section__present {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--pc-accent-strong);
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  color: var(--color-foreground);
+}
+
+.experience-section__summary {
+  margin: 1rem 0 0;
+  max-width: 42rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-muted-foreground);
+}
+
+/* Stack — a compact bordered instrument grid of technologies */
+.experience-section__stack {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.experience-section__tech {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-card);
+  backdrop-filter: blur(20px);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-muted-foreground);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.experience-section__entry:hover .experience-section__tech {
+  border-color: var(--pc-accent-strong);
+  color: var(--color-foreground);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .experience-section__intro-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Gutter collapses above the body; the rail and dot stay on the body edge. */
+  .experience-section__entry {
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+  }
+
+  .experience-section__readout {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    text-align: left;
+    padding-left: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .experience-section__metric {
+    font-size: 0.8125rem;
+  }
+}
