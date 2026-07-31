@@ -1,10 +1,7 @@
 import React from 'react';
-import { MinimalQuote } from './components/Quote';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { useRef } from 'react';
-import { useIsInViewport } from '@/hooks/useIsInViewport';
-import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import type { CSSProperties } from 'react';
+import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
+import { SectionToolbar } from '@/components/general/SectionToolbar';
 import './styles.css';
 import type { Ui } from '@/i18n/ui';
 
@@ -13,103 +10,80 @@ interface AboutMeSectionProps {
 }
 
 export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ t }) => {
-  // 0: heading, 1..n: paragraph lines
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isInViewport = useIsInViewport(sectionRef);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useGSAP(() => {
-    if (!isInViewport || prefersReducedMotion) return;
-
-    if (headingRef.current) {
-      gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 50, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          delay: 0.2,
-        },
-      );
-    }
-
-    if (contentRef.current) {
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0, x: -30 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.7,
-          ease: 'power2.out',
-          delay: 0.4,
-        },
-      );
-    }
-
-    lineRefs.current.forEach((el, idx) => {
-      if (el) {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 30, x: -20 },
-          {
-            opacity: 1,
-            y: 0,
-            x: 0,
-            duration: 0.7,
-            delay: 0.1 * idx + 0.6,
-            ease: 'power2.out',
-          },
-        );
-      }
-    });
-  }, [isInViewport, prefersReducedMotion]);
+  const sectionRef = useRevealOnScroll<HTMLDivElement>();
 
   return (
     <section id="about-me-section" className="about-me-section">
       <div className="py-24 px-6 max-w-7xl mx-auto relative z-10" ref={sectionRef}>
-        {/* Header — slim toolbar label + divider */}
-        <div className="about-me-section__bar">
-          <span className="about-me-section__label">
-            <span className="about-me-section__label-dot" />
-            {t.label}
-          </span>
-        </div>
+        {/* Header — shared section toolbar. A span (not a heading): the section's
+            heading is the display title below. */}
+        <SectionToolbar as="span" label={t.label} reveal="unfold" spacing="md" />
 
-        <div className="about-me-section__container">
-          {/* Main content area */}
-          <div className="about-me-section__content" ref={contentRef}>
-            <h2 className="about-me-section__title" ref={headingRef}>
+        {/* Lede — the human story (left) + a quiet career readout (right) */}
+        <div className="about-me-section__lede">
+          <div className="about-me-section__story">
+            <h2 className="about-me-section__title" data-reveal="unfold" style={{ '--reveal-i': 1 } as CSSProperties}>
               {t.heading}
             </h2>
+            <p
+              className="about-me-section__attribution"
+              data-reveal="unfold"
+              style={{ '--reveal-i': 2 } as CSSProperties}
+            >
+              {t.attribution}
+            </p>
 
-            <div className="about-me-section__text-content">
-              {t.paragraphs.map((line, idx) => (
-                <p
-                  key={idx}
-                  ref={(el) => {
-                    lineRefs.current[idx] = el;
-                  }}
-                  className="about-me-section__paragraph"
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
+            {t.intro.map((paragraph, idx) => (
+              <p
+                key={idx}
+                className="about-me-section__paragraph"
+                data-reveal="unfold"
+                style={{ '--reveal-i': idx + 3 } as CSSProperties}
+              >
+                {paragraph}
+              </p>
+            ))}
+
+            <p
+              className="about-me-section__belief"
+              data-reveal="unfold"
+              style={{ '--reveal-i': t.intro.length + 3 } as CSSProperties}
+            >
+              {t.belief}
+            </p>
           </div>
 
-          {/* Enhanced quote section */}
-          <aside className="about-me-section__quote-container">
-            <div className="about-me-section__quote-wrapper">
-              <MinimalQuote t={t.quote} />
-            </div>
+          <aside
+            className="about-me-section__telemetry"
+            data-reveal="unfold"
+            style={{ '--reveal-i': 2 } as CSSProperties}
+            aria-label={`${t.telemetry.value} ${t.telemetry.unit}`}
+          >
+            <span className="about-me-section__telemetry-value">{t.telemetry.value}</span>
+            <span className="about-me-section__telemetry-unit">{t.telemetry.unit}</span>
+            <span className="about-me-section__telemetry-since">{t.telemetry.since}</span>
           </aside>
+        </div>
+
+        {/* Key consulting areas — instrument grid, the "what I do now" */}
+        <div className="about-me-section__areas">
+          <div className="about-me-section__areas-bar">
+            <span className="about-me-section__areas-label">{t.areasLabel}</span>
+          </div>
+          <ul className="about-me-section__areas-grid">
+            {t.areas.map((area, idx) => (
+              <li
+                key={area.title}
+                className="about-me-section__area"
+                data-reveal="unfold"
+                style={{ '--reveal-i': idx + 1 } as CSSProperties}
+              >
+                <span className="about-me-section__area-index">{String(idx + 1).padStart(2, '0')}</span>
+                <h3 className="about-me-section__area-title">{area.title}</h3>
+                <p className="about-me-section__area-body">{area.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -1,0 +1,488 @@
+.pd {
+  --pc-accent: var(--color-foreground);
+  --pc-accent-soft: color-mix(in srgb, var(--color-foreground) 22%, transparent);
+  --pc-accent-strong: color-mix(in srgb, var(--color-foreground) 45%, transparent);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  color: var(--color-foreground);
+  background:
+    radial-gradient(120% 70% at 50% 0%, var(--color-secondary-background), transparent 62%),
+    var(--color-background);
+}
+
+.pd__container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* ---------- Hero ---------- */
+.pd__hero {
+  padding-top: clamp(7rem, 13vh, 10rem);
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.pd__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.pd__back:hover,
+.pd__back:focus-visible {
+  color: var(--color-foreground);
+}
+
+.pd__back-arrow {
+  transition: transform 0.25s ease;
+}
+
+.pd__back:hover .pd__back-arrow {
+  transform: translateX(-3px);
+}
+
+.pd__hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.pd__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.pd__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pd__kicker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--pc-accent);
+  box-shadow: 0 0 8px var(--pc-accent-soft);
+}
+
+.pd__kicker-counter {
+  padding-left: 0.6rem;
+  margin-left: 0.1rem;
+  border-left: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--color-muted-foreground);
+}
+
+.pd__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.7vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  text-shadow: var(--heading-text-shadow);
+}
+
+.pd__lede {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-muted-foreground);
+}
+
+/* Tech chips — outline pill controls, matching the filter/chip vocabulary. */
+.pd__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pd__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--secondary-background);
+  backdrop-filter: blur(20px);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pd__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.pd__cta {
+  min-height: 2.75rem;
+  padding-inline: 1.25rem;
+}
+
+.pd__cta a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pd__host {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--color-muted-foreground);
+}
+
+.pd__cta-disabled {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-card);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  opacity: 0.8;
+}
+
+/* Featured artifact — the dominant plate at showcase depth. */
+.pd__artifact {
+  margin: 0;
+  min-width: 0;
+}
+
+.pd__artifact-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-secondary-background);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.28),
+    0 0 0 1px color-mix(in srgb, var(--color-foreground) 8%, transparent);
+}
+
+.pd__artifact-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(34px) brightness(0.45) saturate(1.1);
+  transform: scale(1.25);
+  pointer-events: none;
+}
+
+.pd__artifact-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.pd__artifact-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-foreground) 6%, transparent);
+  background: radial-gradient(120% 80% at 50% 120%, color-mix(in srgb, var(--color-foreground) 12%, transparent), transparent 60%);
+}
+
+/* ---------- Body ---------- */
+.pd__body {
+  padding-bottom: clamp(4rem, 9vw, 7rem);
+}
+
+.pd__section {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* Challenge → approach beats */
+.pd__beats {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  max-width: 52rem;
+}
+
+.pd__beat {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.55rem;
+  align-items: start;
+}
+
+.pd__beat-index {
+  grid-row: 1 / 3;
+  align-self: start;
+  padding-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--pc-accent-strong);
+}
+
+.pd__beat-label {
+  grid-column: 2;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pd__statement {
+  grid-column: 2;
+  margin: 0;
+  max-width: 42rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-foreground);
+}
+
+/* Role — display-voice callout, the one lyrical moment in the body. */
+.pd__role {
+  margin: 0;
+  max-width: 46rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--pc-accent-strong);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--color-foreground);
+}
+
+/* Stack — instrument grid of the toolkit. */
+.pd__stack-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pd__stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pd__stack-cell {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-card);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s ease;
+}
+
+.pd__stack-cell:hover {
+  transform: translateY(-3px);
+  border-color: var(--pc-accent-strong);
+}
+
+.pd__stack-index {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-muted-foreground);
+}
+
+.pd__stack-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+/* ---------- Pager ---------- */
+.pd__pager-section {
+  padding-bottom: 0;
+}
+
+.pd__all-link {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.pd__all-link:hover,
+.pd__all-link:focus-visible {
+  color: var(--color-foreground);
+}
+
+.pd__pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.pd__pager-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-card);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: var(--color-foreground);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
+}
+
+.pd__pager-card:hover,
+.pd__pager-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--pc-accent-strong);
+}
+
+.pd__pager-card--next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pd__pager-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pd__pager-arrow {
+  transition: transform 0.25s ease;
+}
+
+.pd__pager-card--prev:hover .pd__pager-arrow {
+  transform: translateX(-3px);
+}
+
+.pd__pager-card--next:hover .pd__pager-arrow {
+  transform: translateX(3px);
+}
+
+.pd__pager-title {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--color-foreground);
+}
+
+.pd__pager-thumb {
+  display: block;
+  width: 100%;
+  height: 7rem;
+  margin-top: 0.5rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.pd__pager-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .pd__hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Artifact leads on mobile: show it above the copy. */
+  .pd__artifact {
+    order: -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .pd__title {
+    font-size: 2.25rem;
+  }
+
+  .pd__pager {
+    grid-template-columns: 1fr;
+  }
+
+  .pd__beat {
+    grid-template-columns: 1.75rem 1fr;
+    column-gap: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd__back-arrow,
+  .pd__pager-arrow,
+  .pd__stack-cell,
+  .pd__pager-card {
+    transition: none;
+  }
+}

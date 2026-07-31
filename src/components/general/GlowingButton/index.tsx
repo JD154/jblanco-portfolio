@@ -20,23 +20,33 @@ export const GlowingButton = React.forwardRef<HTMLButtonElement, GlowingButtonPr
       return classes.join(' ');
     };
 
-    const content = (
-      <>
-        <GlowingEffect spread={40} glow={true} disabled={false} proximity={variant === 'ghost' ? 1 : 54} />
-        <span className="luminosity-text">{children}</span>
-      </>
-    );
+    const glow = <GlowingEffect spread={40} glow={true} disabled={false} proximity={variant === 'ghost' ? 1 : 54} />;
 
     if (asChild) {
+      // The child (e.g. an <a>) becomes the button element via Radix Slot. Its own
+      // children go inside the luminosity span — never the child element itself, or
+      // it would re-nest the anchor inside its own clone (invalid nested <a>).
       const child = React.Children.only(children) as React.ReactElement<{ children?: React.ReactNode }>;
 
       return (
         <Button asChild ref={ref} className={getClasses()} variant={variant} size={size} {...props}>
-          {React.cloneElement(child, undefined, content)}
+          {React.cloneElement(
+            child,
+            undefined,
+            <>
+              {glow}
+              <span className="luminosity-text">{child.props.children}</span>
+            </>,
+          )}
         </Button>
       );
     }
 
-    return <Button ref={ref} className={getClasses()} variant={variant} size={size} {...props}>{content}</Button>;
+    return (
+      <Button ref={ref} className={getClasses()} variant={variant} size={size} {...props}>
+        {glow}
+        <span className="luminosity-text">{children}</span>
+      </Button>
+    );
   },
 );

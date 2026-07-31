@@ -1,13 +1,28 @@
 ---
+import '@fontsource-variable/jetbrains-mono';
 import '@/styles/index.css';
 import type { Lang, Ui } from '@/i18n/ui';
 
 interface Props {
   lang: Lang;
   t: Ui;
+  /** Per-page overrides. Default to the site-level SEO copy for the home pages. */
+  title?: string;
+  description?: string;
+  image?: string;
+  hreflangEn?: string;
+  hreflangEs?: string;
 }
 
-const { lang, t } = Astro.props;
+const {
+  lang,
+  t,
+  title = t.seo.title,
+  description = t.seo.description,
+  image = 'https://jblanco.dev/og-image.jpg',
+  hreflangEn = 'https://jblanco.dev/',
+  hreflangEs = 'https://jblanco.dev/es/',
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogLocale = lang === 'en' ? 'en_US' : 'es_ES';
 const alternateOgLocale = lang === 'en' ? 'es_ES' : 'en_US';
@@ -28,23 +43,23 @@ const person = {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href="https://jblanco.dev/" />
-    <link rel="alternate" hreflang="es" href="https://jblanco.dev/es/" />
-    <link rel="alternate" hreflang="x-default" href="https://jblanco.dev/" />
-    <title>{t.seo.title}</title>
-    <meta name="description" content={t.seo.description} />
+    <link rel="alternate" hreflang="en" href={hreflangEn} />
+    <link rel="alternate" hreflang="es" href={hreflangEs} />
+    <link rel="alternate" hreflang="x-default" href={hreflangEn} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Jesus Blanco" />
-    <meta property="og:title" content={t.seo.title} />
-    <meta property="og:description" content={t.seo.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:locale:alternate" content={alternateOgLocale} />
-    <meta property="og:image" content="https://jblanco.dev/og-image.jpg" />
+    <meta property="og:image" content={image} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={t.seo.title} />
-    <meta name="twitter:description" content={t.seo.description} />
-    <meta name="twitter:image" content="https://jblanco.dev/og-image.jpg" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
     <script is:inline>
       const theme = localStorage.getItem('vite-ui-theme');
       document.documentElement.classList.remove('light', 'dark');

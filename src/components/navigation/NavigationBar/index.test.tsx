@@ -2,7 +2,6 @@ import { afterEach, beforeEach, expect, test } from 'bun:test';
 import { ThemeProvider } from '@/components/other/ThemeProvider';
 import { ui } from '@/i18n/ui';
 import { Window } from 'happy-dom';
-import { readFile } from 'node:fs/promises';
 import { act } from 'react';
 import type { ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -100,15 +99,13 @@ test('renders localized navigation labels and controls', async () => {
     </ThemeProvider>,
   );
 
-  const badge = container.querySelector('[aria-label="Ponte en contacto - ir a la sección de contacto"]');
   const language = container.querySelector('[aria-label="Seleccionar idioma"]');
   const theme = container.querySelector('[aria-label="Cambiar tema"]');
   const rightSlot = language?.parentElement;
 
-  expect(badge?.textContent).toContain('Disponible para nuevos proyectos');
-  expect(badge?.textContent).toContain('Ponte en contacto');
   expect(language?.textContent).toContain('es');
   expect(theme).not.toBeNull();
+  expect(container.querySelector('a[href="#contact-section"]')).toBeNull();
   expect(rightSlot?.classList.contains('flex')).toBe(true);
   expect(rightSlot?.classList.contains('items-center')).toBe(true);
   expect(rightSlot?.classList.contains('gap-1')).toBe(true);
@@ -130,13 +127,6 @@ test('shows localized theme options', async () => {
   expect(
     document.querySelector('[role="menuitemcheckbox"][aria-checked="true"]')?.textContent,
   ).toBe('Oscuro');
-});
-
-test('provides a visible focus indicator for the availability badge', async () => {
-  const styles = await readFile(new URL('../AvailabilityBadge/styles.css', import.meta.url), 'utf8');
-
-  expect(styles).toContain('outline: 2px solid var(--color-ring);');
-  expect(styles).toContain('outline-offset: 2px;');
 });
 
 test('shows the current and alternative language and navigates to the alternate URL', async () => {

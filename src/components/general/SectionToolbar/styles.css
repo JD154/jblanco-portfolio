@@ -1,0 +1,54 @@
+/* Section Toolbar — shared instrument-panel section header.
+
+   A compact, wide-tracked uppercase label and a controlled-halo signal dot over
+   a one-pixel hairline divider that fades toward the trailing edge (DESIGN.md ›
+   Section Toolbar). The --pc-accent* vars cascade from the enclosing section;
+   the fallbacks keep it correct if the toolbar is ever used standalone. */
+.section-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  padding-bottom: 1.5rem;
+  background-image: linear-gradient(to right, var(--color-border), transparent 92%);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 1px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Bottom gap to the following content — the one axis sections tune. */
+.section-toolbar--space-sm {
+  margin-bottom: 2rem;
+}
+
+.section-toolbar--space-md {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-toolbar--space-lg {
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+.section-toolbar__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+}
+
+.section-toolbar__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--pc-accent, var(--color-foreground));
+  box-shadow: 0 0 8px var(--pc-accent-soft, color-mix(in srgb, var(--color-foreground) 22%, transparent));
+}

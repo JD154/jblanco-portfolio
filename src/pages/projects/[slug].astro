@@ -1,0 +1,45 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CustomCursorIsland } from '@/components/islands/CustomCursorIsland';
+import { NavigationBarIsland } from '@/components/islands/NavigationBarIsland';
+import { ProjectDetail } from '@/components/sections/ProjectDetail';
+import { StarsBackgroundIsland } from '@/components/islands/StarsBackgroundIsland';
+import { getProjectEntries } from '@/i18n/projects';
+import { ui } from '@/i18n/ui';
+
+export function getStaticPaths() {
+  const entries = getProjectEntries('en');
+  const total = entries.length;
+  return entries.map((project, index) => ({
+    params: { slug: project.slug },
+    props: {
+      project,
+      index,
+      total,
+      prev: entries[(index - 1 + total) % total],
+      next: entries[(index + 1) % total],
+    },
+  }));
+}
+
+const lang = 'en';
+const t = ui[lang];
+const { project, index, total, prev, next } = Astro.props;
+const slug = project.slug;
+const site = 'https://jblanco.dev';
+---
+
+<BaseLayout
+  {lang}
+  {t}
+  title={`${project.title} — Jesus Blanco`}
+  description={project.description}
+  image={`${site}${project.image}`}
+  hreflangEn={`${site}/projects/${slug}`}
+  hreflangEs={`${site}/es/projects/${slug}`}
+>
+  <StarsBackgroundIsland client:media="(min-width: 768px)" />
+  <NavigationBarIsland client:load {lang} t={t.nav} alternateUrl={`/es/projects/${slug}`} />
+  <ProjectDetail client:load {lang} t={t.projects} {project} {index} {total} {prev} {next} />
+  <CustomCursorIsland client:load />
+</BaseLayout>

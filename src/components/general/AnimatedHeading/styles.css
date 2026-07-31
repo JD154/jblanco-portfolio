@@ -4,17 +4,21 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  /*   height: 200px;
- */
-  overflow: hidden;
+  /* The per-character hover state scales the outer glyphs. Keep a small
+     transform gutter and avoid clipping the final character at the edge. */
+  box-sizing: border-box;
+  padding-inline: 0.08em;
+  overflow: visible;
 }
 
 .animated-heading__char {
   color: var(--color-foreground);
-  text-shadow: var(--heading-text-shadow);
+  /* No luminous glow on the signature — at signature scale the tightly packed
+     glyphs' glows merge into a grey block. The bespoke 3D per-char interaction
+     and the heavy Clash Display form carry it; the glow stays the pitch's job. */
   position: relative;
   font-size: 8vw;
-  font-family: 'Arial', sans-serif;
+  font-family: var(--font-display);
   cursor: pointer;
   user-select: none;
   transform-style: preserve-3d;
@@ -32,7 +36,7 @@
 }
 
 .animated-heading__space {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   color: transparent;
   user-select: none;
   display: inline-block;
@@ -42,5 +46,5 @@
 .animated-heading__space::after {
   content: ' ';
   display: inline-block;
-  width: 0.05em;
+  width: 0.26em;
 }

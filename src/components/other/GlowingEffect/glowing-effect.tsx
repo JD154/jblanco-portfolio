@@ -134,7 +134,7 @@ const GlowingEffect = memo(
           style={
             {
               '--blur': `${blur}px`,
-              '--spread': spread,
+              '--spread': String(spread),
               '--start': '0',
               '--active': '0',
               '--glowingeffect-border-width': `${borderWidth}px`,

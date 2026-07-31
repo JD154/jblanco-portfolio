@@ -5,10 +5,9 @@ import { ContactSectionIsland } from '@/components/islands/ContactSectionIsland'
 import { CustomCursorIsland } from '@/components/islands/CustomCursorIsland';
 import HeaderSection from '@/components/sections/HeaderSection/index.astro';
 import { NavigationBarIsland } from '@/components/islands/NavigationBarIsland';
-import { ParallaxController } from '@/components/islands/ParallaxController';
 import { ProjectsSectionIsland } from '@/components/islands/ProjectsSectionIsland';
 import { StarsBackgroundIsland } from '@/components/islands/StarsBackgroundIsland';
-import { getLocalizedProjects } from '@/i18n/projects';
+import { getProjectEntries } from '@/i18n/projects';
 import { ui } from '@/i18n/ui';
 
 const lang = 'es';
@@ -20,8 +19,7 @@ const t = ui[lang];
   <NavigationBarIsland client:load {lang} t={t.nav} alternateUrl="/" />
   <HeaderSection t={t.header} />
   <AboutMeSection client:load t={t.about} />
-  <ProjectsSectionIsland client:load projects={getLocalizedProjects(lang)} t={t.projects} />
+  <ProjectsSectionIsland client:load projects={getProjectEntries(lang)} t={t.projects} />
   <ContactSectionIsland client:load t={t.contact} />
-  <ParallaxController client:load />
   <CustomCursorIsland client:load />
 </BaseLayout>

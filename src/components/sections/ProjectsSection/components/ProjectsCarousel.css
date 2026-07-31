@@ -7,10 +7,9 @@
   flex-direction: column;
   gap: 2rem;
   width: 100%;
+  min-width: 0;
   background: transparent;
   color: var(--color-foreground);
-  user-select: none;
-  touch-action: pan-y;
 }
 
 /* ---------- Content ---------- */
@@ -18,6 +17,7 @@
   display: flex;
   align-items: flex-start;
   gap: clamp(1.5rem, 3vw, 3rem);
+  min-width: 0;
 }
 
 /* ---------- Left panel ---------- */
@@ -39,13 +39,13 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
-  opacity: 0.6;
 }
 
 .pc__title {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 3.7vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.03;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -61,9 +61,48 @@
   color: var(--color-muted-foreground);
 }
 
+/* ---------- Evidence fact sheet (role · challenge · key decision) ----------
+   A slim instrument-style readout: fine left rule, tracked uppercase labels,
+   foreground values. Only documented fields render, so length varies by project. */
+.pc__facts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.pc__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+}
+
+.pc__fact-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pc__fact-value {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--color-foreground);
+}
+
 /* ---------- CTA ---------- */
 .pc__cta-row {
   margin-top: 0.5rem;
+}
+
+.pc__cta {
+  min-height: 2.75rem;
+  padding-inline: 1.1rem;
 }
 
 /* View Project — plain GlowingButton (primary). Only reset the inner link. */
@@ -78,7 +117,7 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.75rem 1.6rem;
-  border-radius: 2rem;
+  border-radius: 9999px;
   cursor: default;
   color: var(--color-muted-foreground);
   background: var(--color-card);
@@ -94,6 +133,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  user-select: none;
+  touch-action: pan-y;
 }
 
 /* Featured thumbnail — the focal element.
@@ -140,7 +181,7 @@
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-foreground) 6%, transparent);
   background: radial-gradient(120% 80% at 50% 120%, color-mix(in srgb, var(--color-foreground) 12%, transparent), transparent 60%);
 }
 
@@ -200,22 +241,26 @@
     box-shadow 0.4s ease,
     border-color 0.3s ease,
     opacity 0.3s ease;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .pc__card:hover,
 .pc__card:focus-visible {
   transform: translateY(-6px);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   border-color: var(--pc-accent-strong);
-  outline: none;
+}
+
+.pc__card:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
 }
 
 /* Active card — the one currently featured. Stays in place, clearly marked. */
 .pc__card--active {
   border-color: var(--pc-accent);
   box-shadow:
-    0 16px 36px rgba(0, 0, 0, 0.3),
+    0 8px 30px rgba(0, 0, 0, 0.12),
     0 0 0 2px var(--pc-accent),
     0 0 22px var(--pc-accent-soft);
 }
@@ -224,9 +269,10 @@
   transform: scale(1.04);
 }
 
-/* Dim the non-active cards slightly so the selection reads at a glance */
+/* Dim the non-active cards, but not so far they read as disabled — they're all
+   selectable case studies; only the active one is the featured plate. */
 .pc__card:not(.pc__card--active) {
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
 .pc__card--active,
@@ -259,7 +305,7 @@
   inset: auto 0 0 0;
   padding: 0.65rem 0.75rem;
   text-align: left;
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   line-height: 1.2;
   color: #fff;
@@ -268,17 +314,78 @@
   pointer-events: none;
 }
 
-/* ---------- Controls ---------- */
-.pc__controls {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+/* Marks the thumbnail whose case study is featured above — a filled primary
+   pill echoing the "selected = primary" control language elsewhere. */
+.pc__card-flag {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-foreground);
+  background: var(--color-primary);
+  pointer-events: none;
 }
 
-.pc__arrows {
+/* ---------- Explorer toolbar ----------
+   Names the filmstrip's purpose and groups the position readout + stepper into
+   one cluster, so exploring the cases reads as a single labeled control instead
+   of scattered arrows, counter, and an unlabeled strip. */
+.pc__explore {
   display: flex;
-  gap: 0.75rem;
-  flex-shrink: 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Slim toolbar in the section-toolbar idiom: purpose (left) over a 1px divider,
+   position + stepper (right). */
+.pc__explore-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pc__explore-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.pc__explore-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: var(--color-foreground);
+  box-shadow: 0 0 10px var(--pc-accent-soft);
+}
+
+.pc__explore-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 0 0 auto;
+}
+
+/* Directional controls — circular arrows per the Project Observatory spec */
+.pc__nav {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .pc__arrow {
@@ -286,16 +393,17 @@
   place-items: center;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 50%;
-  font-size: 1.1rem;
-  color: var(--color-foreground);
-  background: var(--color-card);
+  padding: 0;
   border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-card);
+  color: var(--color-foreground);
   cursor: pointer;
+  backdrop-filter: blur(20px);
   transition:
-    background 0.3s ease,
     border-color 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 .pc__arrow:hover {
@@ -304,25 +412,12 @@
 }
 
 .pc__arrow:focus-visible {
-  outline: none;
-  border-color: var(--pc-accent);
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
 }
 
-.pc__progress {
-  position: relative;
-  flex: 1;
-  height: 2px;
-  background: var(--color-border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.pc__progress-fill {
-  position: absolute;
-  inset: 0 auto 0 0;
-  background: var(--pc-accent);
-  border-radius: 2px;
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+.pc__arrow:active {
+  transform: scale(0.97);
 }
 
 .pc__counter {
@@ -333,15 +428,17 @@
 }
 
 .pc__counter-current {
-  font-size: clamp(2rem, 3.5vw, 3.25rem);
-  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--color-foreground);
 }
 
 .pc__counter-total {
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
   font-weight: 500;
   color: var(--color-muted-foreground);
 }
@@ -357,22 +454,48 @@
     max-width: 100%;
   }
 
+  .pc__stage {
+    width: 100%;
+  }
+
   .pc__featured {
-    min-height: clamp(220px, 50vw, 340px);
+    min-height: 0;
   }
 }
 
 @media (max-width: 560px) {
+  .pc {
+    gap: 1.5rem;
+  }
+
+  .pc__content {
+    gap: 2rem;
+  }
+
+  .pc__left {
+    gap: 1.25rem;
+  }
+
   .pc__title {
     font-size: 2.25rem;
   }
 
-  .pc__controls {
-    gap: 1rem;
+  .pc__featured {
+    border-radius: 1rem;
   }
 
-  .pc__counter-current {
-    font-size: 2rem;
+  .pc__rail {
+    gap: 0.75rem;
+  }
+
+  .pc__card {
+    width: 9rem;
+    height: 5.75rem;
+    border-radius: 0.75rem;
+  }
+
+  .pc__explore-controls {
+    gap: 1rem;
   }
 }
 
@@ -381,9 +504,7 @@
   .pc__card,
   .pc__card-img,
   .pc__cta,
-  .pc__cta-arrow,
-  .pc__arrow,
-  .pc__progress-fill {
+  .pc__cta-arrow {
     transition: none;
   }
 }
