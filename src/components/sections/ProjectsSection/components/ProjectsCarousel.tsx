@@ -16,6 +16,8 @@ export interface CarouselProject {
   role: string;
   challenge: string;
   decision: string;
+  /** Case-study detail page for this project. */
+  href: string;
 }
 
 interface ProjectsCarouselProps {
@@ -156,17 +158,11 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
           </span>
 
           <div className="pc__cta-row" data-animate>
-            {active.url ? (
-              <GlowingButton asChild variant="default" className="pc__cta">
-                <a href={active.url} target="_blank" rel="noreferrer">
-                  {t.viewProject}
-                </a>
-              </GlowingButton>
-            ) : (
-              <div className="pc__cta--disabled" aria-disabled="true">
-                {t.demoUnavailable}
-              </div>
-            )}
+            {/* Primary action → the case study. The live-demo link lives on the
+                detail page, alongside the full challenge / approach / stack. */}
+            <GlowingButton asChild variant="default" className="pc__cta">
+              <a href={active.href}>{t.viewCaseStudy}</a>
+            </GlowingButton>
           </div>
         </div>
 

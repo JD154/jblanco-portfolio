@@ -9,13 +9,13 @@ import './styles.css';
 import { ProjectsCarousel } from './components/ProjectsCarousel';
 import { GlowingButton } from '@/components/general/GlowingButton';
 import { SectionToolbar } from '@/components/general/SectionToolbar';
-import type { Project } from '@/i18n/projects';
+import type { LocalizedProject } from '@/i18n/projects';
 import type { Ui } from '@/i18n/ui';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectsSectionProps {
-  projects: Project[];
+  projects: LocalizedProject[];
   t: Ui['projects'];
 }
 
