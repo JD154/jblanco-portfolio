@@ -3,6 +3,7 @@ import type { FC, PointerEvent as ReactPointerEvent } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { GlowingButton } from '@/components/general/GlowingButton';
+import { ConfidentialPlate } from '@/components/general/ConfidentialPlate';
 import './ProjectsCarousel.css';
 import type { Ui } from '@/i18n/ui';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
@@ -11,6 +12,9 @@ export interface CarouselProject {
   title: string;
   description: string;
   image: string;
+  /** "public" | "confidential" | "pending" — confidential swaps the screenshot
+   *  for the redacted-dossier ConfidentialPlate. */
+  visibility?: string;
   techStack?: string[];
   url?: string;
   role: string;
@@ -42,6 +46,7 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
   const rootRef = useRef<HTMLDivElement | null>(null);
   const leftRef = useRef<HTMLDivElement | null>(null);
   const featuredImgRef = useRef<HTMLImageElement | null>(null);
+  const featuredPlateRef = useRef<HTMLDivElement | null>(null);
   const railRef = useRef<HTMLDivElement | null>(null);
 
   const active = projects[activeIndex] ?? projects[0];
@@ -64,6 +69,15 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
           featuredImgRef.current,
           { opacity: 0, scale: 1.18, filter: 'blur(12px)' },
           { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.75, ease: 'power3.out', clearProps: 'opacity,transform,filter' },
+        );
+      }
+      // Confidential plate settles in without a blur-in (its redaction blur is a
+      // fixed, intentional part of the surface — animating filter would clear it).
+      if (!prefersReducedMotion && featuredPlateRef.current) {
+        gsap.fromTo(
+          featuredPlateRef.current,
+          { opacity: 0, scale: 1.04 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out', clearProps: 'opacity,transform' },
         );
       }
       // Keep the highlighted card centered within the rail — scroll ONLY the
@@ -181,19 +195,25 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
           onPointerCancel={onPointerUp}
         >
           <div className="pc__featured">
-            <div
-              className="pc__featured-bg"
-              style={{ backgroundImage: `url(${active.image})` }}
-              aria-hidden="true"
-            />
-            <img
-              ref={featuredImgRef}
-              key={active.image}
-              className="pc__featured-img"
-              src={active.image}
-              alt={active.title}
-              draggable={false}
-            />
+            {active.visibility === 'confidential' ? (
+              <ConfidentialPlate ref={featuredPlateRef} key={active.href} labels={t.confidential} />
+            ) : (
+              <>
+                <div
+                  className="pc__featured-bg"
+                  style={{ backgroundImage: `url(${active.image})` }}
+                  aria-hidden="true"
+                />
+                <img
+                  ref={featuredImgRef}
+                  key={active.image}
+                  className="pc__featured-img"
+                  src={active.image}
+                  alt={active.title}
+                  draggable={false}
+                />
+              </>
+            )}
             <span className="pc__featured-glow" aria-hidden="true" />
           </div>
 
@@ -268,7 +288,11 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
                     aria-label={`${t.viewProjectAria} ${project.title}`}
                     aria-current={index === activeIndex}
                   >
-                    <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
+                    {project.visibility === 'confidential' ? (
+                      <ConfidentialPlate labels={t.confidential} className="pc__card-plate" />
+                    ) : (
+                      <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
+                    )}
                     <span className="pc__card-scrim" aria-hidden="true" />
                     {index === activeIndex && <span className="pc__card-flag">{t.viewing}</span>}
                     <span className="pc__card-title">{project.title}</span>

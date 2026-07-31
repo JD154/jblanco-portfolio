@@ -300,6 +300,12 @@
   pointer-events: none;
 }
 
+/* On rail thumbnails the confidential plate is just the redacted silhouette —
+   the card's own title labels it, so the plate's NDA marker would be redundant. */
+.pc__card .cplate__marker {
+  display: none;
+}
+
 .pc__card-title {
   position: absolute;
   inset: auto 0 0 0;

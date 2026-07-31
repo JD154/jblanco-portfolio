@@ -80,6 +80,12 @@
   font-weight: 700;
   line-height: 0.96;
   letter-spacing: -0.02em;
+  /* Clash Display's heavy caps under the tight Headline tracking collapse the
+     word gap ("SENIOR FRONTEND" nearly touch) and let the intrinsic L→T optical
+     space read as a false break in "CONSUL·TANT". Restore an unambiguous word
+     gap and apply the font's kern pairs, without loosening the tracking. */
+  word-spacing: 0.1em;
+  font-kerning: normal;
   text-transform: uppercase;
   color: var(--color-foreground);
   text-shadow:
@@ -210,7 +216,7 @@
   }
 
   .header-section__tagline {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
   }
