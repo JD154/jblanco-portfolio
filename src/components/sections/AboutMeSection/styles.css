@@ -14,233 +14,202 @@
   );
 }
 
-/* Main container */
-.about-me-section__container {
+/* Header uses the shared <SectionToolbar> (src/components/general/SectionToolbar). */
+
+/* ---------- Lede: story (left) + career readout (right) ---------- */
+.about-me-section__lede {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 4rem;
+  grid-template-columns: minmax(0, 1fr) 17rem;
+  gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
-  position: relative;
-  z-index: 10;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-/* Content area */
-.about-me-section__content {
+.about-me-section__story {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-/* Header — slim toolbar label + divider (shared visual with other sections) */
-.about-me-section__bar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: clamp(3rem, 5vw, 5rem);
-  position: relative;
-  z-index: 10;
-}
-
-.about-me-section__label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-foreground);
-}
-
-.about-me-section__label-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--pc-accent);
-  box-shadow: 0 0 12px var(--pc-accent-soft);
+  gap: 1.5rem;
+  max-width: 42rem;
 }
 
 .about-me-section__title {
-  font-size: clamp(2.15rem, 4vw, 3.35rem);
-  font-weight: 800;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.7vw, 3.5rem);
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--color-foreground);
   text-shadow: var(--heading-text-shadow);
-  margin: 0;
 }
 
-.about-me-section__text-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 600px;
+.about-me-section__attribution {
+  margin: -0.75rem 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: var(--color-muted-foreground);
 }
 
 .about-me-section__paragraph {
-  font-size: 1.125rem;
+  margin: 0;
+  font-size: 1.0625rem;
   line-height: 1.8;
   color: var(--color-muted-foreground);
-  margin: 0;
-  position: relative;
-  padding-left: 1.5rem;
 }
 
-.about-me-section__paragraph::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.75rem;
-  width: 4px;
-  height: 4px;
-  background: var(--color-muted-foreground);
-  border-radius: 50%;
-  opacity: 0.5;
-}
-
-/* Skills section */
-.about-me-section__skills {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-
-.about-me-section__skill-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.25rem;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  font-weight: 500;
+/* The emotional throughline — a quiet callout in the display voice */
+.about-me-section__belief {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--pc-accent-strong);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.4;
   color: var(--color-foreground);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
 }
 
-.about-me-section__skill-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  border-color: var(--color-border);
-}
-
-.about-me-section__skill-icon {
-  font-size: 1.25rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-/* Quote container */
-.about-me-section__quote-container {
+/* Career readout — instrument panel, echoes the Projects counter voice */
+.about-me-section__telemetry {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-card);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 2rem;
-  height: fit-content;
 }
 
-.about-me-section__quote-wrapper {
-  position: relative;
-  padding: 2rem;
-  background: var(--color-card);
+.about-me-section__telemetry-value {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-foreground);
+}
+
+.about-me-section__telemetry-unit {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.about-me-section__telemetry-since {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: var(--color-muted-foreground);
+}
+
+/* ---------- Key consulting areas: instrument grid ---------- */
+.about-me-section__areas-bar {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+  /* Fading hairline divider — consistent with the primary section toolbar */
+  background-image: linear-gradient(to right, var(--color-border), transparent 92%);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 1px;
+  margin-bottom: 1.5rem;
+}
+
+.about-me-section__areas-label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.about-me-section__areas-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.about-me-section__area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
   border: 1px solid var(--color-border);
-  border-radius: 1.5rem;
+  border-radius: 1rem;
+  background: var(--color-card);
   backdrop-filter: blur(20px);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
 }
 
-.about-me-section__quote-wrapper::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
-  background: var(--color-border);
-  border-radius: 1.5rem;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.about-me-section__quote-wrapper:hover::before {
-  opacity: 0.5;
-}
-
-.about-me-section__quote-wrapper:hover {
+.about-me-section__area:hover {
   transform: translateY(-4px);
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--pc-accent-strong);
 }
 
-/* Responsive design */
+.about-me-section__area-index {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-muted-foreground);
+}
+
+.about-me-section__area-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+.about-me-section__area-body {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
-  .about-me-section__container {
+  .about-me-section__lede {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
-  .about-me-section__quote-container {
+  .about-me-section__telemetry {
     position: relative;
     top: 0;
+    align-self: start;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1rem;
   }
-
 }
 
 @media (max-width: 768px) {
   .about-me-section {
     min-height: auto;
-    padding: 2rem 0;
-  }
-
-  .about-me-section__skills {
-    justify-content: center;
-  }
-
-  .about-me-section__skill-item {
-    flex: 1;
-    min-width: 140px;
-    justify-content: center;
-  }
-
-  .about-me-section__paragraph {
-    font-size: 1rem;
-    padding-left: 1rem;
-  }
-
-  .about-me-section__quote-wrapper {
-    padding: 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
-  .about-me-section__skills {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .about-me-section__skill-item {
-    width: 100%;
-    max-width: 200px;
-  }
-}
-
-/* Dark mode enhancements */
-.dark .about-me-section__skill-item:hover {
+/* Dark mode — depth via border brightening, not a drop shadow */
+.dark .about-me-section__area:hover {
   border-color: var(--pc-accent-strong);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
 }

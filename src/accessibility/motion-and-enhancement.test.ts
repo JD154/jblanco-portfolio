@@ -18,7 +18,6 @@ test('loads the WebGL star island only on desktop while keeping the CSS fallback
 
 test('guards automatic motion with the shared reduced-motion preference', async () => {
   const sources = await Promise.all([
-    readSource('../hooks/useParallaxTransitionForSections.ts'),
     readSource('../components/sections/AboutMeSection/index.tsx'),
     readSource('../components/sections/ContactSection/index.tsx'),
     readSource('../components/sections/ProjectsSection/index.tsx'),
@@ -29,11 +28,15 @@ test('guards automatic motion with the shared reduced-motion preference', async 
   ]);
 
   for (const source of sources) {
-    expect(source).toContain('usePrefersReducedMotion');
+    // Motion is guarded either directly via usePrefersReducedMotion, or through
+    // useRevealOnScroll, which reads the same preference and never arms an
+    // entrance (content stays visible) when reduced motion is requested.
+    const guardsMotion = source.includes('usePrefersReducedMotion') || source.includes('useRevealOnScroll');
+    expect(guardsMotion).toBe(true);
   }
 });
 
-test('disables section and availability badge CSS motion when requested', async () => {
+test('disables section CSS motion when requested', async () => {
   const styles = await readSource('../styles/index.css');
 
   expect(styles).toContain('@media (prefers-reduced-motion: reduce)');
@@ -42,7 +45,6 @@ test('disables section and availability badge CSS motion when requested', async 
     '.about-me-section *',
     '.projects-section *',
     '.contact-section *',
-    '.nav-badge *',
   ]) {
     expect(styles).toContain(selector);
   }
@@ -62,13 +64,6 @@ test('guards pointer-driven glow and cursor effects with the shared preference',
   expect(glowingEffect).toContain('if (disabled || prefersReducedMotion) return');
   expect(customCursor).toContain('if (prefersReducedMotion) return');
   expect(customCursor).toContain('{!prefersReducedMotion && <MobileRippleEffect ripples={ripples} />}');
-});
-
-test('guards the quote tilt effect with the shared preference', async () => {
-  const quote = await readSource('../components/sections/AboutMeSection/components/Quote.tsx');
-
-  expect(quote).toContain('usePrefersReducedMotion');
-  expect(quote).toContain('if (prefersReducedMotion || !isInViewport) return');
 });
 
 test('keeps the Hero static and hydrates only its visual effects', async () => {

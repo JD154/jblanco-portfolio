@@ -13,6 +13,9 @@ export interface CarouselProject {
   image: string;
   techStack?: string[];
   url?: string;
+  role: string;
+  challenge: string;
+  decision: string;
 }
 
 interface ProjectsCarouselProps {
@@ -46,14 +49,14 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
         gsap.fromTo(
           leftRef.current.querySelectorAll('[data-animate]'),
           { opacity: 0, y: 28 },
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08, clearProps: 'opacity,transform' },
         );
       }
       if (!prefersReducedMotion && featuredImgRef.current) {
         gsap.fromTo(
           featuredImgRef.current,
           { opacity: 0, scale: 1.18, filter: 'blur(12px)' },
-          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.75, ease: 'power3.out' },
+          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.75, ease: 'power3.out', clearProps: 'opacity,transform,filter' },
         );
       }
       // Keep the highlighted card centered within the rail — scroll ONLY the
@@ -118,18 +121,17 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
   if (!active) return null;
 
   const eyebrow = active.techStack?.slice(0, 4).join(' · ') ?? t.featuredFallback;
+  // Every case study uses the same additive evidence frame.
+  const facts = [
+    { key: 'role', label: t.fields.role, value: active.role },
+    { key: 'challenge', label: t.fields.challenge, value: active.challenge },
+    { key: 'decision', label: t.fields.decision, value: active.decision },
+  ];
   const counter = String(activeIndex + 1).padStart(2, '0');
   const totalLabel = String(total).padStart(2, '0');
 
   return (
-    <div
-      className="pc"
-      ref={rootRef}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerLeave={onPointerUp}
-    >
+    <div className="pc" ref={rootRef}>
       <div className="pc__content">
         {/* Left copy */}
         <div className="pc__left" ref={leftRef} key={activeIndex}>
@@ -139,6 +141,16 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
           <p className="pc__description" data-animate>
             {active.description}
           </p>
+
+          <dl className="pc__facts" data-animate>
+            {facts.map(({ key, label, value }) => (
+              <div className="pc__fact" key={key}>
+                <dt className="pc__fact-label">{label}</dt>
+                <dd className="pc__fact-value">{value}</dd>
+              </div>
+            ))}
+          </dl>
+
           <span className="pc__eyebrow" data-animate>
             {eyebrow}
           </span>
@@ -159,7 +171,14 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
         </div>
 
         {/* Right stage: featured thumbnail + upcoming filmstrip */}
-        <div className="pc__stage">
+        <div
+          className="pc__stage"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerLeave={onPointerUp}
+          onPointerCancel={onPointerUp}
+        >
           <div className="pc__featured">
             <div
               className="pc__featured-bg"
@@ -178,52 +197,85 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
           </div>
 
           {total > 1 && (
-            <div
-              className={`pc__rail ${railEdges.atStart ? 'pc__rail--at-start' : ''} ${
-                railEdges.atEnd ? 'pc__rail--at-end' : ''
-              }`}
-              ref={railRef}
-              onScroll={updateRailEdges}
-            >
-              {projects.map((project, index) => (
-                <button
-                  key={project.title}
-                  type="button"
-                  className={`pc__card ${index === activeIndex ? 'pc__card--active' : ''}`}
-                  onClick={() => {
-                    if (!drag.current.moved) jumpTo(index);
-                  }}
-                  aria-label={`${t.viewProjectAria} ${project.title}`}
-                  aria-current={index === activeIndex}
-                >
-                  <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
-                  <span className="pc__card-scrim" aria-hidden="true" />
-                  <span className="pc__card-title">{project.title}</span>
-                </button>
-              ))}
+            <div className="pc__explore">
+              {/* Explorer toolbar — names the strip's purpose and groups the
+                  position readout + stepper, so choosing a case study reads as one
+                  action rather than four competing controls (filters live above,
+                  in the section header, and change the set). */}
+              <div className="pc__explore-head">
+                <span className="pc__explore-label">
+                  <span className="pc__explore-dot" aria-hidden="true" />
+                  {t.explore}
+                </span>
+                <div className="pc__explore-controls">
+                  <div className="pc__counter" aria-live="polite">
+                    <span className="pc__counter-current">{counter}</span>
+                    <span className="pc__counter-total">/ {totalLabel}</span>
+                  </div>
+                  <div className="pc__nav">
+                    <button type="button" className="pc__arrow" onClick={() => go(-1)} aria-label={t.previousAria}>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m15 18-6-6 6-6" />
+                      </svg>
+                    </button>
+                    <button type="button" className="pc__arrow" onClick={() => go(1)} aria-label={t.nextAria}>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`pc__rail ${railEdges.atStart ? 'pc__rail--at-start' : ''} ${
+                  railEdges.atEnd ? 'pc__rail--at-end' : ''
+                }`}
+                ref={railRef}
+                onScroll={updateRailEdges}
+                role="group"
+                aria-label={t.explore}
+              >
+                {projects.map((project, index) => (
+                  <button
+                    key={project.title}
+                    type="button"
+                    className={`pc__card ${index === activeIndex ? 'pc__card--active' : ''}`}
+                    onClick={() => {
+                      if (!drag.current.moved) jumpTo(index);
+                    }}
+                    aria-label={`${t.viewProjectAria} ${project.title}`}
+                    aria-current={index === activeIndex}
+                  >
+                    <img className="pc__card-img" src={project.image} alt={project.title} draggable={false} />
+                    <span className="pc__card-scrim" aria-hidden="true" />
+                    {index === activeIndex && <span className="pc__card-flag">{t.viewing}</span>}
+                    <span className="pc__card-title">{project.title}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
-        </div>
-      </div>
-
-      {/* Controls */}
-      <div className="pc__controls">
-        <div className="pc__arrows">
-          <button type="button" className="pc__arrow" onClick={() => go(-1)} aria-label={t.previousAria}>
-            ←
-          </button>
-          <button type="button" className="pc__arrow" onClick={() => go(1)} aria-label={t.nextAria}>
-            →
-          </button>
-        </div>
-
-        <div className="pc__progress" role="presentation">
-          <span className="pc__progress-fill" style={{ width: `${((activeIndex + 1) / total) * 100}%` }} />
-        </div>
-
-        <div className="pc__counter" aria-live="polite">
-          <span className="pc__counter-current">{counter}</span>
-          <span className="pc__counter-total">/ {totalLabel}</span>
         </div>
       </div>
     </div>

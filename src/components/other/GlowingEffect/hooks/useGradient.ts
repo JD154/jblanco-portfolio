@@ -1,22 +1,12 @@
-import { useTheme } from '@/components/other/ThemeProvider/context';
-import { useMemo } from 'react';
-import { DARK_GRADIENT, DEFAULT_GRADIENT, LIGHT_GRADIENT } from '../utils';
-
 export type GradientVariant = 'default' | 'white';
 
-export function useGradient(variant: GradientVariant = 'default') {
-  const { theme } = useTheme();
-
-  const gradients = useMemo(() => {
-    return {
-      light: LIGHT_GRADIENT,
-      dark: DARK_GRADIENT,
-      default: DEFAULT_GRADIENT,
-    };
-  }, []);
-
-  if (variant === 'white') {
-    return theme === 'dark' ? gradients.dark : gradients.light;
-  }
-  return gradients.default;
+/**
+ * The glow halo is driven by the `--glow-gradient` CSS variable (defined per
+ * theme in src/styles/index.css), so the inline style is identical on the
+ * server and the client — no hydration mismatch from reading the theme in JS.
+ * The `variant` is kept for API compatibility (GlowingEffect still uses it for
+ * border styling) but no longer selects a JS gradient.
+ */
+export function useGradient(_variant: GradientVariant = 'white') {
+  return 'var(--glow-gradient)';
 }

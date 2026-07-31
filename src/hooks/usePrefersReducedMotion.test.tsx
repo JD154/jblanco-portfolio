@@ -4,8 +4,6 @@ import { act, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import type { Root } from 'react-dom/client';
 import { gsap } from 'gsap';
-import { ui } from '@/i18n/ui';
-import { MinimalQuote } from '@/components/sections/AboutMeSection/components/Quote';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 
 let root: Root | undefined;
@@ -60,14 +58,22 @@ afterEach(() => {
   testWindow.close();
 });
 
-test('starts reduced and prevents Quote mouse tilt setup', () => {
+test('starts reduced and prevents pointer-driven motion setup', () => {
   let initialPreference: boolean | undefined;
+  // Mirrors the guarded-motion pattern used across the site: read the hook, and
+  // only wire up a pointer-driven GSAP tween when motion is allowed. Under
+  // reduced-motion the effect must bail before adding a mousemove listener or
+  // touching gsap.
   const PreferenceProbe = () => {
     const prefersReducedMotion = usePrefersReducedMotion();
     useEffect(() => {
       initialPreference ??= prefersReducedMotion;
+      if (prefersReducedMotion) return;
+      const handleMouseMove = () => gsap.to({}, { duration: 0.4 });
+      window.addEventListener('mousemove', handleMouseMove);
+      return () => window.removeEventListener('mousemove', handleMouseMove);
     }, [prefersReducedMotion]);
-    return <MinimalQuote t={ui.en.about.quote} />;
+    return null;
   };
   const container = document.createElement('div');
   document.body.append(container);

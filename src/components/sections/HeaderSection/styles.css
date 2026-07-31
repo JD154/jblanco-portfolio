@@ -1,239 +1,263 @@
 .header-section {
-  --pc-accent: var(--color-foreground);
-  --pc-accent-soft: color-mix(in srgb, var(--color-foreground) 22%, transparent);
-  --pc-accent-strong: color-mix(in srgb, var(--color-foreground) 45%, transparent);
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    var(--color-background) 0%,
-    var(--color-secondary-background) 50%,
-    var(--color-background) 100%
-  );
+  background:
+    radial-gradient(
+      ellipse 54% 42% at 50% 51%,
+      color-mix(in srgb, var(--color-foreground) 5%, transparent) 0%,
+      transparent 72%
+    ),
+    linear-gradient(
+      135deg,
+      var(--color-background) 0%,
+      var(--color-secondary-background) 50%,
+      var(--color-background) 100%
+    );
 }
 
 /* Main Container */
 .header-section__container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: clamp(7rem, 14vh, 9rem) 1.5rem clamp(4rem, 8vh, 6rem);
   max-width: 1200px;
   margin: 0 auto;
   z-index: 10;
   text-align: center;
 }
 
-/* Main Content */
+/* Main Content — pitch-led vertical lockup */
 .header-section__content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  max-width: 800px;
+  max-width: 920px;
   width: 100%;
 }
 
-/* Eyebrow kicker — same language as section labels */
-.header-section__eyebrow {
+/* Availability signal — the one functional green, persistent on every viewport */
+.header-section__availability {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  gap: 0.6rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-foreground);
+  color: var(--color-muted-foreground);
+  text-wrap: balance;
 }
 
-.header-section__eyebrow-dot {
+.header-section__availability-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--pc-accent);
-  box-shadow: 0 0 12px var(--pc-accent-soft);
+  flex: 0 0 auto;
+  background: var(--availability-deep);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--availability-bright) 70%, transparent);
 }
 
-.header-section__main-title {
-  margin-bottom: 0 !important;
+/* Secondary signature — keeps the 3D luminous interaction, no longer the headline */
+.header-section__signature {
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 8px 20px color-mix(in srgb, var(--color-foreground) 8%, transparent));
 }
 
-.header-section__description {
-  font-size: 1.25rem;
-  line-height: 1.7;
-  color: var(--color-muted-foreground);
-  margin: 0;
-  max-width: 600px;
-  font-weight: 400;
-}
-
-/* Quick Stats */
-.header-section__stats {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin: 1rem 0;
-}
-
-.header-section__stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  min-width: 120px;
-}
-
-.header-section__stat-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  border-color: var(--pc-accent-strong);
-}
-
-.header-section__stat-number {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--color-foreground);
-}
-
-.header-section__stat-label {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--color-muted-foreground);
+/* Primary: the pitch. Headline grammar, luminous. */
+.header-section__pitch {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 6.4vw, 5.35rem);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--color-foreground);
+  text-shadow:
+    0 0 0.1em color-mix(in srgb, var(--color-foreground) 22%, transparent),
+    0 0.12em 0.34em color-mix(in srgb, var(--color-foreground) 14%, transparent);
+  max-width: 14ch;
+  text-wrap: balance;
 }
 
-/* Action Buttons — same pill style as the project filters */
+.header-section__tagline {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-muted-foreground);
+  margin: 0 0 1.75rem;
+  max-width: 57ch;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+/* Capabilities strip — real strengths as tracked labels, middot-separated */
+.header-section__capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  margin: 0 0 2.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.header-section__capability {
+  position: relative;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.header-section__capability:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -0.5rem;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transform: translateY(-50%);
+}
+
+/* Action Buttons — one primary, one secondary */
 .header-section__actions {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 1.5rem;
 }
 
-/* Buttons are plain GlowingButtons (primary / outline). Only reset the link. */
-.header-section__primary-btn a,
-.header-section__secondary-btn a {
-  color: inherit;
-  text-decoration: none;
+.header-section__primary-btn,
+.header-section__secondary-btn {
+  min-width: 9.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
+.header-section__primary-btn {
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-foreground) 14%, transparent);
+}
+
+.header-section__secondary-btn {
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--color-foreground) 7%, transparent);
+}
+
+.header-section__action-icon {
+  position: relative;
+  z-index: 1;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 768px) {
   .header-section__container {
-    padding: 1.5rem 1rem;
+    padding: 7rem 1.25rem 3.5rem;
   }
 
-  .header-section__description {
-    font-size: 1.125rem;
-    padding: 0 1rem;
+  .header-section__pitch {
+    max-width: 11ch;
+    line-height: 0.98;
   }
 
-  .header-section__stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  .header-section__tagline {
+    max-width: 39ch;
   }
 
-  .header-section__stat-item {
-    flex-direction: row;
-    min-width: 200px;
-    gap: 1rem;
+  .header-section__capabilities {
+    margin-bottom: 2rem;
   }
-
-  .header-section__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-
-  .header-section__social {
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .header-section__social-link {
-    flex: 1;
-    min-width: 100px;
-    justify-content: center;
-  }
-
 }
 
 @media (max-width: 480px) {
-  .header-section__description {
+  .header-section__container {
+    padding-inline: 1rem;
+  }
+
+  .header-section__availability {
+    margin-bottom: 1.5rem;
+    max-width: 28ch;
+  }
+
+  .header-section__signature {
+    margin-bottom: 0.65rem;
+  }
+
+  .header-section__pitch {
+    margin-bottom: 1.75rem;
+    font-size: clamp(2.55rem, 12vw, 3.15rem);
+  }
+
+  .header-section__tagline {
     font-size: 1rem;
     line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 
-  .header-section__stat-item {
-    min-width: 180px;
-    padding: 0.875rem 1rem;
+  .header-section__capabilities {
+    column-gap: 0.8rem;
+    margin-bottom: 2rem;
   }
 
-  .header-section__stat-number {
-    font-size: 1.375rem;
+  .header-section__capability {
+    letter-spacing: 0.11em;
   }
 
-  .header-section__stat-label {
-    font-size: 0.75rem;
+  .header-section__actions {
+    width: min(100%, 21rem);
   }
 
-  .header-section__social-link {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8125rem;
-  }
-
-  .header-section__scroll-indicator {
-    bottom: 1.5rem;
+  .header-section__primary-btn,
+  .header-section__secondary-btn {
+    flex: 1 1 9.5rem;
+    padding-inline: 1rem;
   }
 }
 
-/* Dark mode enhancements */
-.dark .header-section__stat-item:hover {
-  border-color: var(--pc-accent-strong);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
-}
+@media (max-height: 700px) {
+  .header-section__container {
+    padding-top: 6.5rem;
+    padding-bottom: 2rem;
+  }
 
-.dark .header-section__social-link:hover {
-  border-color: var(--pc-accent-strong);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.06);
-}
+  .header-section__availability {
+    margin-bottom: 0.75rem;
+  }
 
-/* Animation improvements */
-.header-section__stat-item,
-.header-section__social-link {
-  will-change: transform;
+  .header-section__signature {
+    margin-bottom: 0.25rem;
+  }
+
+  .header-section__pitch {
+    margin-bottom: 1rem;
+  }
+
+  .header-section__tagline {
+    margin-bottom: 1rem;
+  }
+
+  .header-section__capabilities {
+    margin-bottom: 1.25rem;
+  }
 }

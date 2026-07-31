@@ -70,7 +70,13 @@
   --sidebar-ring: 240 6% 7%;
 
   /* Custom colors */
-  --heading-text-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05);
+  --availability-deep: #10b981;
+  --availability-bright: #34d399;
+
+  /* Luminous heading glow — em-relative radii so it reads identically at every
+     heading size (the 2.75rem signature and the 4.5rem pitch glow the same,
+     instead of the fixed-px glow merging into a block at small sizes). */
+  --heading-text-shadow: 0 0 0.14em rgba(0, 0, 0, 0.15), 0 0 0.28em rgba(0, 0, 0, 0.1), 0 0 0.56em rgba(0, 0, 0, 0.05);
   --secondary-background: rgba(233, 233, 233, 0.3);
 }
 .dark {
@@ -142,7 +148,7 @@
 
   /* Custom colors */
   --heading-text-shadow:
-    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.2);
+    0 0 0.14em rgba(255, 255, 255, 0.5), 0 0 0.28em rgba(255, 255, 255, 0.3), 0 0 0.56em rgba(255, 255, 255, 0.2);
   --secondary-background: rgba(22, 22, 22, 0.3);
 }
 @theme inline {
