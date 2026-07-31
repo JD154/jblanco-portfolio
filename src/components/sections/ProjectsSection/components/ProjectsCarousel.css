@@ -190,7 +190,11 @@
   display: flex;
   gap: 1rem;
   overflow-x: auto;
-  padding: 0.5rem 0 0.25rem;
+  /* Horizontal padding gives the active card's ring/glow room so the scroll
+     clip box doesn't cut it on the first/last card; negative margin keeps the
+     cards visually aligned with the heading above. */
+  padding: 0.5rem 0.5rem 0.25rem;
+  margin-inline: -0.5rem;
   scrollbar-width: none;
   /* Soft fade on both edges to hint there's more to scroll. The two edge
      stops collapse to 0 when that side is capped (see modifiers below). */
