@@ -32,3 +32,6 @@ docs/superpowers/*
 .agents/*
 .claude/*
 .codex/*
+
+# Impeccable design-tool critique artifacts (local review output)
+.impeccable/critique/

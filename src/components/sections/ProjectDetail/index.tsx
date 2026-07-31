@@ -53,8 +53,9 @@ const hostOf = (url: string): string => {
 
 export const ProjectDetail: FC<ProjectDetailProps> = ({ lang, t, project, prev, next, index, total }) => {
   const d = t.detail;
-  const homeBase = lang === 'es' ? '/es/' : '/';
-  const projectsHref = `${homeBase}#projects-section`;
+  // "All work" now resolves to the dedicated register at /projects (the full
+  // index), not the home carousel section.
+  const projectsHref = lang === 'es' ? '/es/projects' : '/projects';
 
   const narrativeRef = useRevealOnScroll<HTMLElement>();
   const roleRef = useRevealOnScroll<HTMLElement>();

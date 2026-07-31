@@ -1,0 +1,27 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CustomCursorIsland } from '@/components/islands/CustomCursorIsland';
+import { NavigationBarIsland } from '@/components/islands/NavigationBarIsland';
+import { ProjectsIndexIsland } from '@/components/islands/ProjectsIndexIsland';
+import { StarsBackgroundIsland } from '@/components/islands/StarsBackgroundIsland';
+import { getProjectEntries } from '@/i18n/projects';
+import { ui } from '@/i18n/ui';
+
+const lang = 'es';
+const t = ui[lang];
+const site = 'https://jblanco.dev';
+---
+
+<BaseLayout
+  {lang}
+  {t}
+  title="Todo el trabajo — Jesus Blanco"
+  description="El registro completo del trabajo front-end de Jesus Blanco — sistemas de diseño, plataformas con datos densos e interfaces de producto. Cada entrada abre su caso de estudio."
+  hreflangEn={`${site}/projects`}
+  hreflangEs={`${site}/es/projects`}
+>
+  <StarsBackgroundIsland client:media="(min-width: 768px)" />
+  <NavigationBarIsland client:load {lang} t={t.nav} alternateUrl="/projects" />
+  <ProjectsIndexIsland client:load {lang} projects={getProjectEntries(lang)} t={t.projects} />
+  <CustomCursorIsland client:load />
+</BaseLayout>

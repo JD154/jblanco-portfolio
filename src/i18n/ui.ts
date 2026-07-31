@@ -33,7 +33,7 @@ export const ui = {
       capabilities: ['Design Systems', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: "I'm JB",
       ctaCv: 'Download CV',
-      ctaWork: 'View selected work',
+      ctaWork: 'View featured work',
     },
     about: {
       label: 'About Me',
@@ -129,7 +129,7 @@ export const ui = {
       ],
     },
     projects: {
-      label: 'Featured Projects',
+      label: 'Featured Work',
       filterAll: 'All Projects',
       filters: {
         react: 'React',
@@ -151,6 +151,28 @@ export const ui = {
         decision: 'Key decision',
       },
       viewCaseStudy: 'View case study →',
+      viewAllWork: 'View all work',
+      index: {
+        home: 'Home',
+        label: 'Project Index',
+        filterLabel: 'Filter by technology',
+        heading: 'All Work',
+        lede: 'The full record of my front-end work — design systems and component libraries, data-rich platforms, and product interfaces. Each entry opens into its case study.',
+        metaProjects: 'projects',
+        metaLive: 'live',
+        metaSince: 'Since 2018',
+        showing: 'Showing',
+        of: 'of',
+        noDemoTag: 'No demo',
+        open: 'View case study',
+        cta: {
+          kicker: 'Get in touch',
+          availability: 'Booking new projects',
+          title: 'Have a project in mind?',
+          body: "I'm available for new work — architecture, design systems, and data-rich interfaces. Tell me what you're building.",
+          action: 'Get in touch',
+        },
+      },
       detail: {
         back: 'Back to work',
         caseLabel: 'Case study',
@@ -211,7 +233,7 @@ export const ui = {
       capabilities: ['Sistemas de diseño', 'Data-viz', 'React', 'Vue', 'TypeScript'],
       signature: 'Soy JB',
       ctaCv: 'Descargar CV',
-      ctaWork: 'Ver proyectos seleccionados',
+      ctaWork: 'Ver trabajo destacado',
     },
     about: {
       label: 'Sobre mí',
@@ -307,7 +329,7 @@ export const ui = {
       ],
     },
     projects: {
-      label: 'Proyectos destacados',
+      label: 'Trabajo destacado',
       filterAll: 'Todos los proyectos',
       filters: {
         react: 'React',
@@ -329,6 +351,28 @@ export const ui = {
         decision: 'Decisión clave',
       },
       viewCaseStudy: 'Ver caso de estudio →',
+      viewAllWork: 'Ver todo el trabajo',
+      index: {
+        home: 'Inicio',
+        label: 'Índice de proyectos',
+        filterLabel: 'Filtrar por tecnología',
+        heading: 'Todo el trabajo',
+        lede: 'El registro completo de mi trabajo front-end — sistemas de diseño y librerías de componentes, plataformas con datos densos e interfaces de producto. Cada entrada abre su caso de estudio.',
+        metaProjects: 'proyectos',
+        metaLive: 'en vivo',
+        metaSince: 'Desde 2018',
+        showing: 'Mostrando',
+        of: 'de',
+        noDemoTag: 'Sin demo',
+        open: 'Ver caso de estudio',
+        cta: {
+          kicker: 'Contacto',
+          availability: 'Disponible para nuevos proyectos',
+          title: '¿Tienes un proyecto en mente?',
+          body: 'Estoy disponible para nuevos proyectos — arquitectura, sistemas de diseño e interfaces con datos densos. Cuéntame qué estás construyendo.',
+          action: 'Contactar',
+        },
+      },
       detail: {
         back: 'Volver a proyectos',
         caseLabel: 'Caso de estudio',

@@ -47,6 +47,26 @@ export function getProjectEntries(lang: Lang): LocalizedProject[] {
   });
 }
 
+/**
+ * Slugs curated into the home "Featured Work" carousel — a deliberately smaller
+ * highlight reel that teases the full body of work and points visitors to
+ * "View all work". The complete set of projects still appears on the /projects
+ * register. Edit this list to change what the home page features.
+ */
+const FEATURED_SLUGS = new Set<string>([
+  'workflow-orchestration-audit',
+  'product-marketing-site',
+  'logistics-finance-module',
+  'remittance-operations-platform',
+  'i-r-management-platform',
+  'inui-library',
+]);
+
+/** The curated home-carousel subset, in canonical data order. */
+export function getFeaturedProjectEntries(lang: Lang): LocalizedProject[] {
+  return getProjectEntries(lang).filter((entry) => FEATURED_SLUGS.has(entry.slug));
+}
+
 export interface ProjectDetail {
   project: LocalizedProject;
   prev: LocalizedProject;
