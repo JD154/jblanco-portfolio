@@ -1,18 +1,18 @@
 import { ThemeProvider } from '@/components/other/ThemeProvider';
-import { ProjectsSection } from '@/components/sections/ProjectsSection';
+import { ProjectsIndex } from '@/components/sections/ProjectsIndex';
 import type { LocalizedProject } from '@/i18n/projects';
 import type { Lang, Ui } from '@/i18n/ui';
 
-interface ProjectsSectionIslandProps {
+interface ProjectsIndexIslandProps {
+  lang: Lang;
   projects: LocalizedProject[];
   t: Ui['projects'];
-  lang?: Lang;
 }
 
-export function ProjectsSectionIsland({ projects, t, lang }: ProjectsSectionIslandProps) {
+export function ProjectsIndexIsland({ lang, projects, t }: ProjectsIndexIslandProps) {
   return (
     <ThemeProvider>
-      <ProjectsSection projects={projects} t={t} lang={lang} />
+      <ProjectsIndex lang={lang} projects={projects} t={t} />
     </ThemeProvider>
   );
 }

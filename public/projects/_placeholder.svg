@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Preview coming soon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1013"/>
+      <stop offset="0.5" stop-color="#15171c"/>
+      <stop offset="1" stop-color="#0b0d10"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.46" r="0.55">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#halo)"/>
+
+  <!-- Orbital rings -->
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.07">
+    <circle cx="800" cy="460" r="150"/>
+    <circle cx="800" cy="460" r="240"/>
+    <circle cx="800" cy="460" r="330"/>
+  </g>
+
+  <!-- Signal dot riding an orbit -->
+  <circle cx="1040" cy="460" r="7" fill="#ffffff" fill-opacity="0.85"/>
+  <circle cx="1040" cy="460" r="16" fill="none" stroke="#ffffff" stroke-opacity="0.25"/>
+
+  <!-- Sparse stars -->
+  <g fill="#ffffff">
+    <circle cx="360" cy="230" r="2" fill-opacity="0.5"/>
+    <circle cx="1240" cy="200" r="1.6" fill-opacity="0.4"/>
+    <circle cx="520" cy="740" r="1.6" fill-opacity="0.35"/>
+    <circle cx="1180" cy="760" r="2" fill-opacity="0.45"/>
+    <circle cx="240" cy="520" r="1.4" fill-opacity="0.3"/>
+    <circle cx="1360" cy="560" r="1.4" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Label -->
+  <text x="800" y="720" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace"
+        font-size="26" letter-spacing="8" fill="#ffffff" fill-opacity="0.5">PREVIEW SOON</text>
+</svg>

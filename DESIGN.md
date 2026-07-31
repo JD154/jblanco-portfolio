@@ -249,6 +249,10 @@ Each major section begins with a compact, wide-tracked uppercase label, a 7px fo
 
 Each project extends into a dedicated case study at `/projects/<slug>` (bilingual). The surface opens on an asymmetric hero: a mono case counter and display title on the left with the technology chips and a single live-site action, and the real product screenshot at showcase depth — over its own blurred ambient fill — on the right. Below, the reading is an instrument log: a two-beat challenge-then-approach narrative with mono indices, the role as a display-voice callout, the technology stack as a bordered instrument grid, and a wrap-around previous/next pager that closes the page. Only documented project facts appear — description, role, challenge, decision, stack, screenshot, and demo — and projects without a public demo state that plainly rather than inventing a link.
 
+### Project Register
+
+The dedicated route `/projects` (bilingual) is the complete register of work — the "all projects" destination the home carousel and every case-study pager point to. It opens on a left-aligned masthead (Home return, Project Index kicker with a mono `N projects · N live · Since 2018` readout, a display headline over its luminous shadow, a one-line lede, and the shared stack filters), then lists every project as a scannable log row: a mono catalog ID that matches the case-study counter, a 16:10 screenshot plate over its own blurred ambient fill, the title with role and stack chips, and a status column carrying the live host behind the one green availability-family dot or a plain "No demo". Fading one-pixel hairlines divide the rows, each row resolves from blur into focus on scroll and lifts its plate on hover, and a glass contact band closes the page. Filtering narrows the log while catalog IDs stay canonical; the plate degrades quietly where a real screenshot is not yet available.
+
 ## Do's and Don'ts
 
 ### Do:

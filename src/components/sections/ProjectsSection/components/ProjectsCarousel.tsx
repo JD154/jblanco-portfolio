@@ -16,6 +16,11 @@ export interface CarouselProject {
   role: string;
   challenge: string;
   decision: string;
+  /** Terse one-line variants for the carousel fact sheet; the full-length
+   *  role/challenge/decision are reserved for the case-study detail page. */
+  roleShort?: string;
+  challengeShort?: string;
+  decisionShort?: string;
   /** Case-study detail page for this project. */
   href: string;
 }
@@ -125,9 +130,9 @@ export const ProjectsCarousel: FC<ProjectsCarouselProps> = ({ projects, t }) => 
   const eyebrow = active.techStack?.slice(0, 4).join(' · ') ?? t.featuredFallback;
   // Every case study uses the same additive evidence frame.
   const facts = [
-    { key: 'role', label: t.fields.role, value: active.role },
-    { key: 'challenge', label: t.fields.challenge, value: active.challenge },
-    { key: 'decision', label: t.fields.decision, value: active.decision },
+    { key: 'role', label: t.fields.role, value: active.roleShort ?? active.role },
+    { key: 'challenge', label: t.fields.challenge, value: active.challengeShort ?? active.challenge },
+    { key: 'decision', label: t.fields.decision, value: active.decisionShort ?? active.decision },
   ];
   const counter = String(activeIndex + 1).padStart(2, '0');
   const totalLabel = String(total).padStart(2, '0');

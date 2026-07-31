@@ -48,6 +48,43 @@
   color: var(--color-muted-foreground);
 }
 
+/* Bridge link to the dedicated /projects register. */
+.projects-section__all {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  margin-left: auto;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.projects-section__all:hover,
+.projects-section__all:focus-visible {
+  color: var(--color-foreground);
+}
+
+.projects-section__all-arrow {
+  transition: transform 0.25s ease;
+}
+
+.projects-section__all:hover .projects-section__all-arrow,
+.projects-section__all:focus-visible .projects-section__all-arrow {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-section__all-arrow {
+    transition: none;
+  }
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .projects-section {

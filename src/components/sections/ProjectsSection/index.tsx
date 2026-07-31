@@ -10,16 +10,19 @@ import { ProjectsCarousel } from './components/ProjectsCarousel';
 import { GlowingButton } from '@/components/general/GlowingButton';
 import { SectionToolbar } from '@/components/general/SectionToolbar';
 import type { LocalizedProject } from '@/i18n/projects';
-import type { Ui } from '@/i18n/ui';
+import type { Lang, Ui } from '@/i18n/ui';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectsSectionProps {
   projects: LocalizedProject[];
   t: Ui['projects'];
+  /** Locale for the "view full register" link to the dedicated /projects page. */
+  lang?: Lang;
 }
 
-export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
+export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t, lang = 'en' }) => {
+  const indexHref = lang === 'es' ? '/es/projects' : '/projects';
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const headerRef = useRevealOnScroll<HTMLDivElement>();
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -105,6 +108,12 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, t }) => {
             <p className="projects-section__empty">{t.empty}</p>
           )}
         </div>
+
+        {/* Bridge to the full register — this carousel features work; the index lists it all. */}
+        <a className="projects-section__all" href={indexHref}>
+          {t.viewAllWork}
+          <span className="projects-section__all-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
   );
