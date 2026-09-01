@@ -41,14 +41,9 @@ export const ui = {
       attribution: 'A line I borrowed from “Dreary Moon” — Big Black Delta',
       intro: [
         "From an early age I've felt a deep curiosity about the world — the kind that made me a self-taught learner long before it made me an engineer. Discovering programming in high school gave that restlessness a purpose, and I've been pointing it at the vast universe of technology ever since.",
-        "Eight years on, that same drive shapes how I work: the strategic architecture of complex web applications, where architectural rigor and user interaction converge. I don't just translate specs — I keep the design intent intact through implementation, elevating perceived quality with superior polish and fluid micro-interactions.",
+        'That curiosity shapes how I build. I look beyond the spec to preserve the intent behind each interaction, paying close attention to visual detail and motion.',
       ],
       belief: 'The key, I have always believed, is to never stop evolving — and I bring that mindset to everything I build.',
-      telemetry: {
-        value: '08',
-        unit: 'Years, self-taught',
-        since: 'Since 2018',
-      },
       areasLabel: 'Key Consulting Areas',
       areas: [
         {
@@ -72,7 +67,7 @@ export const ui = {
     experience: {
       label: 'Career Log',
       heading: 'The Trajectory',
-      intro: 'Eight years of front-end, read in reverse — from public platforms to design systems and data-rich products.',
+      intro: 'Platform modernization, reusable UI systems, and data visualization — a closer look at my contribution in each role.',
       present: 'Present',
       stackLabel: 'Stack',
       roles: [
@@ -249,14 +244,9 @@ export const ui = {
       attribution: 'Un verso que tomé prestado de “Dreary Moon” — Big Black Delta',
       intro: [
         'Desde muy temprano he sentido una profunda curiosidad por el mundo — la que me hizo autodidacta mucho antes que ingeniero. Descubrir la programación en el instituto le dio un propósito a esa inquietud, y desde entonces la he enfocado en el vasto universo de la tecnología.',
-        'Ocho años después, ese mismo impulso define cómo trabajo: la arquitectura estratégica de aplicaciones web complejas, donde convergen el rigor arquitectónico y la interacción con el usuario. No solo traduzco especificaciones — mantengo intacta la intención de diseño durante la implementación, elevando la calidad percibida con un pulido superior y micro-interacciones fluidas.',
+        'Esa curiosidad guía cómo construyo. Voy más allá de las especificaciones para preservar la intención de cada interacción, cuidando el detalle visual y el movimiento.',
       ],
       belief: 'Siempre he creído que la clave es no dejar nunca de evolucionar — y llevo esa mentalidad a todo lo que construyo.',
-      telemetry: {
-        value: '08',
-        unit: 'Años, autodidacta',
-        since: 'Desde 2018',
-      },
       areasLabel: 'Áreas clave de consultoría',
       areas: [
         {
@@ -280,7 +270,7 @@ export const ui = {
     experience: {
       label: 'Registro de carrera',
       heading: 'La trayectoria',
-      intro: 'Ocho años de front-end, en orden inverso — de plataformas públicas a sistemas de diseño y productos con datos densos.',
+      intro: 'Modernización de plataformas, sistemas de UI reutilizables y visualización de datos: mi contribución en cada etapa profesional.',
       present: 'Presente',
       stackLabel: 'Stack',
       roles: [
