@@ -19,7 +19,7 @@ export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ t }) => {
             heading is the display title below. */}
         <SectionToolbar as="span" label={t.label} reveal="unfold" spacing="md" />
 
-        {/* Lede — the human story (left) + a quiet career readout (right) */}
+        {/* Lede — the human story and working approach */}
         <div className="about-me-section__lede">
           <div className="about-me-section__story">
             <h2 className="about-me-section__title" data-reveal="unfold" style={{ '--reveal-i': 1 } as CSSProperties}>
@@ -52,17 +52,6 @@ export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ t }) => {
               {t.belief}
             </p>
           </div>
-
-          <aside
-            className="about-me-section__telemetry"
-            data-reveal="unfold"
-            style={{ '--reveal-i': 2 } as CSSProperties}
-            aria-label={`${t.telemetry.value} ${t.telemetry.unit}`}
-          >
-            <span className="about-me-section__telemetry-value">{t.telemetry.value}</span>
-            <span className="about-me-section__telemetry-unit">{t.telemetry.unit}</span>
-            <span className="about-me-section__telemetry-since">{t.telemetry.since}</span>
-          </aside>
         </div>
 
         {/* Key consulting areas — instrument grid, the "what I do now" */}
