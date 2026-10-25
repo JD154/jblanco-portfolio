@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import type { FC, FocusEvent, KeyboardEvent, PointerEvent } from 'react';
+import { useEffect, useState } from 'react';
+import type { FC } from 'react';
 import { ConfidentialPlate } from '@/components/general/ConfidentialPlate';
 import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
 import type { LocalizedProject } from '@/i18n/projects';
@@ -13,20 +13,15 @@ interface SelectedWorkProps {
 }
 
 // Escape hides the tooltip until the pointer or focus leaves the image link.
-const dismissTooltip = (event: KeyboardEvent<HTMLAnchorElement>) => {
-  if (event.key === 'Escape') event.currentTarget.dataset.dismissed = 'true';
+// Hover alone never focuses the link, so the key is read on the window.
+const dismissTooltip = (event: KeyboardEvent) => {
+  if (event.key !== 'Escape') return;
+  for (const link of document.querySelectorAll<HTMLElement>('.selected-work__image-link:is(:hover, :focus)')) {
+    link.dataset.dismissed = 'true';
+  }
 };
-const resetTooltip = (event: PointerEvent<HTMLAnchorElement> | FocusEvent<HTMLAnchorElement>) => {
+const resetTooltip = (event: { currentTarget: HTMLAnchorElement }) => {
   delete event.currentTarget.dataset.dismissed;
-};
-// Hover alone never focuses the link, so listen on the window while the pointer is over it.
-const dismissOnHover = (event: PointerEvent<HTMLAnchorElement>) => {
-  const link = event.currentTarget;
-  const onKey = (e: globalThis.KeyboardEvent) => {
-    if (e.key === 'Escape') link.dataset.dismissed = 'true';
-  };
-  window.addEventListener('keydown', onKey);
-  link.addEventListener('pointerleave', () => window.removeEventListener('keydown', onKey), { once: true });
 };
 
 /**
@@ -41,6 +36,11 @@ export const SelectedWork: FC<SelectedWorkProps> = ({ projects, catalogHref, t }
   const [active, setActive] = useState(() =>
     Math.max(0, projects.findIndex((project) => project.visibility !== 'confidential')),
   );
+
+  useEffect(() => {
+    window.addEventListener('keydown', dismissTooltip);
+    return () => window.removeEventListener('keydown', dismissTooltip);
+  }, []);
 
   return (
     <div className="selected-work">
@@ -89,8 +89,6 @@ export const SelectedWork: FC<SelectedWorkProps> = ({ projects, catalogHref, t }
                   className="selected-work__image-link"
                   href={project.href}
                   aria-label={t.caseStudyAria.replace('{title}', project.title)}
-                  onKeyDown={dismissTooltip}
-                  onPointerEnter={dismissOnHover}
                   onPointerLeave={resetTooltip}
                   onBlur={resetTooltip}
                 >

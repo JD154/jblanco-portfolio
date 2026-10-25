@@ -160,7 +160,7 @@ The palette moves between Deep Void and Polar Light, using Orbital Mist and fine
 - **Title** (General Sans, 600, 0.875rem, 0.14em, uppercase): Refined section toolbar labels — compact, wide-tracked, semibold rather than heavy — paired with a small controlled-halo dot and a fading hairline divider.
 - **Body** (General Sans, 400, 1.0625rem, 1.65): Project descriptions and supporting copy, typically constrained to about 34rem.
 - **Label** (General Sans, 600, 0.6875rem, 0.12em, uppercase): Availability, metadata, and compact interface language.
-- **Mono** (JetBrains Mono, 500, 1.0625rem, 1.5): Technical readouts — contact addresses, the oversized project counter, the register catalog IDs and live hosts, and the Career Log period and metric measurements.
+- **Mono** (JetBrains Mono, 500, 1.0625rem, 1.5): Technical readouts — contact addresses, the numbered project index, the register catalog IDs and live hosts, and the Career Log period and metric measurements.
 
 ### Named Rules
 

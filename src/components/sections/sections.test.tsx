@@ -111,7 +111,9 @@ test('drops the old carousel controls and keeps case-study links to image and ti
     expect(links).toHaveLength(2);
     expect(titleLink?.textContent).toContain(projects[i].title);
     expect(imageLinks).toHaveLength(1);
-    expect(imageLinks[0].parentElement?.querySelector('img, [role="img"]')).not.toBeNull();
+    const artifact = imageLinks[0].closest('.selected-work__artifact');
+    expect(artifact?.parentElement).toBe(article);
+    expect(artifact?.querySelector('img, [role="img"]')).not.toBeNull();
     for (const copy of article.querySelectorAll('p, dl, .selected-work__stack')) {
       expect(copy.closest('a')).toBeNull();
     }

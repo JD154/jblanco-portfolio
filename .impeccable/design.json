@@ -208,7 +208,7 @@
       },
       "mono": {
         "displayName": "Instrument Mono",
-        "purpose": "JetBrains Mono for technical readouts: contact addresses, the oversized project counter, register catalog IDs and live hosts, and the Career Log period and metric measurements."
+        "purpose": "JetBrains Mono for technical readouts: contact addresses, the numbered project index, register catalog IDs and live hosts, and the Career Log period and metric measurements."
       }
     },
     "shadows": [
@@ -230,7 +230,7 @@
       {
         "name": "active-orbit",
         "value": "0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)",
-        "purpose": "Foreground halo around active project selection or the traveling tracer node on the Career Log rail."
+        "purpose": "Foreground halo around the traveling tracer node on the Career Log rail."
       }
     ],
     "motion": [
