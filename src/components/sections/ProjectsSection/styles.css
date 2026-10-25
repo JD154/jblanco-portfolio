@@ -29,60 +29,29 @@
 
 /* Header uses the shared <SectionToolbar> (src/components/general/SectionToolbar). */
 
-/* Filter Section */
-.projects-section__filters {
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.projects-section__filter-btn {
-  min-height: 2.75rem;
-}
-
-.projects-section__empty {
-  text-align: center;
-  padding: 4rem 1rem;
-  font-size: 1.0625rem;
-  color: var(--color-muted-foreground);
-}
-
-/* Bridge link to the dedicated /projects register. */
-.projects-section__all {
-  display: flex;
-  width: fit-content;
+/* Trailing catalog link in the toolbar ("View all N projects ↗"). */
+.projects-section__catalog {
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: clamp(1.5rem, 3vw, 2.25rem);
-  margin-left: auto;
+  min-height: 2.75rem;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--color-muted-foreground);
   text-decoration: none;
   transition: color 0.25s ease;
 }
 
-.projects-section__all:hover,
-.projects-section__all:focus-visible {
+.projects-section__catalog:hover,
+.projects-section__catalog:focus-visible {
   color: var(--color-foreground);
 }
 
-.projects-section__all-arrow {
-  transition: transform 0.25s ease;
-}
-
-.projects-section__all:hover .projects-section__all-arrow,
-.projects-section__all:focus-visible .projects-section__all-arrow {
-  transform: translateX(4px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .projects-section__all-arrow {
-    transition: none;
-  }
+.projects-section__catalog:focus-visible {
+  outline: 2px solid var(--color-foreground);
+  outline-offset: 4px;
 }
 
 /* Responsive design */
@@ -91,19 +60,4 @@
     min-height: auto;
     padding: 2rem 0;
   }
-
-}
-
-@media (max-width: 480px) {
-  .projects-section__filters {
-    gap: 0.5rem;
-  }
-}
-
-/* Scroll-driven "unfold" — the showcase deploys open as it enters view */
-.projects-section__carousel-wrap {
-  width: 100%;
-  min-width: 0;
-  transform-style: preserve-3d;
-  perspective: 1400px;
 }

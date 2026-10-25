@@ -1,0 +1,332 @@
+/* Selected Work — side index + project viewer (DESIGN.md › Project Observatory).
+   No rail, line or traveling dot: Career Log owns the timeline grammar. */
+.selected-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .selected-work {
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+
+/* ── Index ─────────────────────────────────────────────────────────────── */
+.selected-work__index {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-self: start;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+@media (min-width: 1024px) {
+  .selected-work__index {
+    flex-direction: column;
+    overflow: visible;
+  }
+}
+
+.selected-work__option {
+  position: relative;
+  display: flex;
+  flex: 0 0 180px;
+  gap: 14px;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-muted-foreground);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 180ms ease-out, color 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+@media (min-width: 1024px) {
+  .selected-work__option {
+    flex: none;
+    padding: 18px 20px;
+  }
+}
+
+.selected-work__number {
+  padding-top: 4px;
+  font: 11px var(--font-mono);
+}
+
+.selected-work__option:is(:hover, :focus-visible) {
+  color: var(--color-foreground);
+  background: color-mix(in srgb, var(--color-foreground) 5%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-foreground) 12%, transparent);
+}
+
+.selected-work__option[aria-pressed='true'] {
+  color: var(--color-foreground);
+  background: color-mix(in srgb, var(--color-foreground) 7%, transparent);
+}
+
+.selected-work__option:active {
+  background: color-mix(in srgb, var(--color-foreground) 12%, transparent);
+}
+
+.selected-work__more {
+  flex: 0 0 180px;
+  align-self: center;
+  padding: 12px;
+  font-size: 12px;
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  transition: color 180ms ease-out;
+}
+
+@media (min-width: 1024px) {
+  .selected-work__more {
+    flex: none;
+    align-self: auto;
+    margin-top: 8px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+.selected-work__more:is(:hover, :focus-visible) {
+  color: var(--color-foreground);
+}
+
+/* Arrow nudge shared by every "↗" link (catalog links in the toolbar too). */
+.selected-work__more > span,
+.projects-section__catalog > span {
+  display: inline-block;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.selected-work__more:is(:hover, :focus-visible) > span,
+.projects-section__catalog:is(:hover, :focus-visible) > span {
+  transform: translate(2px, -2px);
+}
+
+/* Inset outlines: the index row scrolls (overflow clips) and the artifact clips. */
+.selected-work__option:focus-visible,
+.selected-work__more:focus-visible,
+.selected-work__image-link:focus-visible,
+.selected-work__title a:focus-visible {
+  outline: 2px solid var(--color-foreground);
+  outline-offset: -4px;
+}
+
+/* ── Viewer ────────────────────────────────────────────────────────────── */
+/* One shared grid cell reserves the tallest project's natural height. */
+.selected-work__viewer {
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.selected-work__project {
+  grid-area: 1 / 1;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.selected-work__project[data-active='false'] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.selected-work__artifact {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  background: var(--color-secondary-background);
+}
+
+.selected-work__artifact img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.selected-work__image-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.selected-work__tooltip {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font: 12px/1.5 var(--font-sans);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(3px);
+  transition: opacity 180ms ease-out, transform 180ms ease-out, visibility 180ms;
+}
+
+.selected-work__image-link:is(:hover, :focus-visible):not([data-dismissed]) .selected-work__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Glow: ported from the preview attempt; status unresolved. The static border
+   and focus outline work without it. */
+.selected-work__glow {
+  position: absolute;
+  inset: 2px;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.selected-work__glow .glow::after {
+  background-attachment: scroll;
+  background-image: linear-gradient(var(--color-foreground), var(--color-foreground));
+}
+
+.selected-work__title {
+  margin: 28px 0;
+  font: 700 clamp(2rem, 3.7vw, 3.5rem) / 1.04 var(--font-display);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.selected-work__title a {
+  display: block;
+  position: relative;
+  padding-right: 36px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.selected-work__title-arrow {
+  position: absolute;
+  top: 0.25em;
+  right: 0;
+  font: 24px/1 var(--font-sans);
+  color: var(--color-muted-foreground);
+  transition: transform 220ms ease-out, color 220ms ease-out;
+}
+
+.selected-work__title a:is(:hover, :focus-visible) .selected-work__title-arrow {
+  color: var(--color-foreground);
+  transform: translate(2px, -2px);
+}
+
+.selected-work__details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
+
+.selected-work__details p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-muted-foreground);
+}
+
+.selected-work__stack {
+  display: block;
+  font: 11px/1.8 var(--font-mono);
+  color: var(--color-muted-foreground);
+}
+
+.selected-work__details dl {
+  margin: 0;
+}
+
+.selected-work__details dl > div {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.selected-work__details dt {
+  padding-top: 3px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.selected-work__details dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Motion: only the revealed work settles; selection stays anchored ──── */
+@media (prefers-reduced-motion: no-preference) {
+  .selected-work__project[data-active='true'] .selected-work__artifact {
+    animation: selected-work-resolve 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .selected-work__project[data-active='true'] :is(.selected-work__title, .selected-work__details) {
+    animation: selected-work-settle 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .selected-work__project[data-active='true'] .selected-work__details {
+    animation-delay: 60ms;
+  }
+}
+
+@keyframes selected-work-resolve {
+  from {
+    opacity: 0.65;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes selected-work-settle {
+  from {
+    opacity: 0.8;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The global `.projects-section *` rule drops transitions/animations under
+   reduced motion but not transforms: reset the nudges here. */
+@media (prefers-reduced-motion: reduce) {
+  .selected-work__tooltip,
+  .selected-work__title-arrow,
+  .selected-work__more > span,
+  .projects-section__catalog > span {
+    transition: none;
+    transform: none;
+  }
+
+  .selected-work__title a:is(:hover, :focus-visible) .selected-work__title-arrow,
+  .selected-work__more:is(:hover, :focus-visible) > span,
+  .projects-section__catalog:is(:hover, :focus-visible) > span,
+  .selected-work__image-link:is(:hover, :focus-visible):not([data-dismissed]) .selected-work__tooltip {
+    transform: none;
+  }
+}

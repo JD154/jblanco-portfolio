@@ -187,7 +187,7 @@ The depth philosophy is **Capas orbitales**. Tonal gradients and translucent gla
 - **Ambient Panel** (`0 4px 20px rgba(0, 0, 0, 0.08)`): Low resting separation for compact translucent cards.
 - **Interactive Lift** (`0 8px 30px rgba(0, 0, 0, 0.12)`): Hover elevation paired with a 2px to 4px upward translation.
 - **Showcase Depth** (`0 30px 70px rgba(0, 0, 0, 0.28)`): Reserved for the featured project image, the dominant visual artifact.
-- **Active Orbit** (`0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)`): Focused halo around the selected project card, a nearby interactive edge, or the single traveling tracer node on the Career Log rail.
+- **Active Orbit** (`0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)`): Focused halo around a nearby interactive edge, or the single traveling tracer node on the Career Log rail.
 - **Luminous Type:** A layered foreground-colored text shadow used only on major headings.
 
 ### Named Rules
@@ -237,9 +237,13 @@ Components are **tactile and precise**: neutral at rest, decisively responsive u
 
 ### Project Observatory
 
-The signature project carousel is a 40/60 split between uppercase project narrative and a 16:10 featured image. A blurred enlargement of the same image creates ambient fill behind the contained screenshot. A masked filmstrip supports direct selection; inactive cards dim, the active card receives a foreground ring and halo, and controls combine circular arrows, a thin progress track, and an oversized numeric counter.
+The home section is **Selected Work**: a narrow index of the featured projects beside a single project viewer. On desktop (≥1024px) the index is a 260px column of numbered options (mono `01`, `02`, …) with an "Explore more projects ↗" link under a hairline; below 1024px the index becomes a horizontally scrolling row and the viewer stacks beneath it. The toolbar's trailing slot carries a "View all N projects ↗" link, so the catalog is reachable from the section header and from the index.
 
-Motion follows focus: the showcase unfolds from perspective on entry, new copy settles upward, imagery resolves from blur and scale, and the active rail card scrolls into view. All nonessential transitions are removed when reduced motion is requested.
+The viewer shows one project: a 16:10 artifact (the screenshot, or the redacted-dossier plate for confidential work) in a bordered 24px frame, the project title in the display voice, then description, stack, and a Role / Challenge / Decision fact list. The artifact and the title are the only links to the case study; the index options are buttons (`aria-pressed`) that change the selection without navigating. Hovering or focusing the artifact reveals a "View case study ↗" tooltip that Escape dismisses until the pointer or focus leaves.
+
+All projects share one grid cell, so the section keeps the tallest project's natural height and switching never moves the content below. Inactive articles stay in layout but are `visibility: hidden`, `inert` and `aria-hidden` — never the `hidden` attribute, which Tailwind's preflight turns into `display: none !important`. Selection uses a quiet foreground tint rather than a ring; there is no rail, line or traveling dot, because the Career Log owns the timeline grammar. Focus outlines are inset so the scrolling index and the clipped artifact never cut them off.
+
+Motion is limited to the revealed work: the artifact resolves from a slight blur and the title and details settle upward by a few pixels, only when reduced motion is not requested. Arrow nudges and the tooltip transform are explicitly reset under reduced motion.
 
 ### Experience Career Log
 
@@ -259,7 +263,7 @@ Each project extends into a dedicated case study at `/projects/<slug>` (bilingua
 
 ### Project Register
 
-The dedicated route `/projects` (bilingual) is the complete register of work — the "all projects" destination the home carousel and every case-study pager point to. It opens on a left-aligned masthead (Home return, Project Index kicker with a mono `N projects · N live · Since 2018` readout, a display headline over its luminous shadow, a one-line lede, and the shared stack filters), then lists every project as a scannable log row: a mono catalog ID that matches the case-study counter, a 16:10 screenshot plate over its own blurred ambient fill — or, for confidential client work, the redacted-dossier plate in its place — the title with role and stack chips, and a status column carrying the live host behind a monochrome lit signal node, a bordered "Under NDA" marker for confidential work, or a plain "No demo". Fading one-pixel hairlines divide the rows, each row resolves from blur into focus on scroll and lifts its plate on hover, and a glass contact band closes the page. Filtering narrows the log while catalog IDs stay canonical; the plate falls back to the redacted dossier for NDA work and a quiet placeholder where a real screenshot is not yet available. Green never appears here — it is reserved site-wide for availability.
+The dedicated route `/projects` (bilingual) is the complete register of work — the "all projects" destination the home Selected Work section and every case-study pager point to. It opens on a left-aligned masthead (Home return, Project Index kicker with a mono `N projects · N live · Since 2018` readout, a display headline over its luminous shadow, a one-line lede, and the shared stack filters), then lists every project as a scannable log row: a mono catalog ID that matches the case-study counter, a 16:10 screenshot plate over its own blurred ambient fill — or, for confidential client work, the redacted-dossier plate in its place — the title with role and stack chips, and a status column carrying the live host behind a monochrome lit signal node, a bordered "Under NDA" marker for confidential work, or a plain "No demo". Fading one-pixel hairlines divide the rows, each row resolves from blur into focus on scroll and lifts its plate on hover, and a glass contact band closes the page. Filtering narrows the log while catalog IDs stay canonical; the plate falls back to the redacted dossier for NDA work and a quiet placeholder where a real screenshot is not yet available. Green never appears here — it is reserved site-wide for availability.
 
 ## Do's and Don'ts
 
