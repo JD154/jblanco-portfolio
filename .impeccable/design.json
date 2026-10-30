@@ -208,7 +208,7 @@
       },
       "mono": {
         "displayName": "Instrument Mono",
-        "purpose": "JetBrains Mono for technical readouts: contact addresses, the oversized project counter, register catalog IDs and live hosts, and the Career Log period and metric measurements."
+        "purpose": "JetBrains Mono for technical readouts: contact addresses, the numbered project index, register catalog IDs and live hosts, and the Career Log period and metric measurements."
       }
     },
     "shadows": [
@@ -230,7 +230,7 @@
       {
         "name": "active-orbit",
         "value": "0 0 22px color-mix(in srgb, var(--color-foreground) 22%, transparent)",
-        "purpose": "Foreground halo around active project selection or the traveling tracer node on the Career Log rail."
+        "purpose": "Foreground halo around the traveling tracer node on the Career Log rail."
       }
     ],
     "motion": [
@@ -242,7 +242,7 @@
       {
         "name": "spatial-standard",
         "value": "400ms cubic-bezier(0.4, 0, 0.2, 1)",
-        "purpose": "Card lift, carousel selection, and directional motion."
+        "purpose": "Card lift, project selection, and directional motion."
       },
       {
         "name": "focus-settle",
@@ -326,20 +326,6 @@
       "css": ".ds-clog { list-style:none; margin:0; padding:0; position:relative; font-family:var(--font-sans); } .ds-clog-entry { display:grid; grid-template-columns:9rem minmax(0,1fr); column-gap:2rem; position:relative; } .ds-clog-readout { display:flex; flex-direction:column; align-items:flex-end; gap:.4rem; padding-top:.15rem; text-align:right; } .ds-clog-period { font:500 .75rem/1.4 var(--font-mono); letter-spacing:.02em; color:hsl(var(--muted-foreground)); white-space:nowrap; } .ds-clog-metric { font:600 .9375rem/1.2 var(--font-mono); letter-spacing:-.01em; color:hsl(var(--foreground)); } .ds-clog-body { position:relative; padding-left:2.25rem; padding-bottom:2rem; border-left:1px solid hsl(var(--border)); } .ds-clog-node { position:absolute; left:-6px; top:.4rem; width:11px; height:11px; border-radius:50%; background:hsl(var(--background)); border:1px solid color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); } .ds-clog-tracer { position:absolute; left:calc(9rem + 2rem - 6px); top:.4rem; width:11px; height:11px; border-radius:50%; background:hsl(var(--foreground)); box-shadow:0 0 0 4px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent),0 0 22px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); z-index:2; } .ds-clog-role { margin:0; font:700 1.5rem/1.1 var(--font-display); letter-spacing:-.01em; text-transform:uppercase; color:hsl(var(--foreground)); } .ds-clog-company { margin:.35rem 0 0; display:flex; align-items:center; gap:.75rem; font:600 .6875rem/1 var(--font-sans); letter-spacing:.12em; text-transform:uppercase; color:hsl(var(--muted-foreground)); } .ds-clog-present { padding:.2rem .6rem; border:1px solid color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); border-radius:9999px; font-size:.625rem; letter-spacing:.14em; color:hsl(var(--foreground)); } .ds-clog-summary { margin:1rem 0 0; max-width:42rem; font:400 1.0625rem/1.65 var(--font-sans); color:hsl(var(--muted-foreground)); } .ds-clog-stack { list-style:none; margin:1.25rem 0 0; padding:0; display:flex; flex-wrap:wrap; gap:.5rem; } .ds-clog-stack li { padding:.3rem .65rem; border:1px solid hsl(var(--border)); border-radius:.5rem; background:hsla(var(--card),.9); backdrop-filter:blur(20px); font:500 .75rem/1 var(--font-mono); color:hsl(var(--muted-foreground)); transition:border-color .3s ease,color .3s ease; } .ds-clog-entry:hover .ds-clog-stack li { border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); color:hsl(var(--foreground)); }"
     },
     {
-      "name": "Project Thumbnail",
-      "kind": "card",
-      "description": "Filmstrip card that dims at rest and gains an orbit ring when selected.",
-      "html": "<button class=\"ds-project-card\" aria-current=\"true\"><span class=\"ds-project-art\"></span><strong>IR MANAGEMENT</strong></button>",
-      "css": ".ds-project-card { position:relative; width:210px; height:128px; overflow:hidden; padding:0; border:1px solid hsl(var(--foreground)); border-radius:1rem; background:var(--secondary-background); color:#fff; box-shadow:0 16px 36px rgba(0,0,0,.3),0 0 0 2px hsl(var(--foreground)),0 0 22px color-mix(in srgb,hsl(var(--foreground)) 22%,transparent); cursor:pointer; transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease; } .ds-project-art { position:absolute; inset:0; background:radial-gradient(circle at 70% 25%,color-mix(in srgb,hsl(var(--foreground)) 18%,transparent),transparent 25%),linear-gradient(135deg,hsl(var(--secondary)),hsl(var(--background))); } .ds-project-card::after { content:''; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.85)); } .ds-project-card strong { position:absolute; z-index:1; inset:auto .75rem .65rem; text-align:left; font:700 .8125rem/1.2 var(--font-sans); letter-spacing:.02em; } .ds-project-card:hover { transform:translateY(-6px); box-shadow:0 20px 42px rgba(0,0,0,.32),0 0 0 2px hsl(var(--foreground)); } .ds-project-card:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
-    },
-    {
-      "name": "Carousel Arrow",
-      "kind": "button",
-      "description": "Circular directional control for moving through observed work.",
-      "html": "<button class=\"ds-carousel-arrow\" aria-label=\"Next project\">→</button>",
-      "css": ".ds-carousel-arrow { display:grid; place-items:center; width:2.75rem; height:2.75rem; padding:0; border:1px solid hsl(var(--border)); border-radius:50%; background:hsla(var(--card),.9); color:hsl(var(--foreground)); font:400 1.1rem/1 var(--font-sans); cursor:pointer; transition:background .3s ease,border-color .3s ease,transform .3s ease; } .ds-carousel-arrow:hover { border-color:color-mix(in srgb,hsl(var(--foreground)) 45%,transparent); transform:scale(1.05); } .ds-carousel-arrow:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-carousel-arrow:active { transform:scale(.97); }"
-    },
-    {
       "name": "Contact Channel Card",
       "kind": "card",
       "refersTo": "glass-card",
@@ -367,7 +353,7 @@
       "name": "Confidential Plate",
       "kind": "custom",
       "refersTo": "project-showcase",
-      "description": "Redacted-dossier plate that stands in for a screenshot on NDA client work (visibility: confidential). An obscured, blurred product surface behind a sharp, neutral CONFIDENTIAL marker — never the reserved availability green. Replaces the project image across carousel, register row, and case-study hero.",
+      "description": "Redacted-dossier plate that stands in for a screenshot on NDA client work (visibility: confidential). An obscured, blurred product surface behind a sharp, neutral CONFIDENTIAL marker — never the reserved availability green. Replaces the project image across the Selected Work viewer, register row, and case-study hero.",
       "html": "<div class=\"ds-confidential-plate\" role=\"img\" aria-label=\"Confidential client work — no public preview available\">\n  <div class=\"ds-cp-screen\" aria-hidden=\"true\">\n    <div class=\"ds-cp-chrome\"><span></span><span></span><span></span><i></i></div>\n    <div class=\"ds-cp-body\">\n      <div class=\"ds-cp-side\"><b></b><b class=\"s78\"></b><b class=\"s64\"></b></div>\n      <div class=\"ds-cp-main\"><u class=\"w80\"></u><u class=\"w60\"></u><u class=\"w70\"></u>\n        <div class=\"ds-cp-chart\"><s style=\"height:45%\"></s><s style=\"height:72%\"></s><s style=\"height:38%\"></s><s style=\"height:86%\"></s><s style=\"height:60%\"></s></div>\n      </div>\n    </div>\n  </div>\n  <span class=\"ds-cp-scrim\" aria-hidden=\"true\"></span>\n  <span class=\"ds-cp-marker\" aria-hidden=\"true\">\n    <span class=\"ds-cp-pill\"><svg viewBox=\"0 0 12 12\" width=\"13\" height=\"13\"><rect x=\"0.5\" y=\"0.5\" width=\"11\" height=\"11\" rx=\"1.5\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\"0.6\"/><path d=\"M2 8.5 8.5 2M4.5 10 10 4.5\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/></svg>CONFIDENTIAL</span>\n    <span class=\"ds-cp-note\">Client work · under NDA</span>\n  </span>\n</div>",
       "css": ".ds-confidential-plate{position:relative;width:360px;height:225px;border-radius:24px;overflow:hidden;border:1px solid var(--color-border);background:radial-gradient(120% 130% at 50% -10%, color-mix(in srgb, var(--color-foreground) 6%, transparent), transparent 60%), var(--color-secondary-background);isolation:isolate;font-family:JetBrains Mono Variable, JetBrains Mono, ui-monospace, monospace}\n.ds-cp-screen{position:absolute;inset:27px 29px;display:flex;flex-direction:column;gap:12px;padding:15px;border-radius:12px;border:1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);background:color-mix(in srgb, var(--color-foreground) 5%, transparent);filter:blur(2.4px);opacity:.9}\n.ds-cp-chrome{display:flex;align-items:center;gap:7px}\n.ds-cp-chrome span{width:8px;height:8px;border-radius:50%;background:color-mix(in srgb, var(--color-foreground) 22%, transparent)}\n.ds-cp-chrome i{margin-left:6px;flex:1;max-width:55%;height:11px;border-radius:999px;background:color-mix(in srgb, var(--color-foreground) 12%, transparent)}\n.ds-cp-body{display:flex;gap:14px;flex:1;min-height:0}\n.ds-cp-side{display:flex;flex-direction:column;gap:10px;width:22%;padding-top:3px}\n.ds-cp-side b{height:9px;border-radius:999px;background:color-mix(in srgb, var(--color-foreground) 15%, transparent)}\n.ds-cp-side b.s78{width:78%}.ds-cp-side b.s64{width:64%}\n.ds-cp-main{display:flex;flex-direction:column;gap:11px;flex:1;min-width:0}\n.ds-cp-main u{height:10px;border-radius:999px;background:color-mix(in srgb, var(--color-foreground) 20%, transparent)}\n.ds-cp-main u.w80{width:80%}.ds-cp-main u.w60{width:58%}.ds-cp-main u.w70{width:70%}\n.ds-cp-chart{margin-top:auto;display:flex;align-items:flex-end;gap:8px;height:34%}\n.ds-cp-chart s{flex:1;border-radius:3px 3px 0 0;background:color-mix(in srgb, var(--color-foreground) 16%, transparent)}\n.ds-cp-scrim{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(90% 70% at 50% 46%, transparent, color-mix(in srgb, var(--color-background) 30%, transparent) 100%), repeating-linear-gradient(-45deg, transparent 0 7px, color-mix(in srgb, var(--color-foreground) 4%, transparent) 7px 8px);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--color-foreground) 6%, transparent)}\n.ds-cp-marker{position:absolute;inset:auto 0 0 0;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:22px}\n.ds-cp-pill{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;border:1px solid color-mix(in srgb, var(--color-foreground) 26%, transparent);background:color-mix(in srgb, var(--color-background) 62%, transparent);backdrop-filter:blur(6px);font-size:14px;font-weight:600;letter-spacing:.16em;color:hsl(var(--foreground))}\n.ds-cp-pill svg{color:color-mix(in srgb, var(--color-foreground) 62%, transparent)}\n.ds-cp-note{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-foreground) 62%, transparent)}"
     }

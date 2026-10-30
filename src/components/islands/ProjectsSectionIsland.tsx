@@ -5,14 +5,15 @@ import type { Lang, Ui } from '@/i18n/ui';
 
 interface ProjectsSectionIslandProps {
   projects: LocalizedProject[];
+  projectCount: number;
   t: Ui['projects'];
   lang?: Lang;
 }
 
-export function ProjectsSectionIsland({ projects, t, lang }: ProjectsSectionIslandProps) {
+export function ProjectsSectionIsland({ projects, projectCount, t, lang }: ProjectsSectionIslandProps) {
   return (
     <ThemeProvider>
-      <ProjectsSection projects={projects} t={t} lang={lang} />
+      <ProjectsSection projects={projects} projectCount={projectCount} t={t} lang={lang} />
     </ThemeProvider>
   );
 }

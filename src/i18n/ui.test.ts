@@ -35,17 +35,14 @@ test('provides complete English and Spanish UI translations', () => {
       t.projects.label,
       t.projects.filterAll,
       t.projects.empty,
-      t.projects.viewProject,
-      t.projects.viewProjectAria,
-      t.projects.demoUnavailable,
-      t.projects.previousAria,
-      t.projects.nextAria,
-      t.projects.featuredFallback,
+      t.projects.viewAllCount,
+      t.projects.exploreMore,
+      t.projects.indexAria,
+      t.projects.caseStudyTooltip,
+      t.projects.caseStudyAria,
       t.projects.fields.role,
       t.projects.fields.challenge,
       t.projects.fields.decision,
-      t.projects.explore,
-      t.projects.viewing,
       t.contact.label,
       t.contact.subtitle,
       t.notFound.title,
@@ -66,7 +63,7 @@ test('provides complete English and Spanish UI translations', () => {
   expect(languageNames.es).toBe('Español');
   expect(es.header.signature).toBe('Soy JB');
   expect(es.about.label).toBe('Sobre mí');
-  expect(es.projects.label).toBe('Trabajo destacado');
+  expect(es.projects.label).toBe('Trabajo seleccionado');
   expect(es.contact.label).toBe('Contacto');
   expect(es.header.ctaCv).toBe('Descargar CV');
   expect(es.nav.theme.light).toBe('Claro');
@@ -81,10 +78,24 @@ test('uses the approved Task 3 SEO, quote, and project CTA copy', () => {
   expect(en.seo.description).toBe('Portfolio of Jesus Blanco, Senior Frontend Consultant.');
   expect(es.seo.title).toBe('Jesus Blanco — Consultor Frontend Senior');
   expect(es.about.heading).toBe('Una evolución, el único camino');
-  expect(en.projects.viewProject).toBe('View Project →');
-  expect(en.projects.demoUnavailable).toBe('Demo Unavailable');
-  expect(es.projects.viewProject).toBe('Ver proyecto →');
-  expect(es.projects.demoUnavailable).toBe('Demo no disponible');
+  expect(en.projects).toMatchObject({
+    label: 'Selected work',
+    viewAllCount: 'View all {total} projects',
+    exploreMore: 'Explore more projects',
+    indexAria: 'Choose project',
+    caseStudyTooltip: 'View case study',
+    caseStudyAria: 'View case study: {title}',
+    fields: { role: 'Role', challenge: 'Challenge', decision: 'Decision' },
+  });
+  expect(es.projects).toMatchObject({
+    label: 'Trabajo seleccionado',
+    viewAllCount: 'Ver los {total} proyectos',
+    exploreMore: 'Explorar más proyectos',
+    indexAria: 'Elegir proyecto',
+    caseStudyTooltip: 'Ver caso de estudio',
+    caseStudyAria: 'Ver caso de estudio: {title}',
+    fields: { role: 'Rol', challenge: 'Reto', decision: 'Decisión' },
+  });
 });
 
 test('keeps localized project records structurally aligned', () => {

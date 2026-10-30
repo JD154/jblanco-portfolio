@@ -124,7 +124,12 @@ export const ui = {
       ],
     },
     projects: {
-      label: 'Featured Work',
+      label: 'Selected work',
+      viewAllCount: 'View all {total} projects',
+      exploreMore: 'Explore more projects',
+      indexAria: 'Choose project',
+      caseStudyTooltip: 'View case study',
+      caseStudyAria: 'View case study: {title}',
       filterAll: 'All Projects',
       filters: {
         react: 'React',
@@ -132,21 +137,11 @@ export const ui = {
         typescript: 'TypeScript',
       },
       empty: 'No projects match this filter yet.',
-      viewProject: 'View Project →',
-      viewProjectAria: 'View',
-      demoUnavailable: 'Demo Unavailable',
-      previousAria: 'Previous project',
-      nextAria: 'Next project',
-      featuredFallback: 'Featured Project',
-      explore: 'Select a case study',
-      viewing: 'Viewing',
       fields: {
         role: 'Role',
         challenge: 'Challenge',
-        decision: 'Key decision',
+        decision: 'Decision',
       },
-      viewCaseStudy: 'View case study →',
-      viewAllWork: 'View all work',
       // Redacted-dossier plate shown for NDA client work that can't ship a public screenshot.
       confidential: {
         marker: 'Confidential',
@@ -327,7 +322,12 @@ export const ui = {
       ],
     },
     projects: {
-      label: 'Trabajo destacado',
+      label: 'Trabajo seleccionado',
+      viewAllCount: 'Ver los {total} proyectos',
+      exploreMore: 'Explorar más proyectos',
+      indexAria: 'Elegir proyecto',
+      caseStudyTooltip: 'Ver caso de estudio',
+      caseStudyAria: 'Ver caso de estudio: {title}',
       filterAll: 'Todos los proyectos',
       filters: {
         react: 'React',
@@ -335,21 +335,11 @@ export const ui = {
         typescript: 'TypeScript',
       },
       empty: 'Aún no hay proyectos que coincidan con este filtro.',
-      viewProject: 'Ver proyecto →',
-      viewProjectAria: 'Ver',
-      demoUnavailable: 'Demo no disponible',
-      previousAria: 'Proyecto anterior',
-      nextAria: 'Proyecto siguiente',
-      featuredFallback: 'Proyecto destacado',
-      explore: 'Selecciona un caso de estudio',
-      viewing: 'Viendo',
       fields: {
         role: 'Rol',
         challenge: 'Reto',
-        decision: 'Decisión clave',
+        decision: 'Decisión',
       },
-      viewCaseStudy: 'Ver caso de estudio →',
-      viewAllWork: 'Ver todo el trabajo',
       // Placa de dossier redactado para trabajo de cliente bajo NDA sin captura pública.
       confidential: {
         marker: 'Confidencial',

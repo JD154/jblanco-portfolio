@@ -21,7 +21,6 @@ test('guards automatic motion with the shared reduced-motion preference', async 
     readSource('../components/sections/AboutMeSection/index.tsx'),
     readSource('../components/sections/ContactSection/index.tsx'),
     readSource('../components/sections/ProjectsSection/index.tsx'),
-    readSource('../components/sections/ProjectsSection/components/ProjectsCarousel.tsx'),
     readSource('../components/layout/StarsBackground/components/ThreeStars.tsx'),
     readSource('../components/layout/StarsBackground/hooks/useStarsZoom.ts'),
     readSource('../components/general/AnimatedHeading/index.tsx'),
@@ -110,4 +109,14 @@ test('does not include CSS background blobs in any section', async () => {
   for (const source of sources) {
     expect(source).not.toMatch(/decorative-(element|circle|shape)/);
   }
+});
+
+test('gates the Selected Work keyframes behind the motion preference', async () => {
+  const css = await readSource('../components/sections/ProjectsSection/components/SelectedWork.css');
+  const gated = css.match(/@media \(prefers-reduced-motion: no-preference\) \{[\s\S]*?\n\}/)?.[0] ?? '';
+
+  expect(gated).toContain('selected-work-resolve');
+  expect(gated).toContain('selected-work-settle');
+  // Everything outside the gated block may transition but must not animate.
+  expect(css.replace(gated, '')).not.toMatch(/animation(-delay)?:/);
 });
