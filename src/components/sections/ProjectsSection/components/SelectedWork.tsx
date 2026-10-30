@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
 import { ConfidentialPlate } from '@/components/general/ConfidentialPlate';
 import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
@@ -23,9 +23,23 @@ export const SelectedWork: FC<SelectedWorkProps> = ({ projects, t }) => {
   const [active, setActive] = useState(() =>
     Math.max(0, projects.findIndex((project) => project.visibility !== 'confidential')),
   );
+  const indexRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const index = indexRef.current;
+    const selected = index?.querySelector<HTMLElement>('[aria-pressed="true"]');
+    if (!index || !selected || index.scrollWidth <= index.clientWidth) return;
+
+    const row = index.getBoundingClientRect();
+    const button = selected.getBoundingClientRect();
+    // Move only the index, never the page or another scrollable ancestor.
+    if (button.left < row.left) index.scrollLeft += button.left - row.left;
+    else if (button.right > row.right) index.scrollLeft += button.right - row.right;
+  }, [active]);
+
   return (
     <div className="selected-work">
-      <nav className="selected-work__index" aria-label={t.indexAria}>
+      <nav ref={indexRef} className="selected-work__index" aria-label={t.indexAria}>
         {projects.map((project, i) => (
           <button
             key={project.slug}
