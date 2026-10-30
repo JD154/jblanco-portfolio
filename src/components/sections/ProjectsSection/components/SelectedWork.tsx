@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { FC } from 'react';
 import { ConfidentialPlate } from '@/components/general/ConfidentialPlate';
 import { GlowingEffect } from '@/components/other/GlowingEffect/glowing-effect';
@@ -8,21 +8,8 @@ import './SelectedWork.css';
 
 interface SelectedWorkProps {
   projects: LocalizedProject[];
-  catalogHref: string;
   t: Ui['projects'];
 }
-
-// Escape hides the tooltip until the pointer or focus leaves the image link.
-// Hover alone never focuses the link, so the key is read on the window.
-const dismissTooltip = (event: KeyboardEvent) => {
-  if (event.key !== 'Escape') return;
-  for (const link of document.querySelectorAll<HTMLElement>('.selected-work__image-link:is(:hover, :focus)')) {
-    link.dataset.dismissed = 'true';
-  }
-};
-const resetTooltip = (event: { currentTarget: HTMLAnchorElement }) => {
-  delete event.currentTarget.dataset.dismissed;
-};
 
 /**
  * Selected Work — a narrow project index beside a single project viewer.
@@ -32,16 +19,10 @@ const resetTooltip = (event: { currentTarget: HTMLAnchorElement }) => {
  * `inert` and `aria-hidden`. Never use the `hidden` attribute for them: Tailwind's
  * preflight turns it into `display: none !important`, which drops the height.
  */
-export const SelectedWork: FC<SelectedWorkProps> = ({ projects, catalogHref, t }) => {
+export const SelectedWork: FC<SelectedWorkProps> = ({ projects, t }) => {
   const [active, setActive] = useState(() =>
     Math.max(0, projects.findIndex((project) => project.visibility !== 'confidential')),
   );
-
-  useEffect(() => {
-    window.addEventListener('keydown', dismissTooltip);
-    return () => window.removeEventListener('keydown', dismissTooltip);
-  }, []);
-
   return (
     <div className="selected-work">
       <nav className="selected-work__index" aria-label={t.indexAria}>
@@ -57,9 +38,6 @@ export const SelectedWork: FC<SelectedWorkProps> = ({ projects, catalogHref, t }
             {project.title}
           </button>
         ))}
-        <a className="selected-work__more" href={catalogHref}>
-          {t.exploreMore} <span aria-hidden="true">↗</span>
-        </a>
       </nav>
 
       <div className="selected-work__viewer">
@@ -85,39 +63,28 @@ export const SelectedWork: FC<SelectedWorkProps> = ({ projects, catalogHref, t }
                 ) : (
                   <img src={project.image} alt={project.title} />
                 )}
-                <a
-                  className="selected-work__image-link"
-                  href={project.href}
-                  aria-label={t.caseStudyAria.replace('{title}', project.title)}
-                  onPointerLeave={resetTooltip}
-                  onBlur={resetTooltip}
-                >
-                  <span className="selected-work__tooltip" aria-hidden="true">
-                    {t.caseStudyTooltip} ↗
-                  </span>
-                </a>
-                {/* Unresolved: the glow is a port of the preview attempt, not a verified effect. */}
                 <div className="selected-work__glow" aria-hidden="true">
                   <GlowingEffect
                     spread={40}
-                    borderWidth={2}
+                    borderWidth={1.5}
                     glow={true}
                     disabled={false}
                     proximity={64}
                     inactiveZone={0.01}
-                    variant="white"
                   />
                 </div>
               </div>
 
-              <h3 className="selected-work__title">
-                <a href={project.href}>
-                  {project.title}
-                  <span className="selected-work__title-arrow" aria-hidden="true">
-                    ↗
-                  </span>
+              <div className="selected-work__heading">
+                <h3 className="selected-work__title">{project.title}</h3>
+                <a
+                  className="selected-work__case-link"
+                  href={project.href}
+                  aria-label={t.caseStudyAria.replace('{title}', project.title)}
+                >
+                  {t.caseStudyTooltip} <span aria-hidden="true">↗</span>
                 </a>
-              </h3>
+              </div>
 
               <div className="selected-work__details">
                 <p>{project.description}</p>

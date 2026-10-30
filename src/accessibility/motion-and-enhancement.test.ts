@@ -119,5 +119,4 @@ test('gates the Selected Work keyframes behind the motion preference', async () 
   expect(gated).toContain('selected-work-settle');
   // Everything outside the gated block may transition but must not animate.
   expect(css.replace(gated, '')).not.toMatch(/animation(-delay)?:/);
-  expect(css).toContain('@media (prefers-reduced-motion: reduce)');
 });

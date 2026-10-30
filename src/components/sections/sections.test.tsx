@@ -48,18 +48,18 @@ const renderProjects = (lang: Lang) => {
   return { html, doc, text: doc.body.textContent ?? '' };
 };
 
-test('links both English catalog links with the full project count', () => {
+test('links to the English catalog once with the full project count', () => {
   const { doc, text } = renderProjects('en');
 
   expect(text).toContain('View all 11 projects');
-  expect(doc.querySelectorAll('a[href="/projects"]')).toHaveLength(2);
+  expect(doc.querySelectorAll('a[href="/projects"]')).toHaveLength(1);
 });
 
-test('links both Spanish catalog links to the localized catalog', () => {
+test('links to the Spanish catalog once', () => {
   const { doc, text } = renderProjects('es');
 
   expect(text).toContain('Ver los 11 proyectos');
-  expect(doc.querySelectorAll('a[href="/es/projects"]')).toHaveLength(2);
+  expect(doc.querySelectorAll('a[href="/es/projects"]')).toHaveLength(1);
   expect(doc.querySelectorAll('a[href="/projects"]')).toHaveLength(0);
 });
 
@@ -68,7 +68,7 @@ test('selects the first public featured project', () => {
   const active = doc.querySelectorAll('article[data-active="true"]');
 
   expect(active).toHaveLength(1);
-  expect(active[0].querySelectorAll('a[href="/projects/i-r-management-platform"]')).toHaveLength(2);
+  expect(active[0].querySelectorAll('a[href="/projects/i-r-management-platform"]')).toHaveLength(1);
 });
 
 test('keeps inactive projects in layout but out of reach', () => {
@@ -93,7 +93,7 @@ test('renders one pressed index button per featured project', () => {
   expect(pressed[0].textContent).toContain('I.R Management Platform');
 });
 
-test('drops the old carousel controls and keeps case-study links to image and title', () => {
+test('drops carousel controls and provides one explicit case-study link per project', () => {
   const { html, doc } = renderProjects('en');
 
   for (const removed of ['All Projects', 'Previous project', 'Next project', 'View case study →', 'pc__']) {
@@ -105,14 +105,13 @@ test('drops the old carousel controls and keeps case-study links to image and ti
   expect(articles).toHaveLength(6);
   for (const [i, article] of articles.entries()) {
     const links = [...article.querySelectorAll('a[href]')];
-    const titleLink = article.querySelector('h3 a[href]');
-    const imageLinks = links.filter((link) => !link.closest('h3'));
-
-    expect(links).toHaveLength(2);
-    expect(titleLink?.textContent).toContain(projects[i].title);
-    expect(imageLinks).toHaveLength(1);
-    const artifact = imageLinks[0].closest('.selected-work__artifact');
-    expect(artifact?.parentElement).toBe(article);
+    expect(links).toHaveLength(1);
+    expect(links[0].getAttribute('href')).toBe(projects[i].href);
+    expect(links[0].textContent).toContain(ui.en.projects.caseStudyTooltip);
+    expect(article.querySelector('h3')?.textContent).toBe(projects[i].title);
+    expect(article.querySelector('h3 a')).toBeNull();
+    const artifact = article.querySelector('.selected-work__artifact');
+    expect(artifact?.querySelector('a')).toBeNull();
     expect(artifact?.querySelector('img, [role="img"]')).not.toBeNull();
     for (const copy of article.querySelectorAll('p, dl, .selected-work__stack')) {
       expect(copy.closest('a')).toBeNull();

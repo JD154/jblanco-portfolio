@@ -75,47 +75,8 @@
   background: color-mix(in srgb, var(--color-foreground) 12%, transparent);
 }
 
-.selected-work__more {
-  flex: 0 0 180px;
-  align-self: center;
-  padding: 12px;
-  font-size: 12px;
-  color: var(--color-muted-foreground);
-  text-decoration: none;
-  transition: color 180ms ease-out;
-}
-
-@media (min-width: 1024px) {
-  .selected-work__more {
-    flex: none;
-    align-self: auto;
-    margin-top: 8px;
-    padding: 16px 20px;
-    border-top: 1px solid var(--color-border);
-  }
-}
-
-.selected-work__more:is(:hover, :focus-visible) {
-  color: var(--color-foreground);
-}
-
-/* Arrow nudge shared by every "↗" link (catalog links in the toolbar too). */
-.selected-work__more > span,
-.projects-section__catalog > span {
-  display: inline-block;
-  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.selected-work__more:is(:hover, :focus-visible) > span,
-.projects-section__catalog:is(:hover, :focus-visible) > span {
-  transform: translate(2px, -2px);
-}
-
-/* Inset outlines: the index row scrolls (overflow clips) and the artifact clips. */
 .selected-work__option:focus-visible,
-.selected-work__more:focus-visible,
-.selected-work__image-link:focus-visible,
-.selected-work__title a:focus-visible {
+.selected-work__case-link:focus-visible {
   outline: 2px solid var(--color-foreground);
   outline-offset: -4px;
 }
@@ -125,7 +86,7 @@
 .selected-work__viewer {
   display: grid;
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .selected-work__project {
@@ -144,60 +105,35 @@
 .selected-work__artifact {
   position: relative;
   aspect-ratio: 16 / 10;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid var(--color-border);
-  border-radius: 24px;
-  background: var(--color-secondary-background);
+  border-radius: 1rem;
+  background:
+    radial-gradient(120% 130% at 50% -10%, color-mix(in srgb, var(--color-foreground) 4%, transparent), transparent 60%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 7px,
+      color-mix(in srgb, var(--color-foreground) 3%, transparent) 7px 8px
+    ),
+    var(--color-secondary-background);
 }
 
 .selected-work__artifact img {
+  display: block;
+  border-radius: inherit;
+  object-position: center;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.selected-work__image-link {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  border-radius: inherit;
-}
-
-.selected-work__tooltip {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  padding: 10px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font: 12px/1.5 var(--font-sans);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(3px);
-  transition: opacity 180ms ease-out, transform 180ms ease-out, visibility 180ms;
-}
-
-.selected-work__image-link:is(:hover, :focus-visible):not([data-dismissed]) .selected-work__tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Glow: ported from the preview attempt; status unresolved. The static border
-   and focus outline work without it. */
+/* Use the shared glow treatment from the contact links. */
 .selected-work__glow {
   position: absolute;
-  inset: 2px;
+  inset: 0;
   z-index: 3;
   border-radius: inherit;
   pointer-events: none;
-}
-
-.selected-work__glow .glow::after {
-  background-attachment: scroll;
-  background-image: linear-gradient(var(--color-foreground), var(--color-foreground));
 }
 
 .selected-work__title {
@@ -208,26 +144,39 @@
   text-wrap: balance;
 }
 
-.selected-work__title a {
-  display: block;
-  position: relative;
-  padding-right: 36px;
-  color: inherit;
-  text-decoration: none;
+.selected-work__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin: 28px 0;
 }
 
-.selected-work__title-arrow {
-  position: absolute;
-  top: 0.25em;
-  right: 0;
-  font: 24px/1 var(--font-sans);
-  color: var(--color-muted-foreground);
-  transition: transform 220ms ease-out, color 220ms ease-out;
+.selected-work__heading .selected-work__title {
+  margin: 0;
+  flex: 1 1 280px;
 }
 
-.selected-work__title a:is(:hover, :focus-visible) .selected-work__title-arrow {
+.selected-work__case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
   color: var(--color-foreground);
-  transform: translate(2px, -2px);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--color-border);
+}
+
+.selected-work__case-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Keep the shared gradient local to this frame, including below the fold. */
+.selected-work__glow .glow::after {
+  background-attachment: scroll;
 }
 
 .selected-work__details {
@@ -275,10 +224,59 @@
   line-height: 1.5;
 }
 
+/* Keep one consistent frame size and the established reading order on short
+   desktop viewports, regardless of the selected asset's proportions. */
+@media (min-width: 1024px) and (max-height: 900px) {
+  .selected-work__artifact {
+    aspect-ratio: auto;
+    height: clamp(200px, 38svh, 340px);
+  }
+
+  .selected-work__heading {
+    margin: 24px 0;
+  }
+
+  .selected-work__title {
+    font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  }
+
+  .selected-work__details {
+    gap: 20px;
+  }
+
+  .selected-work__details p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .selected-work__details dl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  .selected-work__details dl > div {
+    display: block;
+    padding: 16px 0 0;
+  }
+
+  .selected-work__details dt {
+    padding: 0 0 10px;
+  }
+
+  .selected-work__index {
+    gap: 8px;
+  }
+
+  .selected-work__option {
+    padding: 12px 16px;
+  }
+}
+
 /* ── Motion: only the revealed work settles; selection stays anchored ──── */
 @media (prefers-reduced-motion: no-preference) {
-  .selected-work__project[data-active='true'] .selected-work__artifact {
-    animation: selected-work-resolve 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  .selected-work__project[data-active='true'] .selected-work__artifact > :is(img, .cplate) {
+    animation: selected-work-resolve 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .selected-work__project[data-active='true'] :is(.selected-work__title, .selected-work__details) {
@@ -292,12 +290,10 @@
 
 @keyframes selected-work-resolve {
   from {
-    opacity: 0.65;
-    filter: blur(2px);
+    opacity: 0;
   }
   to {
     opacity: 1;
-    filter: blur(0);
   }
 }
 
@@ -309,24 +305,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* The global `.projects-section *` rule drops transitions/animations under
-   reduced motion but not transforms: reset the nudges here. */
-@media (prefers-reduced-motion: reduce) {
-  .selected-work__tooltip,
-  .selected-work__title-arrow,
-  .selected-work__more > span,
-  .projects-section__catalog > span {
-    transition: none;
-    transform: none;
-  }
-
-  .selected-work__title a:is(:hover, :focus-visible) .selected-work__title-arrow,
-  .selected-work__more:is(:hover, :focus-visible) > span,
-  .projects-section__catalog:is(:hover, :focus-visible) > span,
-  .selected-work__image-link:is(:hover, :focus-visible):not([data-dismissed]) .selected-work__tooltip {
-    transform: none;
   }
 }

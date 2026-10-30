@@ -35,7 +35,7 @@ export const ProjectsSection: FC<ProjectsSectionProps> = ({ projects, projectCou
           </a>
         </SectionToolbar>
 
-        <SelectedWork projects={projects} catalogHref={catalogHref} t={t} />
+        <SelectedWork projects={projects} t={t} />
       </div>
     </section>
   );
